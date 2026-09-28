@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tamil Book Page 9</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#111D66;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    perspective:1500px;
+}
+
+/* =======================
+   PAGE ANIMATION
+======================= */
+
+.flip-out-next{
+    animation:flipNext .6s ease forwards;
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+    animation:flipPrev .6s ease forwards;
+    transform-origin:right center;
+}
+
+@keyframes flipNext{
+from{
+    transform:rotateY(0);
+    opacity:1;
+}
+to{
+    transform:rotateY(-120deg);
+    opacity:0;
+}
+}
+
+@keyframes flipPrev{
+from{
+    transform:rotateY(0);
+    opacity:1;
+}
+to{
+    transform:rotateY(120deg);
+    opacity:0;
+}
+}
+
+/* =======================
+      APP
+======================= */
+
+.app{
+    width:100%;
+    max-width:800px;
+    transform-style:preserve-3d;
+}
+
+/* =======================
+      HEADER
+======================= */
+
+.header{
+
+    color:#fff;
+    text-align:center;
+
+    font-size:40px;
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.7),
+        0 0 12px #4FC3F7,
+        0 0 24px #4FC3F7,
+        0 0 36px #4FC3F7;
+
+    animation:glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+
+0%,100%{
+text-shadow:
+0 0 5px #fff,
+0 0 10px #4FC3F7,
+0 0 20px #4FC3F7;
+}
+
+50%{
+text-shadow:
+0 0 10px #fff,
+0 0 25px #4FC3F7,
+0 0 50px #4FC3F7,
+0 0 70px #4FC3F7;
+}
+
+}
+
+/* =======================
+      BOOK
+======================= */
+
+.book{
+
+    position:relative;
+
+    background:#f8f1e4;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+/* RED SPINE */
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-10px;
+    top:25px;
+    bottom:25px;
+
+    width:20px;
+
+    background:#D40C02;
+
+    border-radius:10px;
+
+}
+
+/* =======================
+     COVER
+======================= */
+
+.cover{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.cover img{
+
+    width:100%;
+    max-width:900px;
+
+    display:block;
+
+    border-radius:15px;
+
+}
+
+/* =======================
+     NAVIGATION
+======================= */
+
+.navigation{
+
+    margin-top:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:65px;
+    height:65px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#f8f1e4;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+    transition:.25s;
+
+}
+
+.nav-btn:hover{
+    transform:scale(1.05);
+}
+
+.dots{
+
+    display:flex;
+    gap:10px;
+
+}
+
+.dot{
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#8da4a4;
+
+}
+
+.dot.active{
+
+    background:#1CFF00;
+
+}
+
+
+
+
+/* ===========================================
+   MOBILE
+=========================================== */
+
+@media (max-width:768px){
+
+html,
+body{
+
+    width:100%;
+    height:100dvh;
+    margin:0;
+    padding:0;
+
+    overflow:hidden;
+
+}
+
+body{
+
+    background:#111D66;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* APP */
+
+.app{
+
+    width:100%;
+    max-width:380px;
+
+    height:100dvh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:8px;
+
+}
+
+/* HEADER */
+
+.header{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+    line-height:1.2;
+
+}
+
+/* BOOK */
+
+.book{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:18px;
+
+}
+
+.book::before{
+
+    width:8px;
+
+    left:-4px;
+
+    top:12px;
+
+    bottom:12px;
+
+}
+
+/* COVER */
+
+.cover{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.cover img{
+
+    width:min(100%,340px);
+
+    height:auto;
+
+    max-height:calc(100dvh - 170px);
+
+    object-fit:contain;
+
+}
+
+/* NAVIGATION */
+
+.navigation{
+
+    margin-top:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:44px;
+    height:44px;
+
+    font-size:20px;
+
+}
+
+.dots{
+
+    gap:8px;
+
+}
+
+.dot{
+
+    width:8px;
+    height:8px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header">
+
+📚 Tamil e-Book • தமிழ் எழுத்துகள்
+
+</div>
+
+<div class="book">
+
+<div class="cover">
+
+<img src="overview7.png" alt="Tamil Book Cover">
+
+</div>
+
+</div>
+
+<div class="navigation">
+
+<button
+class="nav-btn"
+onclick="nextPage('page8.html','prev')">
+
+❮
+
+</button>
+
+<div class="dots">
+
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot active"></div>
+<div class="dot"></div>
+
+</div>
+
+<button
+class="nav-btn"
+onclick="nextPage('page10.html','next')">
+
+❯
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function nextPage(page,direction){
+
+const app=document.querySelector(".app");
+
+if(direction==="next"){
+
+app.classList.add("flip-out-next");
+
+}else{
+
+app.classList.add("flip-out-prev");
+
+}
+
+setTimeout(()=>{
+
+window.location.href=page;
+
+},600);
+
+}
+
+</script>
+
+</body>
+</html>

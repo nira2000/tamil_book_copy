@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>தமிழ் e-Book - Page 45</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="page43.css">
+</head>
+
+
+<style>
+    
+
+
+/* ===========================================
+   PAGE 43 - TAMIL DIGITAL BOOK
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Noto Sans Tamil',sans-serif;
+    background:#dff4ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* ========================================= */
+
+.page-container{
+
+    width:100%;
+    max-width:900px;
+
+    background:#fffef8;
+
+    border:8px solid #f2d8a0;
+
+    border-radius:30px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+/* ========================================= */
+
+.lesson-number{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+    color:#111;
+
+}
+
+/* ========================================= */
+
+.title-box{
+
+    background:#fff3c9;
+
+    border:3px solid #d9b067;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    padding:15px;
+
+    margin-bottom:35px;
+
+}
+
+.title-box h1{
+
+    font-size:40px;
+
+    color:#111;
+
+    font-weight:700;
+
+}
+
+/* ========================================= */
+
+.word-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px 40px;
+
+}
+
+/* ========================================= */
+
+.word-btn{
+
+    width:100%;
+
+    height:72px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:32px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    border:2px solid rgba(0,0,0,.25);
+
+    box-shadow:0 5px 10px rgba(0,0,0,.12);
+
+}
+
+/* ========================================= */
+
+.word-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 18px rgba(0,0,0,.18);
+
+}
+
+/* ========================================= */
+
+.word-btn:active{
+
+    transform:scale(.97);
+
+}
+
+/* ========================================= */
+
+.green{
+
+    background:#7fd56a;
+
+}
+
+.green-light{
+
+    background:#b8f76b;
+
+}
+
+.yellow{
+
+    background:#ffe996;
+
+}
+
+.blue{
+
+    background:#67d2e4;
+
+}
+
+.orange{
+
+    background:#ff9c74;
+
+}
+
+/* ========================================= */
+
+.word-btn.playing{
+
+    animation:glow 1s infinite;
+
+}
+
+@keyframes glow{
+
+    0%{
+
+        box-shadow:0 0 8px #ffd54a;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 22px #ffd54a;
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 8px #ffd54a;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:900px){
+
+.page-container{
+
+    max-width:650px;
+
+}
+
+.word-grid{
+
+    gap:15px 20px;
+
+}
+
+.word-btn{
+
+    font-size:24px;
+
+    height:62px;
+
+}
+
+.title-box h1{
+
+    font-size:32px;
+
+}
+
+.lesson-number{
+
+    font-size:22px;
+
+}
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+body{
+
+    padding:10px;
+
+}
+
+.page-container{
+
+    padding:18px;
+
+    border-width:5px;
+
+    border-radius:20px;
+
+}
+
+.title-box{
+
+    padding:12px;
+
+    margin-bottom:22px;
+
+}
+
+.title-box h1{
+
+    font-size:24px;
+
+}
+
+.lesson-number{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+.word-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+}
+
+.word-btn{
+
+    height:48px;
+
+    font-size:17px;
+
+    border-radius:10px;
+
+}
+
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+.word-btn{
+
+    font-size:15px;
+
+    height:44px;
+
+}
+
+.title-box h1{
+
+    font-size:21px;
+
+}
+
+.lesson-number{
+
+    font-size:16px;
+
+}
+
+}
+
+
+/* ========================= */
+
+.page-number{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:#7a42d5;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+/* ========================= */
+
+.navigation{
+
+    margin-top:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f8f1e4;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+
+}
+
+
+/* Bottom section - Mobile Only */
+
+.page-number{
+
+    margin-top:16px;
+    margin-bottom:10px;
+
+    font-size:20px;
+
+}
+
+.navigation{
+
+    margin-top:10px;
+
+}
+
+.nav-btn{
+
+    width:52px;
+    height:52px;
+
+    font-size:24px;
+
+}
+
+.dots{
+
+    gap:8px;
+
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+}
+
+
+
+.nav-btn:hover{
+
+    transform:translateY(-4px) scale(1.08);
+
+}
+
+.nav-btn:active{
+
+    transform:scale(.95);
+
+}
+
+.dots{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#bbb;
+
+}
+
+.dot.active{
+
+    background:#35ff2d;
+
+}
+
+
+
+.flip-out-next{
+
+animation:flipNext .6s ease forwards;
+
+transform-origin:left center;
+
+}
+
+.flip-out-prev{
+
+animation:flipPrev .6s ease forwards;
+
+transform-origin:right center;
+
+}
+
+@keyframes flipNext{
+
+0%{
+
+transform:rotateY(0);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:rotateY(-120deg);
+
+opacity:0;
+
+}
+
+}
+
+@keyframes flipPrev{
+
+0%{
+
+transform:rotateY(0);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:rotateY(120deg);
+
+opacity:0;
+
+}
+
+}
+
+
+.highlight{
+    color:#111;
+    transition:.25s;
+}
+
+.word-btn.playing .highlight{
+    color:red;
+    font-weight:700;
+}
+
+</style>
+
+
+<body>
+
+
+
+<div class="page-wrapper">
+
+<div class="container">
+
+<div class="page-container">
+
+
+    <!-- Page Number -->
+    <div class="lesson-number">
+        தொகுதி 1
+    </div>
+
+    <!-- Title -->
+    <div class="title-box">
+        <h1>தமிழ் எழுத்துகள் ✏️</h1>
+    </div>
+
+
+    <!-- ===========================
+            WORD GRID
+    ============================ -->
+
+    <div class="word-grid">
+
+<!-- ================= GREEN ================= -->
+
+<button class="word-btn green-light" data-audio="naaudio1.mp3">
+    <span class="highlight">ந</span>ட
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio2.mp3">
+    <span class="highlight">ம</span>னம்
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio3.mp3">
+    ப<span class="highlight">ணம்</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio4.mp3">
+    <span class="highlight">நா</span>டு
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio5.mp3">
+    <span class="highlight">மை</span>னா
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio6.mp3">
+    கு<span class="highlight">ணா</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio7.mp3">
+    <span class="highlight">நி</span>மிடம்
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio8.mp3">
+    க<span class="highlight">னி</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio9.mp3">
+    ம<span class="highlight">ணி</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio10.mp3">
+    <span class="highlight">நீ</span>சம்
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio11.mp3">
+    தே<span class="highlight">னீ</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio12.mp3">
+    க<span class="highlight">ணி</span>னி
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio13.mp3">
+    <span class="highlight">நு</span>னி
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio14.mp3">
+    ம<span class="highlight">னு</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio15.mp3">
+    கே<span class="highlight">ணி</span>
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio16.mp3">
+    <span class="highlight">நூ</span>தனம்
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio17.mp3">
+    மின்<span class="highlight">னூ</span>ட்டம்
+</button>
+
+<button class="word-btn green-light" data-audio="naaudio18.mp3">
+    பூச<span class="highlight">ணி</span>
+</button>
+
+
+<!-- ================= YELLOW ================= -->
+
+<button class="word-btn yellow" data-audio="naaudio19.mp3">
+    <span class="highlight">நெ</span>ட்டை
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio20.mp3">
+    பதி<span class="highlight">னெ</span>ட்டு
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio21.mp3">
+    கண்<span class="highlight">ணே</span>
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio22.mp3">
+    <span class="highlight">நே</span>சம்
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio23.mp3">
+    பாடி<span class="highlight">னே</span>ன்
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio24.mp3">
+    மண்<span class="highlight">ணோடு</span>
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio25.mp3">
+    <span class="highlight">நை</span>ந்து
+</button>
+
+<button class="word-btn yellow" data-audio="naaudio26.mp3">
+    ம<span class="highlight">னை</span>
+</button>
+
+
+<button class="word-btn yellow" data-audio="naaudio27.mp3">
+    ப<span class="highlight">ண்ணை</span>
+</button>
+
+
+<!-- ================= BLUE ================= -->
+
+<button class="word-btn blue" data-audio="naaudio28.mp3">
+    <span class="highlight">நொ</span>டி
+</button>
+
+<button class="word-btn blue" data-audio="naaudio29.mp3">
+    தே<span class="highlight">னோ</span>டு
+</button>
+
+<button class="word-btn blue" data-audio="naaudio30.mp3">
+    மண்<span class="highlight">ணோ</span>டு
+</button>
+
+<button class="word-btn blue" data-audio="naaudio31.mp3">
+    <span class="highlight">நோ</span>ட்டு
+</button>
+
+<button class="word-btn blue" data-audio="naaudio32.mp3">
+    முன்<span class="highlight">நோ</span>டி
+</button>
+
+<button class="word-btn blue" data-audio="naaudio33.mp3">
+    கண்<span class="highlight">ணோ</span>டு
+</button>
+
+<button class="word-btn blue" data-audio="naaudio34.mp3">
+    <span class="highlight">நௌ</span>வன்னா
+</button>
+
+<button class="word-btn blue" data-audio="naaudio35.mp3">
+    ன<span class="highlight">ௌ</span>வன்னா
+</button>
+
+<button class="word-btn blue" data-audio="naaudio36.mp3">
+    <span class="highlight">ணௌ</span>வன்னா
+</button>
+
+
+<!-- ================= ORANGE ================= -->
+
+<button class="word-btn orange" data-audio="naaudio37.mp3">
+    ப<span class="highlight">ந்</span>து
+</button>
+
+<button class="word-btn orange" data-audio="naaudio38.mp3">
+    கன்<span class="highlight">னம்</span>
+</button>
+
+<button class="word-btn orange" data-audio="naaudio39.mp3">
+    க<span class="highlight">ண்</span>
+</button>
+</div>
+
+<!-- Page Number -->
+
+<div class="page-number">
+    43
+</div>
+
+<!-- Navigation -->
+
+<div class="navigation">
+
+    <button
+        class="nav-btn"
+        onclick="nextPage('page42.html','prev')">
+
+        ❮
+
+    </button>
+
+    <div class="dots">
+
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+
+    </div>
+
+    <button
+        class="nav-btn"
+        onclick="nextPage('page44.html','next')">
+
+        ❯
+
+    </button>
+
+</div>
+
+
+</div>
+
+<script>
+    
+const buttons = document.querySelectorAll(".word-btn");
+
+let currentAudio = null;
+let currentButton = null;
+
+// ===========================================
+// Button Click
+// ===========================================
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        const audioFile = this.dataset.audio;
+
+        // Stop if same button clicked again
+        if(
+            currentAudio &&
+            currentButton === this &&
+            !currentAudio.paused
+        ){
+
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+
+            this.classList.remove("playing");
+
+            currentAudio = null;
+            currentButton = null;
+
+            return;
+        }
+
+        // Stop previous audio
+        if(currentAudio){
+
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+
+        }
+
+        // Remove previous highlight
+        buttons.forEach(btn=>{
+
+            btn.classList.remove("playing");
+
+        });
+
+        // Play new audio
+        currentAudio = new Audio(audioFile);
+
+        currentButton = this;
+
+        this.classList.add("playing");
+
+        currentAudio.play();
+
+        // Finished
+        currentAudio.onended = ()=>{
+
+            this.classList.remove("playing");
+
+            currentAudio = null;
+            currentButton = null;
+
+        };
+
+        // Error
+        currentAudio.onerror = ()=>{
+
+            alert("Audio file not found:\n"+audioFile);
+
+            this.classList.remove("playing");
+
+            currentAudio = null;
+            currentButton = null;
+
+        };
+
+    });
+
+});
+
+// ===========================================
+// Keyboard Stop
+// ===========================================
+
+document.addEventListener("keydown",function(e){
+
+    if(e.code==="Space"){
+
+        if(currentAudio){
+
+            currentAudio.pause();
+            currentAudio.currentTime=0;
+
+            if(currentButton){
+
+                currentButton.classList.remove("playing");
+
+            }
+
+            currentAudio=null;
+            currentButton=null;
+
+        }
+
+    }
+
+});
+
+// ===========================================
+// Page Navigation
+// ===========================================
+
+function nextPage(page,direction){
+
+    const book=document.querySelector(".container");
+
+    if(direction==="next"){
+
+        book.classList.add("flip-out-next");
+
+    }else{
+
+        book.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+</script>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

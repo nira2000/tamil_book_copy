@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>தமிழ் எழுத்துகள்</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    background:linear-gradient(135deg,#BFE8FF,#EAF8FF);
+
+    padding:15px;
+
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ==========================================
+   BOOK
+========================================== */
+
+.book{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:#FFFDF7;
+
+    border-radius:28px;
+
+    padding:22px;
+
+    border:8px solid #F3D7A0;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+header h1{
+
+    font-size:34px;
+
+    color:#432918;
+
+    font-weight:800;
+
+}
+
+header p{
+
+    color:#777;
+
+    font-size:18px;
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+   TABS
+========================================== */
+
+.tabs{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.tab{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:15px;
+
+    padding:14px;
+
+    background:#EAEAEA;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.tab.active{
+
+    background:#5ECF63;
+
+    color:white;
+
+}
+
+/* ==========================================
+   LESSON
+========================================== */
+
+.lesson{
+
+    display:none;
+
+}
+
+.active-lesson{
+
+    display:block;
+
+}
+
+/* ==========================================
+   AUDIO CARD
+========================================== */
+
+.audio-card{
+
+    border-radius:22px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.10);
+
+}
+
+.audio-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* COLORS */
+
+.green{
+
+    background:#B7F593;
+
+}
+
+.yellow{
+
+    background:#FFF29A;
+
+}
+
+.blue{
+
+    background:#8DE8F2;
+
+}
+
+.orange{
+
+    background:#FFB48D;
+
+}
+
+/* ==========================================
+   SPEAKER
+========================================== */
+
+.speaker{
+
+    font-size:28px;
+
+    text-align:right;
+
+    margin-bottom:10px;
+
+}
+
+/* ==========================================
+   LETTERS
+========================================== */
+
+.letters{
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================
+   WORDS
+========================================== */
+
+.words{
+
+    margin-top:25px;
+
+}
+
+.words h2{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    color:#7A3D16;
+
+}
+
+.word-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+.word{
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:15px;
+
+    background:#FFE89E;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.word:hover{
+
+    background:#FFF3BF;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.page{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#9A63E8;
+
+}
+
+.nav-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+/* ==========================================
+   ACTIVE AUDIO
+========================================== */
+
+.audio-card.playing{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 25px rgba(0,255,100,.55);
+
+}
+
+.word.playing{
+
+    background:#86F39A;
+
+}
+
+/* ==========================================
+   DESKTOP
+========================================== */
+
+@media(min-width:900px){
+
+.book{
+
+    max-width:900px;
+
+    padding:40px;
+
+}
+
+header h1{
+
+    font-size:52px;
+
+}
+
+.tabs{
+
+    max-width:500px;
+
+    margin:0 auto 30px;
+
+}
+
+.lesson{
+
+    display:none;
+
+}
+
+.active-lesson{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.audio-card{
+
+    margin:0;
+
+}
+
+.word-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="book">
+
+<!-- HEADER -->
+
+<header>
+
+<h1>தமிழ் எழுத்துகள்</h1>
+
+<p>தொகுதி 1</p>
+
+</header>
+
+
+<!-- TAB MENU -->
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="showTab('ka')">
+
+க
+
+</button>
+
+<button class="tab"
+onclick="showTab('sa')">
+
+ச
+
+</button>
+
+<button class="tab"
+onclick="showTab('ta')">
+
+ட
+
+</button>
+
+</div>
+
+<!-- ========================================= -->
+<!-- KA -->
+<!-- ========================================= -->
+
+<div class="lesson active-lesson" id="ka">
+
+<div class="audio-card green"
+data-audio="audio/ka_group1.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+க<br>
+கா<br>
+கி<br>
+கீ<br>
+கு<br>
+கூ
+
+</div>
+
+</div>
+
+
+<div class="audio-card yellow"
+data-audio="audio/ka_group2.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+கெ<br>
+கே<br>
+கை
+
+</div>
+
+</div>
+
+
+<div class="audio-card blue"
+data-audio="audio/ka_group3.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+கொ<br>
+கோ<br>
+கௌ
+
+</div>
+
+</div>
+
+
+<div class="audio-card orange"
+data-audio="audio/ka_group4.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+க்
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- SA -->
+<!-- ========================================= -->
+
+<div class="lesson" id="sa">
+
+<div class="audio-card green"
+data-audio="audio/sa_group1.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+ச<br>
+சா<br>
+சி<br>
+சீ<br>
+சு<br>
+சூ
+
+</div>
+
+</div>
+
+<div class="audio-card yellow"
+data-audio="audio/sa_group2.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+செ<br>
+சே<br>
+சை
+
+</div>
+
+</div>
+
+<div class="audio-card blue"
+data-audio="audio/sa_group3.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+சொ<br>
+சோ<br>
+சௌ
+
+</div>
+
+</div>
+
+<div class="audio-card orange"
+data-audio="audio/sa_group4.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+ச்
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- TA -->
+<!-- ========================================= -->
+
+<div class="lesson" id="ta">
+
+<div class="audio-card green"
+data-audio="audio/ta_group1.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+ட<br>
+டா<br>
+டி<br>
+டீ<br>
+டு<br>
+டூ
+
+</div>
+
+</div>
+
+<div class="audio-card yellow"
+data-audio="audio/ta_group2.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+டெ<br>
+டே<br>
+டை
+
+</div>
+
+</div>
+
+<div class="audio-card blue"
+data-audio="audio/ta_group3.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+டொ<br>
+டோ<br>
+டௌ
+
+</div>
+
+</div>
+
+<div class="audio-card orange"
+data-audio="audio/ta_group4.mp3">
+
+<div class="speaker">🔊</div>
+
+<div class="letters">
+
+ட்
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- WORDS -->
+<!-- ========================================= -->
+
+<section class="words">
+
+<h2>சொற்கள்</h2>
+
+<div class="word-grid">
+
+<button class="word"
+data-audio="audio/kadi.mp3">
+
+கடி
+
+</button>
+
+<button class="word"
+data-audio="audio/kaadu.mp3">
+
+காடு
+
+</button>
+
+<button class="word"
+data-audio="audio/koodai.mp3">
+
+கூடை
+
+</button>
+
+<button class="word"
+data-audio="audio/kodi.mp3">
+
+கொடி
+
+</button>
+
+<button class="word"
+data-audio="audio/kottai.mp3">
+
+கோட்டை
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+<button class="word"
+data-audio="audio/kittu.mp3">
+
+கிட்டு
+
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<button class="nav-btn">
+
+❮
+
+</button>
+
+<div class="page">
+
+1
+
+</div>
+
+<button class="nav-btn">
+
+❯
+
+</button>
+
+</footer>
+
+</div>
+
+</div>
+
+<script>
+
+/*=========================================
+        TAB SWITCHING
+=========================================*/
+
+const tabs = document.querySelectorAll(".tab");
+const lessons = document.querySelectorAll(".lesson");
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+        // Stop any playing audio
+        stopAudio();
+
+        // Remove active tab
+        tabs.forEach(t => t.classList.remove("active"));
+
+        // Activate clicked tab
+        this.classList.add("active");
+
+        // Hide all lessons
+        lessons.forEach(lesson => {
+            lesson.classList.remove("active-lesson");
+        });
+
+        // Show correct lesson
+        if (this.textContent.trim() === "க") {
+            document.getElementById("ka").classList.add("active-lesson");
+        }
+
+        if (this.textContent.trim() === "ச") {
+            document.getElementById("sa").classList.add("active-lesson");
+        }
+
+        if (this.textContent.trim() === "ட") {
+            document.getElementById("ta").classList.add("active-lesson");
+        }
+
+    });
+
+});
+
+
+/*=========================================
+        AUDIO PLAYER
+=========================================*/
+
+let currentAudio = null;
+let currentElement = null;
+
+
+/*=========================================
+        GROUP CARDS
+=========================================*/
+
+document.querySelectorAll(".audio-card").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const audio = card.dataset.audio;
+
+        if (!audio) {
+
+            alert("Audio not assigned.");
+
+            return;
+
+        }
+
+        // Same card clicked again
+        if (currentElement === card) {
+
+            stopAudio();
+            return;
+
+        }
+
+        stopAudio();
+
+        currentAudio = new Audio(audio);
+
+        currentElement = card;
+
+        card.classList.add("playing");
+
+        const speaker = card.querySelector(".speaker");
+
+        if (speaker) {
+
+            speaker.classList.add("pulse");
+
+        }
+
+        currentAudio.play();
+
+        currentAudio.onended = () => {
+
+            stopAudio();
+
+        };
+
+    });
+
+});
+
+
+/*=========================================
+        WORD BUTTONS
+=========================================*/
+
+document.querySelectorAll(".word").forEach(word => {
+
+    word.addEventListener("click", () => {
+
+        const audio = word.dataset.audio;
+
+        if (!audio) {
+
+            alert("Audio not assigned.");
+
+            return;
+
+        }
+
+        stopAudio();
+
+        currentAudio = new Audio(audio);
+
+        currentElement = word;
+
+        word.classList.add("playing");
+
+        currentAudio.play();
+
+        currentAudio.onended = () => {
+
+            stopAudio();
+
+        };
+
+    });
+
+});
+
+
+/*=========================================
+        STOP AUDIO
+=========================================*/
+
+function stopAudio(){
+
+    if(currentAudio){
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+    }
+
+    document.querySelectorAll(".playing").forEach(el => {
+
+        el.classList.remove("playing");
+
+    });
+
+    document.querySelectorAll(".pulse").forEach(el => {
+
+        el.classList.remove("pulse");
+
+    });
+
+    currentAudio = null;
+
+    currentElement = null;
+
+}
+
+</script>
+
+</body>
+
+</html>

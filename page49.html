@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>THOGUTHI 6</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<style>
+    
+
+/* ===========================================
+   RESET
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Noto Sans Tamil',sans-serif;
+    background:#1b2c73;
+    padding:20px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    perspective:1500px;
+}
+
+/* ===========================================
+   FLIP ANIMATION
+=========================================== */
+
+.flip-out-next{
+    animation:flipNext .6s ease forwards;
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+    animation:flipPrev .6s ease forwards;
+    transform-origin:right center;
+}
+
+@keyframes flipNext{
+    from{
+        transform:rotateY(0);
+        opacity:1;
+    }
+    to{
+        transform:rotateY(-120deg);
+        opacity:0;
+    }
+}
+
+@keyframes flipPrev{
+    from{
+        transform:rotateY(0);
+        opacity:1;
+    }
+    to{
+        transform:rotateY(120deg);
+        opacity:0;
+    }
+}
+
+/* ===========================================
+   WRAPPER
+=========================================== */
+
+.page-wrapper{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    transform-style:preserve-3d;
+}
+
+.book{
+
+    width:100%;
+    max-width:940px;
+
+    background:#fbf8ef;
+
+    border:8px solid #e9dcb8;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+    transition:.5s ease;
+
+    position: relative;
+
+}
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-10px;
+    top:20px;
+    bottom:20px;
+
+    width:18px;
+
+    background:#D40C02;
+
+    border-radius:10px;
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.page-title{
+    display:flex;
+    justify-content:center;
+    margin-bottom:18px;
+}
+
+.page-title h1{
+
+    background:#f8c45d;
+
+    border:3px solid #b88214;
+
+    border-radius:15px;
+
+    padding:12px 45px;
+
+    font-size:42px;
+
+    box-shadow:0 6px 12px rgba(0,0,0,.15);
+
+}
+
+.lesson{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+/* ===========================================
+   GRID
+=========================================== */
+
+.main{
+
+    display:grid;
+
+    grid-template-columns:60px repeat(3,minmax(120px,1fr));
+
+    gap:22px;
+
+    justify-items:center;
+
+    align-items:start;
+
+}
+
+.sound-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-top:460px;
+
+}
+
+.sound{
+
+    width:60px;
+
+    height:52px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f8d8d8;
+
+    border:2px solid #b38c8c;
+
+    border-radius:10px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    user-select:none;
+
+}
+
+.empty{
+    visibility:hidden;
+}
+
+.column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.head,
+.btn{
+
+    width:120px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    user-select:none;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+
+}
+
+.head{
+
+    position:relative;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+.head::after{
+
+    content:"🔊";
+
+    position:absolute;
+
+    top:5px;
+
+    right:6px;
+
+    font-size:12px;
+
+    opacity:.85;
+
+    pointer-events:none;
+
+}
+
+button:hover{
+
+    transform:translateY(-4px) scale(1.03);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+/* ===========================================
+   COLORS
+=========================================== */
+
+.green{
+    background:#b7ef67;
+    border:2px solid #709541;
+}
+
+.head.green{
+    background:#79d15d;
+}
+
+.yellow{
+    background:#fff29a;
+    border:2px solid #b9a548;
+}
+
+.blue{
+    background:#66d8e8;
+    border:2px solid #397f89;
+}
+
+.orange{
+    background:#ff9d71;
+    border:2px solid #ba6c47;
+}
+
+/* ===========================================
+   GLOW
+=========================================== */
+
+.playing{
+    animation:glow 1s infinite;
+}
+
+@keyframes glow{
+
+0%{
+box-shadow:0 0 0 rgba(255,196,0,0);
+}
+
+50%{
+box-shadow:
+0 0 15px rgba(255,196,0,.9),
+0 0 30px rgba(255,196,0,.5);
+}
+
+100%{
+box-shadow:0 0 0 rgba(255,196,0,0);
+}
+
+}
+
+/* ===========================================
+   PAGE NUMBER
+=========================================== */
+
+.page-number{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#7a42d5;
+
+}
+
+/* ===========================================
+   NAVIGATION
+=========================================== */
+
+.navigation{
+
+    width:980px;
+
+    max-width:100%;
+
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:64px;
+
+    height:64px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f8f1e4;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+
+}
+
+.nav-btn:hover{
+
+    transform:scale(1.08);
+
+}
+
+.dots{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#a8a8a8;
+
+}
+
+.dot.active{
+
+    background:#32ff3f;
+
+}
+
+.highlight{
+
+    color:#111;
+
+    transition:.25s;
+
+}
+
+.playing .highlight{
+
+    color:#e60000;
+
+}
+
+.eye-box{
+
+    width:60px;
+    height:52px;
+
+}
+
+.eye-box img{
+
+    width:60px;
+    height:60px;
+
+}
+
+.speaker{
+    position:relative;
+}
+
+.speaker::after{
+
+    content:"🔊";
+
+    position:absolute;
+
+    top:4px;
+
+    right:5px;
+
+    font-size:11px;
+
+    pointer-events:none;
+
+}
+
+
+.ra-head{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.ra-mouth{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+
+
+
+
+
+
+/* ===========================================
+   MOBILE & TABLET
+=========================================== */
+
+@media (max-width:900px){
+
+html,
+body{
+
+    margin:0;
+    padding:0;
+
+    width:100%;
+    height:100dvh;
+
+    overflow:hidden;
+
+}
+
+body{
+
+    background:#1b2c73;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:8px;
+
+}
+
+
+/* ---------- WRAPPER ---------- */
+
+.page-wrapper,
+.container{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+/* ---------- BOOK ---------- */
+
+.book{
+
+    width:100%;
+    max-width:410px;
+
+    height:90dvh;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:8px;
+
+    border:5px solid #e9dcb8;
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+
+/* ---------- RED SPINE ---------- */
+
+.book::before{
+
+    left:-5px;
+    top:12px;
+    bottom:12px;
+
+    width:10px;
+
+}
+
+
+/* ---------- TITLE ---------- */
+
+.page-title{
+
+    margin-bottom:4px;
+
+}
+
+.page-title h1{
+
+    font-size:19px;
+    padding:5px 14px;
+
+}
+
+
+.lesson{
+
+    font-size:17px;
+    margin-bottom:6px;
+
+}
+
+
+/* ---------- GRID ---------- */
+
+.main{
+
+    flex:1;
+
+    display:grid;
+
+    /* PINK COLUMN + 2 LETTER COLUMNS */
+    grid-template-columns:32px repeat(2,88px);
+
+    justify-content:center;
+
+    column-gap:8px;
+
+    align-items:start;
+
+}
+
+
+/* ---------- PINK COLUMN ---------- */
+
+.sound-column{
+
+    margin-top:227px;
+
+    gap:5px;
+
+}
+
+.sound{
+
+    width:32px;
+    height:26px;
+
+    font-size:13px;
+
+}
+
+
+/* ---------- EYE ---------- */
+
+.eye-box{
+
+    width:32px;
+    height:32px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.eye-box img{
+
+    width:34px;
+    height:34px;
+
+    object-fit:contain;
+
+}
+
+
+/* ---------- BUTTON COLUMNS ---------- */
+
+.column{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:6px;
+
+    width:88px;
+
+}
+
+
+.group{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:4px;
+
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.head,
+.btn{
+
+    width:60px;
+    height:28px;
+
+    font-size:17px;
+
+    border-radius:8px;
+
+}
+
+.head{
+
+    font-size:18px;
+
+}
+
+.head::after{
+
+    top:2px;
+    right:3px;
+
+    font-size:8px;
+
+}
+
+
+/* ---------- MOUTH IMAGES ---------- */
+
+.ra-head{
+    width:88px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+
+    flex-shrink:0;
+
+    transform:translateX(15px);
+}
+
+.ra-mouth{
+
+    width:24px !important;
+    height:24px !important;
+
+    max-width:24px !important;
+    max-height:24px !important;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+}
+
+
+/* ---------- PAGE NUMBER ---------- */
+
+.page-number{
+
+    margin-top:4px;
+
+    font-size:15px;
+
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+.navigation{
+
+    width:100%;
+    max-width:420px;
+
+    margin-top:6px;
+
+}
+
+
+/* ---------- NAV BUTTON ---------- */
+
+.nav-btn{
+
+    width:38px;
+    height:38px;
+
+    font-size:18px;
+
+}
+
+
+/* ---------- DOTS ---------- */
+
+.dots{
+
+    gap:8px;
+
+}
+
+.dot{
+
+    width:7px;
+    height:7px;
+
+}
+
+
+/* ---------- SPEAKER ICON ---------- */
+
+.speaker::after{
+
+    top:2px;
+    right:3px;
+
+    font-size:8px;
+
+}
+
+}
+
+
+</style>
+
+
+<body>
+
+<div class="page-wrapper">
+
+<div class="container">
+
+<div class="book">
+
+<div class="page-title">
+<h1>தமிழ் எழுத்துகள் ✏️</h1>
+</div>
+
+<div class="lesson">
+தொகுதி 6
+</div>
+
+<div class="main">
+
+<!-- Pronunciation -->
+
+<div class="sound-column">
+
+    <!-- Pronunciation -->
+
+    <div class="sound pink">a¹</div>
+    <div class="sound pink">a²</div>
+
+    <div class="eye-box">
+        <img src="eye.png" alt="Eye">
+    </div>
+
+    <div class="sound pink">o¹</div>
+    <div class="sound pink">o²</div>
+    <div class="sound pink">ow</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- COLUMN 1 - ர -->
+<!-- ========================= -->
+
+<div class="column">
+
+    <div class="group">
+
+        <div class="ra-head">
+
+            <button class="head green speaker" data-audio="rafamily.mpeg">
+                <span class="highlight">ர</span>
+            </button>
+
+            <img src="ramouth1.png"
+                 class="ra-mouth"
+                 alt="ர pronunciation">
+
+        </div>
+
+        <button class="btn green speaker" data-audio="ra.mp3">
+            <span class="highlight">ர</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="raa.mp3">
+            <span class="highlight">ரா</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="ri.mp3">
+            <span class="highlight">ரி</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rii.mp3">
+            <span class="highlight">ரீ</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="ru.mp3">
+            <span class="highlight">ரு</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="ruu.mp3">
+            <span class="highlight">ரூ</span>
+        </button>
+
+    </div>
+
+    <!-- YELLOW -->
+
+    <div class="group">
+
+        <button class="head yellow speaker" data-audio="re.mp3">
+            <span class="highlight">ரெ</span>
+        </button>
+
+        <button class="btn yellow speaker" data-audio="ree.mp3">
+            <span class="highlight">ரே</span>
+        </button>
+
+        <button class="btn yellow speaker" data-audio="rai.mp3">
+            <span class="highlight">ரை</span>
+        </button>
+
+    </div>
+
+    <!-- BLUE -->
+
+    <div class="group">
+
+        <button class="head blue speaker" data-audio="ro.mp3">
+            <span class="highlight">ரொ</span>
+        </button>
+
+        <button class="btn blue speaker" data-audio="roo.mp3">
+            <span class="highlight">ரோ</span>
+        </button>
+
+        <button class="btn blue speaker" data-audio="rau.mp3">
+            <span class="highlight">ரௌ</span>
+        </button>
+
+    </div>
+
+    <!-- ORANGE -->
+
+    <div class="group">
+
+        <button class="head orange speaker" data-audio="ir.mp3">
+            <span class="highlight">ர்</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- COLUMN 2 - ற -->
+<!-- ========================= -->
+
+<div class="column">
+
+    <!-- GREEN -->
+
+    <div class="group">
+
+        <div class="ra-head">
+
+            <button class="head green speaker" data-audio="rrafamily.mpeg">
+                <span class="highlight">ற</span>
+            </button>
+
+            <img src="ramouth2.png"
+                 class="ra-mouth"
+                 alt="ற pronunciation">
+
+        </div>
+
+        <button class="btn green speaker" data-audio="rra.mp3">
+            <span class="highlight">ற</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rraa.mp3">
+            <span class="highlight">றா</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rri.mp3">
+            <span class="highlight">றி</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rrii.mp3">
+            <span class="highlight">றீ</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rru.mp3">
+            <span class="highlight">று</span>
+        </button>
+
+        <button class="btn green speaker" data-audio="rruu.mp3">
+            <span class="highlight">றூ</span>
+        </button>
+
+    </div>
+
+    <!-- YELLOW -->
+
+    <div class="group">
+
+        <button class="head yellow speaker" data-audio="rre.mp3">
+            <span class="highlight">றெ</span>
+        </button>
+
+        <button class="btn yellow speaker" data-audio="rree.mp3">
+            <span class="highlight">றே</span>
+        </button>
+
+        <button class="btn yellow speaker" data-audio="rrai.mp3">
+            <span class="highlight">றை</span>
+        </button>
+
+    </div>
+
+    <!-- BLUE -->
+
+    <div class="group">
+
+        <button class="head blue speaker" data-audio="rro.mp3">
+            <span class="highlight">றொ</span>
+        </button>
+
+        <button class="btn blue speaker" data-audio="rroo.mp3">
+            <span class="highlight">றோ</span>
+        </button>
+
+        <button class="btn blue speaker" data-audio="rrau.mp3">
+            <span class="highlight">றௌ</span>
+        </button>
+
+    </div>
+
+    <!-- ORANGE -->
+
+    <div class="group">
+
+        <button class="head orange speaker" data-audio="irr.mp3">
+            <span class="highlight">ற்</span>
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<div class="page-number">
+    49
+</div>
+
+</div>
+</div>
+
+<div class="navigation">
+
+    <button class="nav-btn"
+        onclick="nextPage('lawords.html','prev')">
+        ❮
+    </button>
+
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+    </div>
+
+    <button class="nav-btn"
+        onclick="nextPage('rawords.html','next')">
+        ❯
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+    
+<script>
+
+    
+// ===========================================
+// AUDIO PLAYER
+// ===========================================
+
+let currentAudio = null;
+let currentButton = null;
+
+let highlightTimer = null;
+let highlightedButtons = [];
+
+
+// Stop everything
+function stopAudio(){
+
+    // Stop audio
+    if(currentAudio){
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    // Stop timer
+    if(highlightTimer){
+        clearInterval(highlightTimer);
+        highlightTimer = null;
+    }
+
+    // Remove highlights
+    highlightedButtons.forEach(btn=>{
+        btn.classList.remove("playing");
+    });
+
+    highlightedButtons = [];
+
+    // Remove current button highlight
+    if(currentButton){
+        currentButton.classList.remove("playing");
+    }
+
+    currentAudio = null;
+    currentButton = null;
+
+}
+
+
+
+
+// ===========================================
+// PLAY AUDIO
+// ===========================================
+
+function playAudio(button){
+
+    const file = button.dataset.audio;
+
+    if(!file) return;
+
+    // Click same button again = STOP
+    if(currentButton === button && currentAudio && !currentAudio.paused){
+
+        stopAudio();
+        return;
+
+    }
+
+    // Stop anything already playing
+    stopAudio();
+
+    currentAudio = new Audio(file);
+    currentButton = button;
+
+    // ===================================
+    // DARK GREEN BUTTON
+    // ===================================
+
+    if(button.classList.contains("head") &&
+       button.classList.contains("green")){
+
+        const column = button.closest(".column");
+
+        const buttons = [
+
+            ...column.querySelectorAll(".group:nth-child(1) .btn.green"),
+            ...column.querySelectorAll(".group:nth-child(2) .head.yellow"),
+            ...column.querySelectorAll(".group:nth-child(2) .btn.yellow"),
+            ...column.querySelectorAll(".group:nth-child(3) .head.blue"),
+            ...column.querySelectorAll(".group:nth-child(3) .btn.blue"),
+            ...column.querySelectorAll(".group:nth-child(4) .head.orange")
+
+        ];
+
+        highlightedButtons = buttons;
+
+        let index = 0;
+
+        buttons[index].classList.add("playing");
+
+
+        // ===================================
+        // INDIVIDUAL AUDIO TIMERS
+        // ===================================
+
+        let timerDuration = 9800; // Default = 9.8 seconds
+
+        if(file === "rafamily.mpeg"){
+            timerDuration = 8400; // RAFAMILY = 10 seconds
+        }
+
+        if(file === "rrafamily.mpeg"){
+            timerDuration = 8500; // RRAFAMILY = 7 seconds
+        }
+
+
+        highlightTimer = setInterval(()=>{
+
+            buttons[index].classList.remove("playing");
+
+            index++;
+
+            if(index < buttons.length){
+
+                buttons[index].classList.add("playing");
+
+            }
+            else{
+
+                clearInterval(highlightTimer);
+                highlightTimer = null;
+
+            }
+
+        }, timerDuration / buttons.length);
+
+    }
+
+    // ===================================
+    // NORMAL BUTTON
+    // ===================================
+
+    else{
+
+        button.classList.add("playing");
+        highlightedButtons = [button];
+
+    }
+
+    currentAudio.onended = stopAudio;
+
+    currentAudio.play();
+
+}
+
+
+
+
+// ===========================================
+// CLICK EVENTS
+// ===========================================
+
+document.querySelectorAll("[data-audio]").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        playAudio(button);
+
+    });
+
+});
+
+
+
+// ===========================================
+// PAGE FLIP
+// ===========================================
+
+function nextPage(page,direction){
+
+    const pageContainer=document.querySelector(".container");
+
+    pageContainer.classList.remove("flip-out-next","flip-out-prev");
+
+    void pageContainer.offsetWidth;
+
+    if(direction==="next"){
+
+        pageContainer.classList.add("flip-out-next");
+
+    }else{
+
+        pageContainer.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+</script>
+
+
+
+</body>
+</html>

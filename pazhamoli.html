@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>PAZHAMOLI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="style.css">
+
+</head>
+
+
+<style>
+    
+
+
+
+
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    background:#111D66;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    min-height:100vh;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:20px;
+
+}
+
+
+/* ==========================================
+   APP
+========================================== */
+
+.app{
+
+    width:100%;
+
+    max-width:800px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    transform-style:preserve-3d;
+
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 15px #4FC3F7,
+        0 0 35px #4FC3F7;
+
+}
+
+
+/* ==========================================
+   BOOK
+========================================== */
+
+.book{
+
+    position:relative;
+
+    width:min(900px,100%);
+
+    background:#F8F1E4;
+
+    border-radius:30px;
+
+    padding:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+}
+
+
+/* RED SPINE */
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-10px;
+
+    top:20px;
+
+    bottom:20px;
+
+    width:18px;
+
+    background:#D40C02;
+
+    border-radius:12px;
+
+}
+
+
+/* ==========================================
+   BOOK CONTENT
+========================================== */
+
+.book-content{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================================
+   BACKGROUND IMAGE
+========================================== */
+
+.bg-image{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:.1;
+
+    pointer-events:none;
+
+    user-select:none;
+
+}
+
+
+/* ==========================================
+   PAGE
+========================================== */
+
+.page{
+
+    position:relative;
+
+    width:100%;
+
+    z-index:2;
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.title{
+
+    display:block;
+
+    margin:0 auto 28px;
+
+    background:#FFE7A5;
+
+    border:3px solid #E4C86A;
+
+    border-radius:40px;
+
+    padding:12px 34px;
+
+    font-family:inherit;
+
+    font-size:46px;
+
+    font-weight:800;
+
+    color:#D94C4C;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.25s;
+
+}
+
+.title:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================
+   PROVERB LIST
+========================================== */
+
+.proverb-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.rule-btn{
+
+    width:100%;
+
+    background:rgba(255,255,255,.78);
+
+    border:2px solid rgba(0,0,0,.12);
+
+    border-radius:18px;
+
+    padding:14px 18px;
+
+    text-align:left;
+
+    font-family:inherit;
+
+    font-size:29px;
+
+    font-weight:700;
+
+    color:#222;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.25s;
+
+}
+
+.rule-btn:hover{
+
+    background:#FFF;
+
+    transform:translateX(5px);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+
+}
+
+
+/* ==========================================
+   SPEAKER
+========================================== */
+
+.speaker-icon{
+
+    position:absolute;
+
+    top:8px;
+
+    right:10px;
+
+    font-size:13px;
+
+    opacity:.8;
+
+}
+
+
+/* ==========================================
+   HIGHLIGHT
+========================================== */
+
+.highlight{
+
+    display:inline-block;
+
+    padding:2px 3px;
+
+    border-radius:6px;
+
+    transition:.25s;
+
+}
+
+.highlight.active{
+
+    background:#FFF59A;
+
+    color:#C62828;
+
+    box-shadow:
+        0 0 8px rgba(255,215,0,.8);
+
+}
+
+
+/* ==========================================
+   ACTIVE BUTTON
+========================================== */
+
+.speaker-btn.active{
+
+    background:#FFF7C2;
+
+}
+
+
+/* ==========================================
+   PAGE NUMBER
+========================================== */
+
+.page-number{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#9D68D3;
+
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.navigation{
+
+    width:100%;
+
+    margin-top:14px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#F8F1E4;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+.dots{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#B0B0B0;
+
+}
+
+.dot.active{
+
+    background:#19D400;
+
+}
+
+
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+
+    overflow:hidden;
+
+}
+
+body{
+
+    background:#111D66;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+/* ==========================
+   APP
+========================== */
+
+.app{
+
+    width:100%;
+    height:96dvh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+
+/* ==========================
+   HEADER
+========================== */
+
+.header{
+
+    flex-shrink:0;
+
+    font-size:13px;
+
+    margin-bottom:5px;
+
+}
+
+
+/* ==========================
+   BOOK
+========================== */
+
+.book{
+
+    flex:0.93;
+
+    width:100%;
+
+    max-width:410px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#F8F1E4;
+
+    border-radius:22px;
+
+    padding:8px;
+
+    overflow:hidden;
+
+}
+
+.book::before{
+
+    width:8px;
+
+    left:-4px;
+
+    top:10px;
+
+    bottom:10px;
+
+}
+
+
+/* ==========================
+   BOOK CONTENT
+========================== */
+
+.book-content{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================
+   PAGE
+========================== */
+
+.page{
+
+    width:100%;
+
+}
+
+
+/* ==========================
+   BACKGROUND
+========================== */
+
+.bg-image{
+
+    opacity:.1;
+
+}
+
+
+/* ==========================
+   TITLE
+========================== */
+
+.title{
+
+    width:82%;
+
+    margin:0 auto 9px;
+
+    padding:6px 12px;
+
+    font-size:22px;
+
+    border-radius:18px;
+
+}
+
+/* ==========================
+   PROVERB LIST
+========================== */
+
+.proverb-list{
+
+    gap:5px;
+
+}
+
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.rule-btn{
+
+    padding:7px 10px;
+
+    font-size:15px;
+
+    line-height:1.2;
+
+    border-radius:10px;
+
+}
+
+
+/* ==========================
+   SPEAKER
+========================== */
+
+.speaker-icon{
+
+    top:4px;
+
+    right:6px;
+
+    font-size:9px;
+
+}
+
+
+/* ==========================
+   HIGHLIGHT
+========================== */
+
+.highlight{
+
+    padding:1px 2px;
+
+    border-radius:4px;
+
+}
+
+
+/* ==========================
+   PAGE NUMBER
+========================== */
+
+.page-number{
+
+    flex-shrink:0;
+
+    margin-top:4px;
+
+    margin-bottom:2px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    color:#9d68d3;
+
+}
+
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navigation{
+
+    flex-shrink:0;
+
+    margin-top:2px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 8px;
+
+}
+
+.nav-btn{
+
+    width:38px;
+
+    height:38px;
+
+    font-size:18px;
+
+}
+
+.dots{
+
+    gap:7px;
+
+}
+
+.dot{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+}
+
+
+
+
+</style>
+
+
+<body>
+
+<div class="app">
+
+    <!-- ==========================
+            HEADER
+    =========================== -->
+
+    <div class="header">
+
+        📚 Tamil e-Book • தமிழ் மொழி
+
+    </div>
+
+
+
+    <!-- ==========================
+            BOOK
+    =========================== -->
+
+    <div class="book">
+
+        <div class="book-content">
+
+            <!-- Background -->
+
+            <img src="bgpalamoli.png"
+                 class="bg-image"
+                 alt="">
+
+
+
+            <!-- ==========================
+                    PAGE
+            =========================== -->
+
+            <div class="page">
+
+                <!-- ==========================
+                        TITLE
+                =========================== -->
+
+                <button class="title speaker-btn"
+                        data-audio="title_pazhamozhigal.mp3">
+
+                    <span class="highlight">ப</span><span class="highlight">ழ</span><span class="highlight">மொ</span><span class="highlight">ழி</span><span class="highlight">க</span><span class="highlight">ள்</span>
+
+                    <span class="speaker-icon">
+
+                        🔊
+
+                    </span>
+
+                </button>
+
+
+
+                <!-- ==========================
+                        PROVERBS
+                =========================== -->
+
+                <div class="proverb-list">
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi1.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">அகத்தின்</span>
+                        <span class="highlight">அழகு</span>
+                        <span class="highlight">முகத்தில்</span>
+                        <span class="highlight">தெரியும்</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi2.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">ஆழம்</span>
+                        <span class="highlight">அறியாமல்</span>
+                        <span class="highlight">காலை</span>
+                        <span class="highlight">விடாதே</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi3.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">இளமைக்</span>
+                        <span class="highlight">கல்வி</span>
+                        <span class="highlight">சிலைமேல்</span>
+                        <span class="highlight">எழுத்து</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi4.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">இளங்கன்று</span>
+                        <span class="highlight">பயமறியாது</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi5.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">சிறு</span>
+                        <span class="highlight">துளி</span>
+                        <span class="highlight">பெரு</span>
+                        <span class="highlight">வெள்ளம்</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi6.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">நோயற்ற</span>
+                        <span class="highlight">வாழ்வே</span>
+                        <span class="highlight">குறைவற்ற</span>
+                        <span class="highlight">செல்வம்</span>
+
+                    </button>
+
+
+
+                    <button class="rule-btn speaker-btn"
+                            data-audio="pazhamozhi7.mp3">
+
+                        <span class="speaker-icon">🔊</span>
+
+                        <span class="highlight">அன்பான</span>
+                        <span class="highlight">சிநேகிதனை</span>
+                        <span class="highlight">ஆபத்தில்</span>
+                        <span class="highlight">அறி</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==========================
+                PAGE NUMBER
+        =========================== -->
+
+        <div class="page-number">
+
+            40
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================
+            NAVIGATION
+    =========================== -->
+
+    <div class="navigation">
+
+        <button class="nav-btn"
+                onclick="nextPage('maathanggal2.html','prev')">
+
+            ❮
+
+        </button>
+
+        <div class="dots">
+
+            <div class="dot"></div>
+
+            <div class="dot active"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+        </div>
+
+        <button class="nav-btn"
+                onclick="nextPage('page33.html','next')">
+
+            ❯
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* ===================================
+   PAGE 33
+   TAMIL MONTHS + AATHICHUDI
+=================================== */
+
+let currentAudio = null;
+let currentButton = null;
+let highlightTimers = [];
+
+
+/* ==========================
+   AUDIO TIMINGS
+========================== */
+
+const timings = {
+
+    "title_pazhamozhigal.mp3":[0,2000,3000,4500,5600,6800],
+
+    "pazhamozhi1.mp3":[0,2000,3500,4800],
+    "pazhamozhi2.mp3":[0,2000,3500,4800],
+    "pazhamozhi3.mp3":[0,2800,4000,5000],
+    "pazhamozhi4.mp3":[0,2500],
+    "pazhamozhi5.mp3":[0,1600,2500,3300],
+    "pazhamozhi6.mp3":[0,2000,3500,4900],
+    "pazhamozhi7.mp3":[0,2000,4000,5500]
+
+};
+
+/* ==========================
+   CLEAR HIGHLIGHTS
+========================== */
+
+function clearHighlights(button){
+
+    if(!button) return;
+
+    button.querySelectorAll(".highlight").forEach(word=>{
+
+        word.classList.remove("active");
+
+    });
+
+}
+
+
+/* ==========================
+   CLEAR TIMERS
+========================== */
+
+function clearTimers(){
+
+    highlightTimers.forEach(timer=>{
+
+        clearTimeout(timer);
+
+    });
+
+    highlightTimers=[];
+
+}
+
+
+/* ==========================
+   HIGHLIGHT WORDS
+========================== */
+
+function animateWords(button){
+
+    clearTimers();
+
+    clearHighlights(button);
+
+    const words = button.querySelectorAll(".highlight");
+
+    const audio = button.dataset.audio;
+
+    const times = timings[audio];
+
+    if(!times) return;
+
+    times.forEach((time,index)=>{
+
+        const timer = setTimeout(()=>{
+
+            if(currentButton!==button) return;
+
+            words.forEach(w=>{
+
+                w.classList.remove("active");
+
+            });
+
+            if(words[index]){
+
+                words[index].classList.add("active");
+
+            }
+
+        },time);
+
+        highlightTimers.push(timer);
+
+    });
+
+}
+
+
+/* ==========================
+   STOP AUDIO
+========================== */
+
+function stopCurrent(){
+
+    clearTimers();
+
+    if(currentAudio){
+
+        currentAudio.pause();
+
+        currentAudio.currentTime=0;
+
+        currentAudio=null;
+
+    }
+
+    if(currentButton){
+
+        currentButton.classList.remove("active");
+
+        clearHighlights(currentButton);
+
+        currentButton=null;
+
+    }
+
+}
+
+
+/* ==========================
+   PLAY AUDIO
+========================== */
+
+document.querySelectorAll("[data-audio]").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        /* Click same button again = Stop */
+
+        if(currentButton===button && currentAudio){
+
+            stopCurrent();
+
+            return;
+
+        }
+
+        stopCurrent();
+
+        currentButton=button;
+
+        currentAudio = new Audio(button.dataset.audio);
+
+        button.classList.add("active");
+
+        animateWords(button);
+
+        currentAudio.play();
+
+        currentAudio.onended=()=>{
+
+            clearTimers();
+
+            clearHighlights(button);
+
+            button.classList.remove("active");
+
+            currentAudio=null;
+
+            currentButton=null;
+
+        };
+
+        currentAudio.onerror=()=>{
+
+            console.log("Cannot load audio:",button.dataset.audio);
+
+            stopCurrent();
+
+        };
+
+    });
+
+}); 
+
+
+
+/* ==========================
+   SPACEBAR
+========================== */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.code!=="Space") return;
+
+    e.preventDefault();
+
+    if(!currentAudio) return;
+
+    if(currentAudio.paused){
+
+        currentAudio.play();
+
+    }else{
+
+        currentAudio.pause();
+
+    }
+
+});
+
+
+/* ==========================
+   ESC TO STOP
+========================== */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        stopCurrent();
+
+    }
+
+});
+
+
+/* ==========================
+   BEFORE UNLOAD
+========================== */
+
+window.addEventListener("beforeunload",()=>{
+
+    stopCurrent();
+
+});
+
+
+/* ==========================
+   PREVENT DOUBLE TAP ZOOM
+========================== */
+
+let lastTouchEnd=0;
+
+document.addEventListener("touchend",(event)=>{
+
+    const now=(new Date()).getTime();
+
+    if(now-lastTouchEnd<=300){
+
+        event.preventDefault();
+
+    }
+
+    lastTouchEnd=now;
+
+},{passive:false});
+
+
+/* ==========================
+   KEYBOARD NAVIGATION
+========================== */
+
+const buttons=[...document.querySelectorAll("[data-audio]")];
+
+buttons.forEach((btn,index)=>{
+
+    btn.setAttribute("tabindex","0");
+
+    btn.addEventListener("keydown",(e)=>{
+
+        if(e.key==="ArrowDown"){
+
+            e.preventDefault();
+
+            if(buttons[index+1]){
+
+                buttons[index+1].focus();
+
+            }
+
+        }
+
+        if(e.key==="ArrowUp"){
+
+            e.preventDefault();
+
+            if(buttons[index-1]){
+
+                buttons[index-1].focus();
+
+            }
+
+        }
+
+        if(e.key==="Enter"){
+
+            e.preventDefault();
+
+            btn.click();
+
+        }
+
+    });
+
+});
+
+
+/* ==========================
+   CLICK ANIMATION
+========================== */
+
+document.querySelectorAll(".speaker-btn").forEach(btn=>{
+
+    btn.addEventListener("mousedown",()=>{
+
+        btn.style.transform="scale(.96)";
+
+    });
+
+    btn.addEventListener("mouseup",()=>{
+
+        btn.style.transform="";
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+        btn.style.transform="";
+
+    });
+
+    btn.addEventListener("touchstart",()=>{
+
+        btn.style.transform="scale(.96)";
+
+    },{passive:true});
+
+    btn.addEventListener("touchend",()=>{
+
+        btn.style.transform="";
+
+    });
+
+});
+
+
+/* ==========================
+   STOP AUDIO WHEN PAGE HIDES
+========================== */
+
+document.addEventListener("visibilitychange",()=>{
+
+    if(document.hidden){
+
+        stopCurrent();
+
+    }
+
+});
+
+
+/* ==========================
+   PAGE FLIP
+========================== */
+
+function nextPage(page,direction){
+
+    stopCurrent();
+
+    const app=document.querySelector(".app");
+
+    app.classList.remove("flip-out-next","flip-out-prev");
+
+    void app.offsetWidth;
+
+    if(direction==="next"){
+
+        app.classList.add("flip-out-next");
+
+    }else{
+
+        app.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+
+</script>

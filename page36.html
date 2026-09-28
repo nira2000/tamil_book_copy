@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Page 36</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+    font-family:Arial,sans-serif;
+    background:#111D66;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    perspective:1500px;
+}
+
+.flip-out-next{
+    animation:flipNext .6s ease forwards;
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+    animation:flipPrev .6s ease forwards;
+    transform-origin:right center;
+}
+
+
+
+@keyframes flipNext{
+
+    0%{
+        transform:rotateY(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:rotateY(-120deg);
+        opacity:0;
+    }
+}
+
+@keyframes flipPrev{
+
+    0%{
+        transform:rotateY(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:rotateY(120deg);
+        opacity:0;
+    }
+}
+
+
+
+/* MAIN APP */
+
+.app{
+    width:100%;
+    max-width:800px;
+    transform-style:preserve-3d;
+}
+
+/* HEADER */
+
+.header{
+    color:white;
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.7),
+        0 0 12px #4FC3F7,
+        0 0 24px #4FC3F7,
+        0 0 36px #4FC3F7;
+
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes glowPulse{
+
+    0%{
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #4FC3F7,
+            0 0 20px #4FC3F7;
+    }
+
+    50%{
+        text-shadow:
+            0 0 10px #fff,
+            0 0 25px #4FC3F7,
+            0 0 50px #4FC3F7,
+            0 0 70px #4FC3F7;
+    }
+
+    100%{
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #4FC3F7,
+            0 0 20px #4FC3F7;
+    }
+
+}
+
+/* BOOK */
+
+.book{
+    position:relative;
+    background:#f8f1e4;
+    border-radius:30px;
+    padding:40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* RED SPINE */
+
+.book::before{
+    content:"";
+    position:absolute;
+    left:-10px;
+    top:25px;
+    bottom:25px;
+    width:20px;
+    background:#D40C02
+;
+    border-radius:10px;
+}
+
+/* CONTENT TITLE */
+
+.page-title{
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+/* CARD */
+
+.audio-card{
+    background:#efe6d8;
+    border:2px solid #d9a23c;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:15px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.audio-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.card-title{
+    font-size:38px;
+    font-weight:bold;
+}
+
+
+.card-image{
+    width:250px;
+    height:auto;
+    object-fit:contain;
+}
+
+
+.card-content{
+    line-height:1.9;
+    color:#333;
+    font-size:30px;
+    font-weight:500;
+}
+
+.audio-badge{
+    text-align:right;
+    margin-top:8px;
+    font-size:22px;
+}
+
+/* PAGE NUMBER */
+
+.page-number{
+    text-align:center;
+    color:#9d68d3;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* NAVIGATION */
+
+.navigation{
+    margin-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-btn{
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#f8f1e4;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.nav-btn:hover{
+    transform:scale(1.05);
+}
+
+.dots{
+    display:flex;
+    gap:10px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#8da4a4;
+}
+
+.dot.active{
+    background:#1CFF00;
+}
+
+.word{
+    transition:0.3s;
+    padding:2px 4px;
+    border-radius:4px;
+}
+
+.highlight{
+    background:#FFD54F;
+    color:#d32f2f;
+    font-weight:bold;
+}
+
+
+/* Hanging Board */
+
+.title-board{
+    position:relative;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+    margin-top:-25px;
+}
+
+.board{
+    background:#F6B34A;
+    color:#111;
+    font-size:34px;
+    font-weight:bold;
+    padding:12px 28px;
+    border:3px solid #444;
+    border-radius:8px;
+    text-align:center;
+    box-shadow:0 5px 10px rgba(0,0,0,.25);
+    position:relative;
+}
+
+.board::before,
+.board::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:18px;
+    background:#444;
+    top:-18px;
+}
+
+.board::before{
+    left:18px;
+}
+
+.board::after{
+    right:18px;
+}
+
+.pin{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#23408F;
+    border-radius:50%;
+    top:-2px;
+}
+
+.pin.left{
+    left:calc(50% - 70px);
+}
+
+.pin.right{
+    right:calc(50% - 70px);
+}
+
+
+.title-highlight{
+
+    background:#FFD54F;
+    color:#d32f2f;
+    border-radius:5px;
+    padding:2px 6px;
+    transition:.3s;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    body {
+        min-height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .app {
+        width: 100%;
+        max-width: 380px;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .header {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .book {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 12px;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .book::before {
+        width: 8px;
+        left: -4px;
+        top: 12px;
+        bottom: 12px;
+    }
+
+    .book-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;   /* centers content vertically */
+        
+    }
+
+
+    .audio-card:nth-of-type(2){
+        transform: translateY(-30px);
+    }
+
+    .page-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .audio-card {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+
+    .audio-card:nth-of-type(2){
+        transform:translateY(-20px);
+    }
+
+    .card-header {
+        margin-bottom: 6px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-content {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .card-image {
+        width: 60px;
+        height: auto;
+    }
+
+    .audio-badge {
+        font-size: 14px;
+    }
+
+    .page-number {
+        text-align: center;
+        font-size: 14px;
+        margin-top: auto;   /* pushes page number down */
+        padding-bottom: 5px;
+    }
+
+    .navigation {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+
+    .board{
+    font-size:20px;
+    padding:8px 18px;
+    }
+
+    .board::before,
+    .board::after{
+        height:12px;
+        top:-12px;
+    }
+
+    .title-board{
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+<div class="app">
+
+    <div class="header">
+        📚 Tamil e-Book • தமிழ் எழுத்துகள்
+    </div>
+
+    <div class="book">
+
+        <div class="book-content">
+
+            <div class="title-board">
+                <div class="pin left"></div>
+                <div class="pin right"></div>
+
+                <div class="board">
+                    வாருங்கள்<br>வாசிப்போம்
+                </div>
+            </div>
+
+            <!-- CARD 1 -->
+
+            <div class="audio-card" onclick="toggleAudio1()">
+
+                <div class="card-header">
+                    <div class="card-title">
+                    <span id="fruitTitle">பழங்கள்</span>
+                </div>
+                    <img src="page36pic1.png" class="card-image" alt="">
+                </div>
+
+            <div class="card-content" id="fruitText">
+
+            <span class="word">இவை</span>
+            <span class="word">பழங்கள்.</span><br>
+
+            <span class="word">பழங்கள்</span>
+            <span class="word">உண்பது</span>
+            <span class="word">உடலுக்கு</span>
+            <span class="word">நல்லது.</span><br>
+
+            <span class="word">மா,</span>
+            <span class="word">பலா,</span>
+            <span class="word">வாழை,</span>
+            <span class="word">திராட்சை,</span><br>
+
+            <span class="word">அன்னாசி,</span>
+            <span class="word">பப்பாளி</span>
+
+            <span class="word">போன்ற</span><br>
+
+            <span class="word">பழங்களில்</span>
+            <span class="word">நிறைய</span>
+            <span class="word">நார்ச்சத்துகள்</span>
+            <span class="word">உள்ளன.</span>
+
+            </div>
+
+
+            <div class="audio-badge"
+             onclick="event.stopPropagation();toggleMute(this)">
+             🔊
+        </div>
+
+        </div>
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="audio-card" onclick="toggleAudio2()">
+
+            <div class="card-header">
+                <div class="card-title">
+
+                    <span id="titleTamil">தமிழ்</span>
+                    <span id="titleMozhi">மொழி</span>
+
+                </div>
+                <img src="page36pic2.png" class="card-image" alt="">
+            </div>
+
+        <div class="card-content" id="tamilText">
+
+
+        <span class="word">இது</span>
+        <span class="word">ஒரு</span>
+        <span class="word">தமிழ்</span>
+        <span class="word">மொழிப்</span>
+        <span class="word">புத்தகம்.</span><br>
+
+        <span class="word">என்</span>
+        <span class="word">அம்மா</span>
+        <span class="word">இந்தப்</span>
+        <span class="word">புத்தகத்தை</span>
+        <span class="word">வாங்கித்</span>
+        <span class="word">தந்தார்.</span><br>
+
+        <span class="word">எனக்குத்</span>
+        <span class="word">தமிழ்</span>
+        <span class="word">மொழி</span>
+        <span class="word">என்றால்</span>
+        <span class="word">உயிர்.</span><br>
+
+        <span class="word">நான்</span>
+        <span class="word">சரளமாக</span>
+        <span class="word">தமிழ்</span>
+        <span class="word">மொழியை</span>
+        <span class="word">வாசிப்பேன்.</span><br>
+
+        <span class="word">நான்</span>
+        <span class="word">தமிழ்</span>
+        <span class="word">மொழியை</span>
+        <span class="word">நேசிக்கிறேன்.</span>
+
+        </div>
+
+            <div class="audio-badge"
+             onclick="event.stopPropagation();toggleMute(this)">
+             🔊
+        </div>
+
+        </div>
+
+        <div class="page-number">36</div>
+
+    </div>
+
+
+
+    <div class="navigation">
+
+        <button class="nav-btn"
+            onclick="nextPage('page35.html','prev')">
+            ❮
+        </button>
+
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <button class="nav-btn"
+            onclick="nextPage('page37.html','next')">
+            ❯
+        </button>
+    </div>
+
+
+    </div>
+
+</div>
+
+<audio id="audioPlayer1">
+    <source src="audio36_1.mpeg" type="audio/mpeg">
+</audio>
+
+<audio id="audioPlayer2">
+    <source src="audio36_2.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+
+// ===========================================
+// VARIABLES
+// ===========================================
+
+let highlightTimers = [];
+let titleTimer = null;
+
+const audio1 = document.getElementById("audioPlayer1");
+const audio2 = document.getElementById("audioPlayer2");
+
+const fruitTitle = document.getElementById("fruitTitle");
+const tamilTitle = document.getElementById("titleTamil");
+const mozhiTitle = document.getElementById("titleMozhi");
+
+
+// ===========================================
+// CLEAR PARAGRAPH HIGHLIGHTS
+// ===========================================
+
+function clearHighlights(container){
+
+    container.querySelectorAll(".word").forEach(word=>{
+
+        word.classList.remove("highlight");
+
+    });
+
+}
+
+
+// ===========================================
+// CLEAR TITLE HIGHLIGHTS
+// ===========================================
+
+function clearTitleHighlights(){
+
+    fruitTitle.classList.remove("title-highlight");
+
+    tamilTitle.classList.remove("title-highlight");
+
+    mozhiTitle.classList.remove("title-highlight");
+
+    if(titleTimer){
+
+        clearTimeout(titleTimer);
+
+        titleTimer=null;
+
+    }
+
+}
+
+
+// ===========================================
+// ANIMATE PARAGRAPH
+// ===========================================
+
+function animateWords(container,speed,startDelay){
+
+    highlightTimers.forEach(timer=>clearTimeout(timer));
+
+    highlightTimers=[];
+
+    const words=container.querySelectorAll(".word");
+
+    clearHighlights(container);
+
+    words.forEach((word,index)=>{
+
+        const timer=setTimeout(()=>{
+
+            words.forEach(w=>w.classList.remove("highlight"));
+
+            word.classList.add("highlight");
+
+        },startDelay+(index*speed));
+
+        highlightTimers.push(timer);
+
+    });
+
+}
+
+
+
+// ===========================================
+// STOP PARAGRAPH
+// ===========================================
+
+function stopHighlights(){
+
+    highlightTimers.forEach(timer=>clearTimeout(timer));
+
+    highlightTimers=[];
+
+    clearHighlights(document.getElementById("fruitText"));
+
+    clearHighlights(document.getElementById("tamilText"));
+
+}
+
+
+
+// ===========================================
+// STOP EVERYTHING
+// ===========================================
+
+function stopAllAudio(){
+
+    audio1.pause();
+    audio2.pause();
+
+    audio1.currentTime=0;
+    audio2.currentTime=0;
+
+    stopHighlights();
+
+    clearTitleHighlights();
+
+}
+
+
+
+// ===========================================
+// CARD 1
+// ===========================================
+
+function toggleAudio1(){
+
+    if(!audio1.paused){
+
+        stopAllAudio();
+
+        return;
+
+    }
+
+    stopAllAudio();
+
+    fruitTitle.classList.add("title-highlight");
+
+    titleTimer = setTimeout(() => {
+
+        fruitTitle.classList.remove("title-highlight");
+
+    }, 1700);    // change this timing if needed
+
+
+
+    audio1.play();
+
+    animateWords(
+
+        document.getElementById("fruitText"),
+
+        1500,
+
+        2000
+
+    );
+
+}
+
+
+
+// ===========================================
+// CARD 2
+// ===========================================
+
+function toggleAudio2(){
+
+    if(!audio2.paused){
+
+        stopAllAudio();
+
+        return;
+
+    }
+
+    stopAllAudio();
+
+    tamilTitle.classList.add("title-highlight");
+
+    titleTimer = setTimeout(() => {
+
+        tamilTitle.classList.remove("title-highlight");
+
+        mozhiTitle.classList.add("title-highlight");
+
+        setTimeout(() => {
+
+            mozhiTitle.classList.remove("title-highlight");
+
+        }, 1200);      // highlight "மொழி" for 0.9 sec
+
+    }, 1000);          // after "தமிழ்"
+
+
+
+    audio2.play();
+
+    animateWords(
+
+        document.getElementById("tamilText"),
+
+        1000,
+
+        2200
+
+    );
+
+}
+
+
+/* =========================
+   SPEAKER ON/OFF
+========================= */
+
+let soundEnabled = true;
+
+function toggleMute(icon){
+
+    soundEnabled = !soundEnabled;
+
+    audio1.muted = !soundEnabled;
+    audio2.muted = !soundEnabled;
+
+    if(!soundEnabled){
+
+        stopAllAudio();
+
+    }
+
+    document.querySelectorAll(".audio-badge").forEach(badge=>{
+
+        badge.textContent = soundEnabled ? "🔊" : "🔇";
+
+    });
+
+}
+
+
+
+/* =========================
+   AUDIO ENDED
+========================= */
+
+audio1.addEventListener("ended",()=>{
+
+    stopHighlights();
+
+    clearTitleHighlights();
+
+});
+
+
+audio2.addEventListener("ended",()=>{
+
+    stopHighlights();
+
+    clearTitleHighlights();
+
+});
+
+
+
+/* =========================
+   PAGE FLIP
+========================= */
+
+function nextPage(page,direction){
+
+    const app=document.querySelector(".app");
+
+    app.classList.remove("flip-out-next","flip-out-prev");
+
+    void app.offsetWidth;
+
+    if(direction==="next"){
+
+        app.classList.add("flip-out-next");
+
+    }
+    else{
+
+        app.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+
+</script>
+
+</body>
+</html>

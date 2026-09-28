@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ஓர் மற்றும் ஒரு</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:'Noto Sans Tamil',sans-serif;
+    background:#63DCEB;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    padding:20px;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    width:100%;
+    max-width:1000px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    transform-style:preserve-3d;
+}
+
+
+/* =====================================================
+   BOOK
+===================================================== */
+
+.book{
+    position:relative;
+
+    width:min(900px,100%);
+
+    background:#FFFDF5;
+
+    border-radius:40px;
+
+    padding:35px 45px 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+
+    overflow:visible;
+
+    transform-style:preserve-3d;
+}
+
+
+/* =====================================================
+   SCALLOPED WHITE BORDER
+===================================================== */
+
+.book::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-14px;
+
+    z-index:-1;
+
+    background:#FFFDF5;
+
+    border-radius:45px;
+
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,.3);
+}
+
+
+/* =====================================================
+   TOP HEADING
+===================================================== */
+
+.main-heading{
+    text-align:center;
+
+    font-size:34px;
+
+    line-height:1.35;
+
+    font-weight:600;
+
+    color:#000;
+
+    margin-bottom:20px;
+}
+
+.main-heading .red{
+    color:#FF2929;
+}
+
+
+/* =====================================================
+   PINK SECTION
+===================================================== */
+
+.or-section{
+
+    background:#F7D2ED;
+
+    border-radius:25px;
+
+    padding:16px 20px 20px;
+
+    margin-bottom:20px;
+
+    border:2px solid #E29BDF;
+}
+
+
+/* =====================================================
+   GREEN SECTION
+===================================================== */
+
+.oru-section{
+
+    background:#E3F5D7;
+
+    border-radius:25px;
+
+    padding:16px 20px 20px;
+
+    border:2px solid #A9D98E;
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading{
+
+    text-align:center;
+
+    font-size:28px;
+
+    line-height:1.35;
+
+    font-weight:600;
+
+    color:#000;
+
+    margin-bottom:14px;
+
+    border:none;
+
+    background:transparent;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    cursor:pointer;
+
+    width:100%;
+
+    position:relative;
+
+    padding:0;
+}
+
+.section-heading .red{
+    color:#FF2929;
+}
+
+
+/* =====================================================
+   WORD GRID
+===================================================== */
+
+.word-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    column-gap:55px;
+
+    row-gap:8px;
+}
+
+
+/* =====================================================
+   WORD BUTTON
+===================================================== */
+
+.word-btn{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:58px;
+
+    border:none;
+
+    border-radius:15px;
+
+    padding:7px 18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    font-size:27px;
+
+    font-weight:500;
+
+    color:#000;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:
+        0 4px 8px rgba(0,0,0,.12);
+}
+
+
+/* =====================================================
+   PINK BUTTONS
+===================================================== */
+
+.or-section .word-btn{
+
+    background:#E6B9E6;
+
+    border:2px solid #C95AD8;
+}
+
+
+/* =====================================================
+   GREEN BUTTONS
+===================================================== */
+
+.oru-section .word-btn{
+
+    background:#BCE5A9;
+
+    border:2px solid #8BC86C;
+}
+
+
+/* =====================================================
+   BUTTON HOVER
+===================================================== */
+
+.word-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 6px 12px rgba(0,0,0,.16);
+}
+
+
+/* =====================================================
+   BUTTON CLICK
+===================================================== */
+
+.word-btn:active{
+
+    transform:scale(.97);
+}
+
+
+/* =====================================================
+   AUDIO PLAYING
+===================================================== */
+
+.word-btn.playing{
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.8),
+        0 5px 14px rgba(0,0,0,.18);
+}
+
+
+/* =====================================================
+   SPEAKER ICON
+===================================================== */
+
+.speaker-icon{
+
+    position:absolute;
+
+    top:5px;
+    right:7px;
+
+    font-size:11px;
+
+    opacity:.65;
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   WORD HIGHLIGHT
+===================================================== */
+
+.highlight{
+
+    display:inline-block;
+
+    color:#000;
+
+    transition:.25s;
+}
+
+
+/* =====================================================
+   ACTIVE RED WORD
+===================================================== */
+
+.highlight.active{
+
+    color:#FF1E1E;
+
+    font-weight:800;
+
+    transform:scale(1.07);
+
+    text-shadow:
+        0 0 5px rgba(255,0,0,.25);
+}
+
+
+/* =====================================================
+   PAGE NUMBER
+===================================================== */
+
+.page-number{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#8D64D8;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation{
+
+    width:min(900px,100%);
+
+    margin-top:16px;
+
+    padding:0 8px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   NAV BUTTON
+===================================================== */
+
+.nav-btn{
+
+    width:58px;
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#FFFDF5;
+
+    font-size:28px;
+
+    color:#111;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.18);
+
+    transition:.2s;
+}
+
+.nav-btn:hover{
+    transform:scale(1.08);
+}
+
+
+/* =====================================================
+   DOTS
+===================================================== */
+
+.dots{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.dot{
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#A8B0B0;
+}
+
+.dot.active{
+    background:#19D400;
+}
+
+
+/* =====================================================
+   PAGE FLIP
+===================================================== */
+
+.app{
+
+    perspective:1500px;
+
+    transform-style:preserve-3d;
+
+    backface-visibility:hidden;
+}
+
+.flip-out-next{
+
+    animation:flipNext .6s ease forwards;
+
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+
+    animation:flipPrev .6s ease forwards;
+
+    transform-origin:right center;
+}
+
+
+@keyframes flipNext{
+
+    0%{
+        transform:rotateY(0deg);
+    }
+
+    100%{
+        transform:rotateY(-90deg);
+    }
+}
+
+
+@keyframes flipPrev{
+
+    0%{
+        transform:rotateY(0deg);
+    }
+
+    100%{
+        transform:rotateY(90deg);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:768px){
+
+    html,
+    body{
+
+        width:100%;
+        height:100%;
+
+        overflow:hidden;
+    }
+
+
+    body{
+
+        min-height:100dvh;
+
+        padding:0;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background:#63DCEB;
+    }
+
+
+    /* APP */
+
+    .app{
+
+        width:100%;
+
+        max-width:430px;
+
+        height:100dvh;
+
+        padding:7px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+    }
+
+
+    /* BOOK */
+
+    .book{
+
+        width:100%;
+
+        height:calc(100dvh - 65px);
+
+        padding:11px 9px 7px;
+
+        border-radius:22px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        overflow:hidden;
+
+        box-shadow:
+            0 6px 18px rgba(0,0,0,.16);
+    }
+
+
+    /* WHITE BORDER */
+
+    .book::before{
+
+        inset:-7px;
+
+        border-radius:27px;
+    }
+
+
+    /* TOP HEADING */
+
+    .main-heading{
+
+        font-size:18px;
+
+        line-height:1.35;
+
+        margin-bottom:7px;
+
+        flex-shrink:0;
+    }
+
+
+    /* SECTIONS */
+
+    .or-section,
+    .oru-section{
+
+        flex:1;
+
+        min-height:0;
+
+        padding:7px;
+
+        border-radius:16px;
+
+        display:flex;
+
+        flex-direction:column;
+    }
+
+
+    .or-section{
+
+        margin-bottom:7px;
+    }
+
+
+    /* SECTION HEADING */
+
+    .section-heading{
+
+        font-size:16px;
+
+        line-height:1.25;
+
+        margin-bottom:5px;
+
+        flex-shrink:0;
+    }
+
+
+    /* WORD GRID */
+
+    .word-grid{
+
+        flex:1;
+
+        min-height:0;
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        grid-template-rows:repeat(6,1fr);
+
+        column-gap:7px;
+
+        row-gap:5px;
+    }
+
+
+    /* WORD BUTTON */
+
+    .word-btn{
+
+        width:100%;
+
+        height:100%;
+
+        min-height:0;
+
+        padding:0 5px;
+
+        border-radius:8px;
+
+        font-size:15px;
+
+        gap:4px;
+
+        border-width:1px;
+
+        box-shadow:
+            0 2px 5px rgba(0,0,0,.10);
+    }
+
+
+    /* SPEAKER */
+
+    .speaker-icon{
+
+        top:2px;
+
+        right:4px;
+
+        font-size:7px;
+    }
+
+
+    /* PAGE NUMBER */
+
+    .page-number{
+
+        flex-shrink:0;
+
+        margin-top:4px;
+
+        font-size:13px;
+    }
+
+
+    /* NAVIGATION */
+
+    .navigation{
+
+        width:100%;
+
+        height:38px;
+
+        margin-top:3px;
+
+        padding:0 5px;
+
+        flex-shrink:0;
+    }
+
+
+    .nav-btn{
+
+        width:34px;
+
+        height:34px;
+
+        font-size:18px;
+    }
+
+
+    .dots{
+
+        gap:5px;
+    }
+
+
+    .dot{
+
+        width:7px;
+
+        height:7px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:360px){
+
+    .main-heading{
+        font-size:16px;
+    }
+
+    .section-heading{
+        font-size:14px;
+    }
+
+    .word-btn{
+        font-size:13px;
+    }
+
+    .page-number{
+        font-size:12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =================================================
+         BOOK
+    ================================================= -->
+
+    <div class="book">
+
+
+        <!-- =================================================
+             MAIN HEADING
+        ================================================= -->
+
+        <button class="main-heading title-audio"
+        data-audio="title.mp3">
+
+            <span class="highlight">உயிர் எழுத்தில் தொடங்கும் சொற்களுக்கு</span><br>
+
+            முன்னால் <span class="highlight red">ஓர்</span>
+            <span class="highlight">பயன்படுத்த வேண்டும்</span>
+
+            <span class="speaker-icon">🔊</span>
+
+        </button>
+
+
+
+        <!-- =================================================
+             ஓர் SECTION
+        ================================================= -->
+
+        <div class="or-section">
+
+
+            <div class="word-grid">
+
+
+                <!-- LEFT COLUMN -->
+
+                <button class="word-btn"
+                        data-audio="or_arasan.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">அரசன்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_aamai.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஆமை</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_ilai.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">இலை</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_eesal.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஈசல்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_ural.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">உரல்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_oonjal.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஊஞ்சல்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+
+                <!-- RIGHT COLUMN -->
+
+                <button class="word-btn"
+                        data-audio="or_elumbu.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">எலும்பு</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_eni.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஏணி</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_aiyar.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஐயர்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_ottagam.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஒட்டகம்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_odam.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஓடம்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="or_audhadham.mp3">
+
+                    <span class="highlight">ஓர்</span>
+                    <span class="highlight">ஔடதம்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ஒரு SECTION
+        ================================================= -->
+
+        <div class="oru-section">
+
+
+            <button class="section-heading"
+                    data-audio="oru_title.mp3">
+
+                <span class="highlight">உயிர்மெய் எழுத்தில் தொடங்கும் சொற்களுக்கு</span><br>
+
+                முன்னால் <span class="highlight red">ஒரு</span>
+                <span class="highlight">பயன்படுத்த வேண்டும்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <div class="word-grid">
+
+
+                <!-- LEFT COLUMN -->
+
+                <button class="word-btn"
+                        data-audio="oru_puthagam.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">புத்தகம்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_vedan.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">வேடன்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_nari.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">நரி</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_siruvan.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">சிறுவன்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_methai.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">மெத்தை</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_veedu.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">வீடு</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+
+                <!-- RIGHT COLUMN -->
+
+                <button class="word-btn"
+                        data-audio="oru_kottai.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">கோட்டை</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_mothiram.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">மோதிரம்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_naarkali.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">நாற்காலி</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_velli.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">வெள்ளி</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_sattai.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">சட்டை</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+                <button class="word-btn"
+                        data-audio="oru_maanavan.mp3">
+
+                    <span class="highlight">ஒரு</span>
+                    <span class="highlight">மாணவன்</span>
+
+                    <span class="speaker-icon">🔊</span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PAGE NUMBER
+        ================================================= -->
+
+        <div class="page-number">
+            39
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================= -->
+
+    <div class="navigation">
+
+
+        <button class="nav-btn"
+                onclick="nextPage('toc.html','prev')">
+
+            ❮
+
+        </button>
+
+
+        <div class="dots">
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot active"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+        </div>
+
+
+        <button class="nav-btn"
+                onclick="nextPage('kasada.html','next')">
+
+            ❯
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   AUDIO VARIABLES
+===================================================== */
+
+let currentAudio = null;
+
+let currentButton = null;
+
+let highlightTimers = [];
+
+
+/* =====================================================
+   AUDIO TIMINGS
+===================================================== */
+
+/*
+   YOU WILL EDIT THESE LATER.
+
+   Example:
+
+   [0,1500]
+
+   means:
+
+   Word 1 starts at 0 ms
+   Word 2 starts at 1500 ms
+
+   Example with 3 words:
+
+   [0,1200,2400]
+
+*/
+
+const timings = {
+
+
+    /* ==========================
+       ஓர் WORDS
+    ========================== */
+
+    "or_arasan.mp3":[0,1500],
+
+    "or_aamai.mp3":[0,1500],
+
+    "or_ilai.mp3":[0,1500],
+
+    "or_eesal.mp3":[0,1500],
+
+    "or_ural.mp3":[0,1500],
+
+    "or_oonjal.mp3":[0,1500],
+
+    "or_elumbu.mp3":[0,1500],
+
+    "or_eni.mp3":[0,1500],
+
+    "or_aiyar.mp3":[0,1500],
+
+    "or_ottagam.mp3":[0,1500],
+
+    "or_odam.mp3":[0,1500],
+
+    "or_audhadham.mp3":[0,1500],
+
+
+    /* ==========================
+       ஒரு TITLE
+    ========================== */
+
+    "oru_title.mp3":[0,2500,4000],
+
+
+    /* ==========================
+       ஒரு WORDS
+    ========================== */
+
+    "oru_puthagam.mp3":[0,1500],
+
+    "oru_vedan.mp3":[0,1500],
+
+    "oru_nari.mp3":[0,1500],
+
+    "oru_siruvan.mp3":[0,1500],
+
+    "oru_methai.mp3":[0,1500],
+
+    "oru_veedu.mp3":[0,1500],
+
+    "oru_kottai.mp3":[0,1500],
+
+    "oru_mothiram.mp3":[0,1500],
+
+    "oru_naarkali.mp3":[0,1500],
+
+    "oru_velli.mp3":[0,1500],
+
+    "oru_sattai.mp3":[0,1500],
+
+    "oru_maanavan.mp3":[0,1500]
+
+};
+
+
+/* =====================================================
+   CLEAR HIGHLIGHTS
+===================================================== */
+
+function clearHighlights(button){
+
+    if(!button) return;
+
+    button
+        .querySelectorAll(".highlight")
+        .forEach(word=>{
+
+            word.classList.remove("active");
+
+        });
+
+}
+
+
+/* =====================================================
+   CLEAR TIMERS
+===================================================== */
+
+function clearTimers(){
+
+    highlightTimers.forEach(timer=>{
+
+        clearTimeout(timer);
+
+    });
+
+    highlightTimers=[];
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT WORDS
+===================================================== */
+
+function animateWords(button){
+
+    clearTimers();
+
+    clearHighlights(button);
+
+
+    const words =
+        button.querySelectorAll(".highlight");
+
+
+    const audio =
+        button.dataset.audio;
+
+
+    const times =
+        timings[audio];
+
+
+    if(!times) return;
+
+
+    times.forEach((time,index)=>{
+
+        const timer=setTimeout(()=>{
+
+            if(currentButton!==button)
+                return;
+
+
+            words.forEach(word=>{
+
+                word.classList.remove("active");
+
+            });
+
+
+            if(words[index]){
+
+                words[index]
+                    .classList.add("active");
+
+            }
+
+        },time);
+
+
+        highlightTimers.push(timer);
+
+    });
+
+}
+
+
+/* =====================================================
+   STOP AUDIO
+===================================================== */
+
+function stopCurrent(){
+
+    clearTimers();
+
+
+    if(currentAudio){
+
+        currentAudio.pause();
+
+        currentAudio.currentTime=0;
+
+        currentAudio=null;
+
+    }
+
+
+    if(currentButton){
+
+        currentButton
+            .classList.remove("playing");
+
+        clearHighlights(currentButton);
+
+        currentButton=null;
+
+    }
+
+}
+
+
+/* =====================================================
+   AUDIO BUTTONS
+===================================================== */
+
+document
+    .querySelectorAll("[data-audio]")
+    .forEach(button=>{
+
+
+    button.addEventListener("click",()=>{
+
+
+        /* SAME BUTTON = STOP */
+
+        if(
+            currentButton===button &&
+            currentAudio
+        ){
+
+            stopCurrent();
+
+            return;
+
+        }
+
+
+        /* STOP PREVIOUS AUDIO */
+
+        stopCurrent();
+
+
+        currentButton=button;
+
+
+        currentAudio =
+            new Audio(button.dataset.audio);
+
+
+        button.classList.add("playing");
+
+
+        animateWords(button);
+
+
+        currentAudio
+            .play()
+            .catch(error=>{
+
+                console.log(
+                    "Audio could not be played:",
+                    button.dataset.audio
+                );
+
+            });
+
+
+        currentAudio.onended=()=>{
+
+            clearTimers();
+
+            clearHighlights(button);
+
+            button.classList.remove("playing");
+
+            currentAudio=null;
+
+            currentButton=null;
+
+        };
+
+
+        currentAudio.onerror=()=>{
+
+            console.log(
+                "Cannot load audio:",
+                button.dataset.audio
+            );
+
+            stopCurrent();
+
+        };
+
+    });
+
+});
+
+
+/* =====================================================
+   SPACEBAR
+===================================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.code!=="Space")
+        return;
+
+    e.preventDefault();
+
+
+    if(!currentAudio)
+        return;
+
+
+    if(currentAudio.paused){
+
+        currentAudio.play();
+
+    }
+    else{
+
+        currentAudio.pause();
+
+    }
+
+});
+
+
+/* =====================================================
+   ESC = STOP
+===================================================== */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        stopCurrent();
+
+    }
+
+});
+
+
+/* =====================================================
+   STOP AUDIO WHEN LEAVING
+===================================================== */
+
+window.addEventListener(
+    "beforeunload",
+    ()=>{
+
+        stopCurrent();
+
+    }
+);
+
+
+/* =====================================================
+   PAGE FLIP
+===================================================== */
+
+function nextPage(page,direction){
+
+    stopCurrent();
+
+
+    const app =
+        document.querySelector(".app");
+
+
+    /* REMOVE OLD FLIP */
+
+    app.classList.remove(
+        "flip-out-next",
+        "flip-out-prev"
+    );
+
+
+    /* RESTART ANIMATION */
+
+    void app.offsetWidth;
+
+
+    if(direction==="next"){
+
+        app.classList.add(
+            "flip-out-next"
+        );
+
+    }
+    else{
+
+        app.classList.add(
+            "flip-out-prev"
+        );
+
+    }
+
+
+    /* WAIT FOR FLIP */
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+
+/* =====================================================
+   PREVENT DOUBLE TAP ZOOM
+===================================================== */
+
+let lastTouchEnd=0;
+
+document.addEventListener(
+    "touchend",
+    (event)=>{
+
+        const now =
+            new Date().getTime();
+
+
+        if(
+            now-lastTouchEnd<=300
+        ){
+
+            event.preventDefault();
+
+        }
+
+
+        lastTouchEnd=now;
+
+    },
+    {passive:false}
+);
+
+</script>
+
+
+</body>
+
+</html>

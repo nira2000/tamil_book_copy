@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NA WORDS</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="page43.css">
+</head>
+
+
+<style>
+    
+
+
+/* ===========================================
+   TAMIL DIGITAL BOOK
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Noto Sans Tamil',sans-serif;
+    background:#1b2c73;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* ========================================= */
+
+/* ===========================================
+   PAGE CONTAINER
+=========================================== */
+
+.page-container{
+
+    position:relative;
+
+    width:100%;
+    max-width:900px;
+
+    background:#fffef8;
+
+    border:8px solid #f2d8a0;
+
+    border-radius:30px;
+
+    padding:30px 35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+/* RED SPINE */
+
+.page-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:10px;
+
+    top:22px;
+
+    bottom:22px;
+
+    width:10px;
+
+    background:#D40C02;
+
+    border-radius:8px;
+
+}
+
+/* ===========================================
+   LESSON
+=========================================== */
+
+.lesson-number{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.title-box{
+
+    width:fit-content;
+
+    margin:0 auto 30px;
+
+    padding:10px 24px;
+
+    background:#fff3c9;
+
+    border:3px solid #d6a54f;
+
+    border-radius:14px;
+
+}
+
+.title-box h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+/* ===========================================
+   WORD GRID
+=========================================== */
+
+.word-grid{
+    display:grid;
+    grid-template-columns:repeat(3,220px);
+    justify-content:center;
+    column-gap:45px;
+    row-gap:8px;
+}
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.word-btn{
+
+    width:220px;
+
+    height:62px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    font-size:24px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    border:2px solid rgba(0,0,0,.18);
+
+    box-shadow:0 4px 8px rgba(0,0,0,.12);
+
+    transition:.25s;
+
+    position: relative;
+
+}
+
+.word-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.speaker::after{
+
+    content:"🔊";
+
+    position:absolute;
+
+    top:4px;
+    right:5px;
+
+    font-size:12px;
+
+    pointer-events:none;
+
+}
+
+/* ===========================================
+   COLOURS
+=========================================== */
+
+.green{
+
+    background:#7fd567;
+
+}
+
+.green-light{
+
+    background:#b8f762;
+
+}
+
+.yellow{
+
+    background:#ffef9c;
+
+}
+
+.blue{
+
+    background:#64d2e5;
+
+}
+
+.orange{
+
+    background:#ff9c74;
+
+}
+
+
+/* ===========================
+   COLOUR GROUP SPACING
+=========================== */
+
+
+/* Gap before YELLOW section */
+.word-grid button:nth-child(19),
+.word-grid button:nth-child(20),
+.word-grid button:nth-child(21){
+
+    margin-top:40px;
+
+}
+
+/* Gap before BLUE section */
+.word-grid button:nth-child(28),
+.word-grid button:nth-child(29),
+.word-grid button:nth-child(30){
+
+    margin-top:40px;
+
+}
+
+/* Gap before ORANGE section */
+.word-grid button:nth-child(37),
+.word-grid button:nth-child(38),
+.word-grid button:nth-child(39){
+
+    margin-top:40px;
+
+}
+
+
+
+/* ===========================================
+   PAGE NUMBER
+=========================================== */
+
+.page-number{
+
+    margin-top:24px;
+
+    text-align:center;
+
+    color:#7a42d5;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+/* ===========================================
+   NAVIGATION
+=========================================== */
+
+.navigation{
+
+    margin-top:16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:56px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff8ea;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+
+    transition:.25s;
+
+}
+
+.nav-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+.dots{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#bbb;
+
+}
+
+.dot.active{
+
+    background:#35ff2d;
+
+}
+
+
+/* ===========================================
+   LETTER HIGHLIGHT
+=========================================== */
+
+.word-btn span{
+
+    display:inline-block;
+
+    color:#111;
+
+    transition:all .25s ease;
+
+}
+
+.word-btn span.active{
+
+    color:#ff0000;
+
+    font-weight:700;
+
+    transform:scale(1.12);
+
+    text-shadow:0 0 5px rgba(255,0,0,.35);
+
+}
+
+.container{
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+}
+
+.flip-out-next,
+.flip-out-prev{
+    backface-visibility:hidden;
+}
+
+.page-wrapper{
+    perspective:1500px;
+}
+
+.flip-out-next{
+    animation:flipNext .6s ease forwards;
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+    animation:flipPrev .6s ease forwards;
+    transform-origin:right center;
+}
+
+@keyframes flipNext{
+
+    0%{
+        transform:rotateY(0deg);
+    }
+
+    100%{
+        transform:rotateY(-90deg);
+    }
+
+}
+
+@keyframes flipPrev{
+
+    0%{
+        transform:rotateY(0deg);
+    }
+
+    100%{
+        transform:rotateY(90deg);
+    }
+
+}
+
+
+
+
+
+
+
+@media (max-width:768px){
+
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+
+body{
+    background:#1b2c73;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+/* ==========================
+   PAGE WRAPPER
+========================== */
+
+.page-wrapper{
+    width:100%;
+    height:100dvh;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:6px 8px;
+    overflow:hidden;
+}
+
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.container{
+    width:100%;
+
+    flex:1;
+    min-height:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+
+/* ==========================
+   BOOK
+========================== */
+
+.page-container{
+
+    position:relative;
+
+    width:100%;
+    max-width:410px;
+
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#fffef8;
+
+    border:5px solid #f2d8a0;
+    border-radius:22px;
+
+    padding:8px 10px 8px 18px;
+
+    overflow:hidden;
+}
+
+
+/* ==========================
+   RED SPINE
+========================== */
+
+.page-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:4px;
+    top:14px;
+    bottom:14px;
+
+    width:6px;
+
+    background:#D40C02;
+
+    border-radius:10px;
+}
+
+
+/* ==========================
+   LESSON
+========================== */
+
+.lesson-number{
+
+    flex-shrink:0;
+
+    font-size:16px;
+    font-weight:700;
+
+    margin:0 0 2px 4px;
+
+    line-height:1;
+}
+
+
+/* ==========================
+   TITLE
+========================== */
+
+.title-box{
+
+    flex-shrink:0;
+
+    margin:0 auto 5px;
+
+    padding:4px 13px;
+
+    border-width:2px;
+}
+
+.title-box h1{
+
+    font-size:21px;
+    line-height:1.1;
+}
+
+
+/* ==========================
+   WORD GRID
+========================== */
+
+.word-grid{
+
+    flex:1;
+    min-height:0;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:1fr;
+
+    align-content:stretch;
+
+    column-gap:7px;
+    row-gap:5px;
+
+    overflow:hidden;
+
+    margin-bottom:2px;
+}
+
+
+/* ==========================
+   WORD BUTTONS
+========================== */
+.word-btn{
+
+    width:100%;
+    height:100%;
+    min-height:0;
+
+    font-size:11px;
+    font-weight:600;
+
+    border-radius:7px;
+    border-width:1px;
+
+    padding:0;
+}
+
+.speaker::after{
+
+    top:2px;
+    right:3px;
+
+    font-size:8px;
+}
+
+
+/* ==========================
+   COLOUR GROUP SPACING
+========================== */
+
+.word-grid button:nth-child(19),
+.word-grid button:nth-child(20),
+.word-grid button:nth-child(21){
+
+    margin-top:3px;
+}
+
+.word-grid button:nth-child(28),
+.word-grid button:nth-child(29),
+.word-grid button:nth-child(30){
+
+    margin-top:3px;
+}
+
+.word-grid button:nth-child(37),
+.word-grid button:nth-child(38),
+.word-grid button:nth-child(39){
+
+    margin-top:3px;
+}
+
+
+/* ==========================
+   PAGE NUMBER
+   INSIDE THE BOOK
+========================== */
+
+.page-number{
+
+    flex-shrink:0;
+
+    text-align:center;
+
+    margin-top:3px;
+
+    font-size:15px;
+    font-weight:bold;
+
+    color:#7a42d5;
+}
+
+
+
+/* ==========================
+   NAVIGATION
+========================== */
+
+.navigation{
+
+    position:relative;
+
+    flex-shrink:0;
+
+    width:100%;
+    max-width:410px;
+
+    height:42px;
+
+    margin-top:-10px;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 8px;
+
+    z-index:100;
+
+    transform:translateY(-22px);
+}
+
+/* ==========================
+   NAV BUTTONS
+========================== */
+
+.nav-btn{
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#fff8ea;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+
+    flex-shrink:0;
+}
+
+
+/* ==========================
+   DOTS
+========================== */
+
+.dots{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+}
+
+.dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#bbb;
+}
+
+.dot.active{
+
+    background:#35ff2d;
+}
+
+}
+
+</style>
+
+
+<body>
+
+
+
+<div class="page-wrapper">
+
+<div class="container">
+
+<div class="page-container">
+
+
+    <!-- Page Number -->
+    <div class="lesson-number">
+        தொகுதி 3
+    </div>
+
+    <!-- Title -->
+    <div class="title-box">
+        <h1>தமிழ் எழுத்துகள் ✏️</h1>
+    </div>
+
+
+
+<div class="word-grid">
+
+    <!-- ==========================
+         GREEN (6 ROWS)
+    ========================== -->
+
+    <!-- ROW 1 -->
+    <button class="word-btn green speaker" data-audio="nawordsgreen1.mp3">
+        <span>ந</span><span>க</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green speaker" data-audio="nawordsgreen2.mp3">
+        <span>ம</span><span>ன</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green speaker" data-audio="nawordsgreen3.mp3">
+        <span>ப</span><span>ண</span><span>ம்</span>
+    </button>
+
+    <!-- ROW 2 -->
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen4.mp3">
+        <span>நா</span><span>டு</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen5.mp3">
+        <span>மை</span><span>னா</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen6.mp3">
+        <span>க</span><span>ண்</span><span>ணா</span><span>டி</span>
+    </button>
+
+    <!-- ROW 3 -->
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen7.mp3">
+        <span>நி</span><span>மி</span><span>ட</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen8.mp3">
+        <span>க</span><span>னி</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen9.mp3">
+        <span>பூ</span><span>ச</span><span>ணி</span>
+    </button>
+
+    <!-- ROW 4 -->
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen10.mp3">
+        <span>நீ</span><span>ச</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen11.mp3">
+        <span>தே</span><span>னீ</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen12.mp3">
+        <span>க</span><span>ணி</span><span>னி</span>
+    </button>
+
+    <!-- ROW 5 -->
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen13.mp3">
+        <span>நு</span><span>னி</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen14.mp3">
+        <span>ம</span><span>னு</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen15.mp3">
+        <span>து</span><span>ணு</span><span>க்</span><span>கு</span>
+    </button>
+
+    <!-- ROW 6 -->
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen16.mp3">
+        <span>நூ</span><span>த</span><span>ன</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen17.mp3">
+        <span>மி</span><span>ன்</span><span>னூ</span><span>ட்</span><span>ட</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn green-light speaker" data-audio="nawordsgreen18.mp3">
+        <span>க</span><span>ண்</span><span>ணூ</span><span>டே</span>
+    </button>
+
+
+
+    <!-- ==========================
+         YELLOW (3 ROWS)
+    ========================== -->
+
+    <!-- ROW 7 -->
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow1.mp3">
+        <span>நெ</span><span>ட்</span><span>டை</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow2.mp3">
+        <span>ப</span><span>தி</span><span>னெ</span><span>ட்</span><span>டு</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow3.mp3">
+        <span>ம</span><span>ண்</span><span>ணெ</span><span>டு</span><span>த்</span><span>து</span>
+    </button>
+
+    <!-- ROW 8 -->
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow4.mp3">
+        <span>நே</span><span>ச</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow5.mp3">
+        <span>பா</span><span>டி</span><span>னே</span><span>ன்</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow6.mp3">
+        <span>பெ</span><span>ண்</span><span>ணே</span>
+    </button>
+
+    <!-- ROW 9 -->
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow7.mp3">
+        <span>நை</span><span>ந்</span><span>து</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow8.mp3">
+        <span>ம</span><span>னை</span>
+    </button>
+
+    <button class="word-btn yellow speaker" data-audio="nawordsyellow9.mp3">
+        <span>தி</span><span>ண்</span><span>ணை</span>
+    </button>
+
+
+
+    <!-- ==========================
+         BLUE (3 ROWS)
+    ========================== -->
+
+    <!-- ROW 10 -->
+    <button class="word-btn blue speaker" data-audio="nawordsblue1.mp3">
+        <span>நொ</span><span>டி</span>
+    </button>
+
+    <button class="word-btn blue speaker" data-audio="nawordsblue2.mp3">
+        <span>தே</span><span>னோ</span><span>டு</span>
+    </button>
+
+    <button class="word-btn blue" data-audio="nawordsblue3.mp3">
+        <span>ம</span><span>ண்</span><span>ணோ</span><span>டு</span>
+    </button>
+
+    <!-- ROW 11 -->
+    <button class="word-btn blue speaker" data-audio="nawordsblue4.mp3">
+        <span>நோ</span><span>ட்</span><span>டு</span>
+    </button>
+
+    <button class="word-btn blue speaker" data-audio="nawordsblue5.mp3">
+        <span>மு</span><span>ன்</span><span>னோ</span><span>டி</span>
+    </button>
+
+    <button class="word-btn blue speaker" data-audio="nawordsblue6.mp3">
+        <span>க</span><span>ண்</span><span>ணோ</span><span>டு</span>
+    </button>
+
+    <!-- ROW 12 -->
+    <button class="word-btn blue speaker" data-audio="nawordsblue7.mp3">
+        <span>நௌ...</span>
+    </button>
+
+    <button class="word-btn blue speaker" data-audio="nawordsblue8.mp3">
+        <span>னௌ...</span>
+    </button>
+
+    <button class="word-btn blue speaker" data-audio="nawordsblue9.mp3">
+        <span>ணௌ...</span>
+    </button>
+
+
+
+    <!-- ==========================
+         ORANGE (1 ROW)
+    ========================== -->
+
+    <!-- ROW 13 -->
+    <button class="word-btn orange speaker" data-audio="nawordsred1.mp3">
+        <span>ப</span><span>ந்</span><span>து</span>
+    </button>
+
+    <button class="word-btn orange speaker" data-audio="nawordsred2.mp3">
+        <span>க</span><span>ன்</span><span>ன</span><span>ம்</span>
+    </button>
+
+    <button class="word-btn orange speaker" data-audio="nawordsred3.mp3">
+        <span>க</span><span>ண்</span>
+    </button>
+
+</div>
+
+    <!-- END WORD GRID -->
+
+
+<!-- PAGE NUMBER (OUTSIDE BOOK) -->
+
+<div class="page-number">
+    6
+</div>
+
+
+</div>
+<!-- END PAGE CONTAINER -->
+
+</div>
+<!-- END CONTAINER -->
+
+
+
+<div class="navigation">
+
+    <button
+        class="nav-btn"
+        onclick="nextPage('nanaanaaa.html','prev')">
+
+        ❮
+
+    </button>
+
+    <div class="dots">
+
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+
+    </div>
+
+    <button
+        class="nav-btn"
+        onclick="nextPage('aaiiuu.html','next')">
+
+        ❯
+
+    </button>
+
+</div>
+
+</div>
+<!-- END PAGE WRAPPER -->
+
+<script>
+    
+
+const buttons = document.querySelectorAll(".word-btn");
+
+let currentAudio = null;
+let currentButton = null;
+let timers = [];
+
+
+
+
+const timings = {
+
+    // ==========================
+    // GREEN
+    // ==========================
+
+    "nawordsgreen1.mp3":[0,2000,3000],          // ந | கம்
+    "nawordsgreen2.mp3":[0,2000,3000],          // ம | னம்
+    "nawordsgreen3.mp3":[0,2000,3000],          // ப | ணம்
+
+    "nawordsgreen4.mp3":[0,2000],          // நா | டு
+    "nawordsgreen5.mp3":[0,2000],          // மை | னா
+    "nawordsgreen6.mp3":[0,2000,3000,4000],          // கண் | ணாடி
+
+    "nawordsgreen7.mp3":[0,2000,3000,4000],          // நி | மிடம்
+    "nawordsgreen8.mp3":[0,2000],          // க | னி
+    "nawordsgreen9.mp3":[0,2000,3000],          // பூ | சணி
+
+    "nawordsgreen10.mp3":[0,1800,2800],         // நீ | சம்
+    "nawordsgreen11.mp3":[0,1800],         // தே | னீ
+    "nawordsgreen12.mp3":[0,1800,2800],         // கணி | னி
+
+    "nawordsgreen13.mp3":[0,1800],         // நு | னி
+    "nawordsgreen14.mp3":[0,1800],         // ம | னு
+    "nawordsgreen15.mp3":[0,2000,3000,4000,5000],         // துணுக் | கம்
+
+    "nawordsgreen16.mp3":[0,1800,2800,3800],         // நூ | தனம்
+    "nawordsgreen17.mp3":[0,2000,3000,4000,5000,6000],         // மின் | னூட்டம்
+    "nawordsgreen18.mp3":[0,2000,3000,4000],         // க | ணு
+
+
+    // ==========================
+    // YELLOW
+    // ==========================
+
+    "nawordsyellow1.mp3":[0,2000,3000],         // நெட் | டை
+    "nawordsyellow2.mp3":[0,2000,3000,4000,5000],         // பதி | னெட்டு
+    "nawordsyellow3.mp3":[0,2000,3000,4000,5500,6500],         // மண்ணெ |டுத்து
+
+    "nawordsyellow4.mp3":[0,2000,3000],         // நே | சம்
+    "nawordsyellow5.mp3":[0,2000,3000,4000],         // பாடி | னேன்
+    "nawordsyellow6.mp3":[0,2000,3000],         // பெண் | ணே
+
+    "nawordsyellow7.mp3":[0,1800,2800],         // நைந் | து
+    "nawordsyellow8.mp3":[0,1800],         // ம | னை
+    "nawordsyellow9.mp3":[0,2000,3000],         // திண் | ணை
+
+
+    // ==========================
+    // BLUE
+    // ==========================
+
+    "nawordsblue1.mp3":[0,1800],           // நொ | டி
+    "nawordsblue2.mp3":[0,2000,3000],           // தே | னோடு
+    "nawordsblue3.mp3":[0,2000,3000,4000],           // மண்ணோ | டு
+
+    "nawordsblue4.mp3":[0,2000,3000],           // நோட் | டு
+    "nawordsblue5.mp3":[0,2000,3000,4000],           // முன்னோ | டி
+    "nawordsblue6.mp3":[0,2000,3000,4000],           // கண்ணோ | டு
+
+    "nawordsblue7.mp3":[0],                // னௌ...
+    "nawordsblue8.mp3":[0],                // ளௌ...
+    "nawordsblue9.mp3":[0],                // ணௌ...
+
+
+    // ==========================
+    // ORANGE
+    // ==========================
+
+    "nawordsred1.mp3":[0,1800,2800],            // பந் | து
+    "nawordsred2.mp3":[0,1800,2800,3800],            // கன் | னம்
+    "nawordsred3.mp3":[0,1800]                  // கண்
+
+};
+
+
+// ===========================================
+// LETTER HIGHLIGHT
+// ===========================================
+
+function clearHighlight(button){
+
+    if(!button) return;
+
+    button.querySelectorAll("span").forEach(span=>{
+
+        span.classList.remove("active");
+
+    });
+
+}
+
+
+function animateLetters(button,audioFile,duration){
+
+    clearHighlight(button);
+
+    timers.forEach(timer=>clearTimeout(timer));
+
+    timers=[];
+
+    const letters=button.querySelectorAll("span");
+
+    if(letters.length===0) return;
+
+    // ===========================================
+    // CUSTOM TIMINGS
+    // ===========================================
+
+    if(timings[audioFile]){
+
+        timings[audioFile].forEach((time,index)=>{
+
+            if(index>=letters.length) return;
+
+            const timer=setTimeout(()=>{
+
+                letters[index].classList.add("active");
+
+            },time);
+
+            timers.push(timer);
+
+        });
+
+    }
+
+    // ===========================================
+    // AUTOMATIC (if no custom timing exists)
+    // ===========================================
+
+    else{
+
+        const delay=duration/letters.length;
+
+        letters.forEach((letter,index)=>{
+
+            const timer=setTimeout(()=>{
+
+                letters.forEach(l=>l.classList.remove("active"));
+
+                letter.classList.add("active");
+
+            },index*delay);
+
+            timers.push(timer);
+
+        });
+
+    }
+
+}
+
+
+// ===========================================
+// BUTTON CLICK
+// ===========================================
+
+buttons.forEach(button=>{
+
+    button.addEventListener("click",function(){
+
+        const audioFile=this.dataset.audio;
+
+        // Stop same audio
+        if(
+            currentAudio &&
+            currentButton===this &&
+            !currentAudio.paused
+        ){
+
+            currentAudio.pause();
+            currentAudio.currentTime=0;
+
+            this.classList.remove("playing");
+
+            clearHighlight(this);
+
+            timers.forEach(timer=>clearTimeout(timer));
+
+            timers=[];
+
+            currentAudio=null;
+            currentButton=null;
+
+            return;
+
+        }
+
+        // Stop previous audio
+        if(currentAudio){
+
+            currentAudio.pause();
+            currentAudio.currentTime=0;
+
+        }
+
+        // Remove old highlights
+        buttons.forEach(btn=>{
+
+            btn.classList.remove("playing");
+
+            clearHighlight(btn);
+
+        });
+
+        timers.forEach(timer=>clearTimeout(timer));
+
+        timers=[];
+
+        // New audio
+        currentAudio=new Audio(audioFile);
+
+        currentButton=this;
+
+        this.classList.add("playing");
+
+        currentAudio.onloadedmetadata=()=>{
+
+            animateLetters(
+                this,
+                audioFile,
+                currentAudio.duration*1000
+            );
+
+        };
+
+
+
+        currentAudio.play();
+
+        // Audio finished
+        currentAudio.onended=()=>{
+
+            this.classList.remove("playing");
+
+            clearHighlight(this);
+
+            timers.forEach(timer=>clearTimeout(timer));
+
+            timers=[];
+
+            currentAudio=null;
+            currentButton=null;
+
+        };
+
+        // Audio error
+        currentAudio.onerror=()=>{
+
+            alert("Audio file not found:\n"+audioFile);
+
+            this.classList.remove("playing");
+
+            clearHighlight(this);
+
+            timers.forEach(timer=>clearTimeout(timer));
+
+            timers=[];
+
+            currentAudio=null;
+            currentButton=null;
+
+        };
+
+    });
+
+});
+
+// ===========================================
+// KEYBOARD STOP
+// ===========================================
+
+document.addEventListener("keydown",function(e){
+
+    if(e.code==="Space"){
+
+        if(currentAudio){
+
+            currentAudio.pause();
+            currentAudio.currentTime=0;
+
+            if(currentButton){
+
+                currentButton.classList.remove("playing");
+
+                clearHighlight(currentButton);
+
+            }
+
+            timers.forEach(timer=>clearTimeout(timer));
+
+            timers=[];
+
+            currentAudio=null;
+            currentButton=null;
+
+        }
+
+    }
+
+});
+
+// ===========================================
+// PAGE NAVIGATION
+// ===========================================
+
+function nextPage(page,direction){
+
+    const book=document.querySelector(".page-wrapper");
+
+    if(direction==="next"){
+
+        book.classList.add("flip-out-next");
+
+    }else{
+
+        book.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href=page;
+
+    },600);
+
+}
+
+
+
+
+</script>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

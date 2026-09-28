@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> page 47 words</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+
+<style>
+    
+/* ===========================================
+   RESET
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    background:#1b2c73;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ===========================================
+   BOOK
+=========================================== */
+
+.page-wrapper{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.container{
+
+    width:100%;
+
+    max-width:850px;
+
+    display:flex;
+
+    justify-content:center;
+
+    transform-style:preserve-3d;
+
+}
+
+.book{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:850px;
+
+    background:#fbf8ef;
+
+    border:8px solid #e9dcb8;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+/* RED SPINE */
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-10px;
+
+    top:20px;
+
+    bottom:20px;
+
+    width:18px;
+
+    background:#d40c02;
+
+    border-radius:10px;
+
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.page-title{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:20px;
+
+}
+
+.page-title h1{
+
+    background:#f8c45d;
+
+    border:3px solid #b88214;
+
+    border-radius:15px;
+
+    padding:12px 40px;
+
+    font-size:42px;
+
+}
+
+.lesson{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================================
+   MAIN
+=========================================== */
+
+.single-layout{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.single-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    align-items:center;
+
+}
+
+/* ===========================================
+   BUTTONS
+=========================================== */
+
+.btn{
+
+    width:150px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:.25s;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+
+}
+
+.speaker::after{
+
+    content:"🔊";
+
+    position:absolute;
+
+    top:5px;
+
+    right:6px;
+
+    font-size:13px;
+
+}
+
+.green{
+
+    background:#b7ef67;
+
+    border:2px solid #709541;
+
+}
+
+.yellow{
+
+    background:#fff29a;
+
+    border:2px solid #b9a548;
+
+}
+
+.blue{
+
+    background:#66d8e8;
+
+    border:2px solid #397f89;
+
+}
+
+.orange{
+
+    background:#ff9d71;
+
+    border:2px solid #ba6c47;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================================
+   HIGHLIGHT
+=========================================== */
+
+.highlight{
+
+    color:#111;
+
+    transition:.25s;
+
+}
+
+.playing .highlight{
+
+    color:#e60000;
+
+}
+
+/* ===========================================
+   PAGE NUMBER
+=========================================== */
+
+.page-number{
+
+    width:100%;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#7a42d5;
+
+}
+
+/* ===========================================
+   NAVIGATION
+=========================================== */
+
+.navigation{
+
+    width:100%;
+
+    max-width:850px;
+
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:60px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:50%;
+
+    font-size:28px;
+
+    background:#f8f1e4;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+
+}
+
+.dots{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#aaa;
+
+}
+
+.dot.active{
+
+    background:#35ff2d;
+
+}
+
+
+/* ===========================
+   PAGE FLIP
+=========================== */
+
+.container{
+
+    transform-style:preserve-3d;
+
+}
+
+.flip-out-next{
+
+    animation:flipNext .6s ease forwards;
+
+    transform-origin:left center;
+
+}
+
+.flip-out-prev{
+
+    animation:flipPrev .6s ease forwards;
+
+    transform-origin:right center;
+
+}
+
+@keyframes flipNext{
+
+from{
+
+    transform:rotateY(0);
+
+    opacity:1;
+
+}
+
+to{
+
+    transform:rotateY(-120deg);
+
+    opacity:0;
+
+}
+
+}
+
+@keyframes flipPrev{
+
+from{
+
+    transform:rotateY(0);
+
+    opacity:1;
+
+}
+
+to{
+
+    transform:rotateY(120deg);
+
+    opacity:0;
+
+}
+
+}
+
+
+
+
+
+
+@media (max-width:768px){
+
+html,
+body{
+
+    margin:0;
+    padding:0;
+
+    width:100%;
+    height:100dvh;
+
+    overflow:hidden;
+
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    background:#1b2c73;
+
+    padding:8px;
+}
+
+
+.page-wrapper{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+.container{
+
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+
+.book{
+
+    width:100%;
+    max-width:400px;
+
+    height:90dvh;
+
+    display:flex;
+    flex-direction:column;
+
+    padding:8px;
+}
+
+.book::before{
+
+    left:-5px;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:10px;
+
+}
+
+.page-title{
+
+    margin-bottom:5px;
+
+}
+
+.page-title h1{
+
+    font-size:18px;
+
+    padding:5px 16px;
+
+}
+
+.lesson{
+
+    font-size:16px;
+
+    margin-bottom:16px;
+
+}
+
+.single-layout{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.single-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:0.4vh;
+
+}
+
+.btn{
+
+    width:24vw;
+
+    max-width:95px;
+
+    height:3.8vh;
+
+    min-height:28px;
+
+    font-size:4vw;
+
+}
+
+.speaker::after{
+
+    top:2px;
+
+    right:3px;
+
+    font-size:8px;
+
+}
+
+.page-number{
+
+    width:100%;
+
+    margin-top:4px;
+
+    text-align:center;
+
+    font-size:15px;
+
+}
+
+.navigation{
+
+    width:100%;
+
+    max-width:400px;
+
+    margin-top:2px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.nav-btn{
+
+    width:34px;
+
+    height:34px;
+
+    font-size:16px;
+
+}
+
+.dots{
+
+    gap:8px;
+
+}
+
+.dot{
+
+    width:7px;
+
+    height:7px;
+
+}
+
+}
+
+
+</style>
+
+
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="container">
+
+        <div class="book">
+
+            <!-- TITLE -->
+
+            <div class="page-title">
+
+                <h1>தமிழ் எழுத்துகள் ✏️</h1>
+
+            </div>
+
+            <!-- LESSON -->
+
+            <div class="lesson">
+
+                தொகுதி 4
+
+            </div>
+
+            <!-- MAIN -->
+
+            <div class="single-layout">
+
+                <div class="single-column">
+
+                    <!-- GREEN -->
+
+                    <button class="btn green speaker"
+                            data-audio="word1.mp3">
+                        <span class="highlight">அம்மா</span>
+                    </button>
+
+                    <button class="btn green speaker"
+                            data-audio="word2.mp3">
+                        <span class="highlight">ஆந்தை</span>
+                    </button>
+
+                    <button class="btn green speaker"
+                            data-audio="word3.mp3">
+                        <span class="highlight">இமை</span>
+                    </button>
+
+                    <button class="btn green speaker"
+                            data-audio="word4.mp3">
+                        <span class="highlight">ஈசன்</span>
+                    </button>
+
+                    <button class="btn green speaker"
+                            data-audio="word5.mp3">
+                        <span class="highlight">உண்மை</span>
+                    </button>
+
+                    <button class="btn green speaker"
+                            data-audio="word6.mp3">
+                        <span class="highlight">ஊதா</span>
+                    </button>
+
+                    <!-- YELLOW -->
+
+                    <button class="btn yellow speaker"
+                            data-audio="word7.mp3">
+                        <span class="highlight">எட்டு</span>
+                    </button>
+
+                    <button class="btn yellow speaker"
+                            data-audio="word8.mp3">
+                        <span class="highlight">ஏணி</span>
+                    </button>
+
+                    <button class="btn yellow speaker"
+                            data-audio="word9.mp3">
+                        <span class="highlight">ஐம்பது</span>
+                    </button>
+
+                    <!-- BLUE -->
+
+                    <button class="btn blue speaker"
+                            data-audio="word10.mp3">
+                        <span class="highlight">ஒட்டகம்</span>
+                    </button>
+
+                    <button class="btn blue speaker"
+                            data-audio="word11.mp3">
+                        <span class="highlight">ஓசை</span>
+                    </button>
+
+                    <button class="btn blue speaker"
+                            data-audio="word12.mp3">
+                        <span class="highlight">ஔடதம்</span>
+                    </button>
+
+                     <!-- ORANGE -->
+
+                    <button class="btn orange speaker"
+                            data-audio="word13.mp3">
+                        <span class="highlight">அஃது</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="page-number">
+
+                47
+
+            </div>
+
+        </div>
+        <!-- END BOOK -->
+
+    </div>
+    <!-- END CONTAINER -->
+
+    <!-- NAVIGATION OUTSIDE BOOK -->
+
+    <div class="navigation">
+
+        <button
+            class="nav-btn"
+            onclick="nextPage('page47.html','prev')">
+
+            ❮
+
+        </button>
+
+        <div class="dots">
+
+            <div class="dot"></div>
+
+            <div class="dot active"></div>
+
+            <div class="dot"></div>
+
+        </div>
+
+        <button
+            class="nav-btn"
+            onclick="nextPage('page48.html','next')">
+
+            ❯
+
+        </button>
+
+    </div>
+
+</div>
+<!-- END PAGE WRAPPER -->
+
+
+
+<script>
+
+
+/* ===========================================
+   AUDIO PLAYER
+=========================================== */
+
+let currentAudio = null;
+let currentButton = null;
+
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        const audioFile = this.dataset.audio;
+
+        if(!audioFile) return;
+
+        // Click same button again = stop
+        if(
+            currentAudio &&
+            currentButton === this &&
+            !currentAudio.paused
+        ){
+
+            stopAudio();
+            return;
+
+        }
+
+        stopAudio();
+
+        currentAudio = new Audio(audioFile);
+
+        currentButton = this;
+
+        this.classList.add("playing");
+
+        currentAudio.play();
+
+        currentAudio.onended = stopAudio;
+
+    });
+
+});
+
+function stopAudio(){
+
+    if(currentAudio){
+
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+
+    }
+
+    buttons.forEach(btn=>{
+
+        btn.classList.remove("playing");
+
+    });
+
+    currentAudio = null;
+    currentButton = null;
+
+}
+
+
+/* ===========================================
+   PAGE FLIP
+=========================================== */
+
+function nextPage(page,direction){
+
+    const pageContainer = document.querySelector(".container");
+
+    if(direction==="next"){
+
+        pageContainer.classList.add("flip-out-next");
+
+    }else{
+
+        pageContainer.classList.add("flip-out-prev");
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href = page;
+
+    },600);
+
+}
+
+</script>
+
+
+</body>
+</html>
