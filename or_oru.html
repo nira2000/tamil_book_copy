@@ -19,422 +19,595 @@
 /* =====================================================
    RESET
 ===================================================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,
-body{
+html,body{
     width:100%;
     min-height:100%;
 }
 
 body{
     font-family:'Noto Sans Tamil',sans-serif;
-    background:#63DCEB;
-
+    background:#39B7F2;
     display:flex;
     justify-content:center;
     align-items:flex-start;
-
     min-height:100vh;
-
     overflow-x:hidden;
-
-    padding:20px;
+    padding:28px 18px;
 }
-
 
 /* =====================================================
    APP
 ===================================================== */
-
 .app{
     width:100%;
-    max-width:1000px;
-
+    max-width:1050px;
     display:flex;
     flex-direction:column;
     align-items:center;
-
     transform-style:preserve-3d;
+    perspective:1500px;
+    backface-visibility:hidden;
 }
-
 
 /* =====================================================
    BOOK
 ===================================================== */
-
 .book{
     position:relative;
-
-    width:min(900px,100%);
-
+    width:min(980px,100%);
     background:#FFFDF5;
-
-    border-radius:40px;
-
-    padding:35px 45px 25px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.18);
-
+    border-radius:48px;
+    padding:38px 58px 24px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
     overflow:visible;
-
     transform-style:preserve-3d;
 }
 
-
-/* =====================================================
-   SCALLOPED WHITE BORDER
-===================================================== */
-
+/* Decorative white scallop-style outer frame */
 .book::before{
     content:"";
-
     position:absolute;
-
-    inset:-14px;
-
+    inset:-13px;
     z-index:-1;
-
-    background:#FFFDF5;
-
-    border-radius:45px;
-
-    box-shadow:
-        0 0 0 2px rgba(255,255,255,.3);
+    border-radius:58px;
+    background:
+        radial-gradient(circle at 20px 0,#FFFDF5 0 21px,transparent 22px) 0 0/40px 25px repeat-x,
+        radial-gradient(circle at 20px 100%,#FFFDF5 0 21px,transparent 22px) 0 100%/40px 25px repeat-x,
+        radial-gradient(circle at 0 20px,#FFFDF5 0 21px,transparent 22px) 0 0/25px 40px repeat-y,
+        radial-gradient(circle at 100% 20px,#FFFDF5 0 21px,transparent 22px) 100% 0/25px 40px repeat-y;
 }
-
 
 /* =====================================================
-   TOP HEADING
+   DECORATIVE CORNERS
 ===================================================== */
-
-.main-heading{
-    text-align:center;
-
-    font-size:34px;
-
-    line-height:1.35;
-
-    font-weight:600;
-
-    color:#000;
-
-    margin-bottom:20px;
-}
-
-.main-heading .red{
-    color:#FF2929;
-}
-
-
-/* =====================================================
-   PINK SECTION
-===================================================== */
-
-.or-section{
-
-    background:#F7D2ED;
-
-    border-radius:25px;
-
-    padding:16px 20px 20px;
-
-    margin-bottom:20px;
-
-    border:2px solid #E29BDF;
-}
-
-
-/* =====================================================
-   GREEN SECTION
-===================================================== */
-
-.oru-section{
-
-    background:#E3F5D7;
-
-    border-radius:25px;
-
-    padding:16px 20px 20px;
-
-    border:2px solid #A9D98E;
-}
-
-
-/* =====================================================
-   SECTION HEADING
-===================================================== */
-
-.section-heading{
-
-    text-align:center;
-
-    font-size:28px;
-
-    line-height:1.35;
-
-    font-weight:600;
-
-    color:#000;
-
-    margin-bottom:14px;
-
-    border:none;
-
-    background:transparent;
-
-    font-family:'Noto Sans Tamil',sans-serif;
-
-    cursor:pointer;
-
-    width:100%;
-
-    position:relative;
-
-    padding:0;
-}
-
-.section-heading .red{
-    color:#FF2929;
-}
-
-
-/* =====================================================
-   WORD GRID
-===================================================== */
-
-.word-grid{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    column-gap:55px;
-
-    row-gap:8px;
-}
-
-
-/* =====================================================
-   WORD BUTTON
-===================================================== */
-
-.word-btn{
-
-    position:relative;
-
-    width:100%;
-
-    min-height:58px;
-
-    border:none;
-
-    border-radius:15px;
-
-    padding:7px 18px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-family:'Noto Sans Tamil',sans-serif;
-
-    font-size:27px;
-
-    font-weight:500;
-
-    color:#000;
-
-    cursor:pointer;
-
-    transition:.2s;
-
-    box-shadow:
-        0 4px 8px rgba(0,0,0,.12);
-}
-
-
-/* =====================================================
-   PINK BUTTONS
-===================================================== */
-
-.or-section .word-btn{
-
-    background:#E6B9E6;
-
-    border:2px solid #C95AD8;
-}
-
-
-/* =====================================================
-   GREEN BUTTONS
-===================================================== */
-
-.oru-section .word-btn{
-
-    background:#BCE5A9;
-
-    border:2px solid #8BC86C;
-}
-
-
-/* =====================================================
-   BUTTON HOVER
-===================================================== */
-
-.word-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 6px 12px rgba(0,0,0,.16);
-}
-
-
-/* =====================================================
-   BUTTON CLICK
-===================================================== */
-
-.word-btn:active{
-
-    transform:scale(.97);
-}
-
-
-/* =====================================================
-   AUDIO PLAYING
-===================================================== */
-
-.word-btn.playing{
-
-    box-shadow:
-        0 0 0 3px rgba(255,255,255,.8),
-        0 5px 14px rgba(0,0,0,.18);
-}
-
-
-/* =====================================================
-   SPEAKER ICON
-===================================================== */
-
-.speaker-icon{
-
+ .book::after{
+    content:"";
     position:absolute;
-
-    top:5px;
-    right:7px;
-
-    font-size:11px;
-
-    opacity:.65;
-
     pointer-events:none;
 }
 
 
 /* =====================================================
-   WORD HIGHLIGHT
+   PURPLE FLOWERS - TOP RIGHT
 ===================================================== */
+.purple-flowers{
+    position:absolute;
+    right:-18px;
+    top:-25px;
+    width:170px;
+    height:145px;
+    z-index:10;
+    pointer-events:none;
+}
 
-.highlight{
+.purple-flowers .flower{
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#9B3FB6;
+    font-family:Arial,sans-serif;
+    line-height:1;
+    text-shadow:
+        8px 0 #C66BD4,
+        -6px 5px #7C2E99,
+        0 0 3px rgba(255,255,255,.8);
+}
 
-    display:inline-block;
+.purple-flowers .flower1{
+    right:22px;
+    top:5px;
+    font-size:58px;
+    transform:rotate(-15deg);
+}
 
+.purple-flowers .flower2{
+    right:73px;
+    top:36px;
+    font-size:43px;
+    transform:rotate(18deg);
+}
+
+.purple-flowers .flower3{
+    right:0;
+    top:65px;
+    font-size:40px;
+    transform:rotate(-12deg);
+}
+
+.purple-flowers .flower4{
+    right:105px;
+    top:2px;
+    font-size:30px;
+    transform:rotate(25deg);
+}
+
+.purple-flowers .stem{
+    position:absolute;
+    width:3px;
+    height:90px;
+    background:#648B4A;
+    border-radius:5px;
+    transform-origin:bottom;
+}
+
+.purple-flowers .stem1{
+    right:60px;
+    top:48px;
+    transform:rotate(35deg);
+}
+
+.purple-flowers .stem2{
+    right:25px;
+    top:48px;
+    transform:rotate(12deg);
+}
+
+/* =====================================================
+   GREEN LEAVES - BOTTOM LEFT
+===================================================== */
+.green-leaves{
+    position:absolute;
+    left:-16px;
+    bottom:-8px;
+    width:145px;
+    height:145px;
+    z-index:10;
+    pointer-events:none;
+}
+
+.green-leaves .leaf-stem{
+    position:absolute;
+    left:47px;
+    bottom:7px;
+    width:4px;
+    height:125px;
+    background:#4C8C39;
+    border-radius:5px;
+    transform:rotate(-18deg);
+    transform-origin:bottom;
+}
+
+.green-leaves .leaf{
+    position:absolute;
+    width:48px;
+    height:22px;
+    background:#78B94C;
+    border:2px solid #4E9135;
+    border-radius:100% 0 100% 0;
+    transform-origin:bottom left;
+}
+
+.green-leaves .leaf1{
+    left:35px;
+    bottom:34px;
+    transform:rotate(-55deg);
+}
+
+.green-leaves .leaf2{
+    left:48px;
+    bottom:58px;
+    transform:rotate(-18deg);
+    background:#8CC85B;
+}
+
+.green-leaves .leaf3{
+    left:52px;
+    bottom:83px;
+    transform:rotate(25deg);
+}
+
+.green-leaves .leaf4{
+    left:24px;
+    bottom:76px;
+    transform:rotate(-78deg);
+    background:#69AA43;
+}
+
+.green-leaves .leaf5{
+    left:70px;
+    bottom:103px;
+    transform:rotate(40deg);
+    background:#9BD66B;
+}
+
+.green-leaves .leaf6{
+    left:18px;
+    bottom:108px;
+    transform:rotate(-35deg);
+    background:#83C65A;
+}
+
+/* Keep both blue title boxes OUTSIDE their coloured sections */
+.main-heading{
+    position:relative;
+    z-index:3;
+}
+
+.section-heading{
+    position:relative;
+    z-index:3;
+}
+
+/* =====================================================
+   MOBILE DECORATIONS
+===================================================== */
+@media(max-width:768px){
+
+    .purple-flowers{
+        right:-7px;
+        top:-10px;
+        width:82px;
+        height:72px;
+    }
+
+    .purple-flowers .flower1{
+        right:5px;
+        top:0;
+        font-size:30px;
+    }
+
+    .purple-flowers .flower2{
+        right:28px;
+        top:18px;
+        font-size:23px;
+    }
+
+    .purple-flowers .flower3{
+        right:-2px;
+        top:35px;
+        font-size:22px;
+    }
+
+    .purple-flowers .flower4{
+        right:47px;
+        top:0;
+        font-size:17px;
+    }
+
+    .purple-flowers .stem{
+        height:45px;
+        width:2px;
+    }
+
+    .purple-flowers .stem1{
+        right:29px;
+        top:25px;
+    }
+
+    .purple-flowers .stem2{
+        right:12px;
+        top:25px;
+    }
+
+    .green-leaves{
+        left:-7px;
+        bottom:-5px;
+        width:72px;
+        height:72px;
+    }
+
+    .green-leaves .leaf-stem{
+        left:25px;
+        height:65px;
+        width:2px;
+    }
+
+    .green-leaves .leaf{
+        width:27px;
+        height:13px;
+        border-width:1px;
+    }
+
+    .green-leaves .leaf1{
+        left:19px;
+        bottom:17px;
+    }
+
+    .green-leaves .leaf2{
+        left:25px;
+        bottom:29px;
+    }
+
+    .green-leaves .leaf3{
+        left:27px;
+        bottom:42px;
+    }
+
+    .green-leaves .leaf4{
+        left:12px;
+        bottom:38px;
+    }
+
+    .green-leaves .leaf5{
+        left:36px;
+        bottom:51px;
+    }
+
+    .green-leaves .leaf6{
+        left:8px;
+        bottom:54px;
+    }
+}
+
+/* =====================================================
+   MAIN HEADING
+===================================================== */
+.main-heading{
+    display:block;
+    width:78%;
+    margin:0 auto 28px;
+    padding:10px 28px 12px;
+
+    background:#C7EEF5;
+    border:3px solid #C99719;
+
+    color:#111;
+    text-align:center;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:23px;
+    line-height:1.28;
+    font-weight:700;
+
+    border-radius:0;
+    box-shadow:
+        -16px 10px 0 #642080,
+        16px 10px 0 #642080;
+
+    cursor:pointer;
+    position:relative;
+}
+
+.main-heading .red{
+    color:#FF3030;
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+.or-section,
+.oru-section{
+    position:relative;
+    border-radius:24px;
+    padding:17px 22px 20px;
+}
+
+.or-section{
+    background:#F4C7E9;
+    border:2px solid #D36ADF;
+    margin-bottom:22px;
+}
+
+.oru-section{
+    background:#E2F5D6;
+    border:2px solid #9ACF70;
+}
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+.section-heading{
+    display:block;
+    width:88%;
+    margin:0 auto 14px;
+
+    padding:9px 18px 10px;
+
+    background:#C7EEF5;
+    border:3px solid #C99719;
+
+    color:#111;
+    text-align:center;
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:23px;
+    line-height:1.28;
+    font-weight:700;
+
+    cursor:pointer;
+    position:relative;
+}
+
+.section-heading::before{
+    content:"";
+    position:absolute;
+    left:-14px;
+    top:8px;
+    bottom:-10px;
+    width:24px;
+    background:#57942C;
+    z-index:-1;
+}
+
+.section-heading .red{
+    color:#FF3030;
+}
+
+/* =====================================================
+   WORD GRID
+===================================================== */
+.word-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    column-gap:72px;
+    row-gap:10px;
+}
+
+/* =====================================================
+   WORD BUTTONS
+===================================================== */
+.word-btn{
+    position:relative;
+    width:100%;
+    min-height:62px;
+
+    border-radius:17px;
+    padding:7px 25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+
+    font-family:'Noto Sans Tamil',sans-serif;
+    font-size:28px;
+    font-weight:500;
+    line-height:1.05;
     color:#000;
 
+    cursor:pointer;
+    transition:.2s;
+}
+
+/* ONLY ஓர் / ஒரு IS BOLD */
+.word-btn .highlight{
+    font-weight:500;
+}
+
+.word-btn .highlight:first-child{
+    font-weight:800;
+}
+
+/* Pink buttons */
+.or-section .word-btn{
+    background:#E5B7E5;
+    border:2px solid #C95AD8;
+    box-shadow:
+        0 4px 0 rgba(201,90,216,.20),
+        0 5px 9px rgba(0,0,0,.10);
+}
+
+/* Green buttons */
+.oru-section .word-btn{
+    background:#BCE7A9;
+    border:2px solid #8BC86C;
+    box-shadow:
+        0 4px 0 rgba(139,200,108,.20),
+        0 5px 9px rgba(0,0,0,.10);
+}
+
+/* Soft offset outline */
+.or-section .word-btn::before,
+.oru-section .word-btn::before{
+    content:"";
+    position:absolute;
+    inset:3px -6px -4px 5px;
+    border-radius:18px;
+    z-index:-1;
+}
+
+.or-section .word-btn::before{
+    background:#EAC6EA;
+}
+
+.oru-section .word-btn::before{
+    background:#C9EFB9;
+}
+
+.word-btn:hover{
+    transform:translateY(-2px);
+}
+
+.word-btn:active{
+    transform:scale(.98);
+}
+
+/* =====================================================
+   AUDIO PLAYING
+===================================================== */
+.word-btn.playing{
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.9),
+        0 5px 14px rgba(0,0,0,.18);
+}
+
+/* =====================================================
+   SPEAKER ICON
+===================================================== */
+.speaker-icon{
+    position:absolute;
+    top:5px;
+    right:8px;
+    font-size:11px;
+    opacity:.65;
+    pointer-events:none;
+}
+
+/* =====================================================
+   WORD HIGHLIGHT
+===================================================== */
+.highlight{
+    display:inline-block;
+    color:#000;
     transition:.25s;
 }
 
-
-/* =====================================================
-   ACTIVE RED WORD
-===================================================== */
-
 .highlight.active{
-
     color:#FF1E1E;
-
     font-weight:800;
-
     transform:scale(1.07);
-
-    text-shadow:
-        0 0 5px rgba(255,0,0,.25);
+    text-shadow:0 0 5px rgba(255,0,0,.25);
 }
-
 
 /* =====================================================
    PAGE NUMBER
 ===================================================== */
-
 .page-number{
-
     text-align:center;
-
-    margin-top:15px;
-
+    margin-top:12px;
     font-size:22px;
-
+    line-height:1;
     font-weight:800;
-
-    color:#8D64D8;
+    color:#263B80;
 }
-
 
 /* =====================================================
    NAVIGATION
 ===================================================== */
-
 .navigation{
-
-    width:min(900px,100%);
-
-    margin-top:16px;
-
-    padding:0 8px;
-
+    width:min(980px,100%);
+    margin-top:17px;
+    padding:0 10px;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
-
-/* =====================================================
-   NAV BUTTON
-===================================================== */
-
 .nav-btn{
-
-    width:58px;
-    height:58px;
-
+    width:55px;
+    height:55px;
     border:none;
-
     border-radius:50%;
-
     background:#FFFDF5;
-
-    font-size:28px;
-
+    font-size:27px;
     color:#111;
-
     cursor:pointer;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.18);
-
+    box-shadow:0 5px 15px rgba(0,0,0,.18);
     transition:.2s;
 }
 
@@ -442,27 +615,16 @@ body{
     transform:scale(1.08);
 }
 
-
-/* =====================================================
-   DOTS
-===================================================== */
-
 .dots{
-
     display:flex;
-
     align-items:center;
-
-    gap:10px;
+    gap:9px;
 }
 
 .dot{
-
-    width:12px;
-    height:12px;
-
+    width:11px;
+    height:11px;
     border-radius:50%;
-
     background:#A8B0B0;
 }
 
@@ -470,319 +632,186 @@ body{
     background:#19D400;
 }
 
-
 /* =====================================================
    PAGE FLIP
 ===================================================== */
-
-.app{
-
-    perspective:1500px;
-
-    transform-style:preserve-3d;
-
-    backface-visibility:hidden;
-}
-
 .flip-out-next{
-
     animation:flipNext .6s ease forwards;
-
     transform-origin:left center;
 }
 
 .flip-out-prev{
-
     animation:flipPrev .6s ease forwards;
-
     transform-origin:right center;
 }
 
-
 @keyframes flipNext{
-
-    0%{
-        transform:rotateY(0deg);
-    }
-
-    100%{
-        transform:rotateY(-90deg);
-    }
+    0%{transform:rotateY(0deg);}
+    100%{transform:rotateY(-90deg);}
 }
-
 
 @keyframes flipPrev{
-
-    0%{
-        transform:rotateY(0deg);
-    }
-
-    100%{
-        transform:rotateY(90deg);
-    }
+    0%{transform:rotateY(0deg);}
+    100%{transform:rotateY(90deg);}
 }
-
 
 /* =====================================================
    MOBILE
 ===================================================== */
-
 @media(max-width:768px){
 
-    html,
-    body{
-
+    html,body{
         width:100%;
         height:100%;
-
         overflow:hidden;
     }
-
 
     body{
-
         min-height:100dvh;
-
-        padding:0;
-
-        display:flex;
-
-        justify-content:center;
-
+        padding:8px;
         align-items:center;
-
-        background:#63DCEB;
     }
-
-
-    /* APP */
 
     .app{
-
         width:100%;
-
         max-width:430px;
-
         height:100dvh;
-
-        padding:7px;
-
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:center;
+        padding:6px;
     }
-
-
-    /* BOOK */
 
     .book{
-
         width:100%;
-
-        height:calc(100dvh - 65px);
-
-        padding:11px 9px 7px;
-
-        border-radius:22px;
-
+        height:calc(100dvh - 62px);
+        padding:11px 9px 6px;
+        border-radius:25px;
         display:flex;
-
         flex-direction:column;
-
         overflow:hidden;
-
-        box-shadow:
-            0 6px 18px rgba(0,0,0,.16);
     }
-
-
-    /* WHITE BORDER */
 
     .book::before{
-
         inset:-7px;
-
-        border-radius:27px;
+        border-radius:31px;
     }
 
-
-    /* TOP HEADING */
+    .book::after{
+        right:-8px;
+        top:-16px;
+        font-size:25px;
+    }
 
     .main-heading{
-
-        font-size:18px;
-
-        line-height:1.35;
-
-        margin-bottom:7px;
-
+        width:88%;
+        margin:0 auto 8px;
+        padding:6px 10px 7px;
+        font-size:15px;
+        line-height:1.22;
+        box-shadow:
+            -8px 5px 0 #642080,
+            8px 5px 0 #642080;
         flex-shrink:0;
     }
-
-
-    /* SECTIONS */
 
     .or-section,
     .oru-section{
-
         flex:1;
-
         min-height:0;
-
-        padding:7px;
-
-        border-radius:16px;
-
+        padding:6px 7px 7px;
+        border-radius:17px;
         display:flex;
-
         flex-direction:column;
     }
 
-
     .or-section{
-
         margin-bottom:7px;
     }
 
-
-    /* SECTION HEADING */
-
     .section-heading{
-
-        font-size:16px;
-
-        line-height:1.25;
-
-        margin-bottom:5px;
-
+        width:88%;
+        margin:0 auto 5px;
+        padding:5px 7px;
+        font-size:13px;
+        line-height:1.18;
         flex-shrink:0;
     }
 
-
-    /* WORD GRID */
+    .section-heading::before{
+        left:-7px;
+        top:4px;
+        bottom:-6px;
+        width:13px;
+    }
 
     .word-grid{
-
         flex:1;
-
         min-height:0;
-
         display:grid;
-
         grid-template-columns:1fr 1fr;
-
         grid-template-rows:repeat(6,1fr);
-
         column-gap:7px;
-
         row-gap:5px;
     }
 
-
-    /* WORD BUTTON */
-
     .word-btn{
-
         width:100%;
-
         height:100%;
-
         min-height:0;
-
-        padding:0 5px;
-
-        border-radius:8px;
-
+        padding:0 4px;
+        border-radius:9px;
         font-size:15px;
-
         gap:4px;
-
         border-width:1px;
-
-        box-shadow:
-            0 2px 5px rgba(0,0,0,.10);
+        line-height:1;
     }
 
-
-    /* SPEAKER */
+    .word-btn .highlight:first-child{
+        font-weight:800;
+    }
 
     .speaker-icon{
-
         top:2px;
-
         right:4px;
-
         font-size:7px;
     }
 
-
-    /* PAGE NUMBER */
-
     .page-number{
-
         flex-shrink:0;
-
         margin-top:4px;
-
         font-size:13px;
     }
 
-
-    /* NAVIGATION */
-
     .navigation{
-
         width:100%;
-
-        height:38px;
-
-        margin-top:3px;
-
+        height:34px;
+        margin-top:2px;
         padding:0 5px;
-
         flex-shrink:0;
     }
 
-
     .nav-btn{
-
-        width:34px;
-
-        height:34px;
-
-        font-size:18px;
+        width:32px;
+        height:32px;
+        font-size:17px;
     }
 
-
     .dots{
-
         gap:5px;
     }
 
-
     .dot{
-
         width:7px;
-
         height:7px;
     }
 }
 
-
-/* =====================================================
-   SMALL PHONES
-===================================================== */
-
 @media(max-width:360px){
 
     .main-heading{
-        font-size:16px;
+        font-size:14px;
     }
 
     .section-heading{
-        font-size:14px;
+        font-size:12px;
     }
 
     .word-btn{
@@ -792,7 +821,18 @@ body{
     .page-number{
         font-size:12px;
     }
+}
 
+
+/* =====================================================
+   MATCH BOTH SECTION HEADINGS
+===================================================== */
+.section-heading{
+    flex-shrink:0;
+}
+
+.oru-section{
+    margin-top:0;
 }
 
 </style>
@@ -811,6 +851,26 @@ body{
     ================================================= -->
 
     <div class="book">
+
+        <!-- DECORATIVE BOTANICAL CORNERS -->
+        <div class="purple-flowers" aria-hidden="true">
+            <span class="flower flower1">✿</span>
+            <span class="flower flower2">✿</span>
+            <span class="flower flower3">✿</span>
+            <span class="flower flower4">✿</span>
+            <span class="stem stem1"></span>
+            <span class="stem stem2"></span>
+        </div>
+
+        <div class="green-leaves" aria-hidden="true">
+            <span class="leaf leaf1"></span>
+            <span class="leaf leaf2"></span>
+            <span class="leaf leaf3"></span>
+            <span class="leaf leaf4"></span>
+            <span class="leaf leaf5"></span>
+            <span class="leaf leaf6"></span>
+            <span class="leaf-stem"></span>
+        </div>
 
 
         <!-- =================================================
@@ -988,10 +1048,7 @@ body{
              ஒரு SECTION
         ================================================= -->
 
-        <div class="oru-section">
-
-
-            <button class="section-heading"
+        <button class="section-heading"
                     data-audio="oru_title.mp3">
 
                 <span class="highlight">உயிர்மெய் எழுத்தில் தொடங்கும் சொற்களுக்கு</span><br>
@@ -1002,6 +1059,8 @@ body{
                 <span class="speaker-icon">🔊</span>
 
             </button>
+
+        <div class="oru-section">
 
 
             <div class="word-grid">
