@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="ta">
+
 <head>
-
-
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,90 +10,103 @@
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =======================
+   RESET
+======================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    min-height:100%;
-    overflow-x:hidden;
-    overflow-y:auto;
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#111D66;
+body {
+    font-family: Arial, sans-serif;
+    background: #111D66;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    perspective:1500px;
+    perspective: 1500px;
 }
+
 
 /* =======================
    PAGE ANIMATION
 ======================= */
 
-.flip-out-next{
-    animation:flipNext .6s ease forwards;
-    transform-origin:left center;
+.flip-out-next {
+    animation: flipNext .6s ease forwards;
+    transform-origin: left center;
 }
 
-.flip-out-prev{
-    animation:flipPrev .6s ease forwards;
-    transform-origin:right center;
+.flip-out-prev {
+    animation: flipPrev .6s ease forwards;
+    transform-origin: right center;
 }
 
-@keyframes flipNext{
-from{
-    transform:rotateY(0);
-    opacity:1;
-}
-to{
-    transform:rotateY(-120deg);
-    opacity:0;
-}
+@keyframes flipNext {
+
+    from {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(-120deg);
+        opacity: 0;
+    }
+
 }
 
-@keyframes flipPrev{
-from{
-    transform:rotateY(0);
-    opacity:1;
+@keyframes flipPrev {
+
+    from {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(120deg);
+        opacity: 0;
+    }
+
 }
-to{
-    transform:rotateY(120deg);
-    opacity:0;
-}
-}
+
 
 /* =======================
-      APP
+   APP
 ======================= */
 
-.app{
-    width:100%;
-    max-width:800px;
-    transform-style:preserve-3d;
+.app {
+    width: 100%;
+    max-width: 800px;
+    transform-style: preserve-3d;
 }
 
+
 /* =======================
-      HEADER
+   HEADER
 ======================= */
 
-.header{
+.header {
 
-    color:#fff;
-    text-align:center;
+    color: #fff;
+    text-align: center;
 
-    font-size:40px;
-    font-weight:bold;
+    font-size: 40px;
+    font-weight: bold;
 
-    margin-bottom:15px;
+    margin-bottom: 15px;
 
     text-shadow:
         0 0 5px rgba(255,255,255,.7),
@@ -102,370 +114,704 @@ to{
         0 0 24px #4FC3F7,
         0 0 36px #4FC3F7;
 
-    animation:glowPulse 3s ease-in-out infinite;
+    animation: glowPulse 3s ease-in-out infinite;
 }
 
-@keyframes glowPulse{
+@keyframes glowPulse {
 
-0%,100%{
-text-shadow:
-0 0 5px #fff,
-0 0 10px #4FC3F7,
-0 0 20px #4FC3F7;
+    0%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #4FC3F7,
+            0 0 20px #4FC3F7;
+    }
+
+    50% {
+        text-shadow:
+            0 0 10px #fff,
+            0 0 25px #4FC3F7,
+            0 0 50px #4FC3F7,
+            0 0 70px #4FC3F7;
+    }
+
 }
 
-50%{
-text-shadow:
-0 0 10px #fff,
-0 0 25px #4FC3F7,
-0 0 50px #4FC3F7,
-0 0 70px #4FC3F7;
-}
-
-}
 
 /* =======================
-      BOOK
+   BOOK
 ======================= */
 
-.book{
+.book {
 
-    position:relative;
+    position: relative;
 
-    background:#f8f1e4;
+    background: #f8f1e4;
 
-    border-radius:30px;
+    border-radius: 30px;
 
-    padding:40px;
+    padding: 40px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
 }
+
 
 /* RED SPINE */
 
-.book::before{
+.book::before {
 
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    left:-10px;
-    top:25px;
-    bottom:25px;
+    left: -10px;
+    top: 25px;
+    bottom: 25px;
 
-    width:20px;
+    width: 20px;
 
-    background:#D40C02;
+    background: #D40C02;
 
-    border-radius:10px;
-
+    border-radius: 10px;
 }
+
 
 /* =======================
-     COVER
+   COVER
 ======================= */
 
-.cover{
+.cover {
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-}
-
-.cover img{
-
-    width:100%;
-    max-width:900px;
-
-    display:block;
-
-    border-radius:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+.cover img {
+
+    width: 100%;
+    max-width: 900px;
+
+    display: block;
+
+    border-radius: 15px;
+}
+
 
 /* =======================
-     NAVIGATION
+   NAVIGATION
 ======================= */
 
-.navigation{
+.navigation {
 
-    margin-top:20px;
+    margin-top: 20px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-}
-
-.nav-btn{
-
-    width:65px;
-    height:65px;
-
-    border:none;
-    border-radius:50%;
-
-    background:#f8f1e4;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-
-    transition:.25s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
-.nav-btn:hover{
-    transform:scale(1.05);
-}
+.nav-btn {
 
-.dots{
+    width: 65px;
+    height: 65px;
 
-    display:flex;
-    gap:10px;
+    border: none;
+    border-radius: 50%;
 
-}
+    background: #f8f1e4;
 
-.dot{
+    font-size: 28px;
 
-    width:12px;
-    height:12px;
+    cursor: pointer;
 
-    border-radius:50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
 
-    background:#8da4a4;
+    transition: .25s;
 
 }
 
-.dot.active{
+.nav-btn:hover {
+    transform: scale(1.05);
+}
 
-    background:#1CFF00;
+.dots {
+
+    display: flex;
+    gap: 10px;
 
 }
+
+.dot {
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #8da4a4;
+
+}
+
+.dot.active {
+
+    background: #1CFF00;
+
+}
+
 
 /* ===========================================
    MOBILE
 =========================================== */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-html,
-body{
+    html,
+    body {
 
-    width:100%;
-    height:100dvh;
-    margin:0;
-    padding:0;
+        width: 100%;
+        height: 100dvh;
 
-    overflow:hidden;
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+
+    }
+
+    body {
+
+        background: #111D66;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+    /* APP */
+
+    .app {
+
+        width: 100%;
+        max-width: 380px;
+
+        height: 100dvh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 8px;
+
+    }
+
+
+    /* HEADER */
+
+    .header {
+
+        font-size: 18px;
+
+        margin-bottom: 8px;
+
+        line-height: 1.2;
+
+    }
+
+
+    /* BOOK */
+
+    .book {
+
+        width: 100%;
+
+        padding: 12px;
+
+        border-radius: 18px;
+
+    }
+
+    .book::before {
+
+        width: 8px;
+
+        left: -4px;
+
+        top: 12px;
+
+        bottom: 12px;
+
+    }
+
+
+    /* COVER */
+
+    .cover {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .cover img {
+
+        width: min(100%, 340px);
+
+        height: auto;
+
+        max-height: calc(100dvh - 170px);
+
+        object-fit: contain;
+
+    }
+
+
+    /* NAVIGATION */
+
+    .navigation {
+
+        margin-top: 10px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .nav-btn {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 20px;
+
+    }
+
+    .dots {
+
+        gap: 8px;
+
+    }
+
+    .dot {
+
+        width: 8px;
+        height: 8px;
+
+    }
 
 }
 
-body{
 
-    background:#111D66;
+/* =========================================
+   PIN ACCESS SCREEN
+========================================= */
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+#pinScreen {
 
-}
+    position: fixed;
 
-/* APP */
+    inset: 0;
 
-.app{
+    width: 100%;
+    height: 100dvh;
 
-    width:100%;
-    max-width:380px;
+    background: #111D66;
 
-    height:100dvh;
+    display: flex;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    justify-content: center;
+    align-items: center;
 
-    padding:8px;
+    z-index: 999999;
 
-}
-
-/* HEADER */
-
-.header{
-
-    font-size:18px;
-
-    margin-bottom:8px;
-
-    line-height:1.2;
+    padding: 20px;
 
 }
 
-/* BOOK */
 
-.book{
+.pinBox {
 
-    width:100%;
+    width: 90%;
+    max-width: 380px;
 
-    padding:12px;
+    padding: 35px 25px;
 
-    border-radius:18px;
+    text-align: center;
 
-}
+    background: #f8f1e4;
 
-.book::before{
+    border-radius: 20px;
 
-    width:8px;
-
-    left:-4px;
-
-    top:12px;
-
-    bottom:12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
 
 }
 
-/* COVER */
 
-.cover{
+.pinBox h2 {
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    font-size: 28px;
 
-}
+    margin-bottom: 10px;
 
-.cover img{
-
-    width:min(100%,340px);
-
-    height:auto;
-
-    max-height:calc(100dvh - 170px);
-
-    object-fit:contain;
+    color: #111D66;
 
 }
 
-/* NAVIGATION */
 
-.navigation{
+.pinBox p {
 
-    margin-top:10px;
+    font-size: 16px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    margin-bottom: 10px;
 
 }
 
-.nav-btn{
 
-    width:44px;
-    height:44px;
+#pinInput {
 
-    font-size:20px;
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 15px 0;
+
+    border: 2px solid #111D66;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    letter-spacing: 5px;
+
+    outline: none;
 
 }
 
-.dots{
 
-    gap:8px;
+.pinBox button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #111D66;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
 
 }
 
-.dot{
 
-    width:8px;
-    height:8px;
+.pinBox button:hover {
+
+    transform: scale(1.02);
+
+}
+
+
+#pinError {
+
+    color: #D40C02;
+
+    font-size: 14px;
+
+    margin-top: 10px;
 
 }
 
+
+/* Mobile PIN */
+
+@media (max-width: 768px) {
+
+    .pinBox {
+
+        padding: 30px 20px;
+
+    }
+
+    .pinBox h2 {
+
+        font-size: 24px;
+
+    }
+
+    #pinInput {
+
+        font-size: 20px;
+
+    }
+
 }
+
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     PIN ACCESS SCREEN
+========================================= -->
+
+<div id="pinScreen">
+
+    <div class="pinBox">
+
+        <h2>🔐 Tamil e-Book</h2>
+
+        <p>Please enter your PIN to continue</p>
+
+        <input
+            type="password"
+            id="pinInput"
+            placeholder="Enter PIN"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="off"
+        >
+
+        <button onclick="checkPIN()">
+            ENTER
+        </button>
+
+        <p id="pinError"></p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     YOUR EXISTING BOOK
+========================================= -->
 
 <div class="app">
 
-<div class="header">
+    <div class="header">
 
-📚 Tamil e-Book • தமிழ் எழுத்துகள்
+        📚 Tamil e-Book • தமிழ் எழுத்துகள்
+
+    </div>
+
+
+    <div class="book">
+
+        <div class="cover">
+
+            <img
+                src="cover.jpg"
+                alt="Tamil Book Cover"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="navigation">
+
+        <button
+            class="nav-btn"
+            onclick="nextPage('home.html','prev')"
+        >
+
+            ❮
+
+        </button>
+
+
+        <div class="dots">
+
+            <div class="dot active"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+            <div class="dot"></div>
+
+        </div>
+
+
+        <button
+            class="nav-btn"
+            onclick="nextPage('page2.html','next')"
+        >
+
+            ❯
+
+        </button>
+
+    </div>
 
 </div>
 
-<div class="book">
 
-<div class="cover">
-
-<img src="cover.jpg" alt="Tamil Book Cover">
-
-</div>
-
-</div>
-
-<div class="navigation">
-
-<button
-class="nav-btn"
-onclick="nextPage('home.html','prev')">
-
-❮
-
-</button>
-
-<div class="dots">
-
-<div class="dot active"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-<div class="dot"></div>
-
-</div>
-
-<button
-class="nav-btn"
-onclick="nextPage('page2.html','next')">
-
-❯
-
-</button>
-
-</div>
-
-</div>
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
 
 <script>
 
-function nextPage(page,direction){
+/* =========================================
+   PIN SETTINGS
+========================================= */
 
-const app=document.querySelector(".app");
+/*
+   CHANGE THIS NUMBER TO YOUR OWN PIN
+*/
 
-if(direction==="next"){
+const CORRECT_PIN = "2086";
 
-app.classList.add("flip-out-next");
 
-}else{
+/* =========================================
+   CHECK PIN
+========================================= */
 
-app.classList.add("flip-out-prev");
+function checkPIN() {
+
+    const enteredPIN =
+        document.getElementById("pinInput").value;
+
+    const errorMessage =
+        document.getElementById("pinError");
+
+
+    if (enteredPIN === CORRECT_PIN) {
+
+        /*
+           Save authorization in this browser.
+           The teacher will not need to enter
+           the PIN again on this browser unless
+           site data is cleared.
+        */
+
+        localStorage.setItem(
+            "tamilBookAuthorized",
+            "true"
+        );
+
+
+        /*
+           Hide PIN screen
+        */
+
+        document.getElementById("pinScreen").style.display =
+            "none";
+
+
+    } else {
+
+        /*
+           Wrong PIN
+        */
+
+        errorMessage.textContent =
+            "Incorrect PIN. Please try again.";
+
+        document.getElementById("pinInput").value = "";
+
+        document.getElementById("pinInput").focus();
+
+    }
 
 }
 
-setTimeout(()=>{
 
-window.location.href=page;
+/* =========================================
+   ALLOW ENTER KEY
+========================================= */
 
-},600);
+document.getElementById("pinInput").addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            checkPIN();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CHECK EXISTING AUTHORIZATION
+========================================= */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const authorized =
+            localStorage.getItem("tamilBookAuthorized");
+
+
+        if (authorized === "true") {
+
+            document.getElementById("pinScreen").style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   PAGE FLIP
+========================================= */
+
+function nextPage(page, direction) {
+
+    const app =
+        document.querySelector(".app");
+
+
+    if (direction === "next") {
+
+        app.classList.add("flip-out-next");
+
+    } else {
+
+        app.classList.add("flip-out-prev");
+
+    }
+
+
+    setTimeout(function() {
+
+        window.location.href = page;
+
+    }, 600);
 
 }
 
 </script>
 
+
 </body>
+
 </html>
