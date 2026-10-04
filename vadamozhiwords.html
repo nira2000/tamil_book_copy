@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VADAMOZHI WORDS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:"Noto Sans Tamil",sans-serif;
+    background:#111D66;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+    perspective:1500px;
+}
+
+
+/* ===========================
+   APP / BOOK
+=========================== */
+
+.app{
+    width:100%;
+    max-width:950px;
+}
+
+.header{
+    color:white;
+    text-align:center;
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:6px;
+    text-shadow:
+        0 0 8px white,
+        0 0 15px #4FC3F7;
+}
+
+.book{
+    position:relative;
+    background:#F8F1E4;
+    border-radius:28px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.book::before{
+    content:"";
+    position:absolute;
+    left:-10px;
+    top:25px;
+    bottom:25px;
+    width:18px;
+    background:#D40C02;
+    border-radius:12px;
+}
+
+.book-content{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.page{
+    width:900px;
+    min-height:1270px;
+    position:relative;
+    overflow:hidden;
+    padding:25px 35px 25px;
+    background:#8FD5EE;
+    color:#000;
+}
+
+
+/* ===========================
+   TOP-LEFT SPIRAL
+=========================== */
+
+.page::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    left:-145px;
+    top:-75px;
+    border:22px solid rgba(68,126,190,.48);
+    border-radius:50%;
+    box-shadow:
+        42px 18px 0 -5px rgba(68,126,190,.48),
+        78px 42px 0 -10px rgba(68,126,190,.48),
+        105px 68px 0 -15px rgba(68,126,190,.48);
+    z-index:0;
+    pointer-events:none;
+}
+
+
+/* ===========================
+   BOTTOM-RIGHT SWIRL
+=========================== */
+
+.page::after{
+    content:"";
+    position:absolute;
+    width:155px;
+    height:155px;
+    right:-80px;
+    bottom:-65px;
+    border:10px solid rgba(75,177,255,.55);
+    border-radius:48% 52% 48% 52%;
+    transform:rotate(-35deg);
+    box-shadow:
+        -22px 10px 0 -2px rgba(75,177,255,.55),
+        -42px 23px 0 -4px rgba(75,177,255,.55),
+        -62px 37px 0 -6px rgba(75,177,255,.55);
+    z-index:0;
+    pointer-events:none;
+}
+
+
+/* ===========================
+   TITLE SPEECH BUBBLE
+=========================== */
+
+.title{
+    position:relative;
+    z-index:2;
+
+    width:390px;
+    min-height:150px;
+
+    margin:0 auto 28px;
+
+    background:#FFF7D8;
+
+    border:7px solid #0757B8;
+    border-radius:58% 48% 55% 45% / 55% 52% 48% 45%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:18px 35px 24px;
+
+    font-size:42px;
+    line-height:1.25;
+    font-weight:700;
+    text-align:center;
+
+    color:#000;
+
+    box-shadow:10px 8px 0 #0757B8;
+}
+
+
+/* speech bubble tail */
+
+.title::after{
+    content:"";
+    position:absolute;
+    left:22px;
+    bottom:-24px;
+    width:48px;
+    height:38px;
+    background:#FFF7D8;
+    border-left:7px solid #0757B8;
+    border-bottom:7px solid #0757B8;
+    transform:skewX(-28deg) rotate(-18deg);
+    border-radius:0 0 0 16px;
+}
+
+
+/* pink decorative stroke */
+
+.title::before{
+    content:"";
+    position:absolute;
+    inset:-18px -18px -28px -18px;
+    border:5px solid #F23D9A;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
+    border-radius:55% 45% 50% 60%;
+    transform:rotate(4deg);
+    z-index:-1;
+}
+
+
+/* ===========================
+   ORANGE DECORATIVE MARKS
+=========================== */
+
+.star1,
+.star2,
+.star3,
+.star4{
+    position:absolute;
+    z-index:3;
+    color:#FF9D00;
+    font-size:42px;
+    font-family:Arial,sans-serif;
+}
+
+.star1{
+    top:20px;
+    left:245px;
+}
+
+.star2{
+    top:45px;
+    left:220px;
+}
+
+.star3{
+    top:85px;
+    right:205px;
+}
+
+.star4{
+    top:55px;
+    right:180px;
+}
+
+
+/* ===========================
+   OLD CORNER IMAGE HIDDEN
+=========================== */
+
+.corner{
+    display:none;
+}
+
+
+/* ===========================
+   GRID
+=========================== */
+
+.grid{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    border:2px solid #111;
+    background:#8FD5EE;
+}
+
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+    height:260px;
+
+    border-right:2px solid #111;
+    border-bottom:2px solid #111;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 10px 18px;
+
+    background:#8FD5EE;
+}
+
+.card:nth-child(3n){
+    border-right:none;
+}
+
+.card:nth-last-child(-n+3){
+    border-bottom:none;
+}
+
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.card img{
+    width:170px;
+    height:155px;
+
+    object-fit:contain;
+
+    user-select:none;
+    pointer-events:none;
+}
+
+
+/* ===========================
+   WORD BUTTON
+=========================== */
+
+.word{
+    width:205px;
+    min-height:55px;
+
+    border:3px solid #111;
+    border-radius:5px;
+
+    background:#8FD5EE;
+
+    font-size:29px;
+    line-height:1;
+
+    font-weight:700;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    padding:5px 30px 5px 8px;
+
+    position:relative;
+}
+
+.word:hover{
+    background:#A7E0F3;
+    transform:translateY(-2px);
+}
+
+.word:active{
+    transform:scale(.96);
+    background:#7CC8E5;
+}
+
+
+/* ===========================
+   LETTER HIGHLIGHT
+=========================== */
+
+.letter{
+    display:inline;
+    padding:0;
+    margin:0;
+    border-radius:3px;
+    transition:.2s;
+}
+
+.letter.active{
+    color:#D50000;
+    font-weight:700;
+}
+
+
+/* ===========================
+   SPEAKER
+=========================== */
+
+.speaker{
+    position:relative;
+}
+
+.speaker::after{
+    content:"🔊";
+    position:absolute;
+    top:3px;
+    right:5px;
+    font-size:14px;
+    pointer-events:none;
+}
+
+
+/* ===========================
+   PAGE NUMBER
+=========================== */
+
+.page-number{
+    position:relative;
+    z-index:5;
+
+    margin-top:8px;
+
+    text-align:center;
+
+    font-size:25px;
+    line-height:1;
+
+    color:#23498B;
+    font-weight:700;
+}
+
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
+.navigation{
+    margin-top:20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-btn{
+    width:65px;
+    height:65px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#F8F1E4;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.25);
+
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    transform:scale(1.08);
+}
+
+.dots{
+    display:flex;
+    gap:10px;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#999;
+}
+
+.dot.active{
+    background:#00ff40;
+}
+
+
+/* ===========================
+   FLIP
+=========================== */
+
+.flip-out-next{
+    animation:flipNext .6s ease forwards;
+    transform-origin:left center;
+}
+
+.flip-out-prev{
+    animation:flipPrev .6s ease forwards;
+    transform-origin:right center;
+}
+
+@keyframes flipNext{
+    from{
+        transform:rotateY(0deg);
+        opacity:1;
+    }
+    to{
+        transform:rotateY(-120deg);
+        opacity:0;
+    }
+}
+
+@keyframes flipPrev{
+    from{
+        transform:rotateY(0deg);
+        opacity:1;
+    }
+    to{
+        transform:rotateY(120deg);
+        opacity:0;
+    }
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    html,
+    body{
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    body{
+        background:#111D66;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .app{
+        width:100%;
+        height:100dvh;
+        display:flex;
+        flex-direction:column;
+        padding:3px 8px 5px;
+        overflow:hidden;
+    }
+
+    .header{
+        flex:0 0 20px;
+        height:20px;
+        font-size:12px;
+        line-height:20px;
+        text-align:center;
+        margin:0;
+        white-space:nowrap;
+    }
+
+    .book{
+        flex:1 1 auto;
+        width:100%;
+        max-width:410px;
+        min-height:0;
+        margin:0 auto;
+        padding:7px;
+        border-radius:20px;
+
+        display:flex;
+        flex-direction:column;
+
+        background:#F8F1E4;
+        overflow:hidden;
+    }
+
+    .book::before{
+        width:7px;
+        left:-3px;
+        top:10px;
+        bottom:10px;
+        border-radius:8px;
+    }
+
+    .book-content{
+        flex:1 1 auto;
+        min-height:0;
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:flex-start;
+        overflow:hidden;
+        position:relative;
+    }
+
+    /* Keep the real A4-like page size and scale the WHOLE page evenly. */
+    .page{
+        width:900px;
+        height:1270px;
+        min-height:1270px;
+        flex:0 0 900px;
+        position:absolute;
+        left:50%;
+        top:0;
+        transform-origin:top center;
+        margin:0;
+        padding:25px 35px 25px;
+        overflow:hidden;
+    }
+
+    .title{
+        width:390px;
+        min-height:150px;
+        margin:0 auto 28px;
+        font-size:42px;
+        padding:18px 35px 24px;
+    }
+
+    .grid{
+        width:100%;
+    }
+
+    .card{
+        height:260px;
+        padding:18px 10px 18px;
+    }
+
+    .card img{
+        width:170px;
+        height:155px;
+    }
+
+    .word{
+        width:205px;
+        min-height:55px;
+        font-size:29px;
+    }
+
+    .speaker::after{
+        top:3px;
+        right:5px;
+        font-size:14px;
+    }
+
+    .page-number{
+        margin-top:8px;
+        font-size:25px;
+    }
+
+    .navigation{
+        flex:0 0 34px;
+        height:34px;
+        margin-top:4px;
+        padding:0 5px;
+    }
+
+    .nav-btn{
+        width:34px;
+        height:34px;
+        font-size:15px;
+    }
+
+    .dots{
+        gap:7px;
+    }
+
+    .dot{
+        width:8px;
+        height:8px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script src="pin-protection.js"></script>
+
+
+<div class="app">
+
+    <div class="header">
+        📚 Tamil e-Book • தமிழ் எழுத்துகள்
+    </div>
+
+    <div class="book">
+
+        <div class="book-content">
+
+            <div class="page">
+
+    <!-- Decorative corner -->
+    <div class="corner">
+        <img src="images/corner.png" alt="">
+    </div>
+
+    <!-- Stars -->
+    <div class="star1">✦</div>
+    <div class="star2">✦</div>
+    <div class="star3">✦</div>
+    <div class="star4">✦</div>
+
+    <!-- Title -->
+    <div class="title">
+        வடமொழி எழுத்துகள்
+    </div>
+
+
+<!-- ================= GRID ================= -->
+
+<div class="grid">
+
+
+    <!-- 1 - ஜன்னல் -->
+    <div class="card">
+
+        <img src="v97.png">
+
+        <div class="word speaker"
+             data-audio="jannal.mp3">
+
+            <span class="letter">ஜ</span>
+            <span class="letter">ன்</span>
+            <span class="letter">ன</span>
+            <span class="letter">ல்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 2 - மலர் -->
+    <div class="card">
+
+        <img src="v98.png">
+
+        <div class="word speaker"
+             data-audio="malar.mp3">
+
+            <span class="letter">பு</span>
+            <span class="letter">ஷ்</span>
+            <span class="letter">ப</span>
+            <span class="letter">ம்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 3 - புத்தகம் -->
+    <div class="card">
+
+        <img src="v99.png">
+
+        <div class="word speaker"
+             data-audio="puthagam.mp3">
+
+            <span class="letter">பு</span>
+            <span class="letter">ஸ்</span>
+            <span class="letter">த</span>
+            <span class="letter">க</span>
+            <span class="letter">ம்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 4 - குடம் -->
+    <div class="card">
+
+        <img src="v100.png">
+
+        <div class="word speaker"
+             data-audio="kudam.mp3">
+
+            <span class="letter">ஜா</span>
+            <span class="letter">டி</span>
+    
+
+        </div>
+
+    </div>
+
+
+    <!-- 5 - தாஜ்மஹால் -->
+    <div class="card">
+
+        <img src="v101.png">
+
+        <div class="word speaker"
+             data-audio="tajmahal.mp3">
+
+            <span class="letter">தா</span>
+            <span class="letter">ஜ்</span>
+            <span class="letter">ம</span>
+            <span class="letter">ஹா</span>
+            <span class="letter">ல்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 6 - மனிதன் -->
+    <div class="card">
+
+        <img src="v102.png">
+
+        <div class="word speaker"
+             data-audio="manithan.mp3">
+
+            <span class="letter">வே</span>
+            <span class="letter">ஷ்</span>
+            <span class="letter">டி</span>
+            
+
+        </div>
+
+    </div>
+
+
+    <!-- 7 - குஞ்சு -->
+    <div class="card">
+
+        <img src="v103.png">
+
+        <div class="word speaker"
+             data-audio="kunju.mp3">
+
+            <span class="letter">ப</span>
+            <span class="letter">க்</span>
+            <span class="letter">ஷி</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 8 - கிறிஸ்துமஸ் மரம் -->
+    <div class="card">
+
+        <img src="v104.png">
+
+        <div class="word speaker"
+             data-audio="kiristhumasmaram.mp3">
+
+            <span class="letter">கி</span>
+            <span class="letter">றி</span>
+            <span class="letter">ஸ்</span>
+            <span class="letter">ம</span>
+            <span class="letter">ஸ்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 9 - பாம்பு -->
+    <div class="card">
+
+        <img src="v105.png">
+
+        <div class="word speaker"
+             data-audio="paambu.mp3">
+
+            <span class="letter">ஸ</span>
+            <span class="letter">ர்</span>
+            <span class="letter">ப்</span>
+            <span class="letter">ப</span>
+            <span class="letter">ம்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 10 - ரோஜா -->
+    <div class="card">
+
+        <img src="v106.png">
+
+        <div class="word speaker"
+             data-audio="roja.mp3">
+
+            <span class="letter">ரோ</span>
+            <span class="letter">ஜா</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 11 - அனுமன் -->
+    <div class="card">
+
+        <img src="v107.png">
+
+        <div class="word speaker"
+             data-audio="anuman.mp3">
+
+            <span class="letter">ஹ</span>
+            <span class="letter">னு</span>
+            <span class="letter">மா</span>
+            <span class="letter">ன்</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- 12 - கிருஷ்ணர் -->
+    <div class="card">
+
+        <img src="v108.png">
+
+        <div class="word speaker"
+             data-audio="krishnar.mp3">
+
+            <span class="letter">ஸ்</span>
+            <span class="letter">ரீ</span>
+            <span class="letter">கி</span>
+            <span class="letter">ரு</span>
+            <span class="letter">ஷ்</span>
+            <span class="letter">ணா</span>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+    <!-- Page Number -->
+
+            </div>
+
+        </div>
+
+        <div class="page-number">
+            31
+        </div>
+
+    </div>
+
+
+    <div class="navigation">
+
+        <button class="nav-btn"
+                onclick="nextPage('vaasi9.html','prev')">
+            ❮
+        </button>
+
+
+        <div class="dots">
+
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+
+        </div>
+
+
+        <button class="nav-btn"
+                onclick="nextPage('vaasi11.html','next')">
+            ❯
+        </button>
+
+    </div>
+
+
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function nextPage(page,direction){
+
+    const app=document.querySelector(".app");
+
+    if(direction==="next")
+        app.classList.add("flip-out-next");
+    else
+        app.classList.add("flip-out-prev");
+
+    setTimeout(()=>{
+        window.location.href=page;
+    },600);
+
+}
+
+
+/* ==========================================
+   AUDIO + INDIVIDUAL LETTER TIMINGS
+========================================== */
+
+let currentAudio = null;
+let currentButton = null;
+let highlightTimers = [];
+
+
+const timings = {
+
+    "jannal.mp3":[
+        0,
+        1500,
+        2800,
+        4000
+    ],
+
+    "malar.mp3":[
+        0,
+        1800,
+        3200
+    ],
+
+    "puthagam.mp3":[
+        0,
+        1200,
+        2300,
+        3400,
+        4500
+    ],
+
+    "kudam.mp3":[
+        0,
+        1800,
+        3200
+    ],
+
+    "tajmahal.mp3":[
+        0,
+        1200,
+        2400,
+        3600,
+        4800
+    ],
+
+    "manithan.mp3":[
+        0,
+        1200,
+        2400,
+        3600
+    ],
+
+    "kunju.mp3":[
+        0,
+        1700,
+        3000
+    ],
+
+    "kiristhumasmaram.mp3":[
+        0,
+        1000,
+        1900,
+        2800,
+        3700,
+        4600
+    ],
+
+    "paambu.mp3":[
+        0,
+        1600,
+        3000
+    ],
+
+    "roja.mp3":[
+        0,
+        2000
+    ],
+
+    "anuman.mp3":[
+        0,
+        1200,
+        2400,
+        3600
+    ],
+
+    "krishnar.mp3":[
+        0,
+        1000,
+        2000,
+        3000,
+        4000
+    ]
+
+};
+
+
+
+/* ==========================================
+   CLEAR HIGHLIGHTS
+========================================== */
+
+function clearLetterHighlights(button){
+
+    if(!button) return;
+
+    button.querySelectorAll(".letter").forEach(letter=>{
+
+        letter.classList.remove("active");
+
+    });
+
+}
+
+
+/* ==========================================
+   CLEAR TIMERS
+========================================== */
+
+function clearHighlightTimers(){
+
+    highlightTimers.forEach(timer=>{
+
+        clearTimeout(timer);
+
+    });
+
+    highlightTimers=[];
+
+}
+
+
+/* ==========================================
+   START LETTER HIGHLIGHT
+========================================== */
+
+function startLetterHighlight(button){
+
+    clearLetterHighlights(button);
+
+    clearHighlightTimers();
+
+
+    const letters =
+        button.querySelectorAll(".letter");
+
+
+    if(letters.length===0) return;
+
+
+    const audioFile =
+        button.dataset.audio;
+
+
+    const buttonTimings =
+        timings[audioFile];
+
+
+    if(!buttonTimings) return;
+
+
+    /*
+       Highlight each letter
+       according to your timing.
+    */
+
+    buttonTimings.forEach((time,index)=>{
+
+        const timer=setTimeout(()=>{
+
+            if(currentButton!==button) return;
+
+
+            /*
+               IMPORTANT:
+               We DO NOT remove
+               previous highlights.
+            */
+
+            if(letters[index]){
+
+                letters[index].classList.add("active");
+
+            }
+
+        },time);
+
+
+        highlightTimers.push(timer);
+
+    });
+
+}
+
+
+/* ==========================================
+   STOP AUDIO
+========================================== */
+
+function stopCurrent(){
+
+    clearHighlightTimers();
+
+
+    if(currentAudio){
+
+        currentAudio.pause();
+
+        currentAudio.currentTime=0;
+
+    }
+
+
+    if(currentButton){
+
+        clearLetterHighlights(currentButton);
+
+    }
+
+
+    currentAudio=null;
+
+    currentButton=null;
+
+}
+
+
+/* ==========================================
+   WORD BUTTONS
+========================================== */
+
+const words =
+    document.querySelectorAll(".word");
+
+
+words.forEach(button=>{
+
+    button.addEventListener("click",function(){
+
+        const audioFile =
+            this.dataset.audio;
+
+
+        /* ==========================
+           SAME BUTTON = STOP
+        ========================== */
+
+        if(
+            currentButton===this &&
+            currentAudio &&
+            !currentAudio.paused
+        ){
+
+            stopCurrent();
+
+            return;
+
+        }
+
+
+        /* ==========================
+           STOP PREVIOUS
+        ========================== */
+
+        stopCurrent();
+
+
+        /* ==========================
+           CREATE AUDIO
+        ========================== */
+
+        currentAudio =
+            new Audio(audioFile);
+
+        currentButton=this;
+
+
+        /* ==========================
+           PLAY AUDIO
+        ========================== */
+
+        currentAudio.play();
+
+
+        /* ==========================
+           START HIGHLIGHT
+        ========================== */
+
+        startLetterHighlight(this);
+
+
+        /* ==========================
+           AUDIO FINISHED
+        ========================== */
+
+        currentAudio.onended=function(){
+
+            clearHighlightTimers();
+
+
+            clearLetterHighlights(
+                button
+            );
+
+
+            currentAudio=null;
+
+            currentButton=null;
+
+        };
+
+    });
+
+});
+
+
+/* ==========================================
+   MOBILE PAGE FIT
+========================================== */
+
+function fitPage(){
+
+    const page = document.querySelector(".page");
+    const bookContent = document.querySelector(".book-content");
+
+    if(!page || !bookContent) return;
+
+    if(window.innerWidth > 768){
+        page.style.transform = "";
+        return;
+    }
+
+    const pageWidth = 900;
+    const pageHeight = 1270;
+
+    const availableWidth = bookContent.clientWidth;
+    const availableHeight = bookContent.clientHeight;
+
+    const scale = Math.min(
+        (availableWidth - 2) / pageWidth,
+        (availableHeight - 2) / pageHeight
+    );
+
+    page.style.transform = `translateX(-50%) scale(${scale})`;
+}
+
+window.addEventListener(
+    "load",
+    fitPage
+);
+
+
+window.addEventListener(
+    "resize",
+    fitPage
+);
+
+</script>
+
+</body>
+</html>
