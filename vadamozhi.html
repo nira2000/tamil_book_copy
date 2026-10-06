@@ -827,6 +827,19 @@ body{
     background:#11a8df;
 }
 
+.top-head button {
+    position: relative;
+}
+
+.top-speaker {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    margin-left: 3px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
 
 /* ===== MOBILE ===== */
 
@@ -876,6 +889,11 @@ body{
 
     .top-vadamozhi-table .top-head button{
         font-size:9px;
+    }
+
+    .top-speaker {
+        font-size: 7px;
+        margin-left: 1px;
     }
 }
 
@@ -931,6 +949,81 @@ body{
     }
 }
 
+
+
+/* =========================================
+   FAMILY ROWS
+========================================= */
+
+.family-cell{
+    position:relative;
+    text-align:center;
+    vertical-align:middle;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    transition:background .2s ease,color .2s ease;
+}
+
+.family-cell > span:first-child{
+    display:inline-block;
+}
+
+.family-start{
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:0 22px 0 3px;
+    border:0;
+    background:transparent;
+    color:#000;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    cursor:pointer;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.family-speaker{
+    position:absolute;
+    right:3px;
+    top:50%;
+    transform:translateY(-50%);
+    font-family:Arial,sans-serif;
+    font-size:14px;
+    line-height:1;
+    pointer-events:none;
+}
+
+.family-start.playing{
+    background:rgba(255,48,48,.16);
+}
+
+.family-cell.highlighted{
+    background:#ff3030 !important;
+    color:#fff !important;
+}
+
+.family-cell.highlighted .family-start{
+    color:#fff;
+}
+
+@media(max-width:700px){
+    .family-cell{font-size:10px;}
+    .family-start{font-size:10px;padding:0 11px 0 1px;}
+    .family-speaker{right:1px;font-size:7px;}
+}
+
+@media(max-width:380px){
+    .family-cell{font-size:9px;}
+    .family-start{font-size:9px;padding-right:10px;}
+    .family-speaker{font-size:6px;}
+}
+
 </style>
 </head>
 
@@ -958,115 +1051,129 @@ body{
                     <tbody>
 
                         <tr class="top-head">
-                            <td><button data-audio="a.mp3">அ</button></td>
-                            <td><button data-audio="aa.mp3">ஆ</button></td>
-                            <td><button data-audio="i.mp3">இ</button></td>
-                            <td><button data-audio="ii.mp3">ஈ</button></td>
-                            <td><button data-audio="u.mp3">உ</button></td>
-                            <td><button data-audio="uu.mp3">ஊ</button></td>
-                            <td><button data-audio="e.mp3">எ</button></td>
-                            <td><button data-audio="ee.mp3">ஏ</button></td>
-                            <td><button data-audio="ai.mp3">ஐ</button></td>
-                            <td><button data-audio="o.mp3">ஒ</button></td>
-                            <td><button data-audio="oo.mp3">ஓ</button></td>
-                            <td><button data-audio="au.mp3">ஔ</button></td>
-                            <td><button data-audio="aytham.mp3">ஃ</button></td>
+                            <td><button data-audio="a.mp3">அ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="aa.mp3">ஆ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="i.mp3">இ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="ii.mp3">ஈ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="u.mp3">உ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="uu.mp3">ஊ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="e.mp3">எ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="ee.mp3">ஏ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="ai.mp3">ஐ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="o.mp3">ஒ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="oo.mp3">ஓ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="au.mp3">ஔ <span class="top-speaker">🔊</span></button></td>
+                            <td><button data-audio="ak.mp3">ஃ <span class="top-speaker">🔊</span></button></td>
                         </tr>
 
-                        <tr>
-                            <td><button data-audio="ja.mp3">ஜ</button></td>
-                            <td><button data-audio="jaa.mp3">ஜா</button></td>
-                            <td><button data-audio="ji.mp3">ஜி</button></td>
-                            <td><button data-audio="jii.mp3">ஜீ</button></td>
-                            <td><button data-audio="ju.mp3">ஜு</button></td>
-                            <td><button data-audio="juu.mp3">ஜூ</button></td>
-                            <td><button data-audio="je.mp3">ஜெ</button></td>
-                            <td><button data-audio="jee.mp3">ஜே</button></td>
-                            <td><button data-audio="jai.mp3">ஜை</button></td>
-                            <td><button data-audio="jo.mp3">ஜொ</button></td>
-                            <td><button data-audio="joo.mp3">ஜோ</button></td>
-                            <td><button data-audio="jau.mp3">ஜௌ</button></td>
-                            <td class="blue-cell"><button data-audio="j.mp3">ஜ்</button></td>
-                        </tr>
-
-                        <tr>
-                            <td><button data-audio="sha.mp3">ஷ</button></td>
-                            <td><button data-audio="shaa.mp3">ஷா</button></td>
-                            <td><button data-audio="shi.mp3">ஷி</button></td>
-                            <td><button data-audio="shii.mp3">ஷீ</button></td>
-                            <td><button data-audio="shu.mp3">ஷு</button></td>
-                            <td><button data-audio="shuu.mp3">ஷூ</button></td>
-                            <td><button data-audio="she.mp3">ஷெ</button></td>
-                            <td><button data-audio="shee.mp3">ஷே</button></td>
-                            <td><button data-audio="shai.mp3">ஷை</button></td>
-                            <td><button data-audio="sho.mp3">ஷொ</button></td>
-                            <td><button data-audio="shoo.mp3">ஷோ</button></td>
-                            <td><button data-audio="shau.mp3">ஷௌ</button></td>
-                            <td class="blue-cell"><button data-audio="sh.mp3">ஷ்</button></td>
-                        </tr>
-
-                        <tr>
-                            <td><button data-audio="sa.mp3">ஸ</button></td>
-                            <td><button data-audio="saa.mp3">ஸா</button></td>
-                            <td><button data-audio="si.mp3">ஸி</button></td>
-                            <td><button data-audio="sii.mp3">ஸீ</button></td>
-                            <td><button data-audio="su.mp3">ஸு</button></td>
-                            <td><button data-audio="suu.mp3">ஸூ</button></td>
-                            <td><button data-audio="se.mp3">ஸெ</button></td>
-                            <td><button data-audio="see.mp3">ஸே</button></td>
-                            <td><button data-audio="sai.mp3">ஸை</button></td>
-                            <td><button data-audio="so.mp3">ஸொ</button></td>
-                            <td><button data-audio="soo.mp3">ஸோ</button></td>
-                            <td><button data-audio="sau.mp3">ஸௌ</button></td>
-                            <td class="blue-cell"><button data-audio="s.mp3">ஸ்</button></td>
-                        </tr>
-
-                        <tr>
-                            <td><button data-audio="ha.mp3">ஹ</button></td>
-                            <td><button data-audio="haa.mp3">ஹா</button></td>
-                            <td><button data-audio="hi.mp3">ஹி</button></td>
-                            <td><button data-audio="hii.mp3">ஹீ</button></td>
-                            <td><button data-audio="hu.mp3">ஹு</button></td>
-                            <td><button data-audio="huu.mp3">ஹூ</button></td>
-                            <td><button data-audio="he.mp3">ஹெ</button></td>
-                            <td><button data-audio="hee.mp3">ஹே</button></td>
-                            <td><button data-audio="hai.mp3">ஹை</button></td>
-                            <td><button data-audio="ho.mp3">ஹொ</button></td>
-                            <td><button data-audio="hoo.mp3">ஹோ</button></td>
-                            <td><button data-audio="hau.mp3">ஹௌ</button></td>
-                            <td class="blue-cell"><button data-audio="h.mp3">ஹ்</button></td>
-                        </tr>
-
-                        <tr>
-
-                            <td><button data-audio="ksha.mp3">க்ஷ</button></td>
-
-                            <td><button data-audio="kshaa.mp3">க்ஷா</button></td>
-
-                            <td><button data-audio="kshi.mp3">க்ஷி</button></td>
-
-                            <td><button data-audio="kshii.mp3">க்ஷீ</button></td>
-
-                            <td><button data-audio="kshu.mp3">க்ஷு</button></td>
-
-                            <td><button data-audio="kshuu.mp3">க்ஷூ</button></td>
-
-                            <td><button data-audio="kshe.mp3">க்ஷெ</button></td>
-
-                            <td><button data-audio="kshee.mp3">க்ஷே</button></td>
-
-                            <td><button data-audio="kshai.mp3">க்ஷை</button></td>
-
-                            <td><button data-audio="ksho.mp3">க்ஷொ</button></td>
-
-                            <td><button data-audio="kshoo.mp3">க்ஷோ</button></td>
-
-                            <td><button data-audio="kshau.mp3">க்ஷௌ</button></td>
-
-                            <td class="blue-cell">
-                                <button data-audio="ksh.mp3">க்ஷ்</button>
+                        <!-- J FAMILY -->
+                        <tr class="family-row" data-family="ja">
+                            <td class="family-cell">
+                                <button class="family-start" data-family-audio="jafamily.mp3">
+                                    <span>ஜ</span>
+                                    <span class="family-speaker">🔊</span>
+                                </button>
                             </td>
+                            <td class="family-cell"><span>ஜா</span></td>
+                            <td class="family-cell"><span>ஜி</span></td>
+                            <td class="family-cell"><span>ஜீ</span></td>
+                            <td class="family-cell"><span>ஜு</span></td>
+                            <td class="family-cell"><span>ஜூ</span></td>
+                            <td class="family-cell"><span>ஜெ</span></td>
+                            <td class="family-cell"><span>ஜே</span></td>
+                            <td class="family-cell"><span>ஜை</span></td>
+                            <td class="family-cell"><span>ஜொ</span></td>
+                            <td class="family-cell"><span>ஜோ</span></td>
+                            <td class="family-cell"><span>ஜௌ</span></td>
+                            <td class="family-cell blue-cell"><span>ஜ்</span></td>
+                        </tr>
 
+                        <!-- SHA FAMILY -->
+                        <tr class="family-row" data-family="sha">
+                            <td class="family-cell">
+                                <button class="family-start" data-family-audio="shafamily.mp3">
+                                    <span>ஷ</span>
+                                    <span class="family-speaker">🔊</span>
+                                </button>
+                            </td>
+                            <td class="family-cell"><span>ஷா</span></td>
+                            <td class="family-cell"><span>ஷி</span></td>
+                            <td class="family-cell"><span>ஷீ</span></td>
+                            <td class="family-cell"><span>ஷு</span></td>
+                            <td class="family-cell"><span>ஷூ</span></td>
+                            <td class="family-cell"><span>ஷெ</span></td>
+                            <td class="family-cell"><span>ஷே</span></td>
+                            <td class="family-cell"><span>ஷை</span></td>
+                            <td class="family-cell"><span>ஷொ</span></td>
+                            <td class="family-cell"><span>ஷோ</span></td>
+                            <td class="family-cell"><span>ஷௌ</span></td>
+                            <td class="family-cell blue-cell"><span>ஷ்</span></td>
+                        </tr>
+
+                        <!-- SA FAMILY -->
+                        <tr class="family-row" data-family="sa">
+                            <td class="family-cell">
+                                <button class="family-start" data-family-audio="safamily.mp3">
+                                    <span>ஸ</span>
+                                    <span class="family-speaker">🔊</span>
+                                </button>
+                            </td>
+                            <td class="family-cell"><span>ஸா</span></td>
+                            <td class="family-cell"><span>ஸி</span></td>
+                            <td class="family-cell"><span>ஸீ</span></td>
+                            <td class="family-cell"><span>ஸு</span></td>
+                            <td class="family-cell"><span>ஸூ</span></td>
+                            <td class="family-cell"><span>ஸெ</span></td>
+                            <td class="family-cell"><span>ஸே</span></td>
+                            <td class="family-cell"><span>ஸை</span></td>
+                            <td class="family-cell"><span>ஸொ</span></td>
+                            <td class="family-cell"><span>ஸோ</span></td>
+                            <td class="family-cell"><span>ஸௌ</span></td>
+                            <td class="family-cell blue-cell"><span>ஸ்</span></td>
+                        </tr>
+
+                        <!-- HA FAMILY -->
+                        <tr class="family-row" data-family="ha">
+                            <td class="family-cell">
+                                <button class="family-start" data-family-audio="hafamily.mp3">
+                                    <span>ஹ</span>
+                                    <span class="family-speaker">🔊</span>
+                                </button>
+                            </td>
+                            <td class="family-cell"><span>ஹா</span></td>
+                            <td class="family-cell"><span>ஹி</span></td>
+                            <td class="family-cell"><span>ஹீ</span></td>
+                            <td class="family-cell"><span>ஹு</span></td>
+                            <td class="family-cell"><span>ஹூ</span></td>
+                            <td class="family-cell"><span>ஹெ</span></td>
+                            <td class="family-cell"><span>ஹே</span></td>
+                            <td class="family-cell"><span>ஹை</span></td>
+                            <td class="family-cell"><span>ஹொ</span></td>
+                            <td class="family-cell"><span>ஹோ</span></td>
+                            <td class="family-cell"><span>ஹௌ</span></td>
+                            <td class="family-cell blue-cell"><span>ஹ்</span></td>
+                        </tr>
+
+                        <!-- KSHA FAMILY -->
+                        <tr class="family-row" data-family="ksha">
+                            <td class="family-cell">
+                                <button class="family-start" data-family-audio="kshafamily.mp3">
+                                    <span>க்ஷ</span>
+                                    <span class="family-speaker">🔊</span>
+                                </button>
+                            </td>
+                            <td class="family-cell"><span>க்ஷா</span></td>
+                            <td class="family-cell"><span>க்ஷி</span></td>
+                            <td class="family-cell"><span>க்ஷீ</span></td>
+                            <td class="family-cell"><span>க்ஷு</span></td>
+                            <td class="family-cell"><span>க்ஷூ</span></td>
+                            <td class="family-cell"><span>க்ஷெ</span></td>
+                            <td class="family-cell"><span>க்ஷே</span></td>
+                            <td class="family-cell"><span>க்ஷை</span></td>
+                            <td class="family-cell"><span>க்ஷொ</span></td>
+                            <td class="family-cell"><span>க்ஷோ</span></td>
+                            <td class="family-cell"><span>க்ஷௌ</span></td>
+                            <td class="family-cell blue-cell"><span>க்ஷ்</span></td>
                         </tr>
 
                     </tbody>
@@ -1245,7 +1352,7 @@ body{
         <div class="page-number">40</div>
 
         <div class="navigation">
-            <button class="nav-btn" onclick="nextPage('previous.html','prev')" aria-label="Previous page">❮</button>
+            <button class="nav-btn" onclick="nextPage('story.html','prev')" aria-label="Previous page">❮</button>
 
             <div class="dots">
                 <span class="dot"></span>
@@ -1255,7 +1362,7 @@ body{
                 <span class="dot"></span>
             </div>
 
-            <button class="nav-btn" onclick="nextPage('next.html','next')" aria-label="Next page">❯</button>
+            <button class="nav-btn" onclick="nextPage('vadamozhiwords.html','next')" aria-label="Next page">❯</button>
         </div>
 
     </div>
@@ -1265,8 +1372,14 @@ body{
 
 <script>
 const audioPlayer = document.getElementById("audioPlayer");
-const buttons = document.querySelectorAll(".word-button, .title, .top-vadamozhi-table button");
+/* =========================================================
+   NORMAL WORD + TITLE AUDIO
+========================================================= */
+const buttons = document.querySelectorAll(".word-button, .title");
+const vowelButtons = document.querySelectorAll(".top-vadamozhi-table .top-head button");
+
 let activeButton = null;
+let activeVowelButton = null;
 let highlightTimer = null;
 
 function splitTamilWord(text){
@@ -1304,8 +1417,7 @@ function prepareButton(button){
     button.appendChild(wrapper);
 
     if(button.classList.contains("title")){
-        const sparkPositions = ["s1","s2","s3","s4"];
-        sparkPositions.forEach(pos=>{
+        ["s1","s2","s3","s4"].forEach(pos=>{
             const s = document.createElement("span");
             s.className = "spark " + pos;
             s.textContent = "✦";
@@ -1330,6 +1442,13 @@ function resetButton(button){
     });
 }
 
+function resetVowelButton(){
+    if(activeVowelButton){
+        activeVowelButton.classList.remove("playing");
+        activeVowelButton = null;
+    }
+}
+
 function stopCurrentAudio(){
     clearInterval(highlightTimer);
     highlightTimer = null;
@@ -1339,15 +1458,15 @@ function stopCurrentAudio(){
 
     if(activeButton) resetButton(activeButton);
     activeButton = null;
+
+    resetVowelButton();
 }
 
 function highlightLetter(button,index){
     const letters = button.querySelectorAll(".letter");
-
     letters.forEach((letter,i)=>{
-        if(i <= index){
-            letter.classList.add("highlighted");
-        }
+        if(i <= index) letter.classList.add("highlighted");
+        else letter.classList.remove("highlighted");
     });
 }
 
@@ -1361,9 +1480,7 @@ function startHighlighting(button){
         .filter(n=>!Number.isNaN(n));
 
     if(times.length === 0){
-        const duration = Number.isFinite(audioPlayer.duration) && audioPlayer.duration > 0
-            ? audioPlayer.duration
-            : 2;
+        const duration = Number.isFinite(audioPlayer.duration) && audioPlayer.duration > 0 ? audioPlayer.duration : 2;
         const interval = duration / letters.length;
         times = letters.map((_,i)=>i * interval);
     }
@@ -1374,15 +1491,12 @@ function startHighlighting(button){
     }
 
     clearInterval(highlightTimer);
-
     let index = 0;
     highlightLetter(button,index);
 
     highlightTimer = setInterval(()=>{
         if(!activeButton || audioPlayer.paused) return;
-
         const currentTime = audioPlayer.currentTime;
-
         while(index + 1 < letters.length && currentTime >= times[index + 1]){
             index++;
             highlightLetter(button,index);
@@ -1400,50 +1514,180 @@ buttons.forEach(button=>{
         }
 
         stopCurrentAudio();
-
         activeButton = button;
         button.classList.add("playing");
 
-        audioPlayer.src = "audio/" + audioFile;
+        audioPlayer.src = audioFile;
         audioPlayer.currentTime = 0;
 
-        audioPlayer.play()
-            .then(()=>{
-                startHighlighting(button);
-            })
-            .catch(error=>{
-                console.log("Audio could not play:",error);
-                button.classList.remove("playing");
-            });
+        audioPlayer.play().then(()=>{
+            startHighlighting(button);
+        }).catch(error=>{
+            console.log("Audio could not play:",error);
+            resetButton(button);
+            activeButton = null;
+        });
     });
 });
 
+/* =========================================================
+   TOP PINK HEADER - EACH BUTTON REMAINS INDIVIDUAL
+========================================================= */
+vowelButtons.forEach(button=>{
+    button.addEventListener("click",()=>{
+        const audioFile = button.dataset.audio;
+
+        if(activeVowelButton === button && !audioPlayer.paused){
+            stopCurrentAudio();
+            return;
+        }
+
+        stopCurrentAudio();
+        activeVowelButton = button;
+        button.classList.add("playing");
+
+        audioPlayer.src = audioFile;
+        audioPlayer.currentTime = 0;
+
+        audioPlayer.play().catch(error=>{
+            console.log("Vowel audio could not play:",error);
+            resetVowelButton();
+        });
+    });
+});
+
+/* =========================================================
+   FAMILY ROWS: J / SHA / SA / HA / KSHA
+========================================================= */
+const familyRows = document.querySelectorAll(".family-row");
+let activeFamilyRow = null;
+let familyTimer = null;
+let familyIndex = 0;
+
+/* =========================================================
+   EDIT THESE TIMES FOR EACH FAMILY
+   13 numbers = 13 cells, left to right
+========================================================= */
+const familyHighlightTimes = {
+    ja:[0,1.00,2.00,3.00,4.00,5.00,6.00,7.00,8.00,9.00,10.00,11.00,12.00],
+    sha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
+    sa:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
+    ha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
+    ksha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00]
+};
+
+function resetFamily(row){
+    if(!row) return;
+    row.querySelectorAll(".family-cell").forEach(cell=>cell.classList.remove("highlighted"));
+    const button = row.querySelector(".family-start");
+    if(button) button.classList.remove("playing");
+}
+
+function resetAllFamilies(){
+    clearInterval(familyTimer);
+    familyTimer = null;
+    familyRows.forEach(resetFamily);
+    activeFamilyRow = null;
+    familyIndex = 0;
+}
+
+function highlightFamily(row,index){
+    const cells = row.querySelectorAll(".family-cell");
+    cells.forEach((cell,i)=>{
+        if(i <= index) cell.classList.add("highlighted");
+        else cell.classList.remove("highlighted");
+    });
+}
+
+function startFamilyHighlight(row){
+    clearInterval(familyTimer);
+
+    const familyName = row.dataset.family;
+    const cells = row.querySelectorAll(".family-cell");
+    const times = familyHighlightTimes[familyName];
+
+    if(!times || !cells.length) return;
+
+    familyIndex = 0;
+    highlightFamily(row,0);
+
+    familyTimer = setInterval(()=>{
+        if(audioPlayer.paused || activeFamilyRow !== row) return;
+        const currentTime = audioPlayer.currentTime;
+
+        while(familyIndex + 1 < cells.length && familyIndex + 1 < times.length && currentTime >= times[familyIndex + 1]){
+            familyIndex++;
+            highlightFamily(row,familyIndex);
+        }
+    },30);
+}
+
+familyRows.forEach(row=>{
+    const button = row.querySelector(".family-start");
+    if(!button) return;
+
+    button.addEventListener("click",()=>{
+        if(activeFamilyRow === row && !audioPlayer.paused){
+            stopCurrentAudio();
+            resetAllFamilies();
+            return;
+        }
+
+        stopCurrentAudio();
+        resetAllFamilies();
+
+        activeFamilyRow = row;
+        familyIndex = 0;
+        button.classList.add("playing");
+
+        const audioFile = button.dataset.familyAudio;
+        audioPlayer.src = audioFile;
+        audioPlayer.currentTime = 0;
+
+        audioPlayer.play().then(()=>{
+            startFamilyHighlight(row);
+        }).catch(error=>{
+            console.log("Family audio could not play:",error);
+            resetAllFamilies();
+        });
+    });
+});
+
+/* =========================================================
+   AUDIO FINISHED = CLEAR ALL HIGHLIGHTS
+========================================================= */
 audioPlayer.addEventListener("ended",()=>{
     clearInterval(highlightTimer);
     highlightTimer = null;
 
     if(activeButton){
-        activeButton.querySelectorAll(".letter").forEach(letter=>{
-            letter.classList.add("highlighted");
-        });
-        activeButton.classList.remove("playing");
+        resetButton(activeButton);
+        activeButton = null;
     }
 
-    activeButton = null;
+    resetVowelButton();
+
+    clearInterval(familyTimer);
+    familyTimer = null;
+
+    if(activeFamilyRow){
+        resetFamily(activeFamilyRow);
+        activeFamilyRow = null;
+    }
+
+    familyIndex = 0;
 });
 
 function nextPage(page,direction){
     stopCurrentAudio();
+    resetAllFamilies();
 
     const book = document.querySelector(".book");
     book.classList.remove("flip-out-next","flip-out-prev");
     void book.offsetWidth;
 
-    if(direction === "next"){
-        book.classList.add("flip-out-next");
-    }else{
-        book.classList.add("flip-out-prev");
-    }
+    if(direction === "next") book.classList.add("flip-out-next");
+    else book.classList.add("flip-out-prev");
 
     setTimeout(()=>{
         window.location.href = page;
