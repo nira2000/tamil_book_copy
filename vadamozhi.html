@@ -249,17 +249,16 @@ body{
 }
 
 .letter{
-    display:inline-block;
-    padding:2px 3px;
+    display:inline;
+    padding:0;
+    margin:0;
     border-radius:6px;
-    transition:background .18s ease,color .18s ease,transform .18s ease;
+    transition:background .18s ease,color .18s ease;
 }
 
 .letter.highlighted{
     background:#ff3030;
     color:#fff;
-    transform:scale(1.06);
-    box-shadow:0 2px 5px rgba(0,0,0,.18);
 }
 
 .word-button.playing{
@@ -576,9 +575,10 @@ body{
     }
 
     .letter{
-        padding:0 1px;
+        display:inline;
+        padding:0;
+        margin:0;
     }
-
     .audio-dot{
         right:3px;
         top:3px;
@@ -714,14 +714,15 @@ body{
 }
 
 .top-vadamozhi-wrap .letter{
-    padding:1px 2px;
-    border-radius:5px;
+    display:inline;
+    padding:0;
+    margin:0;
+    border-radius:4px;
 }
 
 .top-vadamozhi-wrap .letter.highlighted{
     background:#ff3030;
     color:#fff;
-    transform:scale(1.06);
 }
 
 @media(max-width:700px){
@@ -764,6 +765,169 @@ body{
 
     .top-vadamozhi-table .top-head button{
         font-size:9px;
+    }
+}
+
+
+/* ===== VADAMOZHI TOP TABLE - FINAL SPACING FIX ===== */
+
+.top-vadamozhi-wrap{
+    width:min(1080px,100%);
+    margin:0 auto;
+}
+
+.top-vadamozhi-table{
+    width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+    border:3px solid #111;
+    background:#fff84f;
+}
+
+.top-vadamozhi-table td{
+    height:64px;
+    padding:0 4px;
+    border:2px solid #111;
+    background:#fff84f;
+    overflow:hidden;
+}
+
+.top-vadamozhi-table .top-head td{
+    height:52px;
+    padding:0 4px;
+    background:#f3b5d1;
+}
+
+.top-vadamozhi-table button{
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:2px 3px;
+    margin:0;
+    border:0;
+    background:transparent;
+    color:#000;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    line-height:1;
+    white-space:nowrap;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.top-vadamozhi-table .top-head button{
+    font-size:21px;
+    font-weight:800;
+}
+
+.top-vadamozhi-table .blue-cell{
+    background:#11a8df;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media(max-width:700px){
+
+    .image-area{
+        flex:0 0 116px;
+        height:116px;
+        min-height:116px;
+        margin:0 0 5px;
+    }
+
+    .top-vadamozhi-wrap{
+        width:100%;
+        height:100%;
+        overflow:hidden;
+    }
+
+    .top-vadamozhi-table{
+        width:100%;
+        height:100%;
+        border-width:1px;
+        table-layout:fixed;
+    }
+
+    .top-vadamozhi-table td{
+        height:auto;
+        padding:0 1px;
+        border-width:1px;
+    }
+
+    .top-vadamozhi-table .top-head td{
+        height:auto;
+        padding:0 1px;
+    }
+
+    .top-vadamozhi-table button{
+        width:100%;
+        height:100%;
+        min-height:0;
+        padding:1px 0;
+        font-size:10px;
+        line-height:1;
+        white-space:nowrap;
+        overflow:hidden;
+    }
+
+    .top-vadamozhi-table .top-head button{
+        font-size:9px;
+    }
+}
+
+
+/* ===== SMALL PHONES ===== */
+
+@media(max-width:380px){
+
+    .top-vadamozhi-table button{
+        font-size:9px;
+    }
+
+    .top-vadamozhi-table .top-head button{
+        font-size:8px;
+    }
+}
+
+
+/* ===== FIX ONLY THE LAST 3 YELLOW COLUMNS ===== */
+
+/* Desktop */
+.top-vadamozhi-table tr td:nth-child(10) button,
+.top-vadamozhi-table tr td:nth-child(11) button,
+.top-vadamozhi-table tr td:nth-child(12) button{
+    font-size:20px;
+    padding-left:0;
+    padding-right:0;
+    letter-spacing:-0.3px;
+}
+
+
+/* Mobile */
+@media(max-width:700px){
+
+    .top-vadamozhi-table tr td:nth-child(10) button,
+    .top-vadamozhi-table tr td:nth-child(11) button,
+    .top-vadamozhi-table tr td:nth-child(12) button{
+        font-size:8px;
+        padding-left:0;
+        padding-right:0;
+        letter-spacing:-0.2px;
+    }
+}
+
+
+/* Very small phones */
+@media(max-width:380px){
+
+    .top-vadamozhi-table tr td:nth-child(10) button,
+    .top-vadamozhi-table tr td:nth-child(11) button,
+    .top-vadamozhi-table tr td:nth-child(12) button{
+        font-size:7px;
     }
 }
 
@@ -874,19 +1038,35 @@ body{
                         </tr>
 
                         <tr>
+
                             <td><button data-audio="ksha.mp3">க்ஷ</button></td>
+
                             <td><button data-audio="kshaa.mp3">க்ஷா</button></td>
+
                             <td><button data-audio="kshi.mp3">க்ஷி</button></td>
+
                             <td><button data-audio="kshii.mp3">க்ஷீ</button></td>
+
                             <td><button data-audio="kshu.mp3">க்ஷு</button></td>
+
                             <td><button data-audio="kshuu.mp3">க்ஷூ</button></td>
+
                             <td><button data-audio="kshe.mp3">க்ஷெ</button></td>
+
                             <td><button data-audio="kshee.mp3">க்ஷே</button></td>
+
                             <td><button data-audio="kshai.mp3">க்ஷை</button></td>
+
                             <td><button data-audio="ksho.mp3">க்ஷொ</button></td>
+
                             <td><button data-audio="kshoo.mp3">க்ஷோ</button></td>
+
                             <td><button data-audio="kshau.mp3">க்ஷௌ</button></td>
-                            <td class="blue-cell"><button data-audio="ksh.mp3">க்ஷ்</button></td>
+
+                            <td class="blue-cell">
+                                <button data-audio="ksh.mp3">க்ஷ்</button>
+                            </td>
+
                         </tr>
 
                     </tbody>
