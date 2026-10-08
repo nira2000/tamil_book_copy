@@ -566,12 +566,10 @@ body{
         margin:0 auto;
         padding:7px;
         border-radius:20px;
-
         display:flex;
         flex-direction:column;
-
         background:#F8F1E4;
-        overflow:hidden;
+        overflow:visible;
     }
 
     .book::before{
@@ -605,7 +603,7 @@ body{
         transform-origin:top center;
         margin:0;
         padding:25px 35px 25px;
-        overflow:hidden;
+        overflow:visible;
     }
 
     .title{
@@ -650,10 +648,17 @@ body{
     .navigation{
         flex:0 0 34px;
         height:34px;
+        width:100%;
         margin-top:4px;
         padding:0 5px;
-    }
 
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        position:relative;
+        z-index:20;
+    }
     .nav-btn{
         width:34px;
         height:34px;
