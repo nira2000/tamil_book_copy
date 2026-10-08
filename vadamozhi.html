@@ -6,9 +6,15 @@
 <title>VADAMOZHI</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-html,body{
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
     width:100%;
     min-height:100%;
 }
@@ -33,6 +39,11 @@ body{
     perspective:1600px;
 }
 
+
+/* =========================
+   BOOK
+========================= */
+
 .book{
     width:100%;
     position:relative;
@@ -44,7 +55,9 @@ body{
     overflow:visible;
 }
 
+
 /* RED BOOK SPINE */
+
 .book::before{
     content:"";
     position:absolute;
@@ -57,7 +70,11 @@ body{
     box-shadow:inset -3px 0 0 rgba(90,0,0,.28);
 }
 
-/* PAGE TITLE */
+
+/* =========================
+   PAGE TITLE
+========================= */
+
 .title-area{
     display:flex;
     justify-content:center;
@@ -80,8 +97,13 @@ body{
     transition:.2s ease;
 }
 
-.title:hover{transform:translateY(-2px)}
-.title:active{transform:scale(.98)}
+.title:hover{
+    transform:translateY(-2px);
+}
+
+.title:active{
+    transform:scale(.98);
+}
 
 .title .spark{
     position:absolute;
@@ -91,12 +113,31 @@ body{
     pointer-events:none;
 }
 
-.spark.s1{left:-38px;top:-26px}
-.spark.s2{right:-38px;top:-17px}
-.spark.s3{left:-70px;top:24px}
-.spark.s4{right:-70px;top:30px}
+.spark.s1{
+    left:-38px;
+    top:-26px;
+}
 
-/* TOP TABLE IMAGE */
+.spark.s2{
+    right:-38px;
+    top:-17px;
+}
+
+.spark.s3{
+    left:-70px;
+    top:24px;
+}
+
+.spark.s4{
+    right:-70px;
+    top:30px;
+}
+
+
+/* =========================
+   TOP TABLE AREA
+========================= */
+
 .image-area{
     width:100%;
     display:flex;
@@ -131,14 +172,20 @@ body{
     transform:scale(.99);
 }
 
-/* WORD TABLE */
+
+/* =========================
+   WORD TABLE
+========================= */
+
 .words-area{
     width:min(760px,100%);
     margin:0 auto;
     position:relative;
 }
 
+
 /* RIBBON */
+
 .ribbon{
     position:absolute;
     left:-62px;
@@ -170,8 +217,15 @@ body{
     top:25px;
 }
 
-.ribbon-top::before{left:0;transform:rotate(18deg)}
-.ribbon-top::after{right:0;transform:rotate(-18deg)}
+.ribbon-top::before{
+    left:0;
+    transform:rotate(18deg);
+}
+
+.ribbon-top::after{
+    right:0;
+    transform:rotate(-18deg);
+}
 
 .ribbon-tail-left,
 .ribbon-tail-right{
@@ -185,14 +239,28 @@ body{
 .ribbon-tail-left{
     left:23px;
     transform:rotate(8deg);
-    clip-path:polygon(0 0,100% 0,85% 75%,45% 100%,35% 68%);
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        85% 75%,
+        45% 100%,
+        35% 68%
+    );
 }
 
 .ribbon-tail-right{
     left:54px;
     transform:rotate(-5deg);
-    clip-path:polygon(0 0,100% 0,70% 100%,35% 72%);
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        70% 100%,
+        35% 72%
+    );
 }
+
+
+/* WORD TABLE */
 
 .word-table{
     width:100%;
@@ -248,17 +316,17 @@ body{
     transform:scale(.98);
 }
 
-.letter{
-    display:inline;
-    padding:0;
-    margin:0;
-    border-radius:6px;
-    transition:background .18s ease,color .18s ease;
+.word-button span{
+    display:inline-block;
+    color:#111;
+    transition:all .25s ease;
 }
 
-.letter.highlighted{
-    background:#ff3030;
-    color:#fff;
+.word-button span.active{
+    color:#ff0000;
+    font-weight:700;
+    transform:scale(1.12);
+    text-shadow:0 0 5px rgba(255,0,0,.35);
 }
 
 .word-button.playing{
@@ -284,11 +352,20 @@ body{
 }
 
 @keyframes pulse{
-    from{transform:scale(.8)}
-    to{transform:scale(1.3)}
+    from{
+        transform:scale(.8);
+    }
+
+    to{
+        transform:scale(1.3);
+    }
 }
 
-/* FLOWERS */
+
+/* =========================
+   FLOWERS
+========================= */
+
 .flowers{
     width:100%;
     height:55px;
@@ -325,17 +402,47 @@ body{
     top:26px;
 }
 
-.flower:nth-child(2){transform:scale(.8)}
-.flower:nth-child(3){transform:scale(1.15)}
-.flower:nth-child(4){transform:scale(.9)}
-.flower:nth-child(5){transform:scale(1.1)}
-.flower:nth-child(6){transform:scale(.8)}
-.flower:nth-child(7){transform:scale(1.15)}
-.flower:nth-child(8){transform:scale(.9)}
-.flower:nth-child(9){transform:scale(1.1)}
-.flower:nth-child(10){transform:scale(.85)}
+.flower:nth-child(2){
+    transform:scale(.8);
+}
 
-/* PAGE NUMBER */
+.flower:nth-child(3){
+    transform:scale(1.15);
+}
+
+.flower:nth-child(4){
+    transform:scale(.9);
+}
+
+.flower:nth-child(5){
+    transform:scale(1.1);
+}
+
+.flower:nth-child(6){
+    transform:scale(.8);
+}
+
+.flower:nth-child(7){
+    transform:scale(1.15);
+}
+
+.flower:nth-child(8){
+    transform:scale(.9);
+}
+
+.flower:nth-child(9){
+    transform:scale(1.1);
+}
+
+.flower:nth-child(10){
+    transform:scale(.85);
+}
+
+
+/* =========================
+   PAGE NUMBER
+========================= */
+
 .page-number{
     text-align:center;
     margin-top:6px;
@@ -345,7 +452,11 @@ body{
     color:#29427e;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
+
 .navigation{
     width:100%;
     margin-top:12px;
@@ -369,8 +480,13 @@ body{
     transition:.2s ease;
 }
 
-.nav-btn:hover{transform:scale(1.08)}
-.nav-btn:active{transform:scale(.94)}
+.nav-btn:hover{
+    transform:scale(1.08);
+}
+
+.nav-btn:active{
+    transform:scale(.94);
+}
 
 .dots{
     display:flex;
@@ -386,9 +502,15 @@ body{
     background:#aeb5b5;
 }
 
-.dot.active{background:#18c900}
+.dot.active{
+    background:#18c900;
+}
 
-/* FLIP */
+
+/* =========================
+   PAGE FLIP
+========================= */
+
 .flip-out-next{
     animation:flipNext .6s ease forwards;
     transform-origin:left center;
@@ -400,16 +522,216 @@ body{
 }
 
 @keyframes flipNext{
-    0%{transform:rotateY(0)}
-    100%{transform:rotateY(-90deg)}
+    0%{
+        transform:rotateY(0);
+    }
+
+    100%{
+        transform:rotateY(-90deg);
+    }
 }
 
 @keyframes flipPrev{
-    0%{transform:rotateY(0)}
-    100%{transform:rotateY(90deg)}
+    0%{
+        transform:rotateY(0);
+    }
+
+    100%{
+        transform:rotateY(90deg);
+    }
 }
 
-/* MOBILE */
+
+/* =========================
+   TOP INTERACTIVE VADAMOZHI TABLE
+========================= */
+
+.top-vadamozhi-wrap{
+    width:min(1080px,100%);
+    margin:0 auto;
+}
+
+.top-vadamozhi-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    border:3px solid #111;
+    background:#fff84f;
+}
+
+.top-vadamozhi-table td{
+    height:64px;
+    padding:0 4px;
+    border:2px solid #111;
+    background:#fff84f;
+    overflow:hidden;
+}
+
+.top-vadamozhi-table .top-head td{
+    height:52px;
+    padding:0 4px;
+    background:#f3b5d1;
+}
+
+.top-vadamozhi-table .blue-cell{
+    background:#11a8df;
+}
+
+.top-vadamozhi-table button{
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:2px 3px;
+    margin:0;
+    border:0;
+    background:transparent;
+    color:#000;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    line-height:1;
+    white-space:nowrap;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.top-vadamozhi-table .top-head button{
+    font-size:21px;
+    font-weight:800;
+}
+
+.top-vadamozhi-table button:hover{
+    background:rgba(255,255,255,.28);
+}
+
+.top-vadamozhi-table button:active{
+    transform:scale(.94);
+}
+
+.top-vadamozhi-table button.playing{
+    background:#ff3030;
+    color:#fff;
+}
+
+.top-vadamozhi-wrap .letter{
+    display:inline;
+    padding:0;
+    margin:0;
+    border-radius:4px;
+}
+
+.top-vadamozhi-wrap .letter.highlighted{
+    background:#ff3030;
+    color:#fff;
+}
+
+
+/* =========================
+   PINK HEADER SPEAKERS
+========================= */
+
+.top-head button{
+    position:relative;
+}
+
+.top-speaker{
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    line-height:1;
+    margin-left:3px;
+    vertical-align:middle;
+    pointer-events:none;
+}
+
+
+/* =========================
+   ONLY YELLOW COLUMNS 10, 11, 12
+   DESKTOP
+========================= */
+.top-vadamozhi-table tr.family-row td:nth-child(9),
+.top-vadamozhi-table tr.family-row td:nth-child(10),
+.top-vadamozhi-table tr.family-row td:nth-child(11),
+.top-vadamozhi-table tr.family-row td:nth-child(12){
+    font-size:19px;
+}
+
+.top-vadamozhi-table tr.family-row td:nth-child(9) span,
+.top-vadamozhi-table tr.family-row td:nth-child(10) span,
+.top-vadamozhi-table tr.family-row td:nth-child(11) span,
+.top-vadamozhi-table tr.family-row td:nth-child(12) span{
+    font-size:19px;
+}
+
+
+/* =========================
+   FAMILY ROWS
+========================= */
+
+.family-cell{
+    position:relative;
+    text-align:center;
+    vertical-align:middle;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    color:#000;
+    transition:background .2s ease,color .2s ease;
+}
+
+.family-cell > span:first-child{
+    display:inline-block;
+}
+
+.family-start{
+    width:100%;
+    height:100%;
+    min-height:0;
+    padding:0 22px 0 3px;
+    border:0;
+    background:transparent;
+    color:#000;
+    font-family:inherit;
+    font-size:22px;
+    font-weight:600;
+    cursor:pointer;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.family-speaker{
+    position:absolute;
+    right:3px;
+    top:50%;
+    transform:translateY(-50%);
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    line-height:1;
+    pointer-events:none;
+}
+
+.family-start.playing{
+    background:rgba(255,48,48,.16);
+}
+
+.family-cell.highlighted{
+    background:#ff3030 !important;
+    color:#fff !important;
+}
+
+.family-cell.highlighted .family-start{
+    color:#fff;
+}
+
+
+/* =========================================================
+   MOBILE
+   ONE MOBILE SECTION ONLY
+========================================================= */
+
 @media(max-width:700px){
 
     body{
@@ -424,6 +746,9 @@ body{
         display:flex;
         flex-direction:column;
     }
+
+
+    /* BOOK */
 
     .book{
         width:100%;
@@ -444,7 +769,9 @@ body{
         bottom:10px;
     }
 
+
     /* TITLE */
+
     .title-area{
         flex:0 0 58px;
         height:58px;
@@ -468,12 +795,29 @@ body{
         font-size:15px;
     }
 
-    .spark.s1{left:-20px;top:-10px}
-    .spark.s2{right:-20px;top:-7px}
-    .spark.s3{left:-28px;top:15px}
-    .spark.s4{right:-28px;top:17px}
+    .spark.s1{
+        left:-20px;
+        top:-10px;
+    }
 
-    /* TOP INTERACTIVE TABLE */
+    .spark.s2{
+        right:-20px;
+        top:-7px;
+    }
+
+    .spark.s3{
+        left:-28px;
+        top:15px;
+    }
+
+    .spark.s4{
+        right:-28px;
+        top:17px;
+    }
+
+
+    /* TOP TABLE */
+
     .image-area{
         flex:0 0 116px;
         height:116px;
@@ -499,33 +843,58 @@ body{
 
     .top-vadamozhi-table td{
         height:auto;
+        padding:0 1px;
         border-width:1px;
-        padding:0;
     }
 
     .top-vadamozhi-table .top-head td{
         height:auto;
+        padding:0 1px;
     }
 
-    .top-vadamozhi-table button,
-    .top-vadamozhi-table .top-head button{
+    .top-vadamozhi-table button{
         width:100%;
         height:100%;
         min-height:0;
-        padding:0;
+        padding:1px 0;
+        font-size:10px;
         line-height:1;
         white-space:nowrap;
         overflow:hidden;
-        font-size:8px;
-        font-weight:700;
     }
 
     .top-vadamozhi-table .top-head button{
-        font-size:8px;
-        font-weight:800;
+        font-size:9px;
     }
 
+
+    /* PINK HEADER SPEAKERS */
+
+    .top-speaker{
+        font-size:7px;
+        margin-left:1px;
+    }
+
+
+    /* ONLY YELLOW COLUMNS 10, 11, 12
+       MOBILE */
+    .top-vadamozhi-table tr.family-row td:nth-child(9),
+    .top-vadamozhi-table tr.family-row td:nth-child(10),
+    .top-vadamozhi-table tr.family-row td:nth-child(11),
+    .top-vadamozhi-table tr.family-row td:nth-child(12){
+        font-size:8px;
+    }
+
+    .top-vadamozhi-table tr.family-row td:nth-child(9) span,
+    .top-vadamozhi-table tr.family-row td:nth-child(10) span,
+    .top-vadamozhi-table tr.family-row td:nth-child(11) span,
+    .top-vadamozhi-table tr.family-row td:nth-child(12) span{
+        font-size:8px;
+    }
+
+
     /* WORD TABLE */
+
     .words-area{
         flex:1 1 auto;
         min-height:0;
@@ -579,6 +948,7 @@ body{
         padding:0;
         margin:0;
     }
+
     .audio-dot{
         right:3px;
         top:3px;
@@ -586,7 +956,9 @@ body{
         height:5px;
     }
 
+
     /* FLOWERS */
+
     .flowers{
         flex:0 0 22px;
         height:22px;
@@ -601,7 +973,9 @@ body{
         transform:scale(.52)!important;
     }
 
+
     /* PAGE NUMBER */
+
     .page-number{
         flex:0 0 18px;
         height:18px;
@@ -610,7 +984,9 @@ body{
         line-height:18px;
     }
 
+
     /* NAVIGATION */
+
     .navigation{
         flex:0 0 34px;
         height:34px;
@@ -637,391 +1013,24 @@ body{
         width:7px;
         height:7px;
     }
-}
 
-@media(max-width:380px){
-    .title{font-size:21px}
-    .top-vadamozhi-table button,
-    .top-vadamozhi-table .top-head button{font-size:7px}
-    .word-table th{font-size:15px}
-    .word-button{font-size:14px}
-}
 
-/* TOP INTERACTIVE VADAMOZHI TABLE */
-.top-vadamozhi-wrap{
-    width:min(1000px,100%);
-    margin:0 auto;
-}
+    /* FAMILY ROWS */
 
-.top-vadamozhi-table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-    border:2px solid #111;
-    background:#fff84f;
-}
-
-.top-vadamozhi-table td{
-    height:58px;
-    padding:0;
-    border:2px solid #111;
-    background:#fff84f;
-}
-
-.top-vadamozhi-table .top-head td{
-    height:48px;
-    background:#f3b5d1;
-}
-
-.top-vadamozhi-table .blue-cell{
-    background:#11a8df;
-}
-
-.top-vadamozhi-table button{
-    width:100%;
-    height:100%;
-    min-height:48px;
-    border:0;
-    background:transparent;
-    color:#000;
-    font-family:inherit;
-    font-size:25px;
-    font-weight:600;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:2px;
-    transition:.15s ease;
-}
-
-.top-vadamozhi-table .top-head button{
-    font-size:23px;
-    font-weight:800;
-}
-
-.top-vadamozhi-table button:hover{
-    background:rgba(255,255,255,.28);
-}
-
-.top-vadamozhi-table button:active{
-    transform:scale(.94);
-}
-
-.top-vadamozhi-table button.playing{
-    background:#ff3030;
-    color:#fff;
-}
-
-.top-vadamozhi-wrap .letter{
-    display:inline;
-    padding:0;
-    margin:0;
-    border-radius:4px;
-}
-
-.top-vadamozhi-wrap .letter.highlighted{
-    background:#ff3030;
-    color:#fff;
-}
-
-@media(max-width:700px){
-    .top-vadamozhi-wrap{
-        width:100%;
-        overflow:hidden;
-    }
-
-    .top-vadamozhi-table{
-        border-width:1px;
-    }
-
-    .top-vadamozhi-table td{
-        height:auto;
-        border-width:1px;
-    }
-
-    .top-vadamozhi-table .top-head td{
-        height:auto;
-    }
-
-    .top-vadamozhi-table button,
-    .top-vadamozhi-table .top-head button{
-        min-height:0;
-        height:100%;
-        font-size:12px;
-        padding:2px 0;
-    }
-
-    .top-vadamozhi-table .top-head button{
-        font-size:11px;
-    }
-}
-
-@media(max-width:380px){
-    .top-vadamozhi-table button,
-    .top-vadamozhi-table .top-head button{
+    .family-cell{
         font-size:10px;
     }
 
-    .top-vadamozhi-table .top-head button{
-        font-size:9px;
-    }
-}
-
-
-/* ===== VADAMOZHI TOP TABLE - FINAL SPACING FIX ===== */
-
-.top-vadamozhi-wrap{
-    width:min(1080px,100%);
-    margin:0 auto;
-}
-
-.top-vadamozhi-table{
-    width:100%;
-    table-layout:fixed;
-    border-collapse:collapse;
-    border:3px solid #111;
-    background:#fff84f;
-}
-
-.top-vadamozhi-table td{
-    height:64px;
-    padding:0 4px;
-    border:2px solid #111;
-    background:#fff84f;
-    overflow:hidden;
-}
-
-.top-vadamozhi-table .top-head td{
-    height:52px;
-    padding:0 4px;
-    background:#f3b5d1;
-}
-
-.top-vadamozhi-table button{
-    width:100%;
-    height:100%;
-    min-height:0;
-    padding:2px 3px;
-    margin:0;
-    border:0;
-    background:transparent;
-    color:#000;
-    font-family:inherit;
-    font-size:22px;
-    font-weight:600;
-    line-height:1;
-    white-space:nowrap;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.top-vadamozhi-table .top-head button{
-    font-size:21px;
-    font-weight:800;
-}
-
-.top-vadamozhi-table .blue-cell{
-    background:#11a8df;
-}
-
-.top-head button {
-    position: relative;
-}
-
-.top-speaker {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1;
-    margin-left: 3px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-
-
-/* ===== MOBILE ===== */
-
-@media(max-width:700px){
-
-    .image-area{
-        flex:0 0 116px;
-        height:116px;
-        min-height:116px;
-        margin:0 0 5px;
-    }
-
-    .top-vadamozhi-wrap{
-        width:100%;
-        height:100%;
-        overflow:hidden;
-    }
-
-    .top-vadamozhi-table{
-        width:100%;
-        height:100%;
-        border-width:1px;
-        table-layout:fixed;
-    }
-
-    .top-vadamozhi-table td{
-        height:auto;
-        padding:0 1px;
-        border-width:1px;
-    }
-
-    .top-vadamozhi-table .top-head td{
-        height:auto;
-        padding:0 1px;
-    }
-
-    .top-vadamozhi-table button{
-        width:100%;
-        height:100%;
-        min-height:0;
-        padding:1px 0;
+    .family-start{
         font-size:10px;
-        line-height:1;
-        white-space:nowrap;
-        overflow:hidden;
+        padding:0 11px 0 1px;
     }
 
-    .top-vadamozhi-table .top-head button{
-        font-size:9px;
+    .family-speaker{
+        right:1px;
+        font-size:5px;
     }
 
-    .top-speaker {
-        font-size: 7px;
-        margin-left: 1px;
-    }
-}
-
-
-/* ===== SMALL PHONES ===== */
-
-@media(max-width:380px){
-
-    .top-vadamozhi-table button{
-        font-size:9px;
-    }
-
-    .top-vadamozhi-table .top-head button{
-        font-size:8px;
-    }
-}
-
-
-/* ===== FIX ONLY THE LAST 3 YELLOW COLUMNS ===== */
-
-/* Desktop */
-.top-vadamozhi-table tr td:nth-child(10) button,
-.top-vadamozhi-table tr td:nth-child(11) button,
-.top-vadamozhi-table tr td:nth-child(12) button{
-    font-size:20px;
-    padding-left:0;
-    padding-right:0;
-    letter-spacing:-0.3px;
-}
-
-
-/* Mobile */
-@media(max-width:700px){
-
-    .top-vadamozhi-table tr td:nth-child(10) button,
-    .top-vadamozhi-table tr td:nth-child(11) button,
-    .top-vadamozhi-table tr td:nth-child(12) button{
-        font-size:8px;
-        padding-left:0;
-        padding-right:0;
-        letter-spacing:-0.2px;
-    }
-}
-
-
-/* Very small phones */
-@media(max-width:380px){
-
-    .top-vadamozhi-table tr td:nth-child(10) button,
-    .top-vadamozhi-table tr td:nth-child(11) button,
-    .top-vadamozhi-table tr td:nth-child(12) button{
-        font-size:7px;
-    }
-}
-
-
-
-/* =========================================
-   FAMILY ROWS
-========================================= */
-
-.family-cell{
-    position:relative;
-    text-align:center;
-    vertical-align:middle;
-    font-family:inherit;
-    font-size:22px;
-    font-weight:600;
-    color:#000;
-    transition:background .2s ease,color .2s ease;
-}
-
-.family-cell > span:first-child{
-    display:inline-block;
-}
-
-.family-start{
-    width:100%;
-    height:100%;
-    min-height:0;
-    padding:0 22px 0 3px;
-    border:0;
-    background:transparent;
-    color:#000;
-    font-family:inherit;
-    font-size:22px;
-    font-weight:600;
-    cursor:pointer;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.family-speaker{
-    position:absolute;
-    right:3px;
-    top:50%;
-    transform:translateY(-50%);
-    font-family:Arial,sans-serif;
-    font-size:14px;
-    line-height:1;
-    pointer-events:none;
-}
-
-.family-start.playing{
-    background:rgba(255,48,48,.16);
-}
-
-.family-cell.highlighted{
-    background:#ff3030 !important;
-    color:#fff !important;
-}
-
-.family-cell.highlighted .family-start{
-    color:#fff;
-}
-
-@media(max-width:700px){
-    .family-cell{font-size:10px;}
-    .family-start{font-size:10px;padding:0 11px 0 1px;}
-    .family-speaker{right:1px;font-size:7px;}
-}
-
-@media(max-width:380px){
-    .family-cell{font-size:9px;}
-    .family-start{font-size:9px;padding-right:10px;}
-    .family-speaker{font-size:6px;}
 }
 
 </style>
@@ -1110,10 +1119,10 @@ body{
                             <td class="family-cell blue-cell"><span>ஷ்</span></td>
                         </tr>
 
-                        <!-- SA FAMILY -->
-                        <tr class="family-row" data-family="sa">
+                        <!-- SSA FAMILY -->
+                        <tr class="family-row" data-family="ssa">
                             <td class="family-cell">
-                                <button class="family-start" data-family-audio="safamily.mp3">
+                                <button class="family-start" data-family-audio="ssafamily.mp3">
                                     <span>ஸ</span>
                                     <span class="family-speaker">🔊</span>
                                 </button>
@@ -1194,12 +1203,12 @@ body{
                 <thead>
                     <tr>
                         <th>
-                            <button class="word-button" data-audio="shan mugam.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10,2.45">
+                            <button class="word-button" data-audio="shan mugam.mp3" data-times="0,1.20,2.20,3.20,4.20,5.20,6.20,7.20">
                                 ஷண்முகம் <span class="audio-dot"></span>
                             </button>
                         </th>
                         <th>
-                            <button class="word-button" data-audio="jathagam.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75">
+                            <button class="word-button" data-audio="jathagam.mp3" data-times="0,1.50,2.50,3.50">
                                 ஜாதகம் <span class="audio-dot"></span>
                             </button>
                         </th>
@@ -1208,132 +1217,132 @@ body{
                 <tbody>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="shajahan.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10,2.45">
+                            <button class="word-button" data-audio="shajahan.mp3" data-times="0,1.50,2.60,3.60,4.60">
                                 ஷாஜஹான் <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="janani.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75">
+                            <button class="word-button" data-audio="pajji.mp3" data-times="0,1.50,2.50,3.50">
                                 பஜ்ஜி <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="kushi.mp3" data-times="0,0.40,0.80">
+                            <button class="word-button" data-audio="kushi.mp3" data-times="0,1.60,2.20">
                                 குஷி <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="karthikum.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75">
+                            <button class="word-button" data-audio="karjikkum.mp3" data-times="0,1.70,2.70,3.70,4.70,5.70,6.70">
                                 கர்ஜிக்கும் <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="kushpu.mp3" data-times="0,0.35,0.70,1.05">
+                            <button class="word-button" data-audio="kushpu.mp3" data-times="0,1.70,2.70,3.70">
                                 குஷ்பு <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="jeyali.mp3" data-times="0,0.35,0.70,1.05,1.40">
+                            <button class="word-button" data-audio="jilebi.mp3" data-times="0,1.80,2.80,3.80">
                                 ஜிலேபி <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="pushpa.mp3" data-times="0,0.35,0.70,1.05,1.40">
+                            <button class="word-button" data-audio="pushpa.mp3" data-times="0,1.80,2.80,3.80,4.80">
                                 புஷ்பா <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="jain.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="jun.mp3" data-times="0,1.80,2.80,3.80">
                                 ஜூன் <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="kashmir.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75">
+                            <button class="word-button" data-audio="kashmir.mp3" data-times="0,1.80,2.80,3.80,4.80">
                                 காஷ்மீர் <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="julai.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="julai.mp3" data-times="0,1.80,2.80,3.80">
                                 ஜூலை <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="vaishnavi.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10">
+                            <button class="word-button" data-audio="vaishnavi.mp3" data-times="0,1.80,2.80,3.80,4.80,5.80">
                                 வைஷ்ணவி <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="mejai.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="mejai.mp3" data-times="0,1.60,2.60,3.60">
                                 மேஜை <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="saraswathi.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10,2.45">
+                            <button class="word-button" data-audio="saraswati.mp3" data-times="0,1.50,2.50,3.50,4.50,5.50">
                                 சரஸ்வதி <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="jodi.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="jodi.mp3" data-times="0,1.40,2.20,3.20">
                                 ஜோடி <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="aslam.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="assam.mp3" data-times="0,1.80,2.80,3.80,4.80">
                                 அஸ்ஸாம் <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="haj.mp3" data-times="0,0.50,1.00">
+                            <button class="word-button" data-audio="haj.mp3" data-times="0,1.50,2.50,3.50">
                                 ஹஜ் <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="everest.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10">
+                            <button class="word-button" data-audio="everest.mp3" data-times="0,1.80,2.80,3.80,5.40,6.00">
                                 எவரெஸ்ட் <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="vahini.mp3" data-times="0,0.40,0.80,1.20,1.60">
+                            <button class="word-button" data-audio="vahini.mp3" data-times="0,1.20,2.20,3.20,4.20">
                                 வாஹினி <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="circle.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75">
-                                சர்க்கல் <span class="audio-dot"></span>
+                            <button class="word-button" data-audio="sarkas.mp3" data-times="0,1.60,2.60,3.60,4.60,5.60">
+                                சர்க்கஸ் <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="srinagar.mp3" data-times="0,0.35,0.70,1.05,1.40,1.75,2.10">
+                            <button class="word-button" data-audio="sri nagar.mp3" data-times="0,1.80,2.80,3.80,4.80,5.80">
                                 ஸ்ரீநகர் <span class="audio-dot"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="word-button" data-audio="jammu.mp3" data-times="0,0.40,0.80,1.20">
+                            <button class="word-button" data-audio="jammu.mp3" data-times="0,1.60,2.60,3.60,4.60">
                                 ஜம்மு <span class="audio-dot"></span>
                             </button>
                         </td>
                         <td>
-                            <button class="word-button" data-audio="paguthi.mp3" data-times="0,0.40,0.80,1.20,1.60">
+                            <button class="word-button" data-audio="paksi.mp3" data-times="0,1.80,2.60,3.60">
                                 பக்ஷி <span class="audio-dot"></span>
                             </button>
                         </td>
@@ -1371,328 +1380,952 @@ body{
 <audio id="audioPlayer" preload="auto"></audio>
 
 <script>
+
 const audioPlayer = document.getElementById("audioPlayer");
+
+
 /* =========================================================
-   NORMAL WORD + TITLE AUDIO
+   NORMAL WORD TABLE + TITLE AUDIO
 ========================================================= */
-const buttons = document.querySelectorAll(".word-button, .title");
-const vowelButtons = document.querySelectorAll(".top-vadamozhi-table .top-head button");
+
+const buttons = document.querySelectorAll(".word-button");
+const titleButton = document.querySelector(".title");
+const vowelButtons = document.querySelectorAll(
+    ".top-vadamozhi-table .top-head button"
+);
 
 let activeButton = null;
+let activeTitleButton = null;
 let activeVowelButton = null;
+
 let highlightTimer = null;
 
+
+/* =========================================================
+   TAMIL GRAPHEME SPLITTER
+========================================================= */
+
 function splitTamilWord(text){
-    if(typeof Intl !== "undefined" && Intl.Segmenter){
-        const segmenter = new Intl.Segmenter("ta",{granularity:"grapheme"});
-        return [...segmenter.segment(text)].map(item=>item.segment);
+
+    const specialPattern = /ஸ்ரீ|க்ஷ[ாிீுூெேைொோௌ]?/g;
+
+    const segmenter =
+        typeof Intl !== "undefined" && Intl.Segmenter
+            ? new Intl.Segmenter("ta", {
+                granularity:"grapheme"
+            })
+            : null;
+
+    const result = [];
+    let lastIndex = 0;
+    let match;
+
+    while((match = specialPattern.exec(text)) !== null){
+
+        /* Normal Tamil text before the special unit */
+        const normalText =
+            text.slice(lastIndex, match.index);
+
+        if(normalText){
+
+            if(segmenter){
+
+                for(const item of segmenter.segment(normalText)){
+                    result.push(item.segment);
+                }
+
+            }else{
+
+                result.push(...normalText);
+
+            }
+        }
+
+        /* Keep ஸ்ரீ or க்ஷ + vowel together */
+        result.push(match[0]);
+
+        lastIndex = match.index + match[0].length;
     }
-    return [...text];
+
+    /* Remaining text */
+    const remainingText = text.slice(lastIndex);
+
+    if(remainingText){
+
+        if(segmenter){
+
+            for(const item of segmenter.segment(remainingText)){
+                result.push(item.segment);
+            }
+
+        }else{
+
+            result.push(...remainingText);
+
+        }
+    }
+
+    return result;
 }
+
+
+/* =========================================================
+   GET WORD TEXT
+========================================================= */
 
 function getButtonText(button){
+
     const clone = button.cloneNode(true);
-    clone.querySelectorAll(".audio-dot,.spark").forEach(el=>el.remove());
-    return clone.textContent.replace(/\s+/g," ").trim();
+
+    clone.querySelectorAll(".audio-dot").forEach(el=>{
+        el.remove();
+    });
+
+    return clone.textContent
+        .replace(/\s+/g," ")
+        .trim();
 }
 
+
+/* =========================================================
+   PREPARE ONLY WORD-TABLE BUTTONS
+========================================================= */
+
 function prepareButton(button){
+
     if(button.dataset.prepared) return;
 
     const text = getButtonText(button);
+
     const letters = splitTamilWord(text);
 
     button.innerHTML = "";
 
     const wrapper = document.createElement("span");
+
     wrapper.className = "letter-wrapper";
 
     letters.forEach(letter=>{
+
         const span = document.createElement("span");
+
         span.className = "letter";
+
         span.textContent = letter;
+
         wrapper.appendChild(span);
+
     });
 
     button.appendChild(wrapper);
 
-    if(button.classList.contains("title")){
-        ["s1","s2","s3","s4"].forEach(pos=>{
-            const s = document.createElement("span");
-            s.className = "spark " + pos;
-            s.textContent = "✦";
-            button.appendChild(s);
-        });
-    }
+
+    /* AUDIO DOT */
 
     const dot = document.createElement("span");
+
     dot.className = "audio-dot";
+
     button.appendChild(dot);
+
 
     button.dataset.prepared = "true";
 }
 
+
+/* Prepare ONLY bottom word-table buttons */
+
 buttons.forEach(prepareButton);
 
+
+/* =========================================================
+   RESET WORD BUTTON
+========================================================= */
+
 function resetButton(button){
+
     if(!button) return;
+
     button.classList.remove("playing");
+
     button.querySelectorAll(".letter").forEach(letter=>{
-        letter.classList.remove("highlighted");
+        letter.classList.remove("active");
     });
 }
 
+
+/* =========================================================
+   RESET TITLE
+========================================================= */
+
+function resetTitle(){
+
+    if(activeTitleButton){
+
+        activeTitleButton.classList.remove("playing");
+
+        activeTitleButton = null;
+    }
+}
+
+
+/* =========================================================
+   RESET PINK HEADER BUTTON
+========================================================= */
+
 function resetVowelButton(){
+
     if(activeVowelButton){
+
         activeVowelButton.classList.remove("playing");
+
         activeVowelButton = null;
     }
 }
 
+
+/* =========================================================
+   STOP CURRENT AUDIO
+========================================================= */
+
 function stopCurrentAudio(){
+
     clearInterval(highlightTimer);
+
     highlightTimer = null;
 
+
     audioPlayer.pause();
+
     audioPlayer.currentTime = 0;
 
-    if(activeButton) resetButton(activeButton);
-    activeButton = null;
+
+    /* Reset word table */
+
+    if(activeButton){
+
+        resetButton(activeButton);
+
+        activeButton = null;
+    }
+
+
+    /* Reset title */
+
+    resetTitle();
+
+
+    /* Reset pink header */
 
     resetVowelButton();
 }
 
-function highlightLetter(button,index){
-    const letters = button.querySelectorAll(".letter");
-    letters.forEach((letter,i)=>{
-        if(i <= index) letter.classList.add("highlighted");
-        else letter.classList.remove("highlighted");
-    });
-}
+
+/* =========================================================
+   WORD TABLE HIGHLIGHTING
+========================================================= */
 
 function startHighlighting(button){
+
     const letters = button.querySelectorAll(".letter");
+
     if(!letters.length) return;
+
+
+    /*
+       Get timings from data-times.
+
+       Example:
+
+       data-times="0,0.35,0.70,1.05"
+
+       These values are in SECONDS.
+    */
 
     let times = (button.dataset.times || "")
         .split(",")
         .map(Number)
-        .filter(n=>!Number.isNaN(n));
+        .filter(n => !Number.isNaN(n));
+
+
+    /* =====================================================
+       AUTOMATIC TIMING
+       If no data-times exists
+    ===================================================== */
 
     if(times.length === 0){
-        const duration = Number.isFinite(audioPlayer.duration) && audioPlayer.duration > 0 ? audioPlayer.duration : 2;
+
+        const duration =
+            Number.isFinite(audioPlayer.duration) &&
+            audioPlayer.duration > 0
+                ? audioPlayer.duration
+                : 2;
+
         const interval = duration / letters.length;
-        times = letters.map((_,i)=>i * interval);
+
+        times = letters.map((_,i)=>{
+
+            return i * interval;
+
+        });
     }
 
+
+    /* =====================================================
+       MAKE SURE EVERY LETTER HAS A TIMING
+    ===================================================== */
+
     while(times.length < letters.length){
-        const last = times.length ? times[times.length-1] : 0;
+
+        const last = times.length
+            ? times[times.length - 1]
+            : 0;
+
         times.push(last + 0.4);
     }
 
+
     clearInterval(highlightTimer);
+
+
     let index = 0;
-    highlightLetter(button,index);
+
+
+    /* First letter starts immediately */
+
+    letters[index].classList.add("active");
+
+
+    /* =====================================================
+       CHECK AUDIO TIME
+    ===================================================== */
 
     highlightTimer = setInterval(()=>{
-        if(!activeButton || audioPlayer.paused) return;
-        const currentTime = audioPlayer.currentTime;
-        while(index + 1 < letters.length && currentTime >= times[index + 1]){
-            index++;
-            highlightLetter(button,index);
+
+        if(!activeButton || audioPlayer.paused){
+
+            return;
         }
+
+
+        const currentTime = audioPlayer.currentTime;
+
+
+        /*
+           Keep previous letters active.
+
+           Example:
+
+           Letter 1 → red
+
+           Letter 2 → red
+           Letter 1 stays red
+
+           Letter 3 → red
+           Letter 1 + 2 stay red
+        */
+
+        while(
+            index + 1 < letters.length &&
+            currentTime >= times[index + 1]
+        ){
+
+            index++;
+
+            letters[index].classList.add("active");
+        }
+
     },30);
 }
 
+
+/* =========================================================
+   WORD TABLE CLICK
+========================================================= */
+
 buttons.forEach(button=>{
+
     button.addEventListener("click",()=>{
+
         const audioFile = button.dataset.audio;
 
-        if(activeButton === button && !audioPlayer.paused){
+
+        /* Click same word = stop */
+
+        if(
+            activeButton === button &&
+            !audioPlayer.paused
+        ){
+
             stopCurrentAudio();
+
             return;
         }
 
+
+        /* Stop anything currently playing */
+
         stopCurrentAudio();
+
+
         activeButton = button;
+
         button.classList.add("playing");
 
+
         audioPlayer.src = audioFile;
+
         audioPlayer.currentTime = 0;
+
 
         audioPlayer.play().then(()=>{
+
             startHighlighting(button);
+
         }).catch(error=>{
-            console.log("Audio could not play:",error);
+
+            console.log(
+                "Audio could not play:",
+                error
+            );
+
             resetButton(button);
+
             activeButton = null;
         });
+
     });
+
 });
 
-/* =========================================================
-   TOP PINK HEADER - EACH BUTTON REMAINS INDIVIDUAL
-========================================================= */
-vowelButtons.forEach(button=>{
-    button.addEventListener("click",()=>{
-        const audioFile = button.dataset.audio;
 
-        if(activeVowelButton === button && !audioPlayer.paused){
+/* =========================================================
+   TITLE AUDIO
+   TITLE DOES NOT USE WORD HIGHLIGHTING
+========================================================= */
+
+if(titleButton){
+
+    titleButton.addEventListener("click",()=>{
+
+        const audioFile = titleButton.dataset.audio;
+
+
+        /* Click same title = stop */
+
+        if(
+            activeTitleButton === titleButton &&
+            !audioPlayer.paused
+        ){
+
             stopCurrentAudio();
+
             return;
         }
 
+
+        /* Stop anything currently playing */
+
         stopCurrentAudio();
-        activeVowelButton = button;
-        button.classList.add("playing");
+
+
+        activeTitleButton = titleButton;
+
+        titleButton.classList.add("playing");
+
 
         audioPlayer.src = audioFile;
+
         audioPlayer.currentTime = 0;
 
+
         audioPlayer.play().catch(error=>{
-            console.log("Vowel audio could not play:",error);
-            resetVowelButton();
+
+            console.log(
+                "Title audio could not play:",
+                error
+            );
+
+            resetTitle();
         });
+
     });
-});
 
-/* =========================================================
-   FAMILY ROWS: J / SHA / SA / HA / KSHA
-========================================================= */
-const familyRows = document.querySelectorAll(".family-row");
-let activeFamilyRow = null;
-let familyTimer = null;
-let familyIndex = 0;
-
-/* =========================================================
-   EDIT THESE TIMES FOR EACH FAMILY
-   13 numbers = 13 cells, left to right
-========================================================= */
-const familyHighlightTimes = {
-    ja:[0,1.00,2.00,3.00,4.00,5.00,6.00,7.00,8.00,9.00,10.00,11.00,12.00],
-    sha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
-    sa:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
-    ha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00],
-    ksha:[0,0.50,1.00,1.50,2.00,2.50,3.00,3.50,4.00,4.50,5.00,5.50,6.00]
-};
-
-function resetFamily(row){
-    if(!row) return;
-    row.querySelectorAll(".family-cell").forEach(cell=>cell.classList.remove("highlighted"));
-    const button = row.querySelector(".family-start");
-    if(button) button.classList.remove("playing");
 }
 
+
+/* =========================================================
+   TOP PINK HEADER
+   EACH BUTTON REMAINS INDIVIDUAL
+========================================================= */
+
+vowelButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const audioFile = button.dataset.audio;
+
+
+        /* Click same vowel = stop */
+
+        if(
+            activeVowelButton === button &&
+            !audioPlayer.paused
+        ){
+
+            stopCurrentAudio();
+
+            return;
+        }
+
+
+        /* Stop anything currently playing */
+
+        stopCurrentAudio();
+
+
+        activeVowelButton = button;
+
+        button.classList.add("playing");
+
+
+        audioPlayer.src = audioFile;
+
+        audioPlayer.currentTime = 0;
+
+
+        audioPlayer.play().catch(error=>{
+
+            console.log(
+                "Vowel audio could not play:",
+                error
+            );
+
+            resetVowelButton();
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   FAMILY ROWS
+   J / SHA / SA / HA / KSHA
+========================================================= */
+
+const familyRows =
+    document.querySelectorAll(".family-row");
+
+let activeFamilyRow = null;
+
+let familyTimer = null;
+
+let familyIndex = 0;
+
+
+/* =========================================================
+   FAMILY HIGHLIGHT TIMINGS
+   13 numbers = 13 cells
+========================================================= */
+
+const familyHighlightTimes = {
+
+    ja:[
+        0,
+        1.00,
+        2.00,
+        3.00,
+        4.00,
+        5.00,
+        6.00,
+        7.00,
+        8.00,
+        9.00,
+        10.00,
+        11.00,
+        12.00
+    ],
+
+    sha:[
+        0,
+        1.50,
+        2.50,
+        3.20,
+        4.00,
+        4.80,
+        5.60,
+        6.60,
+        7.40,
+        8.40,
+        9.20,
+        10.20,
+        11.20
+    ],
+
+    ssa:[
+        0,
+        1.50,
+        2.50,
+        3.00,
+        4.00,
+        4.50,
+        5.50,
+        6.20,
+        7.20,
+        8.20,
+        8.90,
+        9.90,
+        10.90
+    ],
+
+    ha:[
+        0,
+        1.50,
+        2.30,
+        3.00,
+        4.00,
+        4.50,
+        5.50,
+        6.20,
+        7.20,
+        8.20,
+        8.80,
+        9.80,
+        10.80
+    ],
+
+    ksha:[
+        0,
+        1.30,
+        2.30,
+        3.30,
+        4.30,
+        5.30,
+        6.30,
+        7.00,
+        8.00,
+        9.00,
+        10.00,
+        11.00,
+        12.00
+    ]
+
+};
+
+
+/* =========================================================
+   RESET FAMILY
+========================================================= */
+
+function resetFamily(row){
+
+    if(!row) return;
+
+
+    row.querySelectorAll(".family-cell")
+        .forEach(cell=>{
+
+            cell.classList.remove("highlighted");
+
+        });
+
+
+    const button =
+        row.querySelector(".family-start");
+
+
+    if(button){
+
+        button.classList.remove("playing");
+
+    }
+}
+
+
+/* =========================================================
+   RESET ALL FAMILIES
+========================================================= */
+
 function resetAllFamilies(){
+
     clearInterval(familyTimer);
+
     familyTimer = null;
+
+
     familyRows.forEach(resetFamily);
+
+
     activeFamilyRow = null;
+
     familyIndex = 0;
 }
 
+
+/* =========================================================
+   HIGHLIGHT FAMILY
+========================================================= */
+
 function highlightFamily(row,index){
-    const cells = row.querySelectorAll(".family-cell");
+
+    const cells =
+        row.querySelectorAll(".family-cell");
+
+
     cells.forEach((cell,i)=>{
-        if(i <= index) cell.classList.add("highlighted");
-        else cell.classList.remove("highlighted");
+
+        if(i <= index){
+
+            cell.classList.add("highlighted");
+
+        }else{
+
+            cell.classList.remove("highlighted");
+
+        }
+
     });
 }
 
+
+/* =========================================================
+   START FAMILY HIGHLIGHT
+========================================================= */
+
 function startFamilyHighlight(row){
+
     clearInterval(familyTimer);
 
-    const familyName = row.dataset.family;
-    const cells = row.querySelectorAll(".family-cell");
-    const times = familyHighlightTimes[familyName];
+
+    const familyName =
+        row.dataset.family;
+
+
+    const cells =
+        row.querySelectorAll(".family-cell");
+
+
+    const times =
+        familyHighlightTimes[familyName];
+
 
     if(!times || !cells.length) return;
 
+
     familyIndex = 0;
+
+
     highlightFamily(row,0);
 
+
     familyTimer = setInterval(()=>{
-        if(audioPlayer.paused || activeFamilyRow !== row) return;
-        const currentTime = audioPlayer.currentTime;
 
-        while(familyIndex + 1 < cells.length && familyIndex + 1 < times.length && currentTime >= times[familyIndex + 1]){
-            familyIndex++;
-            highlightFamily(row,familyIndex);
-        }
-    },30);
-}
+        if(
+            audioPlayer.paused ||
+            activeFamilyRow !== row
+        ){
 
-familyRows.forEach(row=>{
-    const button = row.querySelector(".family-start");
-    if(!button) return;
-
-    button.addEventListener("click",()=>{
-        if(activeFamilyRow === row && !audioPlayer.paused){
-            stopCurrentAudio();
-            resetAllFamilies();
             return;
         }
 
-        stopCurrentAudio();
-        resetAllFamilies();
 
-        activeFamilyRow = row;
-        familyIndex = 0;
-        button.classList.add("playing");
+        const currentTime =
+            audioPlayer.currentTime;
 
-        const audioFile = button.dataset.familyAudio;
-        audioPlayer.src = audioFile;
-        audioPlayer.currentTime = 0;
 
-        audioPlayer.play().then(()=>{
-            startFamilyHighlight(row);
-        }).catch(error=>{
-            console.log("Family audio could not play:",error);
-            resetAllFamilies();
-        });
-    });
-});
+        while(
+            familyIndex + 1 < cells.length &&
+            familyIndex + 1 < times.length &&
+            currentTime >= times[familyIndex + 1]
+        ){
+
+            familyIndex++;
+
+            highlightFamily(
+                row,
+                familyIndex
+            );
+        }
+
+    },30);
+}
+
 
 /* =========================================================
-   AUDIO FINISHED = CLEAR ALL HIGHLIGHTS
+   FAMILY BUTTON CLICK
 ========================================================= */
+
+familyRows.forEach(row=>{
+
+    const button =
+        row.querySelector(".family-start");
+
+
+    if(!button) return;
+
+
+    button.addEventListener("click",()=>{
+
+
+        /* Click same family = stop */
+
+        if(
+            activeFamilyRow === row &&
+            !audioPlayer.paused
+        ){
+
+            stopCurrentAudio();
+
+            resetAllFamilies();
+
+            return;
+        }
+
+
+        /* Stop everything else */
+
+        stopCurrentAudio();
+
+        resetAllFamilies();
+
+
+        activeFamilyRow = row;
+
+        familyIndex = 0;
+
+
+        button.classList.add("playing");
+
+
+        const audioFile =
+            button.dataset.familyAudio;
+
+
+        audioPlayer.src = audioFile;
+
+        audioPlayer.currentTime = 0;
+
+
+        audioPlayer.play().then(()=>{
+
+            startFamilyHighlight(row);
+
+        }).catch(error=>{
+
+            console.log(
+                "Family audio could not play:",
+                error
+            );
+
+            resetAllFamilies();
+        });
+
+    });
+
+});
+
+
+/* =========================================================
+   AUDIO FINISHED
+   CLEAR ALL HIGHLIGHTS
+========================================================= */
+
 audioPlayer.addEventListener("ended",()=>{
+
+
+    /* Word table */
+
     clearInterval(highlightTimer);
+
     highlightTimer = null;
 
+
     if(activeButton){
+
         resetButton(activeButton);
+
         activeButton = null;
     }
 
+
+    /* Title */
+
+    resetTitle();
+
+
+    /* Pink header */
+
     resetVowelButton();
 
+
+    /* Family */
+
     clearInterval(familyTimer);
+
     familyTimer = null;
 
+
     if(activeFamilyRow){
+
         resetFamily(activeFamilyRow);
+
         activeFamilyRow = null;
     }
 
+
     familyIndex = 0;
+
 });
 
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
 function nextPage(page,direction){
+
     stopCurrentAudio();
+
     resetAllFamilies();
 
-    const book = document.querySelector(".book");
-    book.classList.remove("flip-out-next","flip-out-prev");
+
+    const book =
+        document.querySelector(".book");
+
+
+    book.classList.remove(
+        "flip-out-next",
+        "flip-out-prev"
+    );
+
+
     void book.offsetWidth;
 
-    if(direction === "next") book.classList.add("flip-out-next");
-    else book.classList.add("flip-out-prev");
+
+    if(direction === "next"){
+
+        book.classList.add(
+            "flip-out-next"
+        );
+
+    }else{
+
+        book.classList.add(
+            "flip-out-prev"
+        );
+
+    }
+
 
     setTimeout(()=>{
+
         window.location.href = page;
+
     },600);
+
 }
+
 </script>
 
 </body>
