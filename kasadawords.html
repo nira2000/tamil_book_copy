@@ -374,42 +374,55 @@ body{
 }
 
 
+
 /* ==========================================
-   PAGE FLIP
+   SMOOTHER PAGE FLIP
 ========================================== */
 
-.flip-out-next{
-    animation:flipNext .6s ease forwards;
-    transform-origin:left center;
+body {
+    perspective: 1400px;
 }
 
-.flip-out-prev{
-    animation:flipPrev .6s ease forwards;
-    transform-origin:right center;
+.page-wrapper {
+    transform-style: preserve-3d;
 }
 
-@keyframes flipNext{
-
-    from{
-        transform:rotateY(0deg);
-    }
-
-    to{
-        transform:rotateY(-90deg);
-    }
-
+.flip-out-next,
+.flip-out-prev {
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
-@keyframes flipPrev{
+.flip-out-next {
+    animation: flipNext 0.55s ease-in-out forwards;
+    transform-origin: left center;
+}
 
-    from{
-        transform:rotateY(0deg);
+.flip-out-prev {
+    animation: flipPrev 0.55s ease-in-out forwards;
+    transform-origin: right center;
+}
+
+@keyframes flipNext {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
     }
-
-    to{
-        transform:rotateY(90deg);
+    to {
+        transform: rotateY(-90deg);
+        opacity: 0;
     }
+}
 
+@keyframes flipPrev {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
 }
 
 
