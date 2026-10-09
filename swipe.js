@@ -1,135 +1,124 @@
+
 /* =========================================
-   SWIPE PAGE TURNING
-   Works with existing navigation buttons
+   SHARED SWIPE PAGE TURNING
+   Use the existing navigation buttons
 ========================================= */
 
 (() => {
+    "use strict";
+
+    const SWIPE_THRESHOLD = 65;
+    const MAX_VERTICAL_MOVEMENT = 80;
 
     let startX = 0;
     let startY = 0;
+    let trackingTouch = false;
+    let isSwiping = false;
+    let touchStartTarget = null;
 
-    const SWIPE_THRESHOLD = 60;
-
-    /* Find the existing navigation buttons */
+    // Find this page's navigation buttons
     const navigation = document.querySelector(".navigation");
 
-    if (!navigation) {
-        return;
-    }
+    if (!navigation) return;
 
     const navButtons = navigation.querySelectorAll(".nav-btn");
 
-    if (navButtons.length < 2) {
-        return;
-    }
+    if (navButtons.length < 2) return;
 
-    /* First button = Previous
-       Last button  = Next */
     const previousButton = navButtons[0];
     const nextButton = navButtons[navButtons.length - 1];
 
-
-    /* =========================================
-       TOUCH START
-    ========================================= */
+    // Ignore interactive elements where students tap to learn
+    function isInteractive(target) {
+        return target instanceof Element &&
+            !!target.closest(
+                "button, a, input, textarea, select, audio, video"
+            );
+    }
 
     document.addEventListener("touchstart", function (event) {
-
-        /* Only accept one finger */
         if (event.touches.length !== 1) {
+            trackingTouch = false;
             return;
         }
 
-        /*
-           Don't interfere with buttons,
-           links, audio controls, text inputs, etc.
-        */
-        const target = event.target;
+        const touch = event.touches[0];
 
+        startX = touch.clientX;
+        startY = touch.clientY;
+        touchStartTarget = event.target;
+        trackingTouch = true;
+        isSwiping = false;
+
+    }, { passive: true });
+
+    document.addEventListener("touchmove", function (event) {
+        if (!trackingTouch || event.touches.length !== 1) return;
+
+        const touch = event.touches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+
+        // Only treat a clearly horizontal movement as a swipe
         if (
-            target.closest(
-                "button, a, input, textarea, select, audio"
-            )
+            Math.abs(dx) > 12 &&
+            Math.abs(dx) > Math.abs(dy) &&
+            !isInteractive(touchStartTarget)
         ) {
-            startX = 0;
-            startY = 0;
-            return;
+            isSwiping = true;
         }
 
-        startX = event.changedTouches[0].screenX;
-        startY = event.changedTouches[0].screenY;
-
-    }, {
-        passive: true
-    });
-
-
-    /* =========================================
-       TOUCH END
-    ========================================= */
+    }, { passive: true });
 
     document.addEventListener("touchend", function (event) {
-
-        if (startX === 0 && startY === 0) {
+        if (!trackingTouch || event.changedTouches.length !== 1) {
+            resetTouch();
             return;
         }
 
-        const endX = event.changedTouches[0].screenX;
-        const endY = event.changedTouches[0].screenY;
+        const touch = event.changedTouches[0];
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
 
-        const distanceX = endX - startX;
-        const distanceY = endY - startY;
+        const shouldIgnore =
+            isInteractive(touchStartTarget) ||
+            Math.abs(dx) < SWIPE_THRESHOLD ||
+            Math.abs(dy) > MAX_VERTICAL_MOVEMENT ||
+            Math.abs(dx) <= Math.abs(dy);
 
-        /* Reset */
-        startX = 0;
-        startY = 0;
+        resetTouch();
 
+        if (shouldIgnore) return;
 
-        /* =========================================
-           IGNORE SMALL MOVEMENTS
-        ========================================= */
-
-        if (Math.abs(distanceX) < SWIPE_THRESHOLD) {
+        // Avoid triggering navigation repeatedly during a page turn
+        if (document.querySelector(
+            ".flip-out-next, .flip-out-prev"
+        )) {
             return;
         }
 
-
-        /* =========================================
-           IGNORE VERTICAL SWIPES
-        ========================================= */
-
-        if (Math.abs(distanceX) <= Math.abs(distanceY)) {
-            return;
+        // Swipe left = next page
+        if (dx < 0) {
+            nextButton.click();
         }
 
-
-        /* =========================================
-           SWIPE LEFT = NEXT PAGE
-        ========================================= */
-
-        if (distanceX < 0) {
-
-            if (nextButton) {
-                nextButton.click();
-            }
-
-        }
-
-
-        /* =========================================
-           SWIPE RIGHT = PREVIOUS PAGE
-        ========================================= */
-
+        // Swipe right = previous page
         else {
-
-            if (previousButton) {
-                previousButton.click();
-            }
-
+            previousButton.click();
         }
 
-    }, {
+    }, { passive: true });
+
+    document.addEventListener("touchcancel", resetTouch, {
         passive: true
     });
+
+    function resetTouch() {
+        startX = 0;
+        startY = 0;
+        trackingTouch = false;
+        isSwiping = false;
+        touchStartTarget = null;
+    }
 
 })();
