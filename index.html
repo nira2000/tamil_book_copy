@@ -261,6 +261,71 @@ body {
 }
 
 
+
+/* =========================================
+   SWIPE INDICATOR
+========================================= */
+
+.swipe-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 12px auto 0;
+    padding: 9px 18px;
+
+    background: #FFF4D6;
+    color: #21005B;
+
+    border: 2px solid #FFF4D6;
+    border-radius: 50px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.swipe-hand {
+    font-size: 18px;
+    animation: handSwipe 1.2s ease-in-out infinite;
+}
+
+.swipe-arrows {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1;
+    animation: arrowSwipe 1.2s ease-in-out infinite;
+}
+
+@keyframes handSwipe {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+}
+
+@keyframes arrowSwipe {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+
+
+
 /* ===========================================
    MOBILE
 =========================================== */
@@ -404,6 +469,24 @@ body {
 
     }
 
+    /* MOBILE SWIPE INDICATOR */
+
+    .swipe-hint {
+        gap: 7px;
+        margin-top: 10px;
+        padding: 7px 12px;
+        font-size: 11px;
+    }
+
+    .swipe-hand {
+        font-size: 16px;
+    }
+
+    .swipe-arrows {
+        font-size: 20px;
+    }
+
+
 }
 
 
@@ -416,72 +499,66 @@ body {
 <body>
 
 
-<!-- =========================================
-     YOUR EXISTING BOOK
-========================================= -->
+
+<!-- YOUR EXISTING BOOK -->
 
 <div class="app">
 
     <div class="header">
-
         📚 Tamil e-Book • தமிழ் எழுத்துகள்
-
     </div>
-
 
     <div class="book">
 
         <div class="cover">
-
             <img
                 src="cover.jpg"
                 alt="Tamil Book Cover"
             >
-
         </div>
 
     </div>
 
+    <!-- SWIPE INDICATOR -->
+    <div class="swipe-hint">
+        <span class="swipe-hand">☝</span>
+        <span class="swipe-text">SWIPE TO TURN PAGE</span>
+        <span class="swipe-arrows">↔</span>
+    </div>
 
+    <!-- NAVIGATION -->
     <div class="navigation">
 
         <button
             class="nav-btn"
             onclick="nextPage('home.html','prev')"
+            aria-label="Previous page"
         >
-
             ❮
-
         </button>
 
-
         <div class="dots">
-
             <div class="dot active"></div>
-
             <div class="dot"></div>
-
             <div class="dot"></div>
-
             <div class="dot"></div>
-
             <div class="dot"></div>
-
         </div>
-
 
         <button
             class="nav-btn"
             onclick="nextPage('page2.html','next')"
+            aria-label="Next page"
         >
-
             ❯
-
         </button>
 
     </div>
 
 </div>
+
+<script src="swipe.js"></script>
+
 
 <script src="swipe.js"></script>
 
