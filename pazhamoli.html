@@ -23,443 +23,292 @@
 
 </head>
 
-
 <style>
-    
-
-
-
-
 /* ==========================================
    RESET
 ========================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-body{
-
-    font-family:'Noto Sans Tamil',sans-serif;
-
-    background:#111D66;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    min-height:100vh;
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-    padding:20px;
-
+body {
+    font-family: 'Noto Sans Tamil', sans-serif;
+    background: #111D66;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
 }
-
 
 /* ==========================================
    APP
 ========================================== */
 
-.app{
-
-    width:100%;
-
-    max-width:800px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    transform-style:preserve-3d;
-
+.app {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-style: preserve-3d;
 }
-
 
 /* ==========================================
    HEADER
 ========================================== */
 
-.header{
-
-    color:white;
-
-    text-align:center;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    margin-bottom:6px;
-
+.header {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 6px;
     text-shadow:
         0 0 8px white,
         0 0 15px #4FC3F7,
         0 0 35px #4FC3F7;
-
 }
-
 
 /* ==========================================
    BOOK
 ========================================== */
 
-.book{
-
-    position:relative;
-
-    width:min(900px,100%);
-
-    background:#F8F1E4;
-
-    border-radius:30px;
-
-    padding:28px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
-
+.book {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    background: #F8F1E4;
+    border-radius: 30px;
+    padding: 28px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
 }
-
 
 /* RED SPINE */
 
-.book::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:-10px;
-
-    top:20px;
-
-    bottom:20px;
-
-    width:18px;
-
-    background:#D40C02;
-
-    border-radius:12px;
-
+.book::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    bottom: 20px;
+    width: 18px;
+    background: #D40C02;
+    border-radius: 12px;
+    z-index: 3;
+    pointer-events: none;
 }
-
 
 /* ==========================================
    BOOK CONTENT
 ========================================== */
 
-.book-content{
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    overflow:hidden;
-
+.book-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
 }
-
 
 /* ==========================================
    BACKGROUND IMAGE
+   CLEAR ON DESKTOP AND MOBILE
 ========================================== */
 
-.bg-image{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    opacity:.1;
-
-    pointer-events:none;
-
-    user-select:none;
-
+.bg-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
 }
-
 
 /* ==========================================
    PAGE
 ========================================== */
 
-.page{
-
-    position:relative;
-
-    width:100%;
-
-    z-index:2;
-
+.page {
+    position: relative;
+    width: 100%;
+    z-index: 2;
 }
-
 
 /* ==========================================
    TITLE
 ========================================== */
 
-.title{
-
-    display:block;
-
-    margin:0 auto 28px;
-
-    background:#FFE7A5;
-
-    border:3px solid #E4C86A;
-
-    border-radius:40px;
-
-    padding:12px 34px;
-
-    font-family:inherit;
-
-    font-size:46px;
-
-    font-weight:800;
-
-    color:#D94C4C;
-
-    cursor:pointer;
-
-    position:relative;
-
-    transition:.25s;
-
+.title {
+    display: block;
+    margin: 0 auto 28px;
+    background: #FFE7A5;
+    border: 3px solid #E4C86A;
+    border-radius: 40px;
+    padding: 12px 34px;
+    font-family: inherit;
+    font-size: 46px;
+    font-weight: 800;
+    color: #D94C4C;
+    cursor: pointer;
+    position: relative;
+    transition: .25s;
 }
 
-.title:hover{
-
-    transform:translateY(-2px);
-
+.title:hover {
+    transform: translateY(-2px);
 }
-
 
 /* ==========================================
    PROVERB LIST
 ========================================== */
 
-.proverb-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
+.proverb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
-
 
 /* ==========================================
-   BUTTON
+   BUTTONS
 ========================================== */
 
-.rule-btn{
-
-    width:100%;
-
-    background:rgba(255,255,255,.78);
-
-    border:2px solid rgba(0,0,0,.12);
-
-    border-radius:18px;
-
-    padding:14px 18px;
-
-    text-align:left;
-
-    font-family:inherit;
-
-    font-size:29px;
-
-    font-weight:700;
-
-    color:#222;
-
-    cursor:pointer;
-
-    position:relative;
-
-    transition:.25s;
-
+.rule-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, .78);
+    border: 2px solid rgba(0, 0, 0, .12);
+    border-radius: 18px;
+    padding: 14px 18px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 29px;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+    position: relative;
+    transition: .25s;
 }
 
-.rule-btn:hover{
-
-    background:#FFF;
-
-    transform:translateX(5px);
-
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
-
+.rule-btn:hover {
+    background: #FFF;
+    transform: translateX(5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .15);
 }
-
 
 /* ==========================================
    SPEAKER
 ========================================== */
 
-.speaker-icon{
-
-    position:absolute;
-
-    top:8px;
-
-    right:10px;
-
-    font-size:13px;
-
-    opacity:.8;
-
+.speaker-icon {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 13px;
+    opacity: .8;
+    pointer-events: none;
 }
-
 
 /* ==========================================
-   HIGHLIGHT
+   WORD HIGHLIGHT
 ========================================== */
 
-.highlight{
-
-    display:inline-block;
-
-    padding:2px 3px;
-
-    border-radius:6px;
-
-    transition:.25s;
-
+.highlight {
+    display: inline-block;
+    padding: 2px 3px;
+    border-radius: 6px;
+    transition: .25s;
 }
 
-.highlight.active{
-
-    background:#FFF59A;
-
-    color:#C62828;
-
-    box-shadow:
-        0 0 8px rgba(255,215,0,.8);
-
+.highlight.active {
+    background: #FFF59A;
+    color: #C62828;
+    box-shadow: 0 0 8px rgba(255, 215, 0, .8);
 }
-
 
 /* ==========================================
    ACTIVE BUTTON
 ========================================== */
 
-.speaker-btn.active{
-
-    background:#FFF7C2;
-
+.speaker-btn.active {
+    background: #FFF7C2;
 }
-
 
 /* ==========================================
    PAGE NUMBER
 ========================================== */
 
-.page-number{
-
-    margin-top:18px;
-
-    text-align:center;
-
-    font-size:22px;
-
-    font-weight:bold;
-
-    color:#9D68D3;
-
+.page-number {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #9D68D3;
 }
-
 
 /* ==========================================
    NAVIGATION
 ========================================== */
 
-.navigation{
-
-    width:100%;
-
-    margin-top:14px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
+.navigation {
+    width: 100%;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-btn{
-
-    width:60px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#F8F1E4;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: #F8F1E4;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
 }
 
-.dots{
-
-    display:flex;
-
-    gap:10px;
-
+.dots {
+    display: flex;
+    gap: 10px;
 }
 
-.dot{
-
-    width:12px;
-
-    height:12px;
-
-    border-radius:50%;
-
-    background:#B0B0B0;
-
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #B0B0B0;
 }
 
-.dot.active{
+.dot.active {
+    background: #19D400;
+}
 
-    background:#19D400;
 
+.highlight {
+    margin: 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
 }
 
 
@@ -467,293 +316,266 @@ body{
 
 
 /* ==========================================
-   MOBILE
+   MOBILE LAYOUT FIX
 ========================================== */
 
-@media (max-width:768px){
-
-html,
-body{
-
-    width:100%;
-    height:100%;
-    margin:0;
-    padding:0;
-
-    overflow:hidden;
-
-}
-
-body{
-
-    background:#111D66;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-}
-
-
-/* ==========================
-   APP
-========================== */
-
-.app{
-
-    width:100%;
-    height:96dvh;
-
-    display:flex;
-    flex-direction:column;
-
-}
-
-
-/* ==========================
-   HEADER
-========================== */
-
-.header{
-
-    flex-shrink:0;
-
-    font-size:13px;
-
-    margin-bottom:5px;
-
-}
-
-
-/* ==========================
-   BOOK
-========================== */
-
-.book{
-
-    flex:0.93;
-
-    width:100%;
-
-    max-width:410px;
-
-    margin:0 auto;
-
-    display:flex;
-
-    flex-direction:column;
-
-    background:#F8F1E4;
-
-    border-radius:22px;
-
-    padding:8px;
-
-    overflow:hidden;
-
-}
-
-.book::before{
-
-    width:8px;
-
-    left:-4px;
-
-    top:10px;
-
-    bottom:10px;
-
-}
-
-
-/* ==========================
-   BOOK CONTENT
-========================== */
-
-.book-content{
-
-    flex:1;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    overflow:hidden;
-
-}
-
-
-/* ==========================
-   PAGE
-========================== */
-
-.page{
-
-    width:100%;
-
-}
-
-
-/* ==========================
-   BACKGROUND
-========================== */
-
-.bg-image{
-
-    opacity:.1;
-
-}
-
-
-/* ==========================
-   TITLE
-========================== */
-
-.title{
-
-    width:82%;
-
-    margin:0 auto 9px;
-
-    padding:6px 12px;
-
-    font-size:22px;
-
-    border-radius:18px;
-
-}
-
-/* ==========================
-   PROVERB LIST
-========================== */
-
-.proverb-list{
-
-    gap:5px;
-
-}
-
-
-/* ==========================
-   BUTTONS
-========================== */
-
-.rule-btn{
-
-    padding:7px 10px;
-
-    font-size:15px;
-
-    line-height:1.2;
-
-    border-radius:10px;
-
-}
-
-
-/* ==========================
-   SPEAKER
-========================== */
-
-.speaker-icon{
-
-    top:4px;
-
-    right:6px;
-
-    font-size:9px;
-
-}
-
-
-/* ==========================
-   HIGHLIGHT
-========================== */
-
-.highlight{
-
-    padding:1px 2px;
-
-    border-radius:4px;
-
-}
-
-
-/* ==========================
-   PAGE NUMBER
-========================== */
-
-.page-number{
-
-    flex-shrink:0;
-
-    margin-top:4px;
-
-    margin-bottom:2px;
-
-    text-align:center;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    color:#9d68d3;
-
-}
-
-
-/* ==========================
-   NAVIGATION
-========================== */
-
-.navigation{
-
-    flex-shrink:0;
-
-    margin-top:2px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:0 8px;
-
-}
-
-.nav-btn{
-
-    width:38px;
-
-    height:38px;
-
-    font-size:18px;
-
-}
-
-.dots{
-
-    gap:7px;
-
-}
-
-.dot{
-
-    width:8px;
-
-    height:8px;
-
-}
-
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body {
+        background: #111D66;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 1400px;
+    }
+
+    /* APP */
+
+    .app {
+        width: 100%;
+        height: 100dvh;
+        max-width: 100%;
+        padding: 8px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        min-height: 0;
+    }
+
+    /* HEADER */
+
+    .header {
+        flex: 0 0 auto;
+        width: 100%;
+        font-size: 12px;
+        line-height: 1.3;
+        margin: 0;
+        text-align: center;
+    }
+
+    /* BOOK */
+
+    .book {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        width: 100%;
+        max-width: 410px;
+        margin: 0 auto;
+        padding: 10px 9px 6px 12px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .book::before {
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        width: 5px;
+        border-radius: 5px;
+    }
+
+    /* CONTENT AREA */
+
+    .book-content {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        width: 100%;
+        display: block;
+        overflow: hidden;
+    }
+
+    /* CLEAR BACKGROUND IMAGE */
+
+    .bg-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        opacity: 1;
+        z-index: 0;
+    }
+
+    /* PAGE CONTENT */
+
+    .page {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    /* TITLE */
+
+    .title {
+        width: 90%;
+        max-width: 300px;
+        margin: 0 auto 10px;
+        padding: 7px 8px;
+        font-size: clamp(19px, 5.5vw, 24px);
+        line-height: 1.35;
+        border-width: 2px;
+        border-radius: 16px;
+    }
+
+    /* PROVERBS */
+
+    .proverb-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+    }
+
+    /* PROVERB BUTTONS */
+
+    .rule-btn {
+        width: 100%;
+        padding: 8px 25px 8px 9px;
+        font-size: clamp(13px, 3.7vw, 16px);
+        line-height: 1.45;
+        border-width: 1px;
+        border-radius: 9px;
+        text-align: left;
+        overflow-wrap: anywhere;
+        transition: background-color .2s ease;
+    }
+
+    .rule-btn:hover {
+        transform: none;
+    }
+
+    /* SPEAKER */
+
+    .speaker-icon {
+        top: 4px;
+        right: 5px;
+        font-size: 9px;
+    }
+
+    /* WORD HIGHLIGHT */
+
+    .highlight {
+        padding: 1px 2px;
+        border-radius: 4px;
+    }
+
+    .highlight.active {
+        box-shadow: 0 0 4px rgba(255, 215, 0, .7);
+    }
+
+    /* PAGE NUMBER */
+
+    .page-number {
+        flex: 0 0 auto;
+        margin: 3px 0 0;
+        padding: 0;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* NAVIGATION */
+
+    .navigation {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 410px;
+        margin: 0 auto;
+        padding: 0 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-btn {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        font-size: 18px;
+    }
+
+    .dots {
+        gap: 7px;
+        align-items: center;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        flex: 0 0 8px;
+    }
 }
 
 
 
 
+
+/* ==========================================
+   PAZHAMOLI PAGE FLIP
+========================================== */
+
+body {
+    perspective: 1400px;
+}
+
+.app {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.flip-out-next {
+    animation: pazhamoliFlipNext .6s ease-in-out forwards;
+    transform-origin: left center;
+}
+
+.flip-out-prev {
+    animation: pazhamoliFlipPrev .6s ease-in-out forwards;
+    transform-origin: right center;
+}
+
+@keyframes pazhamoliFlipNext {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(-85deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pazhamoliFlipPrev {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: rotateY(85deg);
+        opacity: 0;
+    }
+
+
+}
 </style>
+
 
 
 <body>
