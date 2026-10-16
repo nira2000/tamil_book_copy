@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ta">
+
 <head>
 
 <meta charset="UTF-8">
@@ -12,1146 +13,1226 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-</head>
-
 <style>
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-    width:100%;
-    height:100%;
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
-body{
+body {
+    font-family: "Noto Sans Tamil", sans-serif;
+    background: #111d66;
 
-    font-family:'Noto Sans Tamil',sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
-    background:#111D66;;
+    min-height: 100vh;
 
-    display:flex;
+    overflow-x: hidden;
 
-    justify-content:center;
-
-    align-items:flex-start;
-
-    min-height:100vh;
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-    padding:20px;
-
+    padding: 18px;
 }
 
 
-.app{
+/* =========================================================
+   APP
+========================================================= */
 
-    width:100%;
+.app {
+    width: 100%;
+    max-width: 800px;
 
-    display:flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    flex-direction:column;
-
-    align-items:center;
-
-    max-width:800px;
-
-    transform-style:preserve-3d;
-
+    perspective: 1500px;
+    transform-style: preserve-3d;
 }
 
 
-/* =====================================================
-   MAIN PAGE
-===================================================== */
+/* =========================================================
+   BOOK
+========================================================= */
 
-.book{
+.book {
+    position: relative;
 
-    position:relative;
+    width: min(800px, 100%);
 
-    width:min(900px,100%);
+    background: #f9f3e4;
 
-    background:#F9F3E4;
+    border-radius: 28px;
 
-    border-radius:30px;
+    padding: 24px 28px 14px;
 
-    padding:40px;
-
-    overflow:visible;
+    overflow: hidden;
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.25);
-
 }
 
 
-
-/* =====================================================
+/* =========================================================
    RED BOOK SPINE
-===================================================== */
+========================================================= */
 
-.book::before{
+.book::before {
+    content: "";
 
-    content:"";
+    position: absolute;
 
-    position:absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
 
-    left:-10px;
+    width: 7px;
 
-    top:20px;
+    background: #d40c02;
 
-    bottom:20px;
-
-    width:18px;
-
-    background:#D40C02;
-
-    border-radius:10px;
-
+    border-radius: 8px;
 }
 
 
+/* =========================================================
+   TOP DECORATION
+========================================================= */
 
-/* =====================================================
-   DECORATIONS
-===================================================== */
+.swirl {
+    position: absolute;
 
-.swirl{
+    left: 14px;
+    top: 12px;
 
-    position:absolute;
+    width: 80px;
+    height: 80px;
 
-    left:18px;
-    top:14px;
+    border: 6px solid #f2c94c;
 
-    width:80px;
-    height:80px;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
 
-    border:6px solid #F2C94C;
+    border-radius: 50%;
 
-    border-right-color:transparent;
-    border-bottom-color:transparent;
+    transform: rotate(-20deg);
 
-    border-radius:50%;
-
-    transform:rotate(-20deg);
-
+    opacity: .75;
 }
 
-.swirl::after{
+.swirl::after {
+    content: "";
 
-    content:"";
+    position: absolute;
 
-    position:absolute;
+    left: 14px;
+    top: 14px;
 
-    left:14px;
-    top:14px;
+    width: 38px;
+    height: 38px;
 
-    width:38px;
-    height:38px;
+    border: 5px solid #f2c94c;
 
-    border:5px solid #F2C94C;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
 
-    border-right-color:transparent;
-    border-bottom-color:transparent;
-
-    border-radius:50%;
-
+    border-radius: 50%;
 }
 
 
+.curve-top {
+    position: absolute;
 
-.curve-top{
+    right: 25px;
+    top: 15px;
 
-    position:absolute;
+    width: 90px;
+    height: 35px;
 
-    right:28px;
-    top:18px;
+    border-top: 7px solid #efa2aa;
 
-    width:92px;
-    height:26px;
+    border-radius: 70px;
 
-    border-top:6px solid #F19DA5;
+    transform: rotate(8deg);
 
-    border-radius:60px;
-
-    transform:rotate(8deg);
-
+    opacity: .8;
 }
 
 
+/* =========================================================
+   CALENDAR STICKER
+========================================================= */
 
-.sparkle{
+.calendar-sticker {
+    position: absolute;
 
-    position:absolute;
+    right: 22px;
+    top: 390px;
 
-    right:32px;
+    width: 95px;
+    height: auto;
 
-    top:180px;
+    z-index: 5;
 
-    width:36px;
-    height:36px;
+    pointer-events: none;
 
-}
-
-.sparkle::before,
-.sparkle::after{
-
-    content:"";
-
-    position:absolute;
-
-    background:#FF847C;
-
-    border-radius:10px;
-
-}
-
-.sparkle::before{
-
-    width:5px;
-
-    height:100%;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-}
-
-.sparkle::after{
-
-    width:100%;
-
-    height:5px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
+    transform: rotate(3deg);
 }
 
 
+/* =========================================================
+   TITLE
+========================================================= */
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
+.title {
+    position: relative;
 
-.title{
+    width: fit-content;
+    min-width: 420px;
 
-    position:relative;
+    margin: 8px auto 22px;
 
-    width:fit-content;
+    padding: 8px 46px 9px 38px;
 
-    min-width:420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    margin:0 auto 20px;
+    background: #fff;
 
-    padding:12px 60px 12px 40px;
+    color: #8e1e0c;
 
-    display:flex;
+    font-size: 45px;
+    font-weight: 800;
 
-    justify-content:center;
+    border: 2px solid #d2d2d2;
 
-    align-items:center;
-
-    gap:8px;
-
-    background:#fff;
-
-    color:#73160E;
-
-    font-size:48px;
-
-    font-weight:800;
-
-    letter-spacing:0;
-
-    border:2px solid #d0d0d0;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-
-.title:hover{
-
-    transform:translateY(-2px);
-
-}
-
-.title .speaker-icon{
-
-    position:absolute;
-
-    right:14px;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    font-size:13px;
-
-}
-
-
-
-/* =====================================================
-   MONTH SECTION
-===================================================== */
-
-.months-wrapper{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:18px;
-
-    margin-bottom:22px;
-
-}
-
-
-
-.card{
-
-    flex:1;
-
-    border-radius:26px;
-
-    padding:16px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-}
-
-
-
-.pink{
-
-    background:#F5CFD8;
-
-}
-
-
-
-.yellow{
-
-    background:#F8E3A8;
-
-}
-
-
-
-/* =====================================================
-   MONTH BUTTONS
-===================================================== */
-
-.month-btn{
-
-    background:transparent;
-
-    border:none;
-
-    width:100%;
-
-    font-family:inherit;
-
-    font-size:27px;
-
-    color:#111;
-
-    padding:5px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:0;
-
-}
-
-
-
-.month-btn:hover{
-
-    background:#fff;
-
-    transform:translateY(-2px);
-
-    box-shadow:0 4px 10px rgba(0,0,0,.12);
-
-}
-
-
-
-.month-btn.active{
-
-    background:#FFF59A;
-
-    color:#C62828;
-
-}
-
-
-
-/* Small Click Effect */
-
-.month-btn:active{
-
-    transform:scale(.96);
-
-}
-
-
-/* =====================================================
-   AATHICHUDI HEADER
-===================================================== */
-
-.aathichudi-header{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:14px;
-
-    margin-bottom:14px;
-
-}
-
-.heading{
-
-    background:#F7B9C8;
-
-    color:#D12020;
-
-    font-size:30px;
-
-    font-weight:800;
-
-    padding:6px 24px;
-
-    border-radius:30px;
-
-    border:2px solid #EF8FA6;
-
-    text-shadow:1px 1px #fff;
-
-    cursor:pointer;
-
-    position:relative;
-
-    font-family:inherit;
-
-    transition:.25s;
-
-}
-
-
-
-.line{
-
-    position:relative;
-
-    width:48px;
-
-    height:5px;
-
-    background:#000;
-
-    border-radius:10px;
-
-}
-
-.line::before,
-.line::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:36px;
-
-    height:5px;
-
-    background:#000;
-
-    border-radius:10px;
-
-}
-
-.left::before{
-
-    top:-10px;
-
-    left:0;
-
-    transform:rotate(25deg);
-
-}
-
-.left::after{
-
-    top:10px;
-
-    left:0;
-
-    transform:rotate(-25deg);
-
-}
-
-.right::before{
-
-    top:-10px;
-
-    right:0;
-
-    transform:rotate(-25deg);
-
-}
-
-.right::after{
-
-    top:10px;
-
-    right:0;
-
-    transform:rotate(25deg);
-
-}
-
-
-
-/* =====================================================
-   AATHICHUDI CARD
-===================================================== */
-
-.aathichudi-card{
-
-    background:#F8E4A8;
-
-    border-radius:28px;
-
-    padding:18px;
-
-    display:flex;
-
-    gap:18px;
-
-}
-
-.column{
-
-    flex:1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:6px;
-
-}
-
-
-
-/* =====================================================
-   RULE BUTTONS
-===================================================== */
-
-.rule-btn{
-
-    background:none;
-
-    border:none;
-
-    text-align:left;
-
-    font-family:inherit;
-
-    font-size:21px;
-
-    line-height:1.28;
-
-    padding:5px 6px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.rule-btn:hover{
-
-    background:#fff;
-
-    transform:translateX(5px);
-
-    box-shadow:0 4px 10px rgba(0,0,0,.12);
-
-}
-
-.rule-btn.active{
-
-    background:#FFF59A;
-
-    color:#C62828;
-
-}
-
-.rule-btn:active{
-
-    transform:scale(.97);
-
-}
-
-
-.speaker-btn{
-
-    position:relative;
-
-    border:2px solid rgba(0,0,0,.18);
-
-    box-shadow:0 3px 8px rgba(0,0,0,.12);
-
-}
-
-.speaker-btn:hover{
-
-    border-color:#D12020;
-
-}
-
-.speaker-icon{
-
-    position:absolute;
-
-    top:4px;
-
-    right:6px;
-
-    font-size:11px;
-
-    opacity:.8;
-
-    pointer-events:none;
-
-}
-
-.month-btn,
-.rule-btn{
-
-    transition:.25s;
-
-}
-
-.month-btn.active,
-.rule-btn.active{
-
-    background:#FFF59A;
-
-    border-color:#E53935;
-
-    color:#C62828;
+    border-radius: 7px;
 
     box-shadow:
-        0 0 10px rgba(255,215,0,.8),
-        0 0 18px rgba(255,215,0,.4);
+        0 4px 10px rgba(0,0,0,.16);
 
+    cursor: pointer;
+
+    transition: .25s;
+
+    z-index: 6;
+}
+
+.title:hover {
+    transform: translateY(-2px);
+}
+
+.title .speaker-icon {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 13px;
 }
 
 
-.word{
+/* =========================================================
+   MONTHS
+========================================================= */
 
-    display:inline;
+.months-wrapper {
+    display: flex;
 
-    margin:0;
+    justify-content: space-between;
 
-    padding:2px 2px;
+    gap: 18px;
 
-    border-radius:6px;
+    margin-bottom: 18px;
 
-    transition:.25s;
+    position: relative;
 
+    z-index: 6;
 }
 
-.word.active{
+.card {
+    flex: 1;
 
-    background:#FFF59A;
+    padding: 13px 15px;
 
-    color:#D50000;
+    display: flex;
+    flex-direction: column;
 
-    font-weight:700;
+    gap: 5px;
 
-    box-shadow:0 0 8px rgba(255,215,0,.8);
-
+    border-radius: 24px;
 }
 
+.pink {
+    background: #f4ced7;
+}
 
-/* =====================================================
-   PAGE NUMBER
-===================================================== */
-
-.page-number{
-
-    margin-top:12px;
-
-    text-align:center;
-
-    font-size:24px;
-
-    font-weight:800;
-
-    color:#8D64D8;
-
+.yellow {
+    background: #f7dfa0;
 }
 
 
+/* =========================================================
+   MONTH BUTTONS
+========================================================= */
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+.month-btn {
+    position: relative;
 
-.navigation{
+    width: 100%;
 
-    margin-top:16px;
+    min-height: 35px;
 
-    display:flex;
+    background: rgba(255,255,255,.18);
 
-    justify-content:space-between;
+    border: 2px solid rgba(80,80,80,.30);
 
-    align-items:center;
+    border-radius: 12px;
 
+    font-family: inherit;
+
+    font-size: 20px;
+
+    color: #111;
+
+    padding: 3px 27px 3px 8px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    line-height: 1.15;
+
+    transition: .2s;
 }
 
-.nav-btn{
-
-    width:60px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#F9F3E4;
-
-    font-size:28px;
-
-    cursor:pointer;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.18);
-
-    transition:.25s;
-
+.month-btn:hover {
+    background: rgba(255,255,255,.65);
 }
 
-.nav-btn:hover{
-
-    transform:scale(1.08);
-
-}
-
-
-
-.dots{
-
-    display:flex;
-
-    gap:10px;
-
-}
-
-.dot{
-
-    width:12px;
-
-    height:12px;
-
-    border-radius:50%;
-
-    background:#A8B0B0;
-
-}
-
-.dot.active{
-
-    background:#19D400;
-
+.month-btn:active {
+    transform: scale(.97);
 }
 
 
-.highlight{
+/* =========================================================
+   ACTIVE BUTTON
+========================================================= */
 
-    display:inline-block;
+.month-btn.active {
+    background: rgba(255,255,255,.18);
 
-    color:#111;
+    color: #111;
 
-    transition:.25s;
+    border-color: rgba(80,80,80,.30);
 
-}
-
-.highlight.active{
-
-    color:#ff0000;
-
-    transform:scale(1.08);
-
-    font-weight:700;
-
-    text-shadow:0 0 5px rgba(255,0,0,.35);
-
+    box-shadow: none;
 }
 
 
-/* ==========================
-   PAGE FLIP
-========================== */
+/* =========================================================
+   SPEAKER
+========================================================= */
 
-.app{
-    perspective:1500px;
-    transform-style:preserve-3d;
-    backface-visibility:hidden;
-}
+.speaker-icon {
+    position: absolute;
 
-.flip-out-next{
-    animation:flipNext .6s ease forwards;
-    transform-origin:left center;
-}
+    right: 7px;
+    top: 50%;
 
-.flip-out-prev{
-    animation:flipPrev .6s ease forwards;
-    transform-origin:right center;
-}
+    transform: translateY(-50%);
 
-@keyframes flipNext{
-    0%{
-        transform:rotateY(0deg);
-    }
-    100%{
-        transform:rotateY(-90deg);
-    }
-}
+    font-size: 11px;
 
-@keyframes flipPrev{
-    0%{
-        transform:rotateY(0deg);
-    }
-    100%{
-        transform:rotateY(90deg);
-    }
+    opacity: .75;
+
+    pointer-events: none;
 }
 
 
+/* =========================================================
+   RED WORD HIGHLIGHT
+========================================================= */
 
+.highlight {
+    background: transparent !important;
 
+    color: inherit;
 
+    font-weight: inherit;
 
+    padding: 0;
+    margin: 0;
 
+    letter-spacing: 0;
+    word-spacing: 0;
 
-
-
-
-
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width:768px){
-
-html,
-body{
-    width:100%;
-    height:100%;
-    margin:0;
-    overflow:hidden;
+    transition: color .15s ease;
 }
 
-body{
-    min-height:100dvh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:0;
-    background:#111D66;
+.highlight.active {
+    background: transparent !important;
+
+    color: #d32f2f !important;
+
+    font-weight: 700;
+
+    box-shadow: none;
 }
 
-/* APP */
 
-.app{
-    width:100%;
-    max-width:380px;
-    height:100dvh;
+/* =========================================================
+   AATHICHUDI HEADER
+========================================================= */
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.aathichudi-header {
+    display: flex;
 
-    padding:8px;
+    justify-content: center;
+    align-items: center;
+
+    gap: 13px;
+
+    margin: 2px 0 10px;
+
+    position: relative;
+
+    z-index: 6;
 }
 
-/* BOOK */
+.heading {
+    position: relative;
 
-.book{
-    width:100%;
+    background: #f6b8c8;
 
-    display:flex;
-    flex-direction:column;
+    color: #8f1c0b;
 
-    padding:10px;
+    font-size: 31px;
 
-    border-radius:18px;
+    font-weight: 800;
 
-    overflow:hidden;
+    padding: 4px 25px;
 
-    margin-bottom:14px;
+    border-radius: 28px;
+
+    border: 2px solid #e98fa8;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.5),
+        0 2px 5px rgba(0,0,0,.12);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    line-height: 1.25;
 }
 
-.book::before{
-    width:8px;
-    left:-4px;
-    top:12px;
-    bottom:12px;
-}
 
-/* TITLE */
+/* =========================================================
+   DECORATIVE LINES
+========================================================= */
 
-/* TITLE */
+.line {
+    position: relative;
 
-.title{
+    width: 42px;
+    height: 5px;
 
-    width:100%;
+    background: #000;
 
-    min-width:0;
-
-    max-width:260px;
-
-    margin:0 auto 10px;
-
-    padding:8px 30px 8px 16px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    gap:6px;
-
-    font-size:24px;
-
-    border-radius:12px;
-
-}
-
-.title .speaker-icon{
-
-    right:8px;
-
-    font-size:10px;
-
-}
-
-/* MONTHS */
-
-.months-wrapper{
-    gap:8px;
-    margin-bottom:10px;
-}
-
-.card{
-    padding:10px;
-    gap:4px;
-    border-radius:16px;
-}
-
-.month-btn{
-    font-size:13px;
-    padding:2px;
-}
-
-/* AATHICHUDI */
-
-.aathichudi-header{
-    gap:8px;
-    margin-bottom:8px;
-}
-
-.heading{
-    font-size:20px;
-    padding:4px 16px;
-    font-family:inherit;
-    cursor:pointer;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.line{
-    width:22px;
-    height:4px;
+    border-radius: 10px;
 }
 
 .line::before,
-.line::after{
-    width:16px;
-    height:4px;
+.line::after {
+    content: "";
+
+    position: absolute;
+
+    width: 32px;
+    height: 5px;
+
+    background: #000;
+
+    border-radius: 10px;
 }
 
-.left::before{top:-6px;}
-.left::after{top:6px;}
-.right::before{top:-6px;}
-.right::after{top:6px;}
+.left::before {
+    top: -10px;
+    left: 0;
 
-/* CARD */
-
-.aathichudi-card{
-    padding:10px;
-    gap:8px;
-    border-radius:16px;
+    transform: rotate(25deg);
 }
 
-.rule-btn{
-    font-size:11.5px;
-    line-height:1.25;
-    padding:2px;
+.left::after {
+    top: 10px;
+    left: 0;
+
+    transform: rotate(-25deg);
 }
 
-/* PAGE NUMBER */
+.right::before {
+    top: -10px;
+    right: 0;
 
-.page-number{
-    margin-top:8px;
-    text-align:center;
-    font-size:15px;
-    font-weight:700;
-    color:#8D64D8;
+    transform: rotate(-25deg);
 }
 
-/* NAVIGATION */
+.right::after {
+    top: 10px;
+    right: 0;
 
-.navigation{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-top:0;
-
-    padding:0 8px;
-
-    flex-shrink:0;
-
-}
-
-.nav-btn{
-    width:35px;
-    height:35px;
-    font-size:18px;
-}
-
-.dots{
-    gap:6px;
-}
-
-.dot{
-    width:8px;
-    height:8px;
-}
-
-/* DECORATIONS */
-
-.swirl{
-    transform:scale(.42);
-    left:-8px;
-    top:-8px;
-}
-
-.curve-top{
-    transform:scale(.55);
-    right:-6px;
-    top:2px;
-}
-
-.sparkle{
-    transform:scale(.42);
-    right:10px;
-    top:105px;
-}
-
-/* SPEAKER ICON */
-
-.speaker-icon{
-    position:absolute;
-    top:2px;
-    right:5px;
-    font-size:9px;
-    opacity:.8;
-}
-
-/* BUTTON TEXT */
-
-.text{
-
-    display:inline;
-
-    margin:0;
-
-    padding:0;
-
-}
-
-/* WORD HIGHLIGHT */
-
-.word{
-    padding:1px 2px;
-    border-radius:4px;
-}
-
+    transform: rotate(25deg);
 }
 
 
+/* =========================================================
+   AATHICHUDI CARD
+========================================================= */
+
+.aathichudi-card {
+    background: #bce8ae;
+
+    border-radius: 27px;
+
+    padding: 13px 17px;
+
+    display: flex;
+
+    gap: 15px;
+
+    position: relative;
+
+    z-index: 6;
+}
+
+.column {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
 
 
+/* =========================================================
+   AATHICHUDI BUTTONS
+========================================================= */
+
+.rule-btn {
+    position: relative;
+
+    width: 100%;
+
+    background: rgba(255,255,255,.20);
+
+    border: 2px solid rgba(80,80,80,.30);
+
+    border-radius: 12px;
+
+    text-align: left;
+
+    font-family: inherit;
+
+    font-size: 20px;
+
+    line-height: 1.28;
+
+    padding: 4px 30px 4px 8px;
+
+    cursor: pointer;
+
+    color: #111;
+
+    transition: .2s;
+}
+
+.rule-btn:hover {
+    background: rgba(255,255,255,.55);
+
+    transform: translateX(3px);
+}
+
+.rule-btn:active {
+    transform: scale(.97);
+}
+
+.rule-btn.active {
+    background: rgba(255,255,255,.20);
+
+    color: #111;
+
+    border-color: rgba(80,80,80,.30);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   STAR
+========================================================= */
+
+.rule-btn .star {
+    color: #8da51b;
+
+    font-size: 22px;
+
+    margin-right: 3px;
+
+    display: inline-block;
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+========================================================= */
+
+.page-number {
+    margin-top: 8px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #805bd2;
+
+    position: relative;
+
+    z-index: 6;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+    width: 100%;
+
+    margin-top: 14px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 5px;
+}
+
+.nav-btn {
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f9f3e4;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.18);
+
+    transition: .2s;
+}
+
+.nav-btn:hover {
+    transform: scale(1.08);
+}
+
+.nav-btn:active {
+    transform: scale(.94);
+}
+
+.dots {
+    display: flex;
+
+    gap: 7px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #9fa9a8;
+}
+
+.dot.active {
+    background: #19d400;
+}
+
+
+/* =========================================================
+   PAGE FLIP
+========================================================= */
+
+.flip-out-next {
+    animation: flipNext .6s ease forwards;
+
+    transform-origin: left center;
+}
+
+.flip-out-prev {
+    animation: flipPrev .6s ease forwards;
+
+    transform-origin: right center;
+}
+
+@keyframes flipNext {
+
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(-90deg);
+    }
+
+}
+
+@keyframes flipPrev {
+
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(90deg);
+    }
+
+}
+
+
+/* =========================================================
+   =========================================================
+   ONE MOBILE SECTION FOR ALL MOBILE PHONES
+   =========================================================
+========================================================= */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+    }
+
+
+    body {
+        min-height: 100dvh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        background: #111d66;
+    }
+
+
+    /* =====================================================
+       APP
+    ===================================================== */
+
+    .app {
+        width: 100%;
+        max-width: 520px;
+
+        height: 100dvh;
+
+        padding:
+            clamp(4px, 1.5vw, 8px)
+            clamp(4px, 1.8vw, 9px)
+            clamp(3px, 1vw, 6px);
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       BOOK
+    ===================================================== */
+
+    .book {
+        width: 100%;
+
+        height: 100%;
+
+        flex: 1 1 auto;
+
+        min-height: 0;
+
+        padding:
+            clamp(5px, 1.8vw, 9px)
+            clamp(6px, 2.2vw, 11px)
+            clamp(3px, 1.2vw, 6px)
+            clamp(9px, 2.8vw, 14px);
+
+        border-radius:
+            clamp(14px, 4vw, 20px);
+
+        overflow: hidden;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+
+    /* =====================================================
+       RED SPINE
+    ===================================================== */
+
+    .book::before {
+        width: clamp(4px, 1.2vw, 6px);
+
+        left: 0;
+
+        top: 8px;
+        bottom: 8px;
+    }
+
+
+    /* =====================================================
+       DECORATIONS
+    ===================================================== */
+
+    .swirl {
+        width: clamp(45px, 14vw, 68px);
+
+        height: clamp(45px, 14vw, 68px);
+
+        left: clamp(-10px, -1vw, -4px);
+
+        top: clamp(-10px, -1vw, -3px);
+
+        border-width: clamp(3px, 1vw, 5px);
+
+        transform:
+            scale(.72)
+            rotate(-20deg);
+    }
+
+    .swirl::after {
+        border-width: clamp(3px, .8vw, 4px);
+    }
+
+
+    .curve-top {
+        width: clamp(60px, 20vw, 90px);
+
+        height: clamp(25px, 8vw, 38px);
+
+        right: clamp(-12px, -1vw, 0px);
+
+        top: clamp(0px, 1vw, 5px);
+
+        border-top-width:
+            clamp(4px, 1.5vw, 7px);
+
+        transform:
+            scale(.6)
+            rotate(8deg);
+    }
+
+
+    /* =====================================================
+       CALENDAR STICKER
+    ===================================================== */
+
+    .calendar-sticker {
+        width: clamp(42px, 13vw, 58px);
+
+        right: clamp(7px, 2vw, 12px);
+
+        /*
+           Positioned around the month section.
+           Because it is absolute, it does NOT push
+           your other elements around.
+        */
+
+        top: clamp(205px, 43vh, 285px);
+
+        transform: rotate(3deg);
+
+        z-index: 4;
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .title {
+        width: 100%;
+
+        min-width: 0;
+
+        max-width:
+            clamp(250px, 82vw, 360px);
+
+        margin:
+            clamp(2px, 1vw, 5px)
+            auto
+            clamp(6px, 1.8vw, 10px);
+
+        padding:
+            clamp(4px, 1.3vw, 7px)
+            clamp(26px, 7vw, 34px)
+            clamp(4px, 1.3vw, 7px)
+            clamp(9px, 3vw, 14px);
+
+        font-size:
+            clamp(18px, 5.5vw, 28px);
+
+        line-height: 1.2;
+
+        border-radius:
+            clamp(7px, 2.5vw, 11px);
+
+        z-index: 7;
+    }
+
+    .title .speaker-icon {
+        right: clamp(5px, 1.8vw, 8px);
+
+        font-size:
+            clamp(8px, 2.5vw, 11px);
+    }
+
+
+    /* =====================================================
+       MONTH SECTION
+    ===================================================== */
+
+    .months-wrapper {
+        width: 100%;
+
+        gap:
+            clamp(5px, 2vw, 9px);
+
+        margin-bottom:
+            clamp(5px, 1.8vw, 9px);
+
+        position: relative;
+
+        z-index: 7;
+    }
+
+
+    .card {
+        padding:
+            clamp(5px, 1.8vw, 8px);
+
+        gap:
+            clamp(2px, .9vw, 4px);
+
+        border-radius:
+            clamp(11px, 3.5vw, 17px);
+    }
+
+
+    /* =====================================================
+       MONTH BUTTONS
+    ===================================================== */
+
+    .month-btn {
+        min-height:
+            clamp(24px, 7vw, 31px);
+
+        font-size:
+            clamp(10px, 3.1vw, 15px);
+
+        padding:
+            clamp(1px, .7vw, 3px)
+            clamp(17px, 5vw, 24px)
+            clamp(1px, .7vw, 3px)
+            clamp(3px, 1vw, 6px);
+
+        border-width:
+            clamp(1px, .5vw, 1.5px);
+
+        border-radius:
+            clamp(6px, 2.2vw, 10px);
+    }
+
+    .month-btn .speaker-icon {
+        right:
+            clamp(3px, 1vw, 5px);
+
+        font-size:
+            clamp(7px, 2vw, 10px);
+    }
+
+
+    /* =====================================================
+       AATHICHUDI HEADER
+    ===================================================== */
+
+    .aathichudi-header {
+        gap:
+            clamp(4px, 1.8vw, 8px);
+
+        margin:
+            1px
+            0
+            clamp(4px, 1.5vw, 7px);
+
+        z-index: 7;
+    }
+
+
+    .heading {
+        font-size:
+            clamp(16px, 5vw, 24px);
+
+        padding:
+            clamp(2px, .8vw, 4px)
+            clamp(11px, 4vw, 18px);
+
+        border-radius:
+            clamp(16px, 6vw, 25px);
+
+        border-width:
+            clamp(1px, .5vw, 2px);
+    }
+
+
+    /* =====================================================
+       BLACK DECORATIVE LINES
+    ===================================================== */
+
+    .line {
+        width:
+            clamp(17px, 6vw, 27px);
+
+        height:
+            clamp(2px, .8vw, 3px);
+    }
+
+    .line::before,
+    .line::after {
+        width:
+            clamp(13px, 4.5vw, 20px);
+
+        height:
+            clamp(2px, .8vw, 3px);
+    }
+
+    .left::before,
+    .right::before {
+        top:
+            clamp(-6px, -1.5vw, -4px);
+    }
+
+    .left::after,
+    .right::after {
+        top:
+            clamp(5px, 1.5vw, 7px);
+    }
+
+
+    /* =====================================================
+       AATHICHUDI GREEN SECTION
+    ===================================================== */
+
+    .aathichudi-card {
+        width: 100%;
+
+        flex: 1 1 auto;
+
+        min-height: 0;
+
+        padding:
+            clamp(5px, 1.7vw, 8px);
+
+        gap:
+            clamp(3px, 1.5vw, 7px);
+
+        border-radius:
+            clamp(12px, 4vw, 18px);
+
+        overflow: hidden;
+
+        z-index: 7;
+    }
+
+
+    .column {
+        gap:
+            clamp(2px, .8vw, 4px);
+
+        min-width: 0;
+    }
+
+
+    /* =====================================================
+       GREEN AATHICHUDI BUTTONS
+    ===================================================== */
+
+    .rule-btn {
+        min-width: 0;
+
+        font-size:
+            clamp(9px, 2.7vw, 13px);
+
+        line-height: 1.2;
+
+        padding:
+            clamp(1px, .5vw, 3px)
+            clamp(17px, 5vw, 22px)
+            clamp(1px, .5vw, 3px)
+            clamp(3px, 1vw, 6px);
+
+        border-width:
+            clamp(1px, .5vw, 1.5px);
+
+        border-radius:
+            clamp(6px, 2vw, 9px);
+
+        overflow: hidden;
+    }
+
+
+    .rule-btn .star {
+        font-size:
+            clamp(9px, 2.8vw, 13px);
+
+        margin-right:
+            clamp(0px, .4vw, 2px);
+    }
+
+
+    .rule-btn .speaker-icon {
+        right:
+            clamp(3px, 1vw, 5px);
+
+        font-size:
+            clamp(6px, 1.8vw, 9px);
+    }
+
+
+    /* =====================================================
+       PAGE NUMBER
+    ===================================================== */
+
+    .page-number {
+        flex: 0 0 auto;
+
+        margin-top:
+            clamp(2px, .8vw, 4px);
+
+        font-size:
+            clamp(11px, 3.5vw, 15px);
+
+        line-height: 1.1;
+
+        z-index: 7;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .navigation {
+        flex: 0 0 auto;
+
+        width: 100%;
+
+        margin-top:
+            clamp(3px, 1.2vw, 6px);
+
+        padding:
+            0
+            clamp(3px, 1.5vw, 6px)
+            clamp(1px, .5vw, 3px);
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+    }
+
+
+    .nav-btn {
+        width:
+            clamp(31px, 10vw, 39px);
+
+        height:
+            clamp(31px, 10vw, 39px);
+
+        font-size:
+            clamp(17px, 5vw, 21px);
+    }
+
+
+    .dots {
+        gap:
+            clamp(4px, 1.8vw, 7px);
+    }
+
+
+    .dot {
+        width:
+            clamp(6px, 2.2vw, 9px);
+
+        height:
+            clamp(6px, 2.2vw, 9px);
+    }
+
+}
+
+
+/* =========================================================
+   END OF CSS
+========================================================= */
 
 </style>
+
+</head>
+
 
 <body>
 
@@ -1162,391 +1243,412 @@ body{
 
 <div class="book">
 
-    <!-- ==========================
-         DECORATIONS
-    =========================== -->
+    <!-- DECORATIONS -->
 
     <div class="swirl"></div>
-
     <div class="curve-top"></div>
 
-    <div class="sparkle"></div>
+    <img src="calendar.png" class="calendar-sticker" alt="">
 
 
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
 
+    <button class="title speaker-btn"
+            data-audio="months.mp3">
 
-<!-- ==========================
-        TITLE
-========================== -->
-
-<button class="title speaker-btn"
-        data-audio="months.mp3">
-
-    <span class="highlight">தமிழ்</span>
-    <span class="highlight">மாதங்கள்</span>
-
-    <span class="speaker-icon">🔊</span>
-
-</button>
-
-
-
-<!-- ==========================
-     MONTHS SECTION
-========================== -->
-
-<div class="months-wrapper">
-
-    <!-- LEFT CARD -->
-
-    <div class="card pink">
-
-        <button class="month-btn speaker-btn"
-                data-audio="chithirai.mp3">
-
-            <span class="highlight">சி</span><span class="highlight">த்</span>
-            <span class="highlight">தி</span><span class="highlight">ரை</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="vaikasi.mp3">
-
-            <span class="highlight">வை</span>
-            <span class="highlight">கா</span>
-            <span class="highlight">சி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="aani.mp3">
-
-            <span class="highlight">ஆ</span>
-            <span class="highlight">னி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="aadi.mp3">
-
-            <span class="highlight">ஆ</span>
-            <span class="highlight">டி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="aavani.mp3">
-
-            <span class="highlight">ஆ</span>
-            <span class="highlight">வ</span>
-            <span class="highlight">ணி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="purattasi.mp3">
-
-            <span class="highlight">பு</span>
-            <span class="highlight">ர</span>
-            <span class="highlight">ட்</span>
-            <span class="highlight">டா</span>
-            <span class="highlight">சி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-    </div>
-
-
-
-    <!-- RIGHT CARD -->
-
-    <div class="card yellow">
-
-        <button class="month-btn speaker-btn"
-                data-audio="aippasi.mp3">
-
-            <span class="highlight">ஐ</span>
-            <span class="highlight">ப்</span>
-            <span class="highlight">ப</span>
-            <span class="highlight">சி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="karthigai.mp3">
-
-            <span class="highlight">கா</span>
-            <span class="highlight">ர்</span>
-            <span class="highlight">த்</span>
-            <span class="highlight">தி</span>
-            <span class="highlight">கை</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="margazhi.mp3">
-
-            <span class="highlight">மா</span>
-            <span class="highlight">ர்</span>
-            <span class="highlight">க</span>
-            <span class="highlight">ழி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="theii.mp3">
-
-            <span class="highlight">தை</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="maasi.mp3">
-
-            <span class="highlight">மா</span>
-            <span class="highlight">சி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-
-        <button class="month-btn speaker-btn"
-                data-audio="panguni.mp3">
-
-            <span class="highlight">ப</span>
-            <span class="highlight">ங்</span>
-            <span class="highlight">கு</span>
-            <span class="highlight">னி</span>
-
-            <span class="speaker-icon">🔊</span>
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ==========================
-     AATHICHUDI TITLE
-========================== -->
-
-<div class="aathichudi-header">
-
-    <div class="line left"></div>
-
-    <button class="heading speaker-btn"
-            data-audio="aathichudi_title.mp3">
-
-        <span class="highlight">ஆத்தி</span>
-        <span class="highlight">சூடி</span>
+        <span class="highlight">தமிழ்</span>
+        <span>&nbsp;</span>
+        <span class="highlight">மாதங்கள்</span>
 
         <span class="speaker-icon">🔊</span>
 
     </button>
 
-    <div class="line right"></div>
 
-</div>
+    <!-- =====================================================
+         MONTHS
+    ====================================================== -->
 
-
-
-<!-- ==========================
-     AATHICHUDI CARD
-========================== -->
-
-<div class="aathichudi-card">
-
-    <!-- LEFT COLUMN -->
-
-    <div class="column">
-
-        <button class="rule-btn speaker-btn"
-                data-audio="aram.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• அறஞ்</span>
-            <span class="highlight">செய</span>
-            <span class="highlight">விரும்பு</span>
-
-        </button>
+    <div class="months-wrapper">
 
 
+        <!-- LEFT / PINK -->
 
-        <button class="rule-btn speaker-btn"
-                data-audio="aaruvathu.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஆறுவது</span>
-            <span class="highlight">சினம்</span>
-
-        </button>
+        <div class="card pink">
 
 
+            <button class="month-btn speaker-btn"
+                    data-audio="chithirai.mp3">
 
-        <button class="rule-btn speaker-btn"
-                data-audio="iyalvathu.mp3">
+                <span class="highlight">சித்</span>
+                <span class="highlight">திரை</span>
 
-            <span class="speaker-icon">🔊</span>
+                <span class="speaker-icon">🔊</span>
 
-            <span class="highlight">• இயல்வது</span>
-            <span class="highlight">கரவேல்</span>
-
-        </button>
-
+            </button>
 
 
-        <button class="rule-btn speaker-btn"
-                data-audio="eevathu.mp3">
+            <button class="month-btn speaker-btn"
+                    data-audio="vaikasi.mp3">
 
-            <span class="speaker-icon">🔊</span>
+                <span class="highlight">வைகா</span>
+                <span class="highlight">சி</span>
 
-            <span class="highlight">• ஈவது</span>
-            <span class="highlight">விலக்கேல்</span>
+                <span class="speaker-icon">🔊</span>
 
-        </button>
-
-
-
-        <button class="rule-btn speaker-btn"
-                data-audio="udaiyathu.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• உடையது</span>
-            <span class="highlight">விளம்பேல்</span>
-
-        </button>
+            </button>
 
 
+            <button class="month-btn speaker-btn"
+                    data-audio="aani.mp3">
 
-        <button class="rule-btn speaker-btn"
-                data-audio="ookkamathu.mp3">
+                <span class="highlight">ஆ</span>
+                <span class="highlight">னி</span>
 
-            <span class="speaker-icon">🔊</span>
+                <span class="speaker-icon">🔊</span>
 
-            <span class="highlight">• ஊக்கமது</span>
-            <span class="highlight">கைவிடேல்</span>
+            </button>
 
-        </button>
+
+            <button class="month-btn speaker-btn"
+                    data-audio="aadi.mp3">
+
+                <span class="highlight">ஆ</span>
+                <span class="highlight">டி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="aavani.mp3">
+
+                <span class="highlight">ஆவ</span>
+                <span class="highlight">ணி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="purattasi.mp3">
+
+                <span class="highlight">புரட்</span>
+                <span class="highlight">டா</span>
+                <span class="highlight">சி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- RIGHT / YELLOW -->
+
+        <div class="card yellow">
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="aippasi.mp3">
+
+                <span class="highlight">ஐப்</span>
+                <span class="highlight">ப</span>
+                <span class="highlight">சி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="karthigai.mp3">
+
+                <span class="highlight">கார்</span>
+                <span class="highlight">த்</span>
+                <span class="highlight">தி</span>
+                <span class="highlight">கை</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="margazhi.mp3">
+
+                <span class="highlight">மார்</span>
+                <span class="highlight">க</span>
+                <span class="highlight">ழி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="theii.mp3">
+
+                <span class="highlight">தை</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="maasi.mp3">
+
+                <span class="highlight">மா</span>
+                <span class="highlight">சி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="month-btn speaker-btn"
+                    data-audio="panguni.mp3">
+
+                <span class="highlight">பங்</span>
+                <span class="highlight">கு</span>
+                <span class="highlight">னி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+        </div>
 
     </div>
 
 
 
-    <!-- RIGHT COLUMN -->
+    <!-- =====================================================
+         AATHICHUDI HEADER
+    ====================================================== -->
 
-    <div class="column">
+    <div class="aathichudi-header">
+
+        <div class="line left"></div>
 
 
+        <button class="heading speaker-btn"
+                data-audio="aathichudi_title.mp3">
 
-        <button class="rule-btn speaker-btn"
-                data-audio="en_ezhuthu.mp3">
+            <span class="highlight">ஆத்தி</span>
+            <span class="highlight">சூடி</span>
 
             <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• எண்ணெழுத்</span>
-            <span class="highlight">திகழேல்</span>
 
         </button>
 
 
-
-        <button class="rule-btn speaker-btn"
-                data-audio="erpathu.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஏற்ப</span>
-            <span class="highlight">திகழ்ச்சி</span>
-
-        </button>
-
-
-
-        <button class="rule-btn speaker-btn"
-                data-audio="aiyam.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஐய</span>
-            <span class="highlight">மிட்டுண்</span>
-
-        </button>
-
-
-
-        <button class="rule-btn speaker-btn"
-                data-audio="oppura.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஒப்புர</span>
-            <span class="highlight">வொழுகு</span>
-
-        </button>
-
-
-
-        <button class="rule-btn speaker-btn"
-                data-audio="othuvathu.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஓதுவ</span>
-            <span class="highlight">தொழியேல்</span>
-
-        </button>
-
-
-
-        <button class="rule-btn speaker-btn"
-                data-audio="auviyam.mp3">
-
-            <span class="speaker-icon">🔊</span>
-
-            <span class="highlight">• ஔவியம்</span>
-            <span class="highlight">பேசேல்</span>
-
-        </button>
+        <div class="line right"></div>
 
     </div>
 
-</div>
 
+
+    <!-- =====================================================
+         AATHICHUDI
+    ====================================================== -->
+
+    <div class="aathichudi-card">
+
+
+        <!-- LEFT COLUMN -->
+
+        <div class="column">
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="aram.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">அறஞ்செய</span>
+                <span class="highlight">விரும்பு</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="aaruvathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஆறுவது</span>
+                <span class="highlight">சினம்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="iyalvathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">இயல்வது</span>
+                <span class="highlight">கரவேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="eevathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஈவது</span>
+                <span class="highlight">விலக்கேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="udaiyathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">உடையது</span>
+                <span class="highlight">விளம்பேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="ookkamathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஊக்கமது</span>
+                <span class="highlight">கைவிடேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- RIGHT COLUMN -->
+
+        <div class="column">
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="en_ezhuthu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">எண்ணெழுத்</span>
+                <span class="highlight">திகழேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="erpathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஏற்ப</span>
+                <span class="highlight">திகழ்ச்சி</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="aiyam.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஐய</span>
+                <span class="highlight">மிட்டுண்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="oppura.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஒப்புர</span>
+                <span class="highlight">வொழுகு</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="othuvathu.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஓதுவ</span>
+                <span class="highlight">தொழியேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <button class="rule-btn speaker-btn"
+                    data-audio="auviyam.mp3">
+
+                <span class="star">✦</span>
+
+                <span class="highlight">ஔவியம்</span>
+                <span class="highlight">பேசேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+            <!-- EXTRA POINT -->
+
+            <button class="rule-btn extra-point">
+
+                <span class="star">✦</span>
+
+                <span>அஃகஞ் சுருக்கேல்</span>
+
+                <span class="speaker-icon">🔊</span>
+
+            </button>
+
+
+        </div>
+
+    </div>
 
 
 
@@ -1556,7 +1658,14 @@ body{
         32
     </div>
 
-</div> <!-- End .book -->
+
+</div>
+<!-- END BOOK -->
+
+
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
 
 <div class="navigation">
 
@@ -1565,13 +1674,21 @@ body{
         ❮
     </button>
 
+
     <div class="dots">
+
         <div class="dot"></div>
+
         <div class="dot active"></div>
+
         <div class="dot"></div>
+
         <div class="dot"></div>
+
         <div class="dot"></div>
+
     </div>
+
 
     <button class="nav-btn"
             onclick="nextPage('maathanggal2.html','next')">
@@ -1580,38 +1697,34 @@ body{
 
 </div>
 
-</div> <!-- End .app -->
+
+</div>
+<!-- END APP -->
 
 
 <script src="swipe.js"></script>
 
+
 <script>
 
-
-/* ===================================
-   PAGE 33
-   TAMIL MONTHS + AATHICHUDI
-=================================== */
+/* =========================================================
+   AUDIO
+========================================================= */
 
 let currentAudio = null;
 let currentButton = null;
 let highlightTimers = [];
 
 
-/* ==========================
+/* =========================================================
    AUDIO TIMINGS
-========================== */
+========================================================= */
 
 const timings = {
-
-    /* ---------- TITLE ---------- */
 
     "months.mp3":[0,1500],
 
     "aathichudi_title.mp3":[0,1000],
-
-
-    /* ---------- MONTHS ---------- */
 
     "chithirai.mp3":[0,2000,3000,4000],
 
@@ -1636,9 +1749,6 @@ const timings = {
     "maasi.mp3":[0,2000],
 
     "panguni.mp3":[0,2000,3000,4000],
-
-
-    /* ---------- AATHICHUDI ---------- */
 
     "aram.mp3":[0,1500,2500],
 
@@ -1667,15 +1777,15 @@ const timings = {
 };
 
 
-/* ==========================
+/* =========================================================
    CLEAR HIGHLIGHTS
-========================== */
+========================================================= */
 
-function clearHighlights(button){
+function clearHighlights(button) {
 
-    if(!button) return;
+    if (!button) return;
 
-    button.querySelectorAll(".highlight").forEach(word=>{
+    button.querySelectorAll(".highlight").forEach(word => {
 
         word.classList.remove("active");
 
@@ -1684,60 +1794,66 @@ function clearHighlights(button){
 }
 
 
-/* ==========================
+/* =========================================================
    CLEAR TIMERS
-========================== */
+========================================================= */
 
-function clearTimers(){
+function clearTimers() {
 
-    highlightTimers.forEach(timer=>{
+    highlightTimers.forEach(timer => {
 
         clearTimeout(timer);
 
     });
 
-    highlightTimers=[];
+    highlightTimers = [];
 
 }
 
 
-/* ==========================
-   HIGHLIGHT WORDS
-========================== */
+/* =========================================================
+   ANIMATE WORDS
+========================================================= */
 
-function animateWords(button){
+function animateWords(button) {
 
     clearTimers();
 
     clearHighlights(button);
 
-    const words = button.querySelectorAll(".highlight");
+    const words =
+        button.querySelectorAll(".highlight");
 
-    const audio = button.dataset.audio;
+    const audio =
+        button.dataset.audio;
 
-    const times = timings[audio];
+    const times =
+        timings[audio];
 
-    if(!times) return;
+    if (!times) return;
 
-    times.forEach((time,index)=>{
 
-        const timer = setTimeout(()=>{
+    times.forEach((time,index) => {
 
-            if(currentButton!==button) return;
+        const timer = setTimeout(() => {
 
-            words.forEach(w=>{
+            if (currentButton !== button) return;
 
-                w.classList.remove("active");
+            words.forEach(word => {
+
+                word.classList.remove("active");
 
             });
 
-            if(words[index]){
+
+            if (words[index]) {
 
                 words[index].classList.add("active");
 
             }
 
         },time);
+
 
         highlightTimers.push(timer);
 
@@ -1746,48 +1862,54 @@ function animateWords(button){
 }
 
 
-/* ==========================
-   STOP AUDIO
-========================== */
+/* =========================================================
+   STOP CURRENT AUDIO
+========================================================= */
 
-function stopCurrent(){
+function stopCurrent() {
 
     clearTimers();
 
-    if(currentAudio){
+
+    if (currentAudio) {
 
         currentAudio.pause();
 
-        currentAudio.currentTime=0;
+        currentAudio.currentTime = 0;
 
-        currentAudio=null;
+        currentAudio = null;
 
     }
 
-    if(currentButton){
+
+    if (currentButton) {
 
         currentButton.classList.remove("active");
 
         clearHighlights(currentButton);
 
-        currentButton=null;
+        currentButton = null;
 
     }
 
 }
 
 
-/* ==========================
+/* =========================================================
    PLAY AUDIO
-========================== */
+========================================================= */
 
-document.querySelectorAll("[data-audio]").forEach(button=>{
+document.querySelectorAll("[data-audio]").forEach(button => {
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
-        /* Click same button again = Stop */
 
-        if(currentButton===button && currentAudio){
+        /* SAME BUTTON = STOP */
+
+        if (
+            currentButton === button &&
+            currentAudio
+        ) {
 
             stopCurrent();
 
@@ -1795,19 +1917,33 @@ document.querySelectorAll("[data-audio]").forEach(button=>{
 
         }
 
+
         stopCurrent();
 
-        currentButton=button;
 
-        currentAudio = new Audio(button.dataset.audio);
+        currentButton = button;
+
+        currentAudio =
+            new Audio(button.dataset.audio);
+
 
         button.classList.add("active");
 
+
         animateWords(button);
 
-        currentAudio.play();
 
-        currentAudio.onended=()=>{
+        currentAudio.play().catch(() => {
+
+            console.log(
+                "Audio playback was blocked:",
+                button.dataset.audio
+            );
+
+        });
+
+
+        currentAudio.onended = () => {
 
             clearTimers();
 
@@ -1815,15 +1951,19 @@ document.querySelectorAll("[data-audio]").forEach(button=>{
 
             button.classList.remove("active");
 
-            currentAudio=null;
+            currentAudio = null;
 
-            currentButton=null;
+            currentButton = null;
 
         };
 
-        currentAudio.onerror=()=>{
 
-            console.log("Cannot load audio:",button.dataset.audio);
+        currentAudio.onerror = () => {
+
+            console.log(
+                "Cannot load audio:",
+                button.dataset.audio
+            );
 
             stopCurrent();
 
@@ -1831,50 +1971,27 @@ document.querySelectorAll("[data-audio]").forEach(button=>{
 
     });
 
-}); 
+});
 
 
-const words = button.querySelectorAll(".highlight");
-
-words.forEach(w=>w.classList.remove("active"));
-
-if(timings[button.dataset.audio]){
-
-    timings[button.dataset.audio].forEach((time,index)=>{
-
-        setTimeout(()=>{
-
-            words.forEach(w=>w.classList.remove("active"));
-
-            if(words[index]){
-
-                words[index].classList.add("active");
-
-            }
-
-        },time);
-
-    });
-
-}
-
-/* ==========================
+/* =========================================================
    SPACEBAR
-========================== */
+========================================================= */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", e => {
 
-    if(e.code!=="Space") return;
+    if (e.code !== "Space") return;
 
     e.preventDefault();
 
-    if(!currentAudio) return;
+    if (!currentAudio) return;
 
-    if(currentAudio.paused){
+
+    if (currentAudio.paused) {
 
         currentAudio.play();
 
-    }else{
+    } else {
 
         currentAudio.pause();
 
@@ -1883,13 +2000,13 @@ document.addEventListener("keydown",(e)=>{
 });
 
 
-/* ==========================
-   ESC TO STOP
-========================== */
+/* =========================================================
+   ESC = STOP
+========================================================= */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", e => {
 
-    if(e.key==="Escape"){
+    if (e.key === "Escape") {
 
         stopCurrent();
 
@@ -1898,75 +2015,89 @@ document.addEventListener("keydown",(e)=>{
 });
 
 
-/* ==========================
+/* =========================================================
    BEFORE UNLOAD
-========================== */
+========================================================= */
 
-window.addEventListener("beforeunload",()=>{
+window.addEventListener("beforeunload", () => {
 
     stopCurrent();
 
 });
 
 
-/* ==========================
+/* =========================================================
    PREVENT DOUBLE TAP ZOOM
-========================== */
+========================================================= */
 
-let lastTouchEnd=0;
+let lastTouchEnd = 0;
 
-document.addEventListener("touchend",(event)=>{
+document.addEventListener(
+    "touchend",
+    event => {
 
-    const now=(new Date()).getTime();
+        const now =
+            new Date().getTime();
 
-    if(now-lastTouchEnd<=300){
+        if (
+            now - lastTouchEnd <= 300
+        ) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-    }
+        }
 
-    lastTouchEnd=now;
+        lastTouchEnd = now;
 
-},{passive:false});
+    },
+    {passive:false}
+);
 
 
-/* ==========================
+/* =========================================================
    KEYBOARD NAVIGATION
-========================== */
+========================================================= */
 
-const buttons=[...document.querySelectorAll("[data-audio]")];
+const buttons = [
+    ...document.querySelectorAll("[data-audio]")
+];
 
-buttons.forEach((btn,index)=>{
+
+buttons.forEach((btn,index) => {
 
     btn.setAttribute("tabindex","0");
 
-    btn.addEventListener("keydown",(e)=>{
 
-        if(e.key==="ArrowDown"){
+    btn.addEventListener("keydown", e => {
+
+
+        if (e.key === "ArrowDown") {
 
             e.preventDefault();
 
-            if(buttons[index+1]){
+            if (buttons[index + 1]) {
 
-                buttons[index+1].focus();
+                buttons[index + 1].focus();
 
             }
 
         }
 
-        if(e.key==="ArrowUp"){
+
+        if (e.key === "ArrowUp") {
 
             e.preventDefault();
 
-            if(buttons[index-1]){
+            if (buttons[index - 1]) {
 
-                buttons[index-1].focus();
+                buttons[index - 1].focus();
 
             }
 
         }
 
-        if(e.key==="Enter"){
+
+        if (e.key === "Enter") {
 
             e.preventDefault();
 
@@ -1979,92 +2110,121 @@ buttons.forEach((btn,index)=>{
 });
 
 
-/* ==========================
+/* =========================================================
    CLICK ANIMATION
-========================== */
+========================================================= */
 
-document.querySelectorAll(".speaker-btn").forEach(btn=>{
+document.querySelectorAll(".speaker-btn")
+.forEach(btn => {
 
-    btn.addEventListener("mousedown",()=>{
 
-        btn.style.transform="scale(.96)";
+    btn.addEventListener("mousedown", () => {
 
-    });
-
-    btn.addEventListener("mouseup",()=>{
-
-        btn.style.transform="";
+        btn.style.transform = "scale(.96)";
 
     });
 
-    btn.addEventListener("mouseleave",()=>{
 
-        btn.style.transform="";
+    btn.addEventListener("mouseup", () => {
+
+        btn.style.transform = "";
+
+    });
+
+
+    btn.addEventListener("mouseleave", () => {
+
+        btn.style.transform = "";
 
     });
 
-    btn.addEventListener("touchstart",()=>{
 
-        btn.style.transform="scale(.96)";
+    btn.addEventListener(
+        "touchstart",
+        () => {
 
-    },{passive:true});
+            btn.style.transform =
+                "scale(.96)";
 
-    btn.addEventListener("touchend",()=>{
+        },
+        {passive:true}
+    );
 
-        btn.style.transform="";
 
-    });
+    btn.addEventListener(
+        "touchend",
+        () => {
+
+            btn.style.transform = "";
+
+        }
+    );
 
 });
 
 
-/* ==========================
-   STOP AUDIO WHEN PAGE HIDES
-========================== */
+/* =========================================================
+   STOP AUDIO WHEN PAGE HIDDEN
+========================================================= */
 
-document.addEventListener("visibilitychange",()=>{
+document.addEventListener(
+    "visibilitychange",
+    () => {
 
-    if(document.hidden){
+        if (document.hidden) {
 
-        stopCurrent();
+            stopCurrent();
+
+        }
 
     }
+);
 
-});
 
-
-/* ==========================
+/* =========================================================
    PAGE FLIP
-========================== */
+========================================================= */
 
-function nextPage(page,direction){
+function nextPage(page,direction) {
 
     stopCurrent();
 
-    const app=document.querySelector(".app");
 
-    app.classList.remove("flip-out-next","flip-out-prev");
+    const app =
+        document.querySelector(".app");
+
+
+    app.classList.remove(
+        "flip-out-next",
+        "flip-out-prev"
+    );
+
 
     void app.offsetWidth;
 
-    if(direction==="next"){
 
-        app.classList.add("flip-out-next");
+    if (direction === "next") {
 
-    }else{
+        app.classList.add(
+            "flip-out-next"
+        );
 
-        app.classList.add("flip-out-prev");
+    } else {
+
+        app.classList.add(
+            "flip-out-prev"
+        );
 
     }
 
-    setTimeout(()=>{
 
-        window.location.href=page;
+    setTimeout(() => {
+
+        window.location.href = page;
 
     },600);
 
 }
-
 
 </script>
 
