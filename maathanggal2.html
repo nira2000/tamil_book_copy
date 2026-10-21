@@ -1165,630 +1165,572 @@ body {
 }
 
 
-/* =====================================================
-   UNIVERSAL MOBILE
-===================================================== */
+
+
+
+/* =========================================================
+   MOBILE ONLY
+   DESKTOP IS NOT TOUCHED
+   NO SCROLLING
+========================================================= */
 
 @media (max-width: 768px) {
 
+    /* =====================================================
+       SCREEN
+    ===================================================== */
+
     html,
     body {
-
         width: 100%;
         height: 100%;
+        min-height: 0;
 
         margin: 0;
         padding: 0;
 
         overflow: hidden;
+        overscroll-behavior: none;
     }
 
-
     body {
-
+        height: 100dvh;
         min-height: 100dvh;
 
         display: flex;
-
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
 
-        background: #111D66;
+        background: #111d66;
     }
 
 
+    /* =====================================================
+       APP
+    ===================================================== */
+
     .app {
-
         width: 100%;
-
-        max-width: 430px;
+        max-width: 520px;
 
         height: 100dvh;
+        min-height: 0;
 
-        padding:
-            6px 7px 5px;
+        margin: 0 auto;
+        padding: 5px 7px;
 
         display: flex;
-
         flex-direction: column;
-
         align-items: center;
 
-        justify-content: center;
-
-        gap: 5px;
+        gap: 4px;
 
         overflow: hidden;
     }
 
 
-    /* BOOK */
+    /* =====================================================
+       BOOK
+    ===================================================== */
 
     .book {
+        position: relative;
 
         width: 100%;
 
-        height:
-            calc(100dvh - 48px);
+        flex: 1 1 auto;
+        min-height: 0;
 
-        max-height:
-            calc(100dvh - 48px);
+        margin: 0;
 
         padding:
-            8px 9px 5px 11px;
+            7px
+            8px
+            3px
+            11px;
 
         border-radius: 17px;
 
         overflow: hidden;
 
-        flex-shrink: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+
+    /* =====================================================
+       RED SPINE
+    ===================================================== */
+
+    .book::before {
+        width: 6px;
+
+        left: 0;
+        top: 9px;
+        bottom: 9px;
+
+        border-radius: 6px;
+    }
+
+
+    /* =====================================================
+       DECORATIONS
+    ===================================================== */
+
+    .swirl {
+        left: -8px;
+        top: -8px;
+
+        transform: scale(.42);
+        transform-origin: top left;
+
+        z-index: 2;
+    }
+
+    .curve-top {
+        right: -7px;
+        top: 3px;
+
+        transform: scale(.52);
+        transform-origin: top right;
+
+        z-index: 2;
+    }
+
+    .calendar-sticker {
+        right: -8px;
+        top: 285px;
+
+        width: 58px;
+
+        transform: rotate(3deg);
+
+        z-index: 8;
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .title {
+        position: relative;
+
+        width: min(100%, 280px);
+        max-width: 280px;
+        min-width: 0;
+
+        flex: 0 0 auto;
+
+        margin:
+            3px
+            auto
+            7px;
+
+        padding:
+            5px
+            27px
+            5px
+            10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        font-size:
+            clamp(20px, 6vw, 27px);
+
+        line-height: 1.15;
+
+        border-radius: 10px;
+
+        z-index: 10;
+    }
+
+    .title .speaker-icon {
+        right: 7px;
+        font-size: 9px;
+    }
+
+
+    /* =====================================================
+       MONTHS AREA
+    ===================================================== */
+
+    .months-wrapper {
+        width: 100%;
+
+        flex: 0 0 auto;
 
         display: flex;
 
+        gap:
+            clamp(6px, 2vw, 9px);
+
+        margin-bottom: 7px;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+
+    /* =====================================================
+       MONTH CARDS
+    ===================================================== */
+
+    .card {
+        flex: 1 1 0;
+
+        min-width: 0;
+
+        padding:
+            6px
+            7px;
+
+        gap: 3px;
+
+        border-radius: 15px;
+    }
+
+
+    /* =====================================================
+       MONTH BUTTONS
+    ===================================================== */
+
+    .month-btn {
+        width: 100%;
+
+        min-height: 0;
+
+        height:
+            clamp(25px, 6.4vw, 31px);
+
+        padding:
+            1px
+            21px
+            1px
+            3px;
+
+        font-size:
+            clamp(11px, 3.3vw, 15px);
+
+        line-height: 1;
+
+        border-width: 1.5px;
+        border-radius: 9px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+    }
+
+    .month-btn .speaker-icon {
+        right: 4px;
+        font-size: 8px;
+    }
+
+
+    /* =====================================================
+       AATHICHUDI HEADER
+    ===================================================== */
+
+    .aathichudi-header {
+        width: 100%;
+
+        flex: 0 0 auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 7px;
+
+        margin-bottom: 6px;
+
+        position: relative;
+
+        z-index: 10;
+    }
+
+
+    /* =====================================================
+       BLACK SIDE LINES
+    ===================================================== */
+
+    .line {
+        width: 21px;
+        height: 3px;
+
+        flex: 0 0 21px;
+    }
+
+    .line::before,
+    .line::after {
+        width: 15px;
+        height: 3px;
+    }
+
+    .left::before {
+        top: -6px;
+    }
+
+    .left::after {
+        top: 6px;
+    }
+
+    .right::before {
+        top: -6px;
+    }
+
+    .right::after {
+        top: 6px;
+    }
+
+
+    /* =====================================================
+       AATHICHUDI TITLE
+    ===================================================== */
+
+    .heading {
+        flex: 0 0 auto;
+
+        font-size:
+            clamp(17px, 5.5vw, 23px);
+
+        line-height: 1.1;
+
+        padding:
+            4px
+            14px;
+
+        border-radius: 22px;
+
+        white-space: nowrap;
+    }
+
+    .heading .speaker-icon {
+        right: 5px;
+        font-size: 8px;
+    }
+
+
+    /* =====================================================
+       GREEN AATHICHUDI CARD
+       NEVER STRETCH
+    ===================================================== */
+
+    .aathichudi-card {
+        width: 100%;
+
+        flex: 0 0 auto;
+
+        height: auto;
+        min-height: 0;
+
+        padding:
+            6px
+            7px;
+
+        gap: 5px;
+
+        border-radius: 16px;
+
+        overflow: hidden;
+
+        position: relative;
+
+        z-index: 7;
+    }
+
+
+    /* =====================================================
+       GREEN COLUMNS
+    ===================================================== */
+
+    .aathichudi-card .column {
+        flex: 1 1 0;
+
+        min-width: 0;
+        min-height: 0;
+
+        display: flex;
         flex-direction: column;
+
+        gap: 3px;
 
         justify-content: flex-start;
     }
 
 
-    .book::before {
-
-        width: 5px;
-
-        left: 0;
-
-        top: 9px;
-
-        bottom: 9px;
-    }
-
-
-    /* DECORATIONS */
-
-    .swirl {
-
-        width: 60px;
-        height: 60px;
-
-        left: 4px;
-        top: 4px;
-
-        border-width: 4px;
-    }
-
-    .swirl::after {
-
-        width: 27px;
-        height: 27px;
-
-        left: 10px;
-        top: 10px;
-
-        border-width: 4px;
-    }
-
-
-    .curve-top {
-
-        width: 60px;
-        height: 20px;
-
-        right: 3px;
-        top: 5px;
-
-        border-width: 4px;
-    }
-
-
-    .sparkle {
-
-        width: 29px;
-        height: 34px;
-
-        right: 2px;
-        top: 76px;
-    }
-
-    .sparkle::before,
-    .sparkle::after {
-
-        width: 3px;
-        height: 3px;
-    }
-
-
-    .purple-swirl {
-
-        width: 58px;
-        height: 58px;
-
-        left: -10px;
-        bottom: 62px;
-
-        border-width: 4px;
-    }
-
-    .purple-swirl::after {
-
-        width: 26px;
-        height: 26px;
-
-        left: 10px;
-        top: 10px;
-
-        border-width: 4px;
-    }
-
-
-    .orange-swirl {
-
-        width: 65px;
-        height: 40px;
-
-        right: -2px;
-        bottom: 17px;
-
-        border-width: 4px;
-    }
-
-    .orange-swirl::before {
-
-        width: 22px;
-        height: 22px;
-
-        right: 24px;
-
-        border-width: 4px;
-    }
-
-
-    /* FLOWER */
-
-    .flower {
-
-        width: 76px;
-        height: 105px;
-
-        left: -3px;
-        bottom: -3px;
-
-        z-index: 110;
-    }
-
-    .flower-stem {
-
-        left: 40px;
-        height: 62px;
-
-        width: 5px;
-    }
-
-    .flower-leaf-left {
-
-        left: 13px;
-        bottom: 25px;
-
-        width: 34px;
-        height: 17px;
-    }
-
-    .flower-leaf-right {
-
-        left: 38px;
-        bottom: 39px;
-
-        width: 31px;
-        height: 16px;
-    }
-
-    .flower-head {
-
-        left: 8px;
-        bottom: 51px;
-
-        width: 58px;
-        height: 52px;
-    }
-
-    .flower-petal.one,
-    .flower-petal.two,
-    .flower-petal.three,
-    .flower-petal.four,
-    .flower-petal.five {
-
-        border-width: 3px;
-    }
-
-    .flower-petal.one {
-
-        width: 25px;
-        height: 36px;
-
-        left: 16px;
-    }
-
-    .flower-petal.two {
-
-        width: 25px;
-        height: 35px;
-
-        left: 32px;
-        top: 5px;
-    }
-
-    .flower-petal.three {
-
-        width: 25px;
-        height: 34px;
-
-        left: 2px;
-        top: 13px;
-    }
-
-    .flower-petal.four {
-
-        width: 26px;
-        height: 35px;
-
-        left: 18px;
-        top: 15px;
-    }
-
-    .flower-petal.five {
-
-        width: 24px;
-        height: 34px;
-
-        left: 34px;
-        top: 17px;
-    }
-
-
-    /* TITLE */
-
-    .title {
-
-        flex-shrink: 0;
-
-        width: auto;
-
-        max-width: 76%;
-
-        min-width: 0;
-
-        margin:
-            1px auto
-            7px;
-
-        padding:
-            4px 26px 4px 10px;
-
-        font-size:
-            clamp(20px, 6vw, 27px);
-
-        border-radius: 9px;
-
-        line-height: 1.15;
-    }
-
-    .title .speaker-icon {
-
-        right: 7px;
-
-        font-size: 9px;
-    }
-
-
-    /* TOP CARDS */
-
-    .months-wrapper {
-
-        flex-shrink: 0;
-
+    /* =====================================================
+       GREEN BUTTONS
+    ===================================================== */
+
+    .aathichudi-card .rule-btn {
         width: 100%;
-
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 7px;
-
-        margin-bottom: 7px;
-    }
-
-
-    .card {
-
-        padding: 6px;
-
-        gap: 3px;
-
-        border-radius: 13px;
-
-        border-width: 1.5px;
-    }
-
-
-    .month-btn {
-
-        min-height: 27px;
-
-        padding:
-            2px 17px 2px 3px;
-
-        font-size:
-            clamp(11px, 3.2vw, 15px);
-
-        line-height: 1.15;
-
-        border-width: 1.5px;
-
-        border-radius: 7px;
-    }
-
-    .month-btn .speaker-icon {
-
-        right: 4px;
-
-        font-size: 8px;
-    }
-
-
-    /* WEEKDAY TITLE */
-
-    .aathichudi-header {
-
-        flex-shrink: 0;
-
-        gap: 5px;
-
-        margin:
-            1px 0
-            5px;
-    }
-
-
-    .heading {
-
-        padding:
-            3px 13px;
-
-        font-size:
-            clamp(15px, 4.7vw, 21px);
-
-        border-width: 1.5px;
-
-        border-radius: 18px;
-    }
-
-
-    .heading .speaker-icon {
-
-        right: 5px;
-
-        font-size: 8px;
-    }
-
-
-    .line {
-
-        width: 21px;
-
-        height: 3px;
-    }
-
-    .line::before,
-    .line::after {
-
-        width: 15px;
-
-        height: 3px;
-    }
-
-    .left::before {
-        top: -5px;
-    }
-
-    .left::after {
-        top: 5px;
-    }
-
-    .right::before {
-        top: -5px;
-    }
-
-    .right::after {
-        top: 5px;
-    }
-
-
-    /* BOTTOM GREEN CARD */
-
-    .aathichudi-card {
 
         flex: 0 0 auto;
-
-        width: 100%;
 
         min-height: 0;
 
-        padding:
-            6px 7px;
-
-        gap: 6px;
-
-        border-radius: 14px;
-
-        border-width: 1.5px;
-
-        box-shadow:
-            0 3px 7px rgba(0,0,0,.08);
-    }
-
-
-    .column {
-
-        gap: 4px;
-
-        min-width: 0;
-    }
-
-
-    /* WEEKDAY BUTTONS */
-
-    .rule-btn {
-
-        flex: 0 0 auto;
-
-        min-height: 27px;
+        height:
+            clamp(24px, 6.2vw, 30px);
 
         padding:
-            2px 17px 2px 3px;
+            1px
+            20px
+            1px
+            3px;
 
         font-size:
-            clamp(11px, 3.15vw, 14px);
+            clamp(9.5px, 2.9vw, 13px);
 
-        line-height: 1.15;
+        line-height: 1;
 
         border-width: 1.5px;
+        border-radius: 8px;
 
-        border-radius: 7px;
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+
+        text-align: left;
     }
 
-    .rule-btn .speaker-icon {
+    .aathichudi-card .rule-btn .star {
+        flex: 0 0 auto;
 
+        font-size:
+            clamp(9px, 2.8vw, 12px);
+
+        margin-right: 2px;
+    }
+
+    .aathichudi-card .rule-btn .speaker-icon {
         right: 4px;
-
-        font-size: 8px;
+        font-size: 7px;
     }
 
 
-    /* PAGE NUMBER */
+    /* =====================================================
+       PAGE NUMBER
+       FIXED TO BOTTOM OF BOOK
+    ===================================================== */
 
     .page-number {
+        position: absolute;
 
-        flex-shrink: 0;
+        left: 0;
+        right: 0;
 
-        margin-top: 3px;
-
-        font-size: 13px;
-
-        line-height: 1.1;
-    }
-
-
-    /* NAVIGATION */
-
-    .navigation {
+        bottom: 7px;
 
         width: 100%;
 
-        max-width: 430px;
+        margin: 0;
+        padding: 0;
 
-        height: 34px;
+        text-align: center;
 
-        flex-shrink: 0;
+        font-size:
+            clamp(11px, 3.5vw, 15px);
+
+        line-height: 1.1;
+
+        z-index: 30;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       OUTSIDE BOOK
+    ===================================================== */
+
+    .navigation {
+        width: 100%;
+
+        flex: 0 0 38px;
+
+        height: 38px;
+        min-height: 38px;
 
         margin: 0;
 
         padding:
-            0 2px;
+            0
+            2px
+            1px;
 
         display: flex;
 
-        justify-content:
-            space-between;
-
+        justify-content: space-between;
         align-items: center;
+
+        overflow: hidden;
     }
 
+
+    /* =====================================================
+       NAV BUTTONS
+    ===================================================== */
 
     .nav-btn {
+        width: 34px;
+        height: 34px;
 
-        width: 32px;
-        height: 32px;
+        min-width: 34px;
+        min-height: 34px;
 
-        font-size: 16px;
+        flex: 0 0 34px;
 
-        border-width: 1.5px;
+        font-size: 18px;
     }
 
 
+    /* =====================================================
+       DOTS
+    ===================================================== */
+
     .dots {
+        display: flex;
 
         gap: 5px;
+
+        align-items: center;
+        justify-content: center;
     }
 
     .dot {
-
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
     }
+
+
+    /* =====================================================
+       NO HOVER MOVEMENT
+    ===================================================== */
+
+    .title:hover,
+    .month-btn:hover,
+    .rule-btn:hover,
+    .nav-btn:hover {
+        transform: none;
+    }
+
 }
 
 
-/* =====================================================
-   VERY NARROW SAFETY
-   Still part of the SAME mobile system
-===================================================== */
-
-@media (max-width: 340px) {
-
-    .book {
-
-        padding-left: 8px;
-        padding-right: 7px;
-    }
-
-    .month-btn,
-    .rule-btn {
-
-        font-size: 11px;
-
-        padding-left: 2px;
-        padding-right: 15px;
-    }
-
-    .title {
-
-        font-size: 19px;
-
-        padding-left: 8px;
-        padding-right: 22px;
-    }
-
-    .heading {
-
-        font-size: 15px;
-
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .line {
-
-        width: 16px;
-    }
-}
 
 </style>
 
