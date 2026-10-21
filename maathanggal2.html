@@ -1166,26 +1166,23 @@ body {
 
 
 
-
-
 /* =========================================================
    MOBILE ONLY
-   DESKTOP IS NOT TOUCHED
+   DESKTOP COMPLETELY UNTOUCHED
    NO SCROLLING
 ========================================================= */
 
 @media (max-width: 768px) {
 
-    /* =====================================================
+    /* ==============================
        SCREEN
-    ===================================================== */
+    ============================== */
 
     html,
     body {
         width: 100%;
         height: 100%;
         min-height: 0;
-
         margin: 0;
         padding: 0;
 
@@ -1205,9 +1202,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        APP
-    ===================================================== */
+    ============================== */
 
     .app {
         width: 100%;
@@ -1217,25 +1214,23 @@ body {
         min-height: 0;
 
         margin: 0 auto;
-        padding: 5px 7px;
+        padding: 4px 7px;
 
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        gap: 4px;
+        gap: 3px;
 
         overflow: hidden;
     }
 
 
-    /* =====================================================
+    /* ==============================
        BOOK
-    ===================================================== */
+    ============================== */
 
     .book {
-        position: relative;
-
         width: 100%;
 
         flex: 1 1 auto;
@@ -1244,9 +1239,9 @@ body {
         margin: 0;
 
         padding:
-            7px
+            9px
             8px
-            3px
+            4px
             11px;
 
         border-radius: 17px;
@@ -1259,9 +1254,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        RED SPINE
-    ===================================================== */
+    ============================== */
 
     .book::before {
         width: 6px;
@@ -1274,15 +1269,15 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        DECORATIONS
-    ===================================================== */
+    ============================== */
 
     .swirl {
         left: -8px;
-        top: -8px;
+        top: -7px;
 
-        transform: scale(.42);
+        transform: scale(.43);
         transform-origin: top left;
 
         z-index: 2;
@@ -1292,7 +1287,7 @@ body {
         right: -7px;
         top: 3px;
 
-        transform: scale(.52);
+        transform: scale(.53);
         transform-origin: top right;
 
         z-index: 2;
@@ -1310,28 +1305,28 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        TITLE
-    ===================================================== */
+    ============================== */
 
     .title {
         position: relative;
 
-        width: min(100%, 280px);
-        max-width: 280px;
+        width: min(100%, 290px);
+        max-width: 290px;
         min-width: 0;
 
         flex: 0 0 auto;
 
         margin:
-            3px
+            5px
             auto
-            7px;
+            8px;
 
         padding:
-            5px
-            27px
-            5px
+            6px
+            28px
+            6px
             10px;
 
         display: flex;
@@ -1340,9 +1335,7 @@ body {
 
         text-align: center;
 
-        font-size:
-            clamp(20px, 6vw, 27px);
-
+        font-size: clamp(21px, 6vw, 28px);
         line-height: 1.15;
 
         border-radius: 10px;
@@ -1356,9 +1349,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        MONTHS AREA
-    ===================================================== */
+    ============================== */
 
     .months-wrapper {
         width: 100%;
@@ -1367,10 +1360,9 @@ body {
 
         display: flex;
 
-        gap:
-            clamp(6px, 2vw, 9px);
+        gap: clamp(6px, 2vw, 9px);
 
-        margin-bottom: 7px;
+        margin-bottom: 8px;
 
         position: relative;
 
@@ -1378,17 +1370,17 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        MONTH CARDS
-    ===================================================== */
+    ============================== */
 
     .card {
-        flex: 1 1 0;
+        flex: 1;
 
         min-width: 0;
 
         padding:
-            6px
+            7px
             7px;
 
         gap: 3px;
@@ -1397,26 +1389,24 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        MONTH BUTTONS
-    ===================================================== */
+    ============================== */
 
     .month-btn {
         width: 100%;
 
         min-height: 0;
 
-        height:
-            clamp(25px, 6.4vw, 31px);
+        height: clamp(27px, 6.7vw, 33px);
 
         padding:
             1px
-            21px
+            22px
             1px
             3px;
 
-        font-size:
-            clamp(11px, 3.3vw, 15px);
+        font-size: clamp(11.5px, 3.4vw, 15px);
 
         line-height: 1;
 
@@ -1428,8 +1418,6 @@ body {
         justify-content: center;
 
         white-space: nowrap;
-
-        overflow: hidden;
     }
 
     .month-btn .speaker-icon {
@@ -1438,9 +1426,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        AATHICHUDI HEADER
-    ===================================================== */
+    ============================== */
 
     .aathichudi-header {
         width: 100%;
@@ -1453,7 +1441,7 @@ body {
 
         gap: 7px;
 
-        margin-bottom: 6px;
+        margin-bottom: 7px;
 
         position: relative;
 
@@ -1461,20 +1449,20 @@ body {
     }
 
 
-    /* =====================================================
-       BLACK SIDE LINES
-    ===================================================== */
+    /* ==============================
+       SIDE LINES
+    ============================== */
 
     .line {
-        width: 21px;
+        width: 23px;
         height: 3px;
 
-        flex: 0 0 21px;
+        flex: 0 0 23px;
     }
 
     .line::before,
     .line::after {
-        width: 15px;
+        width: 16px;
         height: 3px;
     }
 
@@ -1495,21 +1483,20 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        AATHICHUDI TITLE
-    ===================================================== */
+    ============================== */
 
     .heading {
         flex: 0 0 auto;
 
-        font-size:
-            clamp(17px, 5.5vw, 23px);
+        font-size: clamp(18px, 5.7vw, 24px);
 
         line-height: 1.1;
 
         padding:
-            4px
-            14px;
+            5px
+            15px;
 
         border-radius: 22px;
 
@@ -1522,10 +1509,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        GREEN AATHICHUDI CARD
-       NEVER STRETCH
-    ===================================================== */
+    ============================== */
 
     .aathichudi-card {
         width: 100%;
@@ -1536,7 +1522,7 @@ body {
         min-height: 0;
 
         padding:
-            6px
+            7px
             7px;
 
         gap: 5px;
@@ -1551,9 +1537,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        GREEN COLUMNS
-    ===================================================== */
+    ============================== */
 
     .aathichudi-card .column {
         flex: 1 1 0;
@@ -1570,9 +1556,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        GREEN BUTTONS
-    ===================================================== */
+    ============================== */
 
     .aathichudi-card .rule-btn {
         width: 100%;
@@ -1581,21 +1567,20 @@ body {
 
         min-height: 0;
 
-        height:
-            clamp(24px, 6.2vw, 30px);
+        height: clamp(25px, 6.4vw, 31px);
 
         padding:
             1px
-            20px
+            21px
             1px
             3px;
 
-        font-size:
-            clamp(9.5px, 2.9vw, 13px);
+        font-size: clamp(10px, 3vw, 13.5px);
 
         line-height: 1;
 
         border-width: 1.5px;
+
         border-radius: 8px;
 
         white-space: nowrap;
@@ -1611,51 +1596,47 @@ body {
     .aathichudi-card .rule-btn .star {
         flex: 0 0 auto;
 
-        font-size:
-            clamp(9px, 2.8vw, 12px);
+        font-size: clamp(9px, 2.8vw, 12px);
 
         margin-right: 2px;
     }
 
     .aathichudi-card .rule-btn .speaker-icon {
         right: 4px;
+
         font-size: 7px;
     }
 
 
-    /* =====================================================
+    /* ==============================
        PAGE NUMBER
-       FIXED TO BOTTOM OF BOOK
-    ===================================================== */
+       KEEP AT BOTTOM OF BOOK
+    ============================== */
 
     .page-number {
-        position: absolute;
-
-        left: 0;
-        right: 0;
-
-        bottom: 7px;
-
         width: 100%;
 
-        margin: 0;
+        flex: 0 0 auto;
+
+        margin:
+            3px
+            0
+            0;
+
         padding: 0;
 
         text-align: center;
 
-        font-size:
-            clamp(11px, 3.5vw, 15px);
-
+        font-size: 13px;
         line-height: 1.1;
 
-        z-index: 30;
+        z-index: 10;
     }
 
 
-    /* =====================================================
+    /* ==============================
        NAVIGATION
-       OUTSIDE BOOK
-    ===================================================== */
+    ============================== */
 
     .navigation {
         width: 100%;
@@ -1673,7 +1654,6 @@ body {
             1px;
 
         display: flex;
-
         justify-content: space-between;
         align-items: center;
 
@@ -1681,9 +1661,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        NAV BUTTONS
-    ===================================================== */
+    ============================== */
 
     .nav-btn {
         width: 34px;
@@ -1692,15 +1672,15 @@ body {
         min-width: 34px;
         min-height: 34px;
 
-        flex: 0 0 34px;
-
         font-size: 18px;
+
+        flex: 0 0 34px;
     }
 
 
-    /* =====================================================
+    /* ==============================
        DOTS
-    ===================================================== */
+    ============================== */
 
     .dots {
         display: flex;
@@ -1717,9 +1697,9 @@ body {
     }
 
 
-    /* =====================================================
+    /* ==============================
        NO HOVER MOVEMENT
-    ===================================================== */
+    ============================== */
 
     .title:hover,
     .month-btn:hover,
@@ -1727,9 +1707,7 @@ body {
     .nav-btn:hover {
         transform: none;
     }
-
 }
-
 
 
 </style>
