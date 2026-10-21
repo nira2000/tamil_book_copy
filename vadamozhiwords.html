@@ -517,172 +517,561 @@ body{
 }
 
 
-/* ===========================
-   MOBILE
-=========================== */
 
-@media (max-width:768px){
+
+
+/* =========================================================
+   MOBILE ONLY — PAGE 43
+   DESKTOP IS NOT TOUCHED
+   NO SCROLLING
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =========================
+       SCREEN
+    ========================= */
 
     html,
-    body{
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        overflow:hidden;
+    body {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+        overscroll-behavior: none;
     }
 
-    body{
-        background:#111D66;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+    body {
+        background: #111D66;
 
-    .app{
-        width:100%;
-        height:100dvh;
-        display:flex;
-        flex-direction:column;
-        padding:3px 8px 5px;
-        overflow:hidden;
-    }
-
-    .header{
-        flex:0 0 20px;
-        height:20px;
-        font-size:12px;
-        line-height:20px;
-        text-align:center;
-        margin:0;
-        white-space:nowrap;
-    }
-
-    .book{
-        flex:1 1 auto;
-        width:100%;
-        max-width:410px;
-        min-height:0;
-        margin:0 auto;
-        padding:7px;
-        border-radius:20px;
-        display:flex;
-        flex-direction:column;
-        background:#F8F1E4;
-        overflow:visible;
-    }
-
-    .book::before{
-        width:7px;
-        left:-3px;
-        top:10px;
-        bottom:10px;
-        border-radius:8px;
-    }
-
-    .book-content{
-        flex:1 1 auto;
-        min-height:0;
-        width:100%;
-        display:flex;
-        justify-content:center;
-        align-items:flex-start;
-        overflow:hidden;
-        position:relative;
-    }
-
-    /* Keep the real A4-like page size and scale the WHOLE page evenly. */
-    .page{
-        width:900px;
-        height:1270px;
-        min-height:1270px;
-        flex:0 0 900px;
-        position:absolute;
-        left:50%;
-        top:0;
-        transform-origin:top center;
-        margin:0;
-        padding:25px 35px 25px;
-        overflow:visible;
-    }
-
-    .title{
-        width:390px;
-        min-height:150px;
-        margin:0 auto 28px;
-        font-size:42px;
-        padding:18px 35px 24px;
-    }
-
-    .grid{
-        width:100%;
-    }
-
-    .card{
-        height:260px;
-        padding:18px 10px 18px;
-    }
-
-    .card img{
-        width:170px;
-        height:155px;
-    }
-
-    .word{
-        width:205px;
-        min-height:55px;
-        font-size:29px;
-    }
-
-    .speaker::after{
-        top:3px;
-        right:5px;
-        font-size:14px;
-    }
-
-    .page-number{
-        margin-top:8px;
-        font-size:25px;
-    }
-
-    .navigation{
-        flex:0 0 34px;
-        height:34px;
-        width:100%;
-        margin-top:4px;
-        padding:0 5px;
-
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-
-        position:relative;
-        z-index:20;
-    }
-    .nav-btn{
-        width:34px;
-        height:34px;
-        font-size:15px;
-    }
-
-    .dots{
-        gap:7px;
-    }
-
-    .dot{
-        width:8px;
-        height:8px;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
     }
 
 
-.word[data-audio="tajmahal.mp3"],
-.word[data-audio="krismas.mp3"],
-.word[data-audio="hanuman.mp3"],
-.word[data-audio="krishna.mp3"]{
-    font-size:22px;
-}
+    /* =========================
+       APP
+    ========================= */
+
+    .app {
+        width: 100%;
+        max-width: 520px;
+
+        height: 100dvh;
+        min-height: 0;
+
+        margin: 0 auto;
+        padding: 3px 7px 4px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 3px;
+
+        overflow: hidden;
+    }
 
 
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+        flex: 0 0 20px;
+
+        width: 100%;
+        height: 20px;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 12px;
+        line-height: 20px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       BOOK
+    ========================= */
+
+    .book {
+        width: 100%;
+        max-width: 410px;
+
+        flex: 1 1 auto;
+        min-height: 0;
+
+        margin: 0 auto;
+
+        padding: 5px 6px 3px 11px;
+
+        background: #F8F1E4;
+
+        border-radius: 18px;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        position: relative;
+    }
+
+
+    /* =========================
+       RED SPINE
+    ========================= */
+
+    .book::before {
+        width: 6px;
+
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+
+        border-radius: 6px;
+    }
+
+
+    /* =========================
+       BOOK CONTENT
+    ========================= */
+
+    .book-content {
+        width: 100%;
+
+        flex: 1 1 auto;
+        min-height: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        position: relative;
+    }
+
+
+    /* =====================================================
+       ACTUAL PAGE
+       IMPORTANT:
+       DO NOT KEEP THE OLD 900px / 1270px SETTINGS
+    ===================================================== */
+
+    .page {
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        min-width: 0;
+        min-height: 0;
+
+        flex: 1 1 auto;
+
+        margin: 0;
+
+        padding: 3px 3px 2px;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        transform: none;
+    }
+
+
+    /* =========================
+       DECORATIVE CORNER
+    ========================= */
+
+    .corner {
+        position: absolute;
+
+        z-index: 1;
+
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       STARS
+    ========================= */
+
+    .star1,
+    .star2,
+    .star3,
+    .star4 {
+        transform: scale(.55);
+        transform-origin: center;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       TITLE
+    ========================= */
+
+    .title {
+        position: relative;
+
+        z-index: 5;
+
+        flex: 0 0 auto;
+
+        width: min(78%, 290px);
+
+        min-height: 0;
+
+        margin: 2px auto 5px;
+
+        padding: 5px 25px 6px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        font-size: clamp(21px, 6vw, 27px);
+        line-height: 1.1;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       GRID
+       3 COLUMNS × 4 ROWS
+    ========================= */
+
+    .grid {
+        position: relative;
+
+        z-index: 4;
+
+        width: 100%;
+
+        flex: 1 1 auto;
+        min-height: 0;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+
+        column-gap: 0;
+        row-gap: 0;
+
+        border: 1.5px solid #111;
+
+        background: #8FD5EE;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================
+       EACH CARD
+    ========================= */
+
+    .card {
+        width: 100%;
+        height: 100%;
+
+        min-width: 0;
+        min-height: 0;
+
+        padding: 3px 2px 3px;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-between;
+        align-items: center;
+
+        background: #8FD5EE;
+
+        border-right: 1.5px solid #111;
+        border-bottom: 1.5px solid #111;
+
+        overflow: hidden;
+    }
+
+
+    /* Remove right border from every 3rd card */
+
+    .card:nth-child(3n) {
+        border-right: none;
+    }
+
+
+    /* Remove bottom border from last row */
+
+    .card:nth-last-child(-n+3) {
+        border-bottom: none;
+    }
+
+
+    /* =========================
+       IMAGES
+    ========================= */
+
+    .card img {
+        width: 100%;
+
+        max-width: 88px;
+
+        height: auto;
+
+        max-height: 72px;
+
+        object-fit: contain;
+
+        flex: 1 1 auto;
+
+        min-height: 0;
+
+        user-select: none;
+        pointer-events: none;
+    }
+
+
+    /* =========================
+       WORD BUTTONS
+    ========================= */
+
+    .word {
+        width: 88%;
+
+        min-width: 0;
+
+        min-height: 25px;
+
+        height: clamp(25px, 7vw, 32px);
+
+        flex: 0 0 auto;
+
+        padding: 2px 17px 2px 3px;
+
+        border: 2px solid #111;
+
+        border-radius: 4px;
+
+        background: #8FD5EE;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        font-family: 'Noto Sans Tamil', sans-serif;
+
+        font-size: clamp(10px, 3vw, 14px);
+
+        line-height: 1;
+
+        font-weight: 700;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        position: relative;
+
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       SPEAKER
+    ========================= */
+
+    .speaker::after {
+        top: 2px;
+        right: 3px;
+
+        font-size: 8px;
+    }
+
+
+    /* =========================
+       LONG WORDS
+       Keep these slightly smaller
+    ========================= */
+
+    .word[data-audio="tajmahal.mp3"],
+    .word[data-audio="krismas.mp3"],
+    .word[data-audio="hanuman.mp3"],
+    .word[data-audio="krishna.mp3"] {
+        font-size: clamp(8px, 2.5vw, 12px);
+    }
+
+
+    /* =========================
+       LETTER HIGHLIGHT
+    ========================= */
+
+    .letter.active {
+        color: #D50000;
+        font-weight: 700;
+    }
+
+
+    /* =========================
+       PAGE NUMBER
+       STAYS INSIDE BOOK
+       AT THE BOTTOM
+    ========================= */
+
+    .page-number {
+        position: relative;
+
+        z-index: 10;
+
+        flex: 0 0 auto;
+
+        width: 100%;
+
+        margin: 2px 0 0;
+
+        padding: 0;
+
+        text-align: center;
+
+        font-size: 15px;
+
+        line-height: 1.1;
+
+        color: #23498B;
+
+        font-weight: 700;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       OUTSIDE THE BOOK
+       ALWAYS VISIBLE
+    ===================================================== */
+
+    .navigation {
+        width: 100%;
+        max-width: 410px;
+
+        flex: 0 0 42px;
+
+        height: 42px;
+        min-height: 42px;
+
+        margin: 0;
+
+        padding: 0 2px;
+
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+
+        z-index: 50;
+
+        overflow: visible;
+    }
+
+
+    /* =========================
+       NAV BUTTONS
+    ========================= */
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+
+        min-width: 36px;
+        min-height: 36px;
+
+        flex: 0 0 36px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 18px;
+
+        border-radius: 50%;
+
+        position: relative;
+
+        z-index: 51;
+    }
+
+
+    /* =========================
+       DOTS
+    ========================= */
+
+    .dots {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px;
+
+        height: 20px;
+
+        position: relative;
+
+        z-index: 51;
+    }
+
+
+    .dot {
+        width: 7px;
+        height: 7px;
+
+        min-width: 7px;
+        min-height: 7px;
+
+        border-radius: 50%;
+
+        display: block;
+    }
+
+
+    /* =========================
+       NO HOVER MOVEMENT
+       ON MOBILE
+    ========================= */
+
+    .word:hover {
+        transform: none;
+    }
+
+    .nav-btn:hover {
+        transform: none;
+    }
 }
 
 </style>
