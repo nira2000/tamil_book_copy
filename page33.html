@@ -183,12 +183,12 @@ body{
 }
 
 
-.card-image{
-    width:250px;
-    height:auto;
-    object-fit:contain;
+/* Make the pictures larger */
+.card-image {
+    width: 300px;
+    height: auto;
+    object-fit: contain;
 }
-
 
 .card-content{
     line-height:1.9;
@@ -552,15 +552,14 @@ body{
     ========================= */
 
     .card-image {
-        width: clamp(55px, 17vw, 78px);
-
-        max-height: 68px;
+        width: 110px;
+        max-width: 110px;
+        max-height: 100px;
         height: auto;
-
         object-fit: contain;
-
-        flex: 0 0 auto;
+        flex: 0 0 110px;
     }
+
 
     /* =========================
        CARD TEXT
