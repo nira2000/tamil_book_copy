@@ -402,7 +402,7 @@ body{
 .word[data-audio="hanuman.mp3"],
 .word[data-audio="krishna.mp3"]{
     font-size:22px;
-}h
+}
 
 .word-space{
     display:inline;
@@ -517,173 +517,407 @@ body{
 }
 
 
-/* ===========================
-   MOBILE
-=========================== */
+/* =========================================================
+   MOBILE ONLY - PAGE 43
+   DESKTOP IS NOT TOUCHED
+   NO SCROLLING
+========================================================= */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
+
+    /* ==============================
+       SCREEN
+    ============================== */
 
     html,
-    body{
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        overflow:hidden;
+    body {
+        width: 100%;
+        height: 100dvh;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+        overscroll-behavior: none;
     }
 
-    body{
-        background:#111D66;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+    body {
+        background: #1b2c73;
 
-    .app{
-        width:100%;
-        height:100dvh;
-        display:flex;
-        flex-direction:column;
-        padding:3px 8px 5px;
-        overflow:hidden;
-    }
-
-    .header{
-        flex:0 0 20px;
-        height:20px;
-        font-size:12px;
-        line-height:20px;
-        text-align:center;
-        margin:0;
-        white-space:nowrap;
-    }
-
-    .book{
-        flex:1 1 auto;
-        width:100%;
-        max-width:410px;
-        min-height:0;
-        margin:0 auto;
-        padding:7px;
-        border-radius:20px;
-        display:flex;
-        flex-direction:column;
-        background:#F8F1E4;
-        overflow:visible;
-    }
-
-    .book::before{
-        width:7px;
-        left:-3px;
-        top:10px;
-        bottom:10px;
-        border-radius:8px;
-    }
-
-    .book-content{
-        flex:1 1 auto;
-        min-height:0;
-        width:100%;
-        display:flex;
-        justify-content:center;
-        align-items:flex-start;
-        overflow:hidden;
-        position:relative;
-    }
-
-    /* Keep the real A4-like page size and scale the WHOLE page evenly. */
-    .page{
-        width:900px;
-        height:1270px;
-        min-height:1270px;
-        flex:0 0 900px;
-        position:absolute;
-        left:50%;
-        top:0;
-        transform-origin:top center;
-        margin:0;
-        padding:25px 35px 25px;
-        overflow:visible;
-    }
-
-    .title{
-        width:390px;
-        min-height:150px;
-        margin:0 auto 28px;
-        font-size:42px;
-        padding:18px 35px 24px;
-    }
-
-    .grid{
-        width:100%;
-    }
-
-    .card{
-        height:260px;
-        padding:18px 10px 18px;
-    }
-
-    .card img{
-        width:170px;
-        height:155px;
-    }
-
-    .word{
-        width:205px;
-        min-height:55px;
-        font-size:29px;
-    }
-
-    .speaker::after{
-        top:3px;
-        right:5px;
-        font-size:14px;
-    }
-
-    .page-number{
-        margin-top:8px;
-        font-size:25px;
-    }
-
-    .navigation{
-        flex:0 0 34px;
-        height:34px;
-        width:100%;
-        margin-top:4px;
-        padding:0 5px;
-
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-
-        position:relative;
-        z-index:20;
-    }
-    .nav-btn{
-        width:34px;
-        height:34px;
-        font-size:15px;
-    }
-
-    .dots{
-        gap:7px;
-    }
-
-    .dot{
-        width:8px;
-        height:8px;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
     }
 
 
-.word[data-audio="tajmahal.mp3"],
-.word[data-audio="krismas.mp3"],
-.word[data-audio="hanuman.mp3"],
-.word[data-audio="krishna.mp3"]{
-    font-size:22px;
+    /* ==============================
+       PAGE WRAPPER
+       BOOK + NAVIGATION
+    ============================== */
+
+    .page-wrapper {
+        width: 100%;
+        max-width: 520px;
+
+        height: 100dvh;
+        min-height: 0;
+
+        margin: 0 auto;
+        padding: 4px 6px 3px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        overflow: hidden;
+    }
+
+
+    /* ==============================
+       BOOK CONTAINER
+    ============================== */
+
+    .container {
+        width: 100%;
+
+        flex: 1 1 auto;
+        min-height: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+
+        overflow: hidden;
+    }
+
+
+    /* ==============================
+       BOOK
+    ============================== */
+
+    .page-container {
+        position: relative;
+
+        width: 100%;
+        max-width: 410px;
+
+        height: 100%;
+        min-height: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        padding:
+            5px
+            6px
+            4px
+            14px;
+
+        background: #fffef8;
+
+        border: 5px solid #f2d8a0;
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        transform: none;
+    }
+
+
+    /* ==============================
+       RED SPINE
+    ============================== */
+
+    .page-container::before {
+        left: 4px;
+        top: 9px;
+        bottom: 9px;
+
+        width: 6px;
+
+        border-radius: 6px;
+    }
+
+
+    /* ==============================
+       LESSON NUMBER
+    ============================== */
+
+    .lesson-number {
+        flex: 0 0 auto;
+
+        margin: 0 0 2px 2px;
+
+        padding: 0;
+
+        font-size: 13px;
+        line-height: 1;
+
+        text-align: left;
+    }
+
+
+    /* ==============================
+       TITLE
+    ============================== */
+
+    .title-box {
+        flex: 0 0 auto;
+
+        width: fit-content;
+        max-width: 92%;
+
+        margin: 1px auto 5px;
+
+        padding:
+            4px
+            13px;
+
+        border-width: 2px;
+        border-radius: 10px;
+
+        text-align: center;
+    }
+
+    .title-box h1 {
+        font-size: clamp(17px, 5vw, 22px);
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+
+    /* ==============================
+       WORD GRID
+       3 COLUMNS
+       ALL 26 BUTTONS FIT
+    ============================== */
+
+    .word-grid {
+        flex: 1 1 auto;
+        min-height: 0;
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        grid-auto-rows: minmax(0, 1fr);
+
+        column-gap: 5px;
+        row-gap: 4px;
+
+        align-content: stretch;
+
+        overflow: hidden;
+
+        padding: 0;
+    }
+
+
+    /* ==============================
+       WORD BUTTONS
+    ============================== */
+
+    .word-btn {
+        width: 100%;
+        height: 100%;
+
+        min-width: 0;
+        min-height: 0;
+
+        padding:
+            1px
+            13px
+            1px
+            2px;
+
+        font-family: 'Noto Sans Tamil', sans-serif;
+
+        font-size: clamp(10px, 3.2vw, 14px);
+        font-weight: 600;
+
+        line-height: 1;
+
+        border-width: 1px;
+        border-radius: 6px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+    }
+
+
+    /* ==============================
+       WORD SPANS
+    ============================== */
+
+    .word-btn span {
+        display: inline-block;
+
+        white-space: nowrap;
+    }
+
+
+    /* ==============================
+       SPEAKER
+    ============================== */
+
+    .speaker::after {
+        top: 2px;
+        right: 3px;
+
+        font-size: 7px;
+    }
+
+
+    /* ==============================
+       REMOVE LARGE DESKTOP COLOUR GAPS
+       SO MOBILE GRID STAYS COMPACT
+    ============================== */
+
+    .word-grid button:nth-child(13),
+    .word-grid button:nth-child(14),
+    .word-grid button:nth-child(19),
+    .word-grid button:nth-child(20),
+    .word-grid button:nth-child(25),
+    .word-grid button:nth-child(26) {
+        margin-top: 0;
+    }
+
+
+    /* ==============================
+       PAGE NUMBER
+       STAYS AT BOTTOM OF BOOK
+    ============================== */
+
+    .page-number {
+        flex: 0 0 auto;
+
+        width: 100%;
+
+        margin: 2px 0 0;
+        padding: 0;
+
+        text-align: center;
+
+        font-size: 15px;
+        font-weight: bold;
+
+        line-height: 1.1;
+
+        color: #7a42d5;
+    }
+
+
+    /* ==============================
+       NAVIGATION
+       ALWAYS VISIBLE
+    ============================== */
+
+    .navigation {
+        width: 100%;
+        max-width: 410px;
+
+        flex: 0 0 42px;
+
+        height: 42px;
+        min-height: 42px;
+
+        margin: 2px 0 0;
+
+        padding:
+            0
+            2px;
+
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        overflow: visible;
+    }
+
+
+    /* ==============================
+       NAVIGATION BUTTONS
+    ============================== */
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+
+        min-width: 36px;
+        min-height: 36px;
+
+        flex: 0 0 36px;
+
+        font-size: 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* ==============================
+       DOTS
+    ============================== */
+
+    .dots {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+
+        flex: 0 0 7px;
+    }
+
+
+    /* ==============================
+       HIGHLIGHT
+       KEEP RED WORD HIGHLIGHT
+    ============================== */
+
+    .word-btn span.active {
+        color: #ff0000;
+
+        font-weight: 700;
+
+        transform: scale(1.08);
+
+        text-shadow:
+            0 0 4px rgba(255, 0, 0, 0.3);
+    }
+
+
+    /* ==============================
+       NO HOVER MOVEMENT ON MOBILE
+    ============================== */
+
+    .word-btn:hover,
+    .nav-btn:hover {
+        transform: none;
+    }
+
 }
 
 
-}
+
 
 </style>
 
