@@ -157,17 +157,17 @@
    IMAGE
 =========================== */
 
-.card img{
+/* Move all images slightly down inside each card */
+.card img {
+    max-width: 170px;
+    max-height: 150px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
 
-    max-width:170px;
-    max-height:150px;
-
-    object-fit:contain;
-
-    user-select:none;
-
-    pointer-events:none;
+    transform: translateY(50px);
 }
+
 
 /* ===========================
    WORD BUTTON
@@ -716,8 +716,17 @@ body{
 
     right:3px;
 
-    font-size:22px;
+    font-size:18px;
 
+}
+
+
+/* MOBILE ONLY — SMALLER WORDS IN CARDS 9, 10 AND 11 */
+.grid .card:nth-child(7) .word,
+.grid .card:nth-child(10) .word,
+.grid .card:nth-child(11) .word,
+.grid .card:nth-child(12) .word {
+    font-size: 23px !important;
 }
 
 }

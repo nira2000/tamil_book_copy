@@ -157,16 +157,15 @@
    IMAGE
 =========================== */
 
-.card img{
+/* Move all images slightly down inside each card */
+.card img {
+    max-width: 170px;
+    max-height: 150px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
 
-    max-width:170px;
-    max-height:150px;
-
-    object-fit:contain;
-
-    user-select:none;
-
-    pointer-events:none;
+    transform: translateY(50px);
 }
 
 /* ===========================
@@ -717,8 +716,14 @@ body{
 
     right:3px;
 
-    font-size:22px;
+    font-size:15px;
 
+}
+
+/* MOBILE ONLY — SMALLER WORDS IN CARD 7 AND CARD 8 */
+.grid .card:nth-child(7) .word,
+.grid .card:nth-child(8) .word {
+    font-size: 23px !important;
 }
 
 }
