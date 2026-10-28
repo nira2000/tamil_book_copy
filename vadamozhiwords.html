@@ -518,406 +518,400 @@ body{
 
 
 /* =========================================================
-   MOBILE ONLY - PAGE 43
-   DESKTOP IS NOT TOUCHED
-   NO SCROLLING
+   MOBILE FIX — VADAMOZHI WORDS PAGE
+   Uses the REAL HTML class names: .app, .book, .book-content, .page
 ========================================================= */
-
 @media (max-width: 768px) {
-
-    /* ==============================
-       SCREEN
-    ============================== */
-
-    html,
-    body {
+    html, body {
         width: 100%;
-        height: 100dvh;
+        height: 100%;
         min-height: 0;
         margin: 0;
         padding: 0;
-
         overflow: hidden;
-        overscroll-behavior: none;
     }
 
     body {
-        background: #1b2c73;
-
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-    }
-
-
-    /* ==============================
-       PAGE WRAPPER
-       BOOK + NAVIGATION
-    ============================== */
-
-    .page-wrapper {
-        width: 100%;
-        max-width: 520px;
-
         height: 100dvh;
         min-height: 0;
-
-        margin: 0 auto;
-        padding: 4px 6px 3px;
-
         display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        overflow: hidden;
-    }
-
-
-    /* ==============================
-       BOOK CONTAINER
-    ============================== */
-
-    .container {
-        width: 100%;
-
-        flex: 1 1 auto;
-        min-height: 0;
-
-        display: flex;
-        justify-content: center;
         align-items: stretch;
-
-        overflow: hidden;
+        justify-content: center;
+        padding: 5px 5px 3px;
+        perspective: none;
     }
 
-
-    /* ==============================
-       BOOK
-    ============================== */
-
-    .page-container {
-        position: relative;
-
+    .app {
         width: 100%;
-        max-width: 410px;
-
+        max-width: 520px;
         height: 100%;
+        max-height: 100dvh;
         min-height: 0;
-
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
-
-        padding:
-            5px
-            6px
-            4px
-            14px;
-
-        background: #fffef8;
-
-        border: 5px solid #f2d8a0;
-        border-radius: 18px;
-
         overflow: hidden;
-
-        transform: none;
     }
 
-
-    /* ==============================
-       RED SPINE
-    ============================== */
-
-    .page-container::before {
-        left: 4px;
-        top: 9px;
-        bottom: 9px;
-
-        width: 6px;
-
-        border-radius: 6px;
-    }
-
-
-    /* ==============================
-       LESSON NUMBER
-    ============================== */
-
-    .lesson-number {
+    .header {
         flex: 0 0 auto;
-
-        margin: 0 0 2px 2px;
-
-        padding: 0;
-
-        font-size: 13px;
-        line-height: 1;
-
-        text-align: left;
-    }
-
-
-    /* ==============================
-       TITLE
-    ============================== */
-
-    .title-box {
-        flex: 0 0 auto;
-
-        width: fit-content;
-        max-width: 92%;
-
-        margin: 1px auto 5px;
-
-        padding:
-            4px
-            13px;
-
-        border-width: 2px;
-        border-radius: 10px;
-
-        text-align: center;
-    }
-
-    .title-box h1 {
-        font-size: clamp(17px, 5vw, 22px);
-        line-height: 1.1;
+        margin: 0 0 5px;
+        padding: 0 2px;
+        font-size: clamp(12px, 3.6vw, 16px);
+        line-height: 1.2;
         white-space: nowrap;
     }
 
-
-    /* ==============================
-       WORD GRID
-       3 COLUMNS
-       ALL 26 BUTTONS FIT
-    ============================== */
-
-    .word-grid {
+    .book {
         flex: 1 1 auto;
         min-height: 0;
-
         width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-        grid-auto-rows: minmax(0, 1fr);
-
-        column-gap: 5px;
-        row-gap: 4px;
-
-        align-content: stretch;
-
+        padding: 7px 6px 5px 12px;
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
-
-        padding: 0;
     }
 
+    .book::before {
+        left: -1px;
+        top: 18px;
+        bottom: 18px;
+        width: 10px;
+        border-radius: 0 8px 8px 0;
+    }
 
-    /* ==============================
-       WORD BUTTONS
-    ============================== */
-
-    .word-btn {
-        width: 100%;
-        height: 100%;
-
+    .book-content {
+        flex: 1 1 auto;
         min-width: 0;
         min-height: 0;
-
-        padding:
-            1px
-            13px
-            1px
-            2px;
-
-        font-family: 'Noto Sans Tamil', sans-serif;
-
-        font-size: clamp(10px, 3.2vw, 14px);
-        font-weight: 600;
-
-        line-height: 1;
-
-        border-width: 1px;
-        border-radius: 6px;
-
+        width: 100%;
         display: flex;
-        align-items: center;
         justify-content: center;
-
-        position: relative;
-
+        align-items: center;
         overflow: hidden;
-
-        white-space: nowrap;
+        position: relative;
     }
 
-
-    /* ==============================
-       WORD SPANS
-    ============================== */
-
-    .word-btn span {
-        display: inline-block;
-
-        white-space: nowrap;
+    /* Keep the original 900 × 1270 page artwork and scale it as one unit. */
+    .page {
+        width: 900px;
+        min-width: 900px;
+        height: 1270px;
+        min-height: 1270px;
+        flex: 0 0 900px;
+        padding: 25px 35px;
+        overflow: hidden;
+        transform-origin: top center;
+        position: relative;
     }
 
-
-    /* ==============================
-       SPEAKER
-    ============================== */
-
-    .speaker::after {
-        top: 2px;
-        right: 3px;
-
-        font-size: 7px;
+    .title {
+        width: 390px;
+        min-height: 150px;
+        margin: 0 auto 28px;
+        padding: 18px 35px 24px;
+        font-size: 42px;
     }
 
-
-    /* ==============================
-       REMOVE LARGE DESKTOP COLOUR GAPS
-       SO MOBILE GRID STAYS COMPACT
-    ============================== */
-
-    .word-grid button:nth-child(13),
-    .word-grid button:nth-child(14),
-    .word-grid button:nth-child(19),
-    .word-grid button:nth-child(20),
-    .word-grid button:nth-child(25),
-    .word-grid button:nth-child(26) {
-        margin-top: 0;
+    .grid {
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .card {
+        height: 260px;
+        min-width: 0;
+        padding: 18px 10px;
+    }
 
-    /* ==============================
-       PAGE NUMBER
-       STAYS AT BOTTOM OF BOOK
-    ============================== */
+    .card img {
+        width: 170px;
+        height: 155px;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .word {
+        width: 205px;
+        max-width: 100%;
+        min-height: 55px;
+        font-size: 29px;
+    }
 
     .page-number {
         flex: 0 0 auto;
-
-        width: 100%;
-
-        margin: 2px 0 0;
-        padding: 0;
-
-        text-align: center;
-
-        font-size: 15px;
-        font-weight: bold;
-
+        margin-top: 3px;
+        font-size: 16px;
         line-height: 1.1;
-
-        color: #7a42d5;
+        text-align: center;
     }
-
-
-    /* ==============================
-       NAVIGATION
-       ALWAYS VISIBLE
-    ============================== */
 
     .navigation {
-        width: 100%;
-        max-width: 410px;
-
         flex: 0 0 42px;
-
         height: 42px;
         min-height: 42px;
-
+        width: 100%;
         margin: 2px 0 0;
-
-        padding:
-            0
-            2px;
-
         display: flex;
-
         justify-content: space-between;
         align-items: center;
-
-        overflow: visible;
+        padding: 0 3px;
     }
-
-
-    /* ==============================
-       NAVIGATION BUTTONS
-    ============================== */
 
     .nav-btn {
-        width: 36px;
-        height: 36px;
-
-        min-width: 36px;
-        min-height: 36px;
-
-        flex: 0 0 36px;
-
-        font-size: 18px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 35px;
+        height: 35px;
+        flex: 0 0 35px;
+        font-size: 19px;
     }
 
-
-    /* ==============================
-       DOTS
-    ============================== */
-
     .dots {
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
         gap: 6px;
+        align-items: center;
     }
 
     .dot {
         width: 7px;
         height: 7px;
-
         flex: 0 0 7px;
     }
 
-
-    /* ==============================
-       HIGHLIGHT
-       KEEP RED WORD HIGHLIGHT
-    ============================== */
-
-    .word-btn span.active {
-        color: #ff0000;
-
-        font-weight: 700;
-
-        transform: scale(1.08);
-
-        text-shadow:
-            0 0 4px rgba(255, 0, 0, 0.3);
-    }
-
-
-    /* ==============================
-       NO HOVER MOVEMENT ON MOBILE
-    ============================== */
-
-    .word-btn:hover,
+    .word:hover,
     .nav-btn:hover {
         transform: none;
     }
-
 }
 
 
 
+/* =========================================================
+   MOBILE FIX — USE THE REAL PAGE 43 CLASS NAMES
+   Desktop styles above remain unchanged.
+========================================================= */
+@media (max-width: 768px) {
+    html, body {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    body {
+        height: 100dvh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .app {
+        width: 100%;
+        max-width: 520px;
+        height: 100dvh;
+        max-height: 100dvh;
+        min-height: 0;
+        margin: 0 auto;
+        padding: 4px 7px 3px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        overflow: hidden;
+    }
+
+    .header {
+        flex: 0 0 auto;
+        margin: 0;
+        padding: 1px 0 3px;
+        font-size: clamp(12px, 3.7vw, 16px);
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .book {
+        width: 100%;
+        flex: 1 1 0;
+        min-height: 0;
+        margin: 0;
+        padding: 7px 7px 4px 12px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .book::before {
+        left: 0;
+        top: 8px;
+        bottom: 8px;
+        width: 6px;
+    }
+
+    .book-content {
+        width: 100%;
+        flex: 1 1 0;
+        min-height: 0;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        overflow: hidden;
+    }
+
+    /* The real artwork element is .page, not .page-container. */
+    .page {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        flex: 1 1 auto;
+        margin: 0;
+        padding: 8px 7px 6px;
+        overflow: hidden;
+        transform: none !important;
+        transform-origin: top center !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .title {
+        width: min(78%, 290px);
+        min-height: 0;
+        flex: 0 0 auto;
+        margin: 7px auto 12px;
+        padding: 8px 17px 10px;
+        border-width: 4px;
+        font-size: clamp(20px, 6vw, 28px);
+        line-height: 1.15;
+    }
+
+    .title::after {
+        bottom: -16px;
+        width: 32px;
+        height: 25px;
+        border-left-width: 4px;
+        border-bottom-width: 4px;
+    }
+
+    .title::before {
+        inset: -10px -10px -16px;
+        border-width: 3px;
+    }
+
+    .star1, .star2, .star3, .star4 {
+        font-size: clamp(18px, 6vw, 28px);
+    }
+
+    .star1 { top: 10px; left: 25%; }
+    .star2 { top: 28px; left: 20%; }
+    .star3 { top: 35px; right: 18%; }
+    .star4 { top: 18px; right: 22%; }
+
+    .grid {
+        width: 100%;
+        flex: 1 1 0;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        overflow: hidden;
+        border: 1.5px solid #111;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        padding: 4px 3px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 3px;
+        overflow: hidden;
+        border-right: 1.5px solid #111;
+        border-bottom: 1.5px solid #111;
+    }
+
+    .card:nth-child(3n) { border-right: 0; }
+    .card:nth-last-child(-n+3) { border-bottom: 0; }
+
+    .card img {
+        display: block;
+        width: 100%;
+        max-width: 95px;
+        height: auto;
+        max-height: calc(100% - 32px);
+        min-height: 0;
+        flex: 1 1 auto;
+        object-fit: contain;
+    }
+
+    .word {
+        width: 92%;
+        min-width: 0;
+        min-height: 25px;
+        height: clamp(25px, 7vw, 32px);
+        flex: 0 0 auto;
+        padding: 3px 15px 3px 3px;
+        border-width: 2px;
+        border-radius: 4px;
+        font-size: clamp(10px, 3.1vw, 14px);
+        line-height: 1.05;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .word[data-audio="tajmahal.mp3"],
+    .word[data-audio="krismas.mp3"],
+    .word[data-audio="hanuman.mp3"],
+    .word[data-audio="krishna.mp3"] {
+        font-size: clamp(8px, 2.4vw, 11px);
+    }
+
+    .speaker::after {
+        top: 2px;
+        right: 2px;
+        font-size: 8px;
+    }
+
+    .page-number {
+        flex: 0 0 auto;
+        margin: 3px 0 0;
+        padding: 0;
+        font-size: 15px;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    .navigation {
+        flex: 0 0 40px;
+        width: 100%;
+        margin: 0;
+        padding: 0 2px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        flex: 0 0 35px;
+        font-size: 19px;
+    }
+
+    .dots { gap: 6px; align-items: center; }
+    .dot { width: 7px; height: 7px; }
+
+    .word:hover, .nav-btn:hover { transform: none; }
+}
 
 </style>
 
@@ -1573,29 +1567,18 @@ words.forEach(button=>{
 ========================================== */
 
 function fitPage(){
-
     const page = document.querySelector(".page");
-    const bookContent = document.querySelector(".book-content");
+    if(!page) return;
 
-    if(!page || !bookContent) return;
-
-    if(window.innerWidth > 768){
-        page.style.transform = "";
+    if(window.innerWidth <= 768){
+        /* Mobile CSS lays out the actual .page directly; do not scale it. */
+        page.style.transform = "none";
+        page.style.transformOrigin = "top center";
         return;
     }
 
-    const pageWidth = 900;
-    const pageHeight = 1270;
-
-    const availableWidth = bookContent.clientWidth;
-    const availableHeight = bookContent.clientHeight;
-
-    const scale = Math.min(
-        (availableWidth - 2) / pageWidth,
-        (availableHeight - 2) / pageHeight
-    );
-
-    page.style.transform = `translateX(-50%) scale(${scale})`;
+    page.style.transform = "";
+    page.style.transformOrigin = "";
 }
 
 window.addEventListener(
