@@ -677,6 +677,7 @@ body{
 
 
 
+
 /* ==========================================
    MOBILE — VAASI PAGE
 ========================================== */
@@ -836,7 +837,7 @@ body{
         right:19%;
     }
 
-    /* GRID — FILL THE AVAILABLE PAGE */
+    /* GRID */
 
     .grid {
         width:100%;
@@ -929,6 +930,51 @@ body{
         overflow:hidden;
     }
 
+    /* SMALL WORD BUTTONS */
+
+    .word.small-word {
+        font-size:clamp(11px, 3vw, 14px);
+    }
+
+    /* RED MEANINGS UNDER BUTTONS */
+
+    .meaning {
+        width:100%;
+        height:auto;
+        min-height:20px;
+
+        margin:3px 0 0;
+        padding:0 2px;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        text-align:center;
+
+        color:#8B2E1E;
+        font-size:clamp(10px, 2.6vw, 13px);
+        font-weight:700;
+        line-height:1.2;
+
+        white-space:normal;
+        overflow-wrap:anywhere;
+        word-break:normal;
+
+        background:transparent;
+        border:none;
+        box-shadow:none;
+
+        position:relative;
+        z-index:1;
+
+        flex:0 0 auto;
+    }
+
+    .meaning:empty {
+        visibility:hidden;
+    }
+
     /* SPEAKER */
 
     .speaker::after {
@@ -1012,6 +1058,7 @@ body{
     }
 
 }
+
 
 
 
