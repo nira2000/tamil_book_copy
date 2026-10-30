@@ -79,7 +79,7 @@ body {
 
     padding: 24px 28px 14px;
 
-    overflow: hidden;
+    overflow: visible;
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.25);
@@ -730,6 +730,8 @@ body {
     }
 
 }
+
+
 
 
 
@@ -1497,8 +1499,7 @@ body {
         <button class="heading speaker-btn"
                 data-audio="aathichudi_title.mp3">
 
-            <span class="highlight">ஆத்தி</span>
-            <span class="highlight">சூடி</span>
+            <span class="highlight">ஆத்திசூடி</span>
 
             <span class="speaker-icon">🔊</span>
 
@@ -1528,7 +1529,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">அறஞ்செய</span>
+                <span class="highlight" style="margin-right:8px;">அறஞ்செய</span>
                 <span class="highlight">விரும்பு</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1541,7 +1542,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஆறுவது</span>
+                <span class="highlight" style="margin-right:8px;">ஆறுவது</span>
                 <span class="highlight">சினம்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1554,7 +1555,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">இயல்வது</span>
+                <span class="highlight" style="margin-right:8px;">இயல்வது</span>
                 <span class="highlight">கரவேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1567,7 +1568,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஈவது</span>
+                <span class="highlight" style="margin-right:8px;">ஈவது</span>
                 <span class="highlight">விலக்கேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1580,7 +1581,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">உடையது</span>
+                <span class="highlight" style="margin-right:8px;">உடையது</span>
                 <span class="highlight">விளம்பேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1593,7 +1594,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஊக்கமது</span>
+                <span class="highlight" style="margin-right:8px;">ஊக்கமது</span>
                 <span class="highlight">கைவிடேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1615,7 +1616,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">எண்ணெழுத்</span>
+                <span class="highlight" style="margin-right:8px;">எண்ணெழுத்</span>
                 <span class="highlight">திகழேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1628,7 +1629,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஏற்ப</span>
+                <span class="highlight" style="margin-right:8px;">ஏற்ப</span>
                 <span class="highlight">திகழ்ச்சி</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1641,7 +1642,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஐய</span>
+                <span class="highlight" style="margin-right:8px;">ஐய</span>
                 <span class="highlight">மிட்டுண்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1654,7 +1655,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஒப்புர</span>
+                <span class="highlight" style="margin-right:8px;">ஒப்புர</span>
                 <span class="highlight">வொழுகு</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1667,7 +1668,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஓதுவ</span>
+                <span class="highlight" style="margin-right:8px;">ஓதுவ</span>
                 <span class="highlight">தொழியேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1680,7 +1681,7 @@ body {
 
                 <span class="star">✦</span>
 
-                <span class="highlight">ஔவியம்</span>
+                <span class="highlight" style="margin-right:8px;">ஔவியம்</span>
                 <span class="highlight">பேசேல்</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1690,11 +1691,13 @@ body {
 
             <!-- EXTRA POINT -->
 
-            <button class="rule-btn extra-point">
+           <button class="rule-btn speaker-btn"
+                    data-audio="akam.mp3">
 
                 <span class="star">✦</span>
 
-                <span>அஃகஞ் சுருக்கேல்</span>
+                <span class="highlight">அஃகஞ்</span>
+                <span class="highlight" style="margin-left:8px;">சுருக்கேல்</span>
 
                 <span class="speaker-icon">🔊</span>
 
@@ -1827,7 +1830,9 @@ const timings = {
 
     "othuvathu.mp3":[0,2500],
 
-    "auviyam.mp3":[0,2000]
+    "auviyam.mp3":[0,2000],
+
+    "akam.mp3":[0,2000],
 
 };
 
