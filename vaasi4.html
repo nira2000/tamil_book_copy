@@ -495,233 +495,338 @@ body{
 
 
 /* ==========================================
-   MOBILE
+   MOBILE — VAASI PAGE
 ========================================== */
 
 @media (max-width:768px){
 
-html,
-body{
+    html, body {
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    body {
+        background:#111D66;
+        display:flex;
+        justify-content:center;
+        align-items:stretch;
+        perspective:none;
+    }
+
+    /* APP */
+
+    .app {
+        width:100%;
+        height:100dvh;
+        max-width:520px;
+        min-height:0;
+
+        display:flex;
+        flex-direction:column;
+
+        padding:4px 8px 3px;
+        gap:3px;
+
+        overflow:hidden;
+    }
+
+    /* HEADER */
+
+    .header {
+        flex:0 0 auto;
+        font-size:clamp(12px, 3.7vw, 16px);
+        text-align:center;
+        line-height:1.2;
+        margin:0;
+        padding:2px 0;
+        white-space:nowrap;
+    }
+
+    /* BOOK */
+
+    .book {
+        width:100%;
+        flex:1 1 0;
+        min-height:0;
+        margin:0 auto;
+
+        display:flex;
+        flex-direction:column;
+
+        background:#F8F1E4;
+        border-radius:22px;
+
+        padding:8px 7px 4px 12px;
+        overflow:hidden;
+    }
+
+    .book::before {
+        width:7px;
+        left:0;
+        top:8px;
+        bottom:8px;
+        border-radius:0 8px 8px 0;
+    }
+
+    /* PAGE AREA */
+
+    .book-content {
+        width:100%;
+        flex:1 1 0;
+        min-height:0;
+
+        display:flex;
+        justify-content:center;
+        align-items:stretch;
+
+        overflow:hidden;
+        padding:0;
+    }
+
+    /* PAGE */
+
+    .page {
+        width:100%;
+        height:100%;
+        min-width:0;
+        min-height:0;
+        flex:1 1 auto;
+
+        display:flex;
+        flex-direction:column;
+
+        position:relative;
+        overflow:hidden;
+
+        transform:none !important;
+        transform-origin:top center !important;
+    }
 
-    width:100%;
-    height:100%;
-    margin:0;
-    padding:0;
+    /* TITLE */
 
-    overflow:hidden;
+    .title {
+        width:min(78%, 290px);
+        height:auto;
+        min-height:55px;
+        flex:0 0 auto;
 
-}
+        margin:8px auto 12px;
+        padding:7px 15px;
 
-body{
+        border-width:4px;
+        border-radius:50px;
 
-    background:#111D66;
+        font-size:clamp(23px, 6vw, 30px);
+        line-height:1.15;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
 
-}
+    /* DECORATIVE STARS */
 
-/* ==========================
-   APP
-========================== */
+    .star1, .star2, .star3, .star4 {
+        font-size:clamp(14px, 4vw, 21px);
+    }
 
-.app{
+    .star1 {
+        top:10px;
+        left:25%;
+    }
 
-    width:100%;
-    height:96dvh;
+    .star2 {
+        top:35px;
+        left:20%;
+    }
 
-    display:flex;
-    flex-direction:column;
+    .star3 {
+        top:12px;
+        right:22%;
+    }
 
-    padding:4px 10px 6px;
+    .star4 {
+        top:38px;
+        right:19%;
+    }
 
-    box-sizing:border-box;
+    /* GRID — FILL THE AVAILABLE PAGE */
 
-}
+    .grid {
+        width:100%;
+        flex:1 1 0;
+        min-height:0;
 
-/* ==========================
-   HEADER
-========================== */
+        display:grid;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        grid-template-rows:repeat(4, minmax(0, 1fr));
 
-.header{
+        border:2px solid #222;
+        background:#F8E7A4;
 
-    flex-shrink:0;
+        overflow:hidden;
+    }
 
-    font-size:13px;
+    /* CARDS */
 
-    text-align:center;
+    .card {
+        width:100%;
+        height:100%;
+        min-width:0;
+        min-height:0;
 
-    margin-bottom:4px;
+        display:flex;
+        flex-direction:column;
 
-}
+        justify-content:space-between;
+        align-items:center;
 
-/* ==========================
-   BOOK
-========================== */
+        padding:5px 4px;
+        gap:3px;
 
-.book{
+        overflow:hidden;
 
-    flex:0.92;
+        border-right:1.5px solid #222;
+        border-bottom:1.5px solid #222;
+    }
 
-    width:100%;
-    max-width:410px;
+    .card:nth-child(3n) {
+        border-right:none;
+    }
 
-    margin:0 auto;
+    .card:nth-last-child(-n+3) {
+        border-bottom:none;
+    }
 
-    display:flex;
-    flex-direction:column;
+    /* IMAGES */
 
-    background:#F8F1E4;
+    .card img {
+        display:block;
 
-    border-radius:22px;
+        width:100%;
+        max-width:100px;
 
-    padding:8px;
+        height:auto;
+        max-height:calc(100% - 34px);
 
-    overflow:hidden;
+        min-height:0;
+        flex:1 1 auto;
 
-}
+        object-fit:contain;
 
-.book::before{
+        transform:none !important;
+    }
 
-    width:8px;
+    /* WORD BUTTONS */
 
-    left:-4px;
+    .word {
+        width:92%;
+        min-width:0;
 
-    top:10px;
+        height:clamp(27px, 7vw, 34px);
+        min-height:27px;
+        flex:0 0 auto;
 
-    bottom:10px;
+        padding:3px 17px 3px 3px;
 
-}
+        border-width:2px;
+        border-radius:5px;
 
-/* ==========================
-   PAGE
-========================== */
+        font-size:clamp(13px, 3.5vw, 17px);
+        line-height:1.1;
 
-.book-content{
+        display:flex;
+        justify-content:center;
+        align-items:center;
 
-    flex:1;
+        white-space:nowrap;
+        overflow:hidden;
+    }
 
-    display:flex;
+    /* SPEAKER */
 
-    justify-content:center;
+    .speaker::after {
+        top:2px;
+        right:2px;
+        font-size:9px;
+    }
 
-    align-items:flex-start;
+    /* PAGE NUMBER */
 
-    overflow:hidden;
+    .page-number {
+        flex:0 0 auto;
 
-}
+        width:100%;
+        margin:4px 0 0;
+        padding:0;
 
-.page{
+        text-align:center;
 
-    width:900px;
+        font-size:16px;
+        line-height:1.1;
+        font-weight:bold;
 
-    transform-origin:top center;
+        color:#9d68d3;
+    }
 
-}
+    /* NAVIGATION */
 
-/* ==========================
-   PAGE NUMBER
-========================== */
+    .navigation {
+        flex:0 0 40px;
+        width:100%;
 
-.page-number{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
 
-    flex-shrink:0;
+        padding:0 3px;
+        margin:0;
 
-    margin-top:2px;
-    margin-bottom:2px;
+        overflow:visible;
+    }
 
-    text-align:center;
+    /* NAV BUTTONS */
 
-    font-size:15px;
+    .nav-btn {
+        width:36px;
+        height:36px;
+        flex:0 0 36px;
 
-    font-weight:bold;
+        border:none;
+        border-radius:50%;
 
-    color:#9d68d3;
+        background:#F8F1E4;
 
-}
+        font-size:19px;
+        cursor:pointer;
 
-/* ==========================
-   NAVIGATION
-========================== */
+        box-shadow:0 5px 15px rgba(0,0,0,.25);
+    }
 
-.navigation{
+    /* DOTS */
 
-    flex-shrink:0;
+    .dots {
+        display:flex;
+        align-items:center;
+        gap:7px;
+    }
 
-    display:flex;
+    .dot {
+        width:8px;
+        height:8px;
+        flex:0 0 8px;
+        border-radius:50%;
+    }
 
-    justify-content:space-between;
+    /* REMOVE HOVER MOVEMENT */
 
-    align-items:center;
-
-    padding:0 8px;
-
-    margin-top:4px;
-
-}
-
-.nav-btn{
-
-    width:34px;
-
-    height:34px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#F8F1E4;
-
-    font-size:14px;
-
-    cursor:pointer;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.25);
-
-}
-
-.dots{
-
-    display:flex;
-
-    gap:7px;
-
-}
-
-.dot{
-
-    width:8px;
-
-    height:8px;
-
-    border-radius:50%;
-
-}
-
-/* ===========================================
-   MOBILE SPEAKER
-=========================================== */
-
-.head::after{
-
-    top:2px;
-
-    right:3px;
-
-    font-size:8px;
-
-}
-
-.speaker::after{
-
-    top:2px;
-
-    right:3px;
-
-    font-size:22px;
-
-}
+    .word:hover,
+    .nav-btn:hover {
+        transform:none;
+    }
 
 }
 
