@@ -878,21 +878,15 @@ body {
     .title {
         position: relative;
 
-        width: min(100%, 300px);
-        max-width: 300px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
 
         flex: 0 0 auto;
 
-        margin:
-            3px
-            auto
-            7px;
+        margin: 3px auto 7px;
 
-        padding:
-            6px
-            28px
-            6px
-            10px;
+        padding: 6px 28px 6px 10px;
 
         display: flex;
         justify-content: center;
@@ -907,6 +901,7 @@ body {
 
         z-index: 10;
     }
+
 
     .title .speaker-icon {
         right: 7px;
@@ -961,7 +956,7 @@ body {
     .month-btn {
         width: 100%;
 
-        height: clamp(28px, 7vw, 34px);
+        height: clamp(25px, 6vw, 30px);
 
         padding:
             1px
