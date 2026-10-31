@@ -1339,8 +1339,10 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="chithirai.mp3">
 
-                <span class="highlight">சித்</span>
-                <span class="highlight">திரை</span>
+                <span class="highlight">சி</span>
+                <span class="highlight">த்</span>
+                <span class="highlight">தி</span>
+                <span class="highlight">ரை</span>
 
                 <span class="speaker-icon">🔊</span>
 
@@ -1350,7 +1352,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="vaikasi.mp3">
 
-                <span class="highlight">வைகா</span>
+                <span class="highlight">வை</span>
+                <span class="highlight">கா</span>
                 <span class="highlight">சி</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1383,7 +1386,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="aavani.mp3">
 
-                <span class="highlight">ஆவ</span>
+                <span class="highlight">ஆ</span>
+                <span class="highlight">வ</span>
                 <span class="highlight">ணி</span>
 
                 <span class="speaker-icon">🔊</span>
@@ -1394,7 +1398,9 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="purattasi.mp3">
 
-                <span class="highlight">புரட்</span>
+                <span class="highlight">பு</span>
+                <span class="highlight">ர</span>
+                <span class="highlight">ட்</span>
                 <span class="highlight">டா</span>
                 <span class="highlight">சி</span>
 
@@ -1414,7 +1420,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="aippasi.mp3">
 
-                <span class="highlight">ஐப்</span>
+                <span class="highlight">ஐ</span>
+                <span class="highlight">ப்</span>
                 <span class="highlight">ப</span>
                 <span class="highlight">சி</span>
 
@@ -1426,7 +1433,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="karthigai.mp3">
 
-                <span class="highlight">கார்</span>
+                <span class="highlight">கா</span>
+                <span class="highlight">ர்</span>
                 <span class="highlight">த்</span>
                 <span class="highlight">தி</span>
                 <span class="highlight">கை</span>
@@ -1439,7 +1447,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="margazhi.mp3">
 
-                <span class="highlight">மார்</span>
+                <span class="highlight">மா</span>
+                <span class="highlight">ர்</span>
                 <span class="highlight">க</span>
                 <span class="highlight">ழி</span>
 
@@ -1472,7 +1481,8 @@ body {
             <button class="month-btn speaker-btn"
                     data-audio="panguni.mp3">
 
-                <span class="highlight">பங்</span>
+                <span class="highlight">ப</span>
+                <span class="highlight">ங்</span>
                 <span class="highlight">கு</span>
                 <span class="highlight">னி</span>
 
@@ -1500,6 +1510,7 @@ body {
                 data-audio="aathichudi_title.mp3">
 
             <span class="highlight">ஆத்திசூடி</span>
+
 
             <span class="speaker-icon">🔊</span>
 
@@ -1782,7 +1793,7 @@ const timings = {
 
     "months.mp3":[0,1500],
 
-    "aathichudi_title.mp3":[0,1000],
+    "aathichudi_title.mp3":[0,2000],
 
     "chithirai.mp3":[0,2000,3000,4000],
 
@@ -1875,6 +1886,7 @@ function clearTimers() {
    ANIMATE WORDS
 ========================================================= */
 
+
 function animateWords(button) {
 
     clearTimers();
@@ -1892,28 +1904,20 @@ function animateWords(button) {
 
     if (!times) return;
 
-
-    times.forEach((time,index) => {
+    times.forEach((time, index) => {
 
         const timer = setTimeout(() => {
 
             if (currentButton !== button) return;
 
-            words.forEach(word => {
-
-                word.classList.remove("active");
-
-            });
-
+            // ADD the highlight to the next word.
+            // Previous highlighted words will remain highlighted.
 
             if (words[index]) {
-
                 words[index].classList.add("active");
-
             }
 
-        },time);
-
+        }, time);
 
         highlightTimers.push(timer);
 
