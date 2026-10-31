@@ -861,6 +861,9 @@ body{
 
 <script src="swipe.js"></script>
 
+
+
+
 <script>
 
 // ===========================================
@@ -876,19 +879,26 @@ const audio2 = document.getElementById("audioPlayer2");
 const teacherTitle = document.getElementById("teacherTitle");
 const elephantTitle = document.getElementById("elephantTitle");
 
+// ===========================================
+// EASY TIMER SETTINGS
+// ===========================================
+
+// Change only this value to adjust when
+// highlighting starts after the audio begins.
+
+const START_DELAY = 2000;
+
 
 // ===========================================
 // CLEAR PARAGRAPH HIGHLIGHTS
 // ===========================================
 
-function clearHighlights(container){
+function clearHighlights(container) {
 
-    if(!container) return;
+    if (!container) return;
 
-    container.querySelectorAll(".word").forEach(word=>{
-
+    container.querySelectorAll(".word").forEach(word => {
         word.classList.remove("highlight");
-
     });
 
 }
@@ -898,46 +908,63 @@ function clearHighlights(container){
 // CLEAR TITLE HIGHLIGHTS
 // ===========================================
 
-function clearTitleHighlights(){
+function clearTitleHighlights() {
 
     teacherTitle.classList.remove("title-highlight");
     elephantTitle.classList.remove("title-highlight");
 
-    if(titleTimer){
-
+    if (titleTimer) {
         clearTimeout(titleTimer);
         titleTimer = null;
-
     }
 
 }
 
 
 // ===========================================
-// ANIMATE WORDS
+// ANIMATE WORDS AUTOMATICALLY
 // ===========================================
 
-function animateWords(container,speed,startDelay){
+function animateWords(container, audio) {
 
-    highlightTimers.forEach(timer=>clearTimeout(timer));
-    highlightTimers=[];
+    highlightTimers.forEach(timer => clearTimeout(timer));
+    highlightTimers = [];
 
     clearHighlights(container);
 
-    const words=container.querySelectorAll(".word");
+    const words = container.querySelectorAll(".word");
 
-    words.forEach((word,index)=>{
+    if (!words.length) return;
 
-        const timer=setTimeout(()=>{
+    function startHighlighting() {
 
-            words.forEach(w=>w.classList.remove("highlight"));
-            word.classList.add("highlight");
+        const audioDuration = audio.duration * 1000;
 
-        },startDelay+(index*speed));
+        if (!isFinite(audioDuration) || audioDuration <= START_DELAY) return;
 
-        highlightTimers.push(timer);
+        const availableTime = audioDuration - START_DELAY;
+        const interval = availableTime / words.length;
 
-    });
+        words.forEach((word, index) => {
+
+            const timer = setTimeout(() => {
+
+                // Keep previous words highlighted.
+                word.classList.add("highlight");
+
+            }, START_DELAY + (index * interval));
+
+            highlightTimers.push(timer);
+
+        });
+
+    }
+
+    if (audio.readyState >= 1) {
+        startHighlighting();
+    } else {
+        audio.addEventListener("loadedmetadata", startHighlighting, { once: true });
+    }
 
 }
 
@@ -946,10 +973,10 @@ function animateWords(container,speed,startDelay){
 // STOP HIGHLIGHTS
 // ===========================================
 
-function stopHighlights(){
+function stopHighlights() {
 
-    highlightTimers.forEach(timer=>clearTimeout(timer));
-    highlightTimers=[];
+    highlightTimers.forEach(timer => clearTimeout(timer));
+    highlightTimers = [];
 
     clearHighlights(document.getElementById("teacherText"));
     clearHighlights(document.getElementById("elephantText"));
@@ -961,13 +988,13 @@ function stopHighlights(){
 // STOP EVERYTHING
 // ===========================================
 
-function stopAllAudio(){
+function stopAllAudio() {
 
     audio1.pause();
     audio2.pause();
 
-    audio1.currentTime=0;
-    audio2.currentTime=0;
+    audio1.currentTime = 0;
+    audio2.currentTime = 0;
 
     stopHighlights();
     clearTitleHighlights();
@@ -976,160 +1003,132 @@ function stopAllAudio(){
 
 
 // ===========================================
-// CARD 1
+// CARD 1 - TEACHER
 // ===========================================
 
-function toggleAudio1(){
+function toggleAudio1() {
 
-    if(!audio1.paused){
-
+    if (!audio1.paused) {
         stopAllAudio();
         return;
-
     }
 
     stopAllAudio();
 
     teacherTitle.classList.add("title-highlight");
 
-    titleTimer=setTimeout(()=>{
-
+    titleTimer = setTimeout(() => {
         teacherTitle.classList.remove("title-highlight");
-
-    },1700);
+    }, 1700);
 
     audio1.play();
 
     animateWords(
-
         document.getElementById("teacherText"),
-
-        1300,
-
-        2000
-
+        audio1
     );
 
 }
 
 
 // ===========================================
-// CARD 2
+// CARD 2 - ELEPHANT
 // ===========================================
 
-function toggleAudio2(){
+function toggleAudio2() {
 
-    if(!audio2.paused){
-
+    if (!audio2.paused) {
         stopAllAudio();
         return;
-
     }
 
     stopAllAudio();
 
     elephantTitle.classList.add("title-highlight");
 
-    titleTimer=setTimeout(()=>{
-
+    titleTimer = setTimeout(() => {
         elephantTitle.classList.remove("title-highlight");
-
-    },1700);
+    }, 1700);
 
     audio2.play();
 
     animateWords(
-
         document.getElementById("elephantText"),
-
-        1400,
-
-        2200
-
+        audio2
     );
 
 }
 
 
-/* =========================
-   SPEAKER ON/OFF
-========================= */
+// ===========================================
+// SPEAKER ON/OFF
+// ===========================================
 
-let soundEnabled=true;
+let soundEnabled = true;
 
-function toggleMute(){
+function toggleMute() {
 
-    soundEnabled=!soundEnabled;
+    soundEnabled = !soundEnabled;
 
-    audio1.muted=!soundEnabled;
-    audio2.muted=!soundEnabled;
+    audio1.muted = !soundEnabled;
+    audio2.muted = !soundEnabled;
 
-    if(!soundEnabled){
-
+    if (!soundEnabled) {
         stopAllAudio();
-
     }
 
-    document.querySelectorAll(".audio-badge").forEach(badge=>{
-
-        badge.textContent=soundEnabled ? "🔊" : "🔇";
-
+    document.querySelectorAll(".audio-badge").forEach(badge => {
+        badge.textContent = soundEnabled ? "🔊" : "🔇";
     });
 
 }
 
 
-/* =========================
-   AUDIO ENDED
-========================= */
+// ===========================================
+// AUDIO ENDED
+// ===========================================
 
-audio1.addEventListener("ended",()=>{
-
-    stopHighlights();
-    clearTitleHighlights();
-
-});
-
-audio2.addEventListener("ended",()=>{
+audio1.addEventListener("ended", () => {
 
     stopHighlights();
     clearTitleHighlights();
 
 });
 
+audio2.addEventListener("ended", () => {
 
-/* =========================
-   PAGE FLIP
-========================= */
+    stopHighlights();
+    clearTitleHighlights();
 
-function nextPage(page,direction){
+});
 
-    const app=document.querySelector(".app");
 
-    app.classList.remove("flip-out-next","flip-out-prev");
+// ===========================================
+// PAGE FLIP
+// ===========================================
+
+function nextPage(page, direction) {
+
+    const app = document.querySelector(".app");
+
+    app.classList.remove("flip-out-next", "flip-out-prev");
 
     void app.offsetWidth;
 
-    if(direction==="next"){
-
+    if (direction === "next") {
         app.classList.add("flip-out-next");
-
-    }else{
-
+    } else {
         app.classList.add("flip-out-prev");
-
     }
 
-    setTimeout(()=>{
-
-        window.location.href=page;
-
-    },600);
+    setTimeout(() => {
+        window.location.href = page;
+    }, 600);
 
 }
 
-
 </script>
+
 
 </body>
 </html>
