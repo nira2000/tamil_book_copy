@@ -2284,59 +2284,45 @@ function clearTimers() {
    ANIMATE WORDS
 ===================================================== */
 
+
 function animateWords(button) {
 
     clearTimers();
 
     clearHighlights(button);
 
-
     const words =
         button.querySelectorAll(".highlight");
-
 
     const audio =
         button.dataset.audio;
 
-
     const times =
         timings[audio];
 
-
     if (!times) return;
 
+    times.forEach((time, index) => {
 
-    times.forEach((time,index) => {
+        const timer = setTimeout(() => {
 
-        const timer =
-            setTimeout(() => {
+            if (currentButton !== button) return;
 
-                if (currentButton !== button)
-                    return;
+            // Keep previous highlights.
+            // Highlight the next letter without removing the previous one.
 
+            if (words[index]) {
+                words[index].classList.add("active");
+            }
 
-                words.forEach(word => {
-
-                    word.classList.remove("active");
-
-                });
-
-
-                if (words[index]) {
-
-                    words[index]
-                        .classList.add("active");
-
-                }
-
-            },time);
-
+        }, time);
 
         highlightTimers.push(timer);
 
     });
 
 }
+
 
 
 /* =====================================================
