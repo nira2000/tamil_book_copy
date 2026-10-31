@@ -854,7 +854,7 @@ body{
         overflow:hidden;
     }
 
-    /* CARDS */
+    /* CARDS — FIXED ROW ALIGNMENT */
 
     .card {
         width:100%;
@@ -862,14 +862,14 @@ body{
         min-width:0;
         min-height:0;
 
-        display:flex;
-        flex-direction:column;
+        display:grid;
+        grid-template-rows:minmax(0, 1fr) 34px 24px;
 
-        justify-content:space-between;
+        justify-items:center;
         align-items:center;
 
         padding:5px 4px;
-        gap:3px;
+        gap:2px;
 
         overflow:hidden;
 
@@ -885,22 +885,22 @@ body{
         border-bottom:none;
     }
 
-    /* IMAGES */
+    /* BIGGER IMAGES */
 
     .card img {
         display:block;
 
         width:100%;
-        max-width:100px;
+        height:100%;
 
-        height:auto;
-        max-height:calc(100% - 34px);
+        max-width:125px;
+        max-height:none;
 
         min-height:0;
-        flex:1 1 auto;
 
         object-fit:contain;
 
+        margin:0;
         transform:none !important;
     }
 
@@ -908,16 +908,16 @@ body{
 
     .word {
         width:92%;
+        height:32px;
         min-width:0;
-
-        height:clamp(27px, 7vw, 34px);
-        min-height:27px;
-        flex:0 0 auto;
+        min-height:32px;
 
         padding:3px 17px 3px 3px;
 
-        border-width:2px;
+        border:2px solid #222;
         border-radius:5px;
+
+        background:#F6E8A7;
 
         font-size:clamp(13px, 3.5vw, 17px);
         line-height:1.1;
@@ -936,14 +936,14 @@ body{
         font-size:clamp(11px, 3vw, 14px);
     }
 
-    /* RED MEANINGS UNDER BUTTONS */
+    /* RED MEANINGS */
 
     .meaning {
         width:100%;
-        height:auto;
-        min-height:20px;
+        height:24px;
+        min-height:24px;
 
-        margin:3px 0 0;
+        margin:0;
         padding:0 2px;
 
         display:flex;
@@ -953,13 +953,12 @@ body{
         text-align:center;
 
         color:#8B2E1E;
-        font-size:clamp(10px, 2.6vw, 13px);
+        font-size:clamp(9px, 2.5vw, 12px);
         font-weight:700;
-        line-height:1.2;
+        line-height:1.1;
 
-        white-space:normal;
-        overflow-wrap:anywhere;
-        word-break:normal;
+        white-space:nowrap;
+        overflow:hidden;
 
         background:transparent;
         border:none;
@@ -967,8 +966,6 @@ body{
 
         position:relative;
         z-index:1;
-
-        flex:0 0 auto;
     }
 
     .meaning:empty {
