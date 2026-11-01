@@ -754,10 +754,10 @@ body{
 
         <span class="word">இவர்</span>
         <span class="word">என்</span>
-        <span class="word">ஆசிரியை.</span><br>
+        <span class="word">ஆசிரியர்.</span><br>
 
         <span class="word">என்</span>
-        <span class="word">ஆசிரியின்</span>
+        <span class="word">ஆசிரியரின்</span>
         <span class="word">பெயர்</span>
         <span class="word">திருமதி</span>
         <span class="word">மாலதி.</span><br>
@@ -771,7 +771,7 @@ body{
         <span class="word">போதிப்பார்.</span><br>
 
         <span class="word">என்</span>
-        <span class="word">ஆசிரியை</span>
+        <span class="word">ஆசிரியர்</span>
         <span class="word">மிகவும்</span>
         <span class="word">அன்பானவர்.</span>
 
@@ -879,14 +879,71 @@ const audio2 = document.getElementById("audioPlayer2");
 const teacherTitle = document.getElementById("teacherTitle");
 const elephantTitle = document.getElementById("elephantTitle");
 
+
 // ===========================================
-// EASY TIMER SETTINGS
+// INDIVIDUAL WORD TIMINGS
 // ===========================================
 
-// Change only this value to adjust when
-// highlighting starts after the audio begins.
+// TEACHER AUDIO
+// Each number represents when that word is highlighted.
+// All values are in milliseconds.
 
-const START_DELAY = 2000;
+const teacherTimings = [
+
+    2500,   // 1. இவர்
+    3500,   // 2. என்
+    4500,   // 3. ஆசிரியை.
+
+    5600,   // 4. என்
+    7200,   // 5. ஆசிரியின்
+    8500,  // 6. பெயர்
+    9500,  // 7. திருமதி
+    10500,  // 8. மாலதி.
+
+    12000,  // 9. என்
+    13000,  // 10. ஆசிரியை
+    14500,  // 11. எனக்குத்
+    15500,  // 12. தமிழ்
+    16500,  // 13. மொழிப்
+    17500,  // 14. பாடம்
+    18500,  // 15. போதிப்பார்.
+
+    20500,  // 16. என்
+    21600,  // 17. ஆசிரியை
+    22600,  // 18. மிகவும்
+    23600   // 19. அன்பானவர்.
+
+];
+
+
+// ELEPHANT AUDIO
+
+const elephantTimings = [
+
+    2200,   // 1. இது
+    3600,   // 2. ஒரு
+    5000,   // 3. யானை.
+
+    6800,   // 4. இந்த
+    8500,   // 5. யானைக்கு
+    9900,   // 6. ஒரு
+    11000,  // 7. நீண்ட
+    12000,  // 8. தும்பிக்கை
+    14000,  // 9. உண்டு.
+
+    15800,  // 10. இந்த
+    16800,  // 11. யானைக்கு
+    18600,  // 12. இரண்டு
+    19800,  // 13. தந்தங்கள்
+    21300,  // 14. உள்ளன.
+
+    23800,  // 15. இந்த
+    24800,  // 16. தந்தங்கள்
+    26800,  // 17. வெள்ளை
+    27800,  // 18. நிறத்தில்
+    28800   // 19. இருக்கும்.
+
+];
 
 
 // ===========================================
@@ -922,49 +979,34 @@ function clearTitleHighlights() {
 
 
 // ===========================================
-// ANIMATE WORDS AUTOMATICALLY
+// ANIMATE WORDS
 // ===========================================
 
-function animateWords(container, audio) {
+function animateWords(container, timings) {
 
+    // Clear previous timers
     highlightTimers.forEach(timer => clearTimeout(timer));
     highlightTimers = [];
 
+    // Clear old highlights
     clearHighlights(container);
 
     const words = container.querySelectorAll(".word");
 
-    if (!words.length) return;
+    words.forEach((word, index) => {
 
-    function startHighlighting() {
+        if (timings[index] === undefined) return;
 
-        const audioDuration = audio.duration * 1000;
+        const timer = setTimeout(() => {
 
-        if (!isFinite(audioDuration) || audioDuration <= START_DELAY) return;
+            // Previous words remain highlighted
+            word.classList.add("highlight");
 
-        const availableTime = audioDuration - START_DELAY;
-        const interval = availableTime / words.length;
+        }, timings[index]);
 
-        words.forEach((word, index) => {
+        highlightTimers.push(timer);
 
-            const timer = setTimeout(() => {
-
-                // Keep previous words highlighted.
-                word.classList.add("highlight");
-
-            }, START_DELAY + (index * interval));
-
-            highlightTimers.push(timer);
-
-        });
-
-    }
-
-    if (audio.readyState >= 1) {
-        startHighlighting();
-    } else {
-        audio.addEventListener("loadedmetadata", startHighlighting, { once: true });
-    }
+    });
 
 }
 
@@ -1019,13 +1061,13 @@ function toggleAudio1() {
 
     titleTimer = setTimeout(() => {
         teacherTitle.classList.remove("title-highlight");
-    }, 1700);
+    }, 2200);
 
     audio1.play();
 
     animateWords(
         document.getElementById("teacherText"),
-        audio1
+        teacherTimings
     );
 
 }
@@ -1048,13 +1090,13 @@ function toggleAudio2() {
 
     titleTimer = setTimeout(() => {
         elephantTitle.classList.remove("title-highlight");
-    }, 1700);
+    }, 2000);
 
     audio2.play();
 
     animateWords(
         document.getElementById("elephantText"),
-        audio2
+        elephantTimings
     );
 
 }
@@ -1128,6 +1170,7 @@ function nextPage(page, direction) {
 }
 
 </script>
+
 
 
 </body>
