@@ -915,35 +915,92 @@ function clearTitleHighlights(){
 
 }
 
-// ===========================================
-// ANIMATE PARAGRAPH
-// ===========================================
 
-function animateWords(container,speed,startDelay){
 
+function animateWords(container, timings){
+
+    // Clear previous timers
     highlightTimers.forEach(timer=>clearTimeout(timer));
+    highlightTimers = [];
 
-    highlightTimers=[];
-
-    const words=container.querySelectorAll(".word");
-
+    // Clear old highlights
     clearHighlights(container);
 
-    words.forEach((word,index)=>{
+    const words = container.querySelectorAll(".word");
 
-        const timer=setTimeout(()=>{
+    words.forEach((word, index) => {
 
-            words.forEach(w=>w.classList.remove("highlight"));
+        if (timings[index] === undefined) return;
 
+        const timer = setTimeout(() => {
+
+            // Previous words remain highlighted
             word.classList.add("highlight");
 
-        },startDelay+(index*speed));
+        }, timings[index]);
 
         highlightTimers.push(timer);
 
     });
 
 }
+
+
+// ===========================================
+// INDIVIDUAL WORD TIMINGS
+// All values are in milliseconds
+// ===========================================
+
+// CARD 1 - காசு
+const moneyTimings = [
+
+    2000,   // 1. மாமா
+    3000,   // 2. காசு
+    4000,   // 3. தந்தார்.
+
+    5500,   // 4. அம்மா
+    6500,   // 5. காசைப்
+    7500,   // 6. பெட்டியில்
+    8500,   // 7. வைத்தார்.
+
+    10500,  // 8. காலையில்
+    11500,  // 9. அப்பா
+    12500,  // 10. காசைக்
+    13500,  // 11. கேட்டார்.
+
+    15500,  // 12. பெட்டியில்
+    16500,  // 13. காசைக்
+    17500   // 14. காணவில்லை.
+
+];
+
+
+// CARD 2 - நாய்
+const dogTimings = [
+
+    2000,   // 1. இது
+    3000,   // 2. ஒரு
+    4000,   // 3. நாய்.
+
+    5500,   // 4. இந்த
+    6500,   // 5. நாயின்
+    7500,   // 6. பெயர்
+    8500,   // 7. இராமு.
+
+    10500,  // 8. இராமு
+    11500,  // 9. எலும்புத்
+    12500,  // 10. துண்டை
+    13500,  // 11. விரும்பித்
+    14500,  // 12. தின்னும்.
+
+    16500,  // 13. இராமு
+    17500,  // 14. வீட்டைக்
+    18500,  // 15. காவல்
+    19500   // 16. காக்கும்.
+
+];
+
+
 
 // ===========================================
 // STOP PARAGRAPH
@@ -1003,13 +1060,8 @@ function toggleAudio1(){
     audio1.play();
 
     animateWords(
-
         document.getElementById("moneyText"),
-
-        1500,
-
-        2000
-
+        moneyTimings
     );
 
 }
