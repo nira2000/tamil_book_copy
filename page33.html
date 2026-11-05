@@ -349,19 +349,24 @@ body{
 
 
 
-
 /* =========================================================
-   MOBILE ONLY — PAGE 36
-   DESKTOP IS NOT TOUCHED
-   NO SCROLLING
+   MOBILE RESPONSIVE CSS — PAGE 33
+   Automatically adapts to different mobile screen sizes
+   Desktop layout remains unchanged
+   No page scrolling
 ========================================================= */
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+
+    /* =========================
+       PAGE / VIEWPORT
+    ========================= */
 
     html,
     body {
         width: 100%;
         height: 100%;
+        min-height: 100%;
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -371,11 +376,13 @@ body{
     body {
         height: 100dvh;
         min-height: 100dvh;
-        background: #111d66;
+        display: block;
+        background: #111D66;
     }
 
+
     /* =========================
-       APP
+       MAIN APP
     ========================= */
 
     .app {
@@ -385,15 +392,20 @@ body{
         min-height: 0;
 
         margin: 0 auto;
-        padding: 4px 7px;
+
+        padding:
+            max(4px, env(safe-area-inset-top))
+            7px
+            max(4px, env(safe-area-inset-bottom));
 
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
 
         gap: 3px;
         overflow: hidden;
     }
+
 
     /* =========================
        HEADER
@@ -401,12 +413,16 @@ body{
 
     .header {
         flex: 0 0 auto;
+
         margin: 0 0 2px;
         padding: 0;
 
-        font-size: 14px;
+        font-size: clamp(11px, 3.5vw, 14px);
         line-height: 1.2;
+
+        text-align: center;
     }
+
 
     /* =========================
        BOOK
@@ -420,10 +436,10 @@ body{
         margin: 0;
 
         padding:
-            8px
-            9px
+            clamp(5px, 1.5dvh, 9px)
+            clamp(7px, 2vw, 12px)
             3px
-            13px;
+            clamp(11px, 3vw, 15px);
 
         border-radius: 17px;
 
@@ -432,6 +448,7 @@ body{
 
         overflow: hidden;
     }
+
 
     /* RED SPINE */
 
@@ -442,6 +459,7 @@ body{
         bottom: 9px;
         border-radius: 6px;
     }
+
 
     /* =========================
        BOOK CONTENT
@@ -458,6 +476,7 @@ body{
         overflow: hidden;
     }
 
+
     /* =========================
        GREEN TITLE BOARD
     ========================= */
@@ -465,19 +484,26 @@ body{
     .title-board {
         flex: 0 0 auto;
 
+        width: 100%;
+
         margin:
             3px
             auto
-            9px;
+            clamp(5px, 1.2dvh, 10px);
+
+        display: flex;
+        justify-content: center;
     }
 
     .board {
-        font-size: clamp(22px, 6vw, 30px);
+        max-width: 95%;
+
+        font-size: clamp(19px, 6vw, 30px);
         line-height: 1.12;
 
         padding:
-            5px
-            16px;
+            clamp(4px, 1vw, 6px)
+            clamp(10px, 3vw, 16px);
 
         border-width: 2px;
     }
@@ -496,9 +522,9 @@ body{
         right: calc(50% - 62px);
     }
 
+
     /* =========================
        AUDIO CARDS
-       MAKE THEM USE MORE SPACE
     ========================= */
 
     .audio-card {
@@ -506,25 +532,28 @@ body{
 
         flex: 1 1 0;
         min-height: 0;
+        min-width: 0;
 
-        margin: 0 0 7px;
+        margin: 0;
 
         padding:
-            9px
-            9px
-            7px;
+            clamp(5px, 1.3dvh, 9px)
+            clamp(6px, 2vw, 10px);
 
         border-radius: 11px;
 
         display: flex;
         flex-direction: column;
 
+        gap: clamp(2px, 0.5dvh, 5px);
+
         overflow: hidden;
     }
 
-    .audio-card:last-of-type {
-        margin-bottom: 0;
+    .audio-card + .audio-card {
+        margin-top: clamp(4px, 0.8dvh, 7px);
     }
+
 
     /* =========================
        CARD HEADER
@@ -532,29 +561,40 @@ body{
 
     .card-header {
         flex: 0 0 auto;
-        margin-bottom: -20px;
+
+        margin-bottom: 0;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 6px;
+
+        gap: 5px;
+        min-width: 0;
     }
 
     .card-title {
-        font-size: clamp(20px, 5.5vw, 27px);
-        line-height: 1.1;
+        min-width: 0;
+
+        font-size: clamp(19px, 5.5vw, 27px);
+        line-height: 1.15;
     }
 
+
     /* =========================
-       CARD IMAGE
+       CARD IMAGES
     ========================= */
 
     .card-image {
-        width: 110px;
-        max-width: 110px;
-        max-height: 100px;
+        width: clamp(55px, 21vw, 100px);
+
         height: auto;
+
+        max-width: 35%;
+        max-height: clamp(48px, 12dvh, 90px);
+
         object-fit: contain;
-        flex: 0 0 110px;
+
+        flex: 0 1 clamp(55px, 21vw, 100px);
     }
 
 
@@ -563,35 +603,61 @@ body{
     ========================= */
 
     .card-content {
+        width: 100%;
+
         flex: 1 1 auto;
         min-height: 0;
+        min-width: 0;
 
-        font-size: clamp(14px, 3.7vw, 17px);
+        font-size: clamp(
+            12px,
+            min(3.7vw, 2dvh),
+            17px
+        );
 
-        line-height: 1.35;
+        line-height: 1.3;
 
-        overflow: hidden;
+        font-weight: 500;
+
+        overflow: visible;
+
         overflow-wrap: normal;
         word-break: normal;
     }
 
+
     /* =========================
-       SPEAKER
+       HIGHLIGHTED WORDS
+    ========================= */
+
+    .word {
+        transition: 0.3s;
+    }
+
+    .highlight {
+        color: #d32f2f;
+        font-weight: bold;
+    }
+
+
+    /* =========================
+       SPEAKER ICON
     ========================= */
 
     .audio-badge {
         flex: 0 0 auto;
 
-        font-size: 17px;
+        font-size: clamp(14px, 4vw, 18px);
 
-        margin-top: 4px;
+        margin-top: 1px;
 
         line-height: 1;
+        text-align: right;
     }
+
 
     /* =========================
        PAGE NUMBER
-       STAYS AT BOTTOM
     ========================= */
 
     .page-number {
@@ -599,20 +665,17 @@ body{
 
         flex: 0 0 auto;
 
-        margin:
-            3px
-            0
-            0;
-
+        margin: 3px 0 0;
         padding: 0;
 
         text-align: center;
 
-        font-size: 15px;
+        font-size: clamp(13px, 3.8vw, 16px);
         line-height: 1.2;
 
         z-index: 20;
     }
+
 
     /* =========================
        NAVIGATION
@@ -627,11 +690,7 @@ body{
         min-height: 39px;
 
         margin: 0;
-
-        padding:
-            0
-            2px
-            1px;
+        padding: 0 2px 1px;
 
         display: flex;
 
@@ -641,10 +700,6 @@ body{
         overflow: hidden;
     }
 
-    /* =========================
-       NAV BUTTONS
-    ========================= */
-
     .nav-btn {
         width: 34px;
         height: 34px;
@@ -652,13 +707,14 @@ body{
         min-width: 34px;
         min-height: 34px;
 
-        font-size: 18px;
-
         flex: 0 0 34px;
+
+        font-size: 18px;
     }
 
+
     /* =========================
-       DOTS
+       NAVIGATION DOTS
     ========================= */
 
     .dots {
@@ -674,6 +730,7 @@ body{
         width: 7px;
         height: 7px;
     }
+
 
     /* =========================
        DECORATIONS
@@ -699,16 +756,97 @@ body{
         z-index: 2;
     }
 
+
     /* =========================
-       NO TOUCH HOVER MOVEMENT
+       REMOVE HOVER MOVEMENT
     ========================= */
 
     .audio-card:hover,
     .nav-btn:hover {
         transform: none;
     }
+
 }
 
+
+/* =========================================================
+   EXTRA SMALL / SHORT MOBILE SCREENS
+========================================================= */
+
+@media screen and (max-width: 380px) and (max-height: 700px) {
+
+    .board {
+        font-size: clamp(18px, 5.5vw, 23px);
+    }
+
+    .card-title {
+        font-size: clamp(17px, 5vw, 21px);
+    }
+
+    .card-image {
+        width: clamp(50px, 18vw, 70px);
+        max-height: 65px;
+        flex-basis: clamp(50px, 18vw, 70px);
+    }
+
+    .card-content {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    .audio-card {
+        padding: 5px 6px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+========================================================= */
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+    .header {
+        font-size: 11px;
+        margin-bottom: 1px;
+    }
+
+    .book {
+        padding-top: 4px;
+    }
+
+    .title-board {
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+
+    .board {
+        font-size: clamp(16px, 3.5vw, 21px);
+        padding: 3px 10px;
+    }
+
+    .card-title {
+        font-size: clamp(16px, 3.5vw, 21px);
+    }
+
+    .card-image {
+        max-height: 45px;
+        width: 65px;
+        flex-basis: 65px;
+    }
+
+    .card-content {
+        font-size: clamp(11px, 2.5vw, 14px);
+        line-height: 1.15;
+    }
+
+    .audio-card {
+        padding: 4px 7px;
+        gap: 2px;
+    }
+
+}
 
 
 </style>
@@ -807,7 +945,7 @@ body{
                 <span class="word">நனைந்தது.</span><br>
 
                 <span class="word">சூரியன்</span>
-                <span class="word">வந்தத;.</span>
+                <span class="word">வந்தது;</span>
                 <span class="word">உடல்</span>
                 <span class="word">காய்ந்தது.</span>
 
@@ -873,6 +1011,61 @@ const audio2 = document.getElementById("audioPlayer2");
 const shopTitle = document.getElementById("shopTitle");
 const umbrellaTitle = document.getElementById("umbrellaTitle");
 
+
+// ===========================================
+// INDIVIDUAL WORD TIMINGS
+// All values are in milliseconds
+// ===========================================
+
+// CARD 1 - கடை
+const shopTimings = [
+
+    2000,   // 1. இது
+    3000,   // 2. கடை.
+
+    4800,   // 3. இது
+    6300,   // 4. ஒரு
+    7400,   // 5. சிறிய
+    8500,   // 6. கடை.
+
+    10500,   // 7. இது
+    11500,  // 8. மாமாவின்
+    12600,  // 9. கடை.
+
+    14300,  // 10. மாமாவின்
+    16200,  // 11. கடையில்
+    17500,  // 12. காடை
+    18500,  // 13. முட்டை
+    19600   // 14. உள்ளது.
+
+];
+
+
+// CARD 2 - குடை
+const umbrellaTimings = [
+
+    2200,   // 1. இது
+    4000,   // 2. என்
+    5000,   // 3. குடை.
+
+    6800,   // 4. என்
+    7800,   // 5. குடை
+    9000,   // 6. ஓடையில்
+    10400,   // 7. விழுந்தது.
+
+    12300,  // 8. மழை
+    13500,  // 9. பெய்தது;
+    15800,  // 10. உடல்
+    16800,  // 11. நனைந்தது.
+
+    19000,  // 12. சூரியன்
+    20000,  // 13. வந்தது;
+    22200,  // 14. உடல்
+    23300   // 15. காய்ந்தது.
+
+];
+
+
 // ===========================================
 // CLEAR PARAGRAPH HIGHLIGHTS
 // ===========================================
@@ -886,6 +1079,7 @@ function clearHighlights(container){
     });
 
 }
+
 
 // ===========================================
 // CLEAR TITLE HIGHLIGHTS
@@ -905,11 +1099,13 @@ function clearTitleHighlights(){
 
 }
 
+
 // ===========================================
 // ANIMATE PARAGRAPH
+// INDIVIDUAL WORD TIMINGS
 // ===========================================
 
-function animateWords(container,speed,startDelay){
+function animateWords(container, timings){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
@@ -921,19 +1117,24 @@ function animateWords(container,speed,startDelay){
 
     words.forEach((word,index)=>{
 
+        if(timings[index] === undefined) return;
+
         const timer=setTimeout(()=>{
 
-            words.forEach(w=>w.classList.remove("highlight"));
+            // Remove highlight from all words first
+            words.forEach(w => w.classList.remove("highlight"));
 
+            // Highlight only the current word
             word.classList.add("highlight");
 
-        },startDelay+(index*speed));
+        },timings[index]);
 
         highlightTimers.push(timer);
 
     });
 
 }
+
 
 // ===========================================
 // STOP PARAGRAPH
@@ -949,6 +1150,7 @@ function stopHighlights(){
     clearHighlights(document.getElementById("umbrellaText"));
 
 }
+
 
 // ===========================================
 // STOP EVERYTHING
@@ -967,6 +1169,7 @@ function stopAllAudio(){
     clearTitleHighlights();
 
 }
+
 
 // ===========================================
 // CARD 1
@@ -997,13 +1200,12 @@ function toggleAudio1(){
 
         document.getElementById("shopText"),
 
-        1400,
-
-        2000
+        shopTimings
 
     );
 
 }
+
 
 // ===========================================
 // CARD 2
@@ -1034,19 +1236,16 @@ function toggleAudio2(){
 
         document.getElementById("umbrellaText"),
 
-        1450,
-
-        2000
+        umbrellaTimings
 
     );
 
 }
 
 
-
-/* =========================
-   AUDIO ENDED
-========================= */
+// ===========================================
+// AUDIO ENDED
+// ===========================================
 
 audio1.addEventListener("ended",()=>{
 
@@ -1055,6 +1254,7 @@ audio1.addEventListener("ended",()=>{
 
 });
 
+
 audio2.addEventListener("ended",()=>{
 
     stopHighlights();
@@ -1062,9 +1262,10 @@ audio2.addEventListener("ended",()=>{
 
 });
 
-/* =========================
-   PAGE FLIP
-========================= */
+
+// ===========================================
+// PAGE FLIP
+// ===========================================
 
 function nextPage(page,direction){
 
@@ -1092,6 +1293,7 @@ function nextPage(page,direction){
     },600);
 
 }
+
 </script>
 
 </body>

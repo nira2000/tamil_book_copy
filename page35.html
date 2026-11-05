@@ -710,6 +710,46 @@ body{
 
 
 
+/* =========================================
+   SMALL LAPTOP WINDOW / SPLIT-SCREEN FIX
+========================================= */
+
+@media screen and (min-width: 500px) and (max-width: 768px)
+and (max-height: 850px) {
+
+    .audio-card {
+        padding: 6px 8px 5px;
+    }
+
+    .card-header {
+        margin-bottom: -8px;
+    }
+
+    .card-title {
+        font-size: 21px;
+    }
+
+    .card-image {
+        width: 78px;
+        max-width: 78px;
+        max-height: 58px;
+        flex: 0 0 78px;
+    }
+
+    .card-content {
+        font-size: 14px;
+        line-height: 1.2;
+        overflow: visible;
+    }
+
+    .audio-badge {
+        font-size: 15px;
+        margin-top: 2px;
+    }
+}
+
+
+
 </style>
 
 </head>
@@ -881,75 +921,14 @@ const audio2 = document.getElementById("audioPlayer2");
 const moneyTitle = document.getElementById("moneyTitle");
 const dogTitle = document.getElementById("dogTitle");
 
-// ===========================================
-// CLEAR PARAGRAPH HIGHLIGHTS
-// ===========================================
-
-function clearHighlights(container){
-
-    container.querySelectorAll(".word").forEach(word=>{
-
-        word.classList.remove("highlight");
-
-    });
-
-}
-
-// ===========================================
-// CLEAR TITLE HIGHLIGHTS
-// ===========================================
-
-function clearTitleHighlights(){
-
-    moneyTitle.classList.remove("title-highlight");
-    dogTitle.classList.remove("title-highlight");
-
-    if(titleTimer){
-
-        clearTimeout(titleTimer);
-        titleTimer = null;
-
-    }
-
-}
-
-
-
-function animateWords(container, timings){
-
-    // Clear previous timers
-    highlightTimers.forEach(timer=>clearTimeout(timer));
-    highlightTimers = [];
-
-    // Clear old highlights
-    clearHighlights(container);
-
-    const words = container.querySelectorAll(".word");
-
-    words.forEach((word, index) => {
-
-        if (timings[index] === undefined) return;
-
-        const timer = setTimeout(() => {
-
-            // Previous words remain highlighted
-            word.classList.add("highlight");
-
-        }, timings[index]);
-
-        highlightTimers.push(timer);
-
-    });
-
-}
-
 
 // ===========================================
 // INDIVIDUAL WORD TIMINGS
 // All values are in milliseconds
 // ===========================================
 
-// CARD 1 - காசு
+// CARD 1 - காசு (14 words)
+
 const moneyTimings = [
 
     2000,   // 1. மாமா
@@ -973,7 +952,8 @@ const moneyTimings = [
 ];
 
 
-// CARD 2 - நாய்
+// CARD 2 - நாய் (16 words)
+
 const dogTimings = [
 
     2000,   // 1. இது
@@ -999,6 +979,75 @@ const dogTimings = [
 ];
 
 
+// ===========================================
+// CLEAR PARAGRAPH HIGHLIGHTS
+// ===========================================
+
+function clearHighlights(container){
+
+    container.querySelectorAll(".word").forEach(word=>{
+
+        word.classList.remove("highlight");
+
+    });
+
+}
+
+
+// ===========================================
+// CLEAR TITLE HIGHLIGHTS
+// ===========================================
+
+function clearTitleHighlights(){
+
+    moneyTitle.classList.remove("title-highlight");
+    dogTitle.classList.remove("title-highlight");
+
+    if(titleTimer){
+
+        clearTimeout(titleTimer);
+        titleTimer = null;
+
+    }
+
+}
+
+
+// ===========================================
+// ANIMATE PARAGRAPH
+// INDIVIDUAL WORD TIMINGS
+// ===========================================
+
+function animateWords(container, timings){
+
+    highlightTimers.forEach(timer=>clearTimeout(timer));
+
+    highlightTimers = [];
+
+    clearHighlights(container);
+
+    const words = container.querySelectorAll(".word");
+
+    words.forEach((word,index)=>{
+
+        if(timings[index] === undefined) return;
+
+        const timer = setTimeout(()=>{
+
+            // Remove highlight from all words first
+            words.forEach(w => w.classList.remove("highlight"));
+
+            // Highlight only the current word
+            word.classList.add("highlight");
+
+        },timings[index]);
+
+        highlightTimers.push(timer);
+
+    });
+
+}
+
 
 // ===========================================
 // STOP PARAGRAPH
@@ -1008,12 +1057,13 @@ function stopHighlights(){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
-    highlightTimers=[];
+    highlightTimers = [];
 
     clearHighlights(document.getElementById("moneyText"));
     clearHighlights(document.getElementById("dogText"));
 
 }
+
 
 // ===========================================
 // STOP EVERYTHING
@@ -1024,13 +1074,15 @@ function stopAllAudio(){
     audio1.pause();
     audio2.pause();
 
-    audio1.currentTime=0;
-    audio2.currentTime=0;
+    audio1.currentTime = 0;
+    audio2.currentTime = 0;
 
     stopHighlights();
+
     clearTitleHighlights();
 
 }
+
 
 // ===========================================
 // CARD 1 - காசு
@@ -1049,7 +1101,7 @@ function toggleAudio1(){
 
     moneyTitle.classList.add("title-highlight");
 
-    titleTimer=setTimeout(()=>{
+    titleTimer = setTimeout(()=>{
 
         moneyTitle.classList.remove("title-highlight");
 
@@ -1058,11 +1110,15 @@ function toggleAudio1(){
     audio1.play();
 
     animateWords(
+
         document.getElementById("moneyText"),
+
         moneyTimings
+
     );
 
 }
+
 
 // ===========================================
 // CARD 2 - நாய்
@@ -1081,7 +1137,7 @@ function toggleAudio2(){
 
     dogTitle.classList.add("title-highlight");
 
-    titleTimer=setTimeout(()=>{
+    titleTimer = setTimeout(()=>{
 
         dogTitle.classList.remove("title-highlight");
 
@@ -1093,17 +1149,16 @@ function toggleAudio2(){
 
         document.getElementById("dogText"),
 
-        1400,
-
-        2000
+        dogTimings
 
     );
 
 }
 
-/* =========================
-   SPEAKER ON/OFF
-========================= */
+
+// ===========================================
+// SPEAKER ON/OFF
+// ===========================================
 
 let soundEnabled = true;
 
@@ -1128,9 +1183,10 @@ function toggleMute(){
 
 }
 
-/* =========================
-   AUDIO ENDED
-========================= */
+
+// ===========================================
+// AUDIO ENDED
+// ===========================================
 
 audio1.addEventListener("ended",()=>{
 
@@ -1139,6 +1195,7 @@ audio1.addEventListener("ended",()=>{
 
 });
 
+
 audio2.addEventListener("ended",()=>{
 
     stopHighlights();
@@ -1146,19 +1203,20 @@ audio2.addEventListener("ended",()=>{
 
 });
 
-/* =========================
-   PAGE FLIP
-========================= */
+
+// ===========================================
+// PAGE FLIP
+// ===========================================
 
 function nextPage(page,direction){
 
-    const app=document.querySelector(".app");
+    const app = document.querySelector(".app");
 
     app.classList.remove("flip-out-next","flip-out-prev");
 
     void app.offsetWidth;
 
-    if(direction==="next"){
+    if(direction === "next"){
 
         app.classList.add("flip-out-next");
 
@@ -1170,7 +1228,7 @@ function nextPage(page,direction){
 
     setTimeout(()=>{
 
-        window.location.href=page;
+        window.location.href = page;
 
     },600);
 

@@ -710,6 +710,45 @@ body{
 }
 
 
+
+/* =========================================
+   SMALL LAPTOP WINDOW / SPLIT-SCREEN FIX
+========================================= */
+
+@media screen and (min-width: 500px) and (max-width: 768px)
+and (max-height: 850px) {
+
+    .audio-card {
+        padding: 6px 8px 5px;
+    }
+
+    .card-header {
+        margin-bottom: -8px;
+    }
+
+    .card-title {
+        font-size: 21px;
+    }
+
+    .card-image {
+        width: 78px;
+        max-width: 78px;
+        max-height: 58px;
+        flex: 0 0 78px;
+    }
+
+    .card-content {
+        font-size: 14px;
+        line-height: 1.2;
+        overflow: visible;
+    }
+
+    .audio-badge {
+        font-size: 15px;
+        margin-top: 2px;
+    }
+}
+
 </style>
 
 </head>
@@ -861,6 +900,7 @@ body{
 
 <script>
 
+
 // ===========================================
 // VARIABLES
 // ===========================================
@@ -873,6 +913,62 @@ const audio2 = document.getElementById("audioPlayer2");
 
 const babyTitle = document.getElementById("babyTitle");
 const houseTitle = document.getElementById("houseTitle");
+
+
+// ===========================================
+// INDIVIDUAL WORD TIMINGS
+// All values are in milliseconds
+// ===========================================
+
+// CARD 1 - பாப்பா (15 words)
+const babyTimings = [
+
+    2000,   // 1. இவள்
+    3000,   // 2. பாப்பா.
+
+    4500,   // 3. இவள்
+    5500,   // 4. என்
+    6500,   // 5. பாப்பா.
+
+    8000,   // 6. இவள்
+    9000,   // 7. என்
+    10000,  // 8. குட்டிப்
+    11000,  // 9. பாப்பா.
+
+    12500,  // 10. என்
+    13500,  // 11. குட்டிப்
+    14500,  // 12. பாப்பா
+    15500,  // 13. அசைந்து
+    16500,  // 14. அசைந்து
+    17500   // 15. ஆடுவாள்.
+
+];
+
+
+// CARD 2 - வீடு (15 words)
+const houseTimings = [
+
+    2000,   // 1. இது
+    3000,   // 2. வீடு.
+
+    4500,   // 3. இது
+    5500,   // 4. என்
+    6500,   // 5. அப்பாவின்
+    7500,   // 6. வீடு.
+
+    9000,   // 7. இந்த
+    10000,  // 8. வீடு
+    11000,  // 9. சிறியதாக
+    12000,  // 10. இருக்கும்.
+
+    14000,  // 11. இந்த
+    15000,  // 12. வீட்டில்
+    16000,  // 13. இரண்டு
+    17000,  // 14. அறைகள்
+    18000   // 15. உள்ளன.
+
+];
+
 
 // ===========================================
 // CLEAR PARAGRAPH HIGHLIGHTS
@@ -887,6 +983,7 @@ function clearHighlights(container){
     });
 
 }
+
 
 // ===========================================
 // CLEAR TITLE HIGHLIGHTS
@@ -906,35 +1003,42 @@ function clearTitleHighlights(){
 
 }
 
+
 // ===========================================
 // ANIMATE PARAGRAPH
+// INDIVIDUAL WORD TIMINGS
 // ===========================================
 
-function animateWords(container,speed,startDelay){
+function animateWords(container, timings){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
-    highlightTimers=[];
+    highlightTimers = [];
 
-    const words=container.querySelectorAll(".word");
+    const words = container.querySelectorAll(".word");
 
     clearHighlights(container);
 
     words.forEach((word,index)=>{
 
-        const timer=setTimeout(()=>{
+        if(timings[index] === undefined) return;
 
-            words.forEach(w=>w.classList.remove("highlight"));
+        const timer = setTimeout(()=>{
 
+            // Remove highlight from all words first
+            words.forEach(w => w.classList.remove("highlight"));
+
+            // Highlight only the current word
             word.classList.add("highlight");
 
-        },startDelay+(index*speed));
+        },timings[index]);
 
         highlightTimers.push(timer);
 
     });
 
 }
+
 
 // ===========================================
 // STOP PARAGRAPH
@@ -944,12 +1048,13 @@ function stopHighlights(){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
-    highlightTimers=[];
+    highlightTimers = [];
 
     clearHighlights(document.getElementById("babyText"));
     clearHighlights(document.getElementById("houseText"));
 
 }
+
 
 // ===========================================
 // STOP EVERYTHING
@@ -960,14 +1065,15 @@ function stopAllAudio(){
     audio1.pause();
     audio2.pause();
 
-    audio1.currentTime=0;
-    audio2.currentTime=0;
+    audio1.currentTime = 0;
+    audio2.currentTime = 0;
 
     stopHighlights();
 
     clearTitleHighlights();
 
 }
+
 
 // ===========================================
 // CARD 1 - பாப்பா
@@ -998,13 +1104,12 @@ function toggleAudio1(){
 
         document.getElementById("babyText"),
 
-        1400,
-
-        2000
+        babyTimings
 
     );
 
 }
+
 
 // ===========================================
 // CARD 2 - வீடு
@@ -1035,19 +1140,16 @@ function toggleAudio2(){
 
         document.getElementById("houseText"),
 
-        1400,
-
-        2000
+        houseTimings
 
     );
 
 }
 
 
-
-/* =========================
-   AUDIO ENDED
-========================= */
+// ===========================================
+// AUDIO ENDED
+// ===========================================
 
 audio1.addEventListener("ended",()=>{
 
@@ -1056,6 +1158,7 @@ audio1.addEventListener("ended",()=>{
 
 });
 
+
 audio2.addEventListener("ended",()=>{
 
     stopHighlights();
@@ -1063,19 +1166,20 @@ audio2.addEventListener("ended",()=>{
 
 });
 
-/* =========================
-   PAGE FLIP
-========================= */
+
+// ===========================================
+// PAGE FLIP
+// ===========================================
 
 function nextPage(page,direction){
 
-    const app=document.querySelector(".app");
+    const app = document.querySelector(".app");
 
     app.classList.remove("flip-out-next","flip-out-prev");
 
     void app.offsetWidth;
 
-    if(direction==="next"){
+    if(direction === "next"){
 
         app.classList.add("flip-out-next");
 
@@ -1088,7 +1192,7 @@ function nextPage(page,direction){
 
     setTimeout(()=>{
 
-        window.location.href=page;
+        window.location.href = page;
 
     },600);
 

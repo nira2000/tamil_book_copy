@@ -711,6 +711,46 @@ body{
 
 
 
+
+/* =========================================
+   SMALL LAPTOP WINDOW / SPLIT-SCREEN FIX
+========================================= */
+
+@media screen and (min-width: 500px) and (max-width: 768px)
+and (max-height: 850px) {
+
+    .audio-card {
+        padding: 6px 8px 5px;
+    }
+
+    .card-header {
+        margin-bottom: -8px;
+    }
+
+    .card-title {
+        font-size: 21px;
+    }
+
+    .card-image {
+        width: 78px;
+        max-width: 78px;
+        max-height: 58px;
+        flex: 0 0 78px;
+    }
+
+    .card-content {
+        font-size: 14px;
+        line-height: 1.2;
+        overflow: visible;
+    }
+
+    .audio-badge {
+        font-size: 15px;
+        margin-top: 2px;
+    }
+}
+
+
 </style>
 
 </head>
@@ -899,6 +939,77 @@ const mozhiTitle = document.getElementById("titleMozhi");
 
 
 // ===========================================
+// INDIVIDUAL WORD TIMINGS
+// All values are in milliseconds
+// ===========================================
+
+// CARD 1 - பழங்கள் (17 words)
+
+const fruitTimings = [
+
+    2000,   // 1. இவை
+    3000,   // 2. பழங்கள்.
+
+    4500,   // 3. பழங்கள்
+    5500,   // 4. உண்பது
+    6500,   // 5. உடலுக்கு
+    7500,   // 6. நல்லது.
+
+    9000,   // 7. மா,
+    10000,  // 8. பலா,
+    11000,  // 9. வாழை,
+    12000,  // 10. திராட்சை,
+
+    13500,  // 11. அன்னாசி,
+    14500,  // 12. பப்பாளி
+    15500,  // 13. போன்ற
+
+    17000,  // 14. பழங்களில்
+    18000,  // 15. நிறைய
+    19000,  // 16. நார்ச்சத்துகள்
+    20000   // 17. உள்ளன.
+
+];
+
+
+// CARD 2 - தமிழ் மொழி (25 words)
+
+const tamilTimings = [
+
+    2200,   // 1. இது
+    3200,   // 2. ஒரு
+    4200,   // 3. தமிழ்
+    5200,   // 4. மொழிப்
+    6200,   // 5. புத்தகம்.
+
+    7800,   // 6. என்
+    8800,   // 7. அம்மா
+    9800,   // 8. இந்தப்
+    10800,  // 9. புத்தகத்தை
+    11800,  // 10. வாங்கித்
+    12800,  // 11. தந்தார்.
+
+    14500,  // 12. எனக்குத்
+    15500,  // 13. தமிழ்
+    16500,  // 14. மொழி
+    17500,  // 15. என்றால்
+    18500,  // 16. உயிர்.
+
+    20000,  // 17. நான்
+    21000,  // 18. சரளமாக
+    22000,  // 19. தமிழ்
+    23000,  // 20. மொழியை
+    24000,  // 21. வாசிப்பேன்.
+
+    25500,  // 22. நான்
+    26500,  // 23. தமிழ்
+    27500,  // 24. மொழியை
+    28500   // 25. நேசிக்கிறேன்.
+
+];
+
+
+// ===========================================
 // CLEAR PARAGRAPH HIGHLIGHTS
 // ===========================================
 
@@ -929,7 +1040,7 @@ function clearTitleHighlights(){
 
         clearTimeout(titleTimer);
 
-        titleTimer=null;
+        titleTimer = null;
 
     }
 
@@ -938,34 +1049,38 @@ function clearTitleHighlights(){
 
 // ===========================================
 // ANIMATE PARAGRAPH
+// INDIVIDUAL WORD TIMINGS
 // ===========================================
 
-function animateWords(container,speed,startDelay){
+function animateWords(container, timings){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
-    highlightTimers=[];
+    highlightTimers = [];
 
-    const words=container.querySelectorAll(".word");
+    const words = container.querySelectorAll(".word");
 
     clearHighlights(container);
 
     words.forEach((word,index)=>{
 
-        const timer=setTimeout(()=>{
+        if(timings[index] === undefined) return;
 
-            words.forEach(w=>w.classList.remove("highlight"));
+        const timer = setTimeout(()=>{
 
+            // Remove highlight from all words first
+            words.forEach(w => w.classList.remove("highlight"));
+
+            // Highlight only the current word
             word.classList.add("highlight");
 
-        },startDelay+(index*speed));
+        },timings[index]);
 
         highlightTimers.push(timer);
 
     });
 
 }
-
 
 
 // ===========================================
@@ -976,14 +1091,13 @@ function stopHighlights(){
 
     highlightTimers.forEach(timer=>clearTimeout(timer));
 
-    highlightTimers=[];
+    highlightTimers = [];
 
     clearHighlights(document.getElementById("fruitText"));
 
     clearHighlights(document.getElementById("tamilText"));
 
 }
-
 
 
 // ===========================================
@@ -995,8 +1109,8 @@ function stopAllAudio(){
     audio1.pause();
     audio2.pause();
 
-    audio1.currentTime=0;
-    audio2.currentTime=0;
+    audio1.currentTime = 0;
+    audio2.currentTime = 0;
 
     stopHighlights();
 
@@ -1005,9 +1119,8 @@ function stopAllAudio(){
 }
 
 
-
 // ===========================================
-// CARD 1
+// CARD 1 - பழங்கள்
 // ===========================================
 
 function toggleAudio1(){
@@ -1024,13 +1137,11 @@ function toggleAudio1(){
 
     fruitTitle.classList.add("title-highlight");
 
-    titleTimer = setTimeout(() => {
+    titleTimer = setTimeout(()=>{
 
         fruitTitle.classList.remove("title-highlight");
 
-    }, 1700);    // change this timing if needed
-
-
+    },1700);
 
     audio1.play();
 
@@ -1038,18 +1149,15 @@ function toggleAudio1(){
 
         document.getElementById("fruitText"),
 
-        1500,
-
-        2000
+        fruitTimings
 
     );
 
 }
 
 
-
 // ===========================================
-// CARD 2
+// CARD 2 - தமிழ் மொழி
 // ===========================================
 
 function toggleAudio2(){
@@ -1066,21 +1174,21 @@ function toggleAudio2(){
 
     tamilTitle.classList.add("title-highlight");
 
-    titleTimer = setTimeout(() => {
+    titleTimer = setTimeout(()=>{
 
         tamilTitle.classList.remove("title-highlight");
 
         mozhiTitle.classList.add("title-highlight");
 
-        setTimeout(() => {
+        titleTimer = setTimeout(()=>{
 
             mozhiTitle.classList.remove("title-highlight");
 
-        }, 1200);      // highlight "மொழி" for 0.9 sec
+            titleTimer = null;
 
-    }, 1000);          // after "தமிழ்"
+        },1200);
 
-
+    },1000);
 
     audio2.play();
 
@@ -1088,18 +1196,16 @@ function toggleAudio2(){
 
         document.getElementById("tamilText"),
 
-        1000,
-
-        2200
+        tamilTimings
 
     );
 
 }
 
 
-/* =========================
-   SPEAKER ON/OFF
-========================= */
+// ===========================================
+// SPEAKER ON/OFF
+// ===========================================
 
 let soundEnabled = true;
 
@@ -1108,6 +1214,7 @@ function toggleMute(icon){
     soundEnabled = !soundEnabled;
 
     audio1.muted = !soundEnabled;
+
     audio2.muted = !soundEnabled;
 
     if(!soundEnabled){
@@ -1125,10 +1232,9 @@ function toggleMute(icon){
 }
 
 
-
-/* =========================
-   AUDIO ENDED
-========================= */
+// ===========================================
+// AUDIO ENDED
+// ===========================================
 
 audio1.addEventListener("ended",()=>{
 
@@ -1148,20 +1254,19 @@ audio2.addEventListener("ended",()=>{
 });
 
 
-
-/* =========================
-   PAGE FLIP
-========================= */
+// ===========================================
+// PAGE FLIP
+// ===========================================
 
 function nextPage(page,direction){
 
-    const app=document.querySelector(".app");
+    const app = document.querySelector(".app");
 
     app.classList.remove("flip-out-next","flip-out-prev");
 
     void app.offsetWidth;
 
-    if(direction==="next"){
+    if(direction === "next"){
 
         app.classList.add("flip-out-next");
 
@@ -1174,7 +1279,7 @@ function nextPage(page,direction){
 
     setTimeout(()=>{
 
-        window.location.href=page;
+        window.location.href = page;
 
     },600);
 
