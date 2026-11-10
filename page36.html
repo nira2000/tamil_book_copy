@@ -755,25 +755,27 @@ and (max-height: 850px) {
 /* PAGE 36 - MOBILE CARD SPACING FIX */
 @media (max-width: 768px) {
 
-    /* பழங்கள் card - slightly less height */
-    .book-content > .audio-card:nth-of-type(2) {
-        flex: 0.85 1 0;
+    /* பழங்கள் card - give it more height */
+    .book-content > .audio-card {
+        flex: 1.2 1 0;
+        min-height: 0;
     }
 
-    /* தமிழ் மொழி card - more height */
-    .book-content > .audio-card:nth-of-type(3) {
-        flex: 1.15 1 0;
+    /* தமிழ் மொழி card - slightly less height */
+    .book > .audio-card {
+        flex: 0.8 1 0;
+        min-height: 0;
     }
 
-    /* Same space below both card headings */
-    .audio-card .card-header {
+    /* Space below both headings and pictures */
+    .card-header {
         margin-bottom: 8px;
     }
 
-    /* Fit the full paragraphs */
-    .audio-card .card-content {
+    /* Keep the full paragraph visible */
+    .card-content {
         font-size: 14px;
-        line-height: 1.2;
+        line-height: 1.15;
         overflow: visible;
     }
 
