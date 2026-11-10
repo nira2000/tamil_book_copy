@@ -749,6 +749,34 @@ and (max-height: 850px) {
 }
 
 
+/* PAGE 35 - MOBILE CARD SPACING FIX */
+@media (max-width: 768px) {
+
+    /* First card - காசு */
+    .book-content > .audio-card:nth-of-type(2) {
+        flex: 0.85 1 0;
+    }
+
+    /* Second card - நாய் gets more height */
+    .book-content > .audio-card:nth-of-type(3) {
+        flex: 1.15 1 0;
+    }
+
+    /* Space between title/image and paragraph */
+    .card-header {
+        margin-bottom: 8px;
+    }
+
+    /* Make paragraphs fit without being cut off */
+    .card-content {
+        font-size: 15px;
+        line-height: 1.25;
+        overflow: visible;
+    }
+
+}
+
+
 
 </style>
 
