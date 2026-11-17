@@ -524,260 +524,196 @@ box-shadow:0 0 0 rgba(255,196,0,0);
 
 
 /* ===========================================
-   MOBILE & TABLET
+   MOBILE & TABLET - PORTRAIT BOOK LAYOUT
 =========================================== */
 
 @media (max-width:900px){
 
 html,
 body{
-
     margin:0;
     padding:0;
-
     width:100%;
-    height:100%;
-
-    overflow:hidden;
-
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 body{
-
     background:#1b2c73;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
+    display:block;
 }
 
 /* ---------- WRAPPER ---------- */
 
-.page-wrapper,
-.container{
-
+.page-wrapper{
     width:100%;
-    height:100dvh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:12px 10px 20px;
+}
 
+.container{
+    width:100%;
+    height:auto;
     display:flex;
     justify-content:center;
-    align-items:center;
-
+    align-items:flex-start;
 }
 
 /* ---------- BOOK ---------- */
 
 .book{
-
-    flex: 0.93;
-    width: 100%;
-    max-width: 940px;
+    flex:none;
+    width:100%;
+    max-width:620px;
+    height:auto;
 
     display:flex;
     flex-direction:column;
 
-    padding:8px;
+    padding:14px 12px 10px 18px;
 
     border:5px solid #e9dcb8;
-    border-radius:16px;
+    border-radius:18px;
 
-    overflow:hidden;
-
+    overflow:visible;
 }
 
 /* RED SPINE */
 
 .book::before{
-
     left:-5px;
     top:12px;
     bottom:12px;
-
     width:10px;
-
 }
 
 /* ---------- TITLE ---------- */
 
 .page-title{
-
-    margin-bottom:4px;
-
+    margin-bottom:8px;
 }
 
 .page-title h1{
-
-    font-size:19px;
-
-    padding:5px 14px;
-
+    font-size:clamp(20px, 3.5vw, 28px);
+    padding:7px 16px;
 }
 
 .lesson{
-
-    font-size:17px;
-
-    margin-bottom:6px;
-
+    font-size:clamp(18px, 3vw, 23px);
+    margin-bottom:12px;
 }
 
 /* ---------- GRID ---------- */
 
 .main{
-
-    flex:1;
-
+    width:100%;
     display:grid;
-
-    grid-template-columns:34px repeat(3,1fr);
-
-    column-gap:6px;
-
+    grid-template-columns:36px repeat(3, minmax(0, 1fr));
+    column-gap:clamp(5px, 1.5vw, 12px);
     align-items:start;
-
 }
 
 /* ---------- PINK COLUMN ---------- */
 
 .sound-column{
-
     margin-top:227px;
-
-    gap:5px;
-
+    gap:6px;
 }
 
 .sound{
-
-    width:32px;
-    height:26px;
-
-    font-size:13px;
-
+    width:100%;
+    height:34px;
+    font-size:clamp(12px, 2vw, 17px);
 }
 
 /* ---------- EYE ---------- */
 
 .eye-box{
-
-    width:32px;
-    height:32px;
-
+    width:100%;
+    height:36px;
     display:flex;
     justify-content:center;
     align-items:center;
-
 }
 
 .eye-box img{
-
     width:34px;
     height:34px;
-
     object-fit:contain;
-
 }
 
 /* ---------- BUTTONS ---------- */
 
 .column{
-
-    gap:6px;
-
+    width:100%;
+    gap:8px;
 }
 
 .group{
-
-    gap:4px;
-
+    width:100%;
+    gap:6px;
 }
 
 .head,
 .btn{
-
-    width:60px;
-    height:28px;
-
-    font-size:17px;
-
+    width:100%;
+    height:clamp(40px, 5.5vw, 52px);
+    font-size:clamp(16px, 2.5vw, 23px);
     border-radius:8px;
-
 }
 
 .head{
-
-    font-size:18px;
-
+    font-size:clamp(17px, 2.7vw, 24px);
 }
 
 .head::after{
-
-    top:2px;
-    right:3px;
-
-    font-size:8px;
-
+    top:3px;
+    right:4px;
+    font-size:9px;
 }
 
 /* ---------- PAGE NUMBER ---------- */
 
 .page-number{
-
-    margin-top:4px;
-    margin-bottom:2px;
-
-    font-size:15px;
-
-    font-weight:bold;
-
+    margin-top:12px;
+    margin-bottom:4px;
+    font-size:20px;
 }
 
 /* ---------- NAVIGATION ---------- */
 
 .navigation{
-
     width:100%;
-
-    max-width:420px;
-
-    margin-top:2px;
-
+    max-width:620px;
+    margin-top:12px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
 }
 
 .nav-btn{
-
-    width:38px;
-    height:38px;
-
-    font-size:18px;
-
+    width:42px;
+    height:42px;
+    font-size:20px;
 }
 
 .dots{
-
     gap:8px;
-
 }
 
 .dot{
-
-    width:7px;
-    height:7px;
-
+    width:8px;
+    height:8px;
 }
 
 .speaker::after{
-
-    top:2px;
-    right:3px;
-
-    font-size:8px;
-
+    top:3px;
+    right:4px;
+    font-size:9px;
 }
 
 }
