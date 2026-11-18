@@ -522,21 +522,23 @@ box-shadow:0 0 0 rgba(255,196,0,0);
 
 
 
-
 /* ===========================================
-   MOBILE & TABLET - PORTRAIT BOOK LAYOUT
+   MOBILE & TABLET - AUTO FIT BOOK LAYOUT
 =========================================== */
 
 @media (max-width:900px){
+
+:root{
+    --btn-height:clamp(23px, calc((100dvh - 270px) / 14), 44px);
+}
 
 html,
 body{
     margin:0;
     padding:0;
     width:100%;
-    min-height:100%;
-    overflow-x:hidden;
-    overflow-y:auto;
+    height:100%;
+    overflow:hidden;
 }
 
 body{
@@ -548,19 +550,23 @@ body{
 
 .page-wrapper{
     width:100%;
-    min-height:100dvh;
+    height:100dvh;
+    min-height:0;
+    padding:6px 10px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:12px 10px 20px;
+    overflow:hidden;
+    gap:6px;
 }
 
 .container{
     width:100%;
-    height:auto;
+    flex:1;
+    min-height:0;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
+    align-items:center;
 }
 
 /* ---------- BOOK ---------- */
@@ -568,21 +574,20 @@ body{
 .book{
     flex:none;
     width:100%;
-    max-width:620px;
-    height:auto;
+    max-width:720px;
+    height:100%;
+    max-height:100%;
 
     display:flex;
     flex-direction:column;
 
-    padding:14px 12px 10px 18px;
+    padding:10px 12px 6px 18px;
 
     border:5px solid #e9dcb8;
     border-radius:18px;
 
-    overflow:visible;
+    overflow:hidden;
 }
-
-/* RED SPINE */
 
 .book::before{
     left:-5px;
@@ -594,55 +599,60 @@ body{
 /* ---------- TITLE ---------- */
 
 .page-title{
-    margin-bottom:8px;
+    flex:none;
+    margin-bottom:5px;
 }
 
 .page-title h1{
-    font-size:clamp(20px, 3.5vw, 28px);
-    padding:7px 16px;
+    font-size:clamp(18px, 3vw, 28px);
+    padding:5px 14px;
 }
 
 .lesson{
-    font-size:clamp(18px, 3vw, 23px);
-    margin-bottom:12px;
+    flex:none;
+    font-size:clamp(15px, 2.5vw, 22px);
+    margin-bottom:7px;
 }
 
 /* ---------- GRID ---------- */
 
 .main{
+    flex:1;
+    min-height:0;
     width:100%;
+
     display:grid;
-    grid-template-columns:36px repeat(3, minmax(0, 1fr));
-    column-gap:clamp(5px, 1.5vw, 12px);
+    grid-template-columns:32px repeat(3, minmax(0, 1fr));
+    column-gap:clamp(4px, 1.5vw, 12px);
     align-items:start;
 }
 
 /* ---------- PINK COLUMN ---------- */
 
 .sound-column{
-    margin-top:227px;
-    gap:6px;
+    margin-top:calc(6 * var(--btn-height) + 30px);
+    gap:5px;
 }
 
 .sound{
     width:100%;
-    height:34px;
-    font-size:clamp(12px, 2vw, 17px);
+    height:var(--btn-height);
+    font-size:clamp(10px, 2vw, 16px);
 }
 
 /* ---------- EYE ---------- */
 
 .eye-box{
     width:100%;
-    height:36px;
+    height:var(--btn-height);
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
 .eye-box img{
-    width:34px;
-    height:34px;
+    width:clamp(22px, 4vw, 34px);
+    height:clamp(22px, 4vw, 34px);
     object-fit:contain;
 }
 
@@ -650,73 +660,136 @@ body{
 
 .column{
     width:100%;
-    gap:8px;
+    gap:6px;
 }
 
 .group{
     width:100%;
-    gap:6px;
+    gap:5px;
 }
 
 .head,
 .btn{
     width:100%;
-    height:clamp(40px, 5.5vw, 52px);
-    font-size:clamp(16px, 2.5vw, 23px);
-    border-radius:8px;
+    height:var(--btn-height);
+    min-height:0;
+    padding:0 2px;
+    font-size:clamp(13px, 2.6vw, 23px);
+    border-radius:7px;
 }
 
 .head{
-    font-size:clamp(17px, 2.7vw, 24px);
+    font-size:clamp(14px, 2.8vw, 24px);
 }
 
 .head::after{
-    top:3px;
-    right:4px;
-    font-size:9px;
+    top:2px;
+    right:3px;
+    font-size:8px;
 }
 
 /* ---------- PAGE NUMBER ---------- */
 
 .page-number{
-    margin-top:12px;
-    margin-bottom:4px;
-    font-size:20px;
+    flex:none;
+    margin-top:4px;
+    margin-bottom:2px;
+    font-size:clamp(14px, 2.5vw, 20px);
 }
 
 /* ---------- NAVIGATION ---------- */
 
 .navigation{
+    flex:none;
     width:100%;
-    max-width:620px;
-    margin-top:12px;
+    max-width:720px;
+    margin-top:0;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .nav-btn{
-    width:42px;
-    height:42px;
-    font-size:20px;
+    width:clamp(32px, 5vw, 42px);
+    height:clamp(32px, 5vw, 42px);
+    font-size:18px;
 }
 
 .dots{
-    gap:8px;
+    gap:7px;
 }
 
 .dot{
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
 }
 
 .speaker::after{
-    top:3px;
-    right:4px;
-    font-size:9px;
+    top:2px;
+    right:3px;
+    font-size:8px;
 }
 
 }
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width:480px){
+
+.page-wrapper{
+    padding:4px 5px;
+    gap:4px;
+}
+
+.book{
+    padding:7px 7px 4px 13px;
+    border-width:4px;
+    border-radius:14px;
+}
+
+.main{
+    grid-template-columns:27px repeat(3, minmax(0, 1fr));
+    column-gap:4px;
+}
+
+.column{
+    gap:4px;
+}
+
+.group{
+    gap:3px;
+}
+
+.head,
+.btn{
+    font-size:clamp(12px, 3.5vw, 17px);
+    border-radius:6px;
+}
+
+.head{
+    font-size:clamp(13px, 3.7vw, 18px);
+}
+
+.sound-column{
+    gap:4px;
+}
+
+.sound{
+    font-size:11px;
+}
+
+.page-title h1{
+    font-size:clamp(17px, 4.5vw, 22px);
+    padding:5px 9px;
+}
+
+.lesson{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+}
+
 
 
 
