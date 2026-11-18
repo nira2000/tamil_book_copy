@@ -1714,6 +1714,266 @@ body {
 }
 
 
+
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   FULL WIDTH AND FULL HEIGHT
+   EXISTING MOBILE CSS REMAINS UNCHANGED
+========================================================= */
+
+@media (min-width:769px) and (max-width:1024px){
+
+    html,
+    body{
+        width:100%;
+        height:100%;
+        min-height:0;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    body{
+        height:100dvh;
+        min-height:100dvh;
+
+        display:flex;
+        justify-content:center;
+        align-items:stretch;
+
+        padding:0;
+    }
+
+    /* APP */
+
+    .app{
+        width:100%;
+        max-width:none;
+
+        height:100dvh;
+        min-height:0;
+
+        padding:10px 16px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+        gap:8px;
+        overflow:hidden;
+    }
+
+    /* BOOK */
+
+    .book{
+        width:100%;
+        max-width:none;
+
+        flex:1 1 auto;
+        min-height:0;
+
+        margin:0;
+        padding:20px 28px 8px 32px;
+
+        border-radius:24px;
+
+        display:flex;
+        flex-direction:column;
+
+        overflow:hidden;
+    }
+
+    /* DECORATIONS */
+
+    .swirl{
+        transform:scale(.85);
+        transform-origin:top left;
+    }
+
+    .curve-top{
+        transform:scale(.9);
+        transform-origin:top right;
+    }
+
+    .flower{
+        transform:scale(.9);
+        transform-origin:bottom left;
+    }
+
+    /* MAIN TITLE */
+
+    .title{
+        width:fit-content;
+        max-width:100%;
+
+        flex:0 0 auto;
+
+        margin:5px auto 14px;
+
+        font-size:clamp(30px,3.5vw,42px);
+    }
+
+    /* TOP WORD CARDS */
+
+    .months-wrapper{
+        width:100%;
+
+        flex:0 0 auto;
+
+        grid-template-columns:1fr 1fr;
+
+        gap:18px;
+
+        margin-bottom:14px;
+    }
+
+    .card{
+        padding:12px;
+        gap:7px;
+    }
+
+    .month-btn{
+        min-height:clamp(38px,4.5vh,52px);
+
+        font-size:clamp(17px,2vw,23px);
+
+        padding:5px 30px 5px 8px;
+    }
+
+    .month-btn .speaker-icon{
+        right:8px;
+        font-size:12px;
+    }
+
+    /* WEEKDAY HEADER */
+
+    .aathichudi-header{
+        width:100%;
+
+        flex:0 0 auto;
+
+        margin:4px 0 12px;
+
+        gap:14px;
+    }
+
+    .heading{
+        font-size:clamp(24px,2.8vw,34px);
+        padding:7px 26px;
+    }
+
+    .line{
+        width:38px;
+    }
+
+    .line::before,
+    .line::after{
+        width:28px;
+    }
+
+    /* GREEN WEEKDAY CARD */
+
+    .aathichudi-card{
+        width:100%;
+
+        flex:1 1 auto;
+        min-height:0;
+
+        padding:14px 18px;
+
+        gap:18px;
+
+        grid-template-columns:1fr 1fr;
+
+        overflow:hidden;
+    }
+
+    /* WEEKDAY COLUMNS */
+
+    .column{
+        min-width:0;
+        min-height:0;
+
+        display:flex;
+        flex-direction:column;
+
+        justify-content:space-evenly;
+
+        gap:8px;
+    }
+
+    /* WEEKDAY BUTTONS */
+
+    .rule-btn{
+        width:100%;
+
+        flex:0 0 auto;
+
+        min-height:clamp(38px,5vh,54px);
+
+        padding:5px 30px 5px 10px;
+
+        font-size:clamp(17px,2vw,23px);
+    }
+
+    .rule-btn .speaker-icon{
+        right:8px;
+        font-size:12px;
+    }
+
+    /* PAGE NUMBER */
+
+    .page-number{
+        flex:0 0 auto;
+
+        margin-top:6px;
+
+        font-size:19px;
+    }
+
+    /* NAVIGATION */
+
+    .navigation{
+        width:100%;
+        max-width:none;
+
+        flex:0 0 44px;
+
+        height:44px;
+
+        margin:0;
+    }
+
+    .nav-btn{
+        width:42px;
+        height:42px;
+
+        font-size:22px;
+    }
+
+    .dots{
+        gap:9px;
+    }
+
+    .dot{
+        width:9px;
+        height:9px;
+    }
+
+    /* REMOVE HOVER MOVEMENT ON TOUCH */
+
+    .title:hover,
+    .month-btn:hover,
+    .rule-btn:hover,
+    .nav-btn:hover{
+        transform:none;
+    }
+}
+
+
+
 </style>
 
 </head>
