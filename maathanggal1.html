@@ -735,554 +735,667 @@ body {
 
 
 
-
 /* =========================================================
-   MOBILE ONLY
-   DESKTOP IS NOT TOUCHED
-   NO SCROLLING
+   MOBILE & TABLET RESPONSIVE
+   FULL SCREEN FIT - MAATHANGGAL
+   DESKTOP ABOVE 1024px UNCHANGED
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width:1024px){
 
-    /* ==============================
-       SCREEN
-    ============================== */
+/* ==============================
+   SCREEN
+============================== */
 
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
+html,
+body{
+    width:100%;
+    height:100%;
+    min-height:0;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    overscroll-behavior:none;
+}
 
-        overflow: hidden;
-        overscroll-behavior: none;
-    }
+body{
+    height:100dvh;
+    min-height:100dvh;
 
-    body {
-        height: 100dvh;
-        min-height: 100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:stretch;
 
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
+    background:#111d66;
+}
 
-        background: #111d66;
-    }
+/* ==============================
+   APP
+============================== */
 
+.app{
+    width:100%;
+    max-width:none;
 
-    /* ==============================
-       APP
-    ============================== */
+    height:100dvh;
+    min-height:0;
 
-    .app {
-        width: 100%;
-        max-width: 520px;
+    margin:0 auto;
+    padding:8px 12px;
 
-        height: 100dvh;
-        min-height: 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 
-        margin: 0 auto;
-        padding: 4px 7px;
+    gap:6px;
+    overflow:hidden;
+}
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+/* ==============================
+   BOOK
+============================== */
 
-        gap: 3px;
+.book{
+    width:100%;
+    max-width:none;
 
-        overflow: hidden;
-    }
+    flex:1 1 auto;
+    min-height:0;
 
+    margin:0;
 
-    /* ==============================
-       BOOK
-    ============================== */
+    padding:12px 16px 6px 20px;
 
-    .book {
-        width: 100%;
+    border-radius:20px;
 
-        flex: 1 1 auto;
-        min-height: 0;
+    overflow:hidden;
 
-        margin: 0;
+    display:flex;
+    flex-direction:column;
+}
 
-        padding:
-            6px
-            8px
-            3px
-            11px;
+/* ==============================
+   RED SPINE
+============================== */
 
-        border-radius: 17px;
+.book::before{
+    width:7px;
 
-        overflow: hidden;
+    left:0;
+    top:12px;
+    bottom:12px;
 
-        display: flex;
-        flex-direction: column;
-    }
+    border-radius:7px;
+}
 
+/* ==============================
+   DECORATIONS
+============================== */
 
-    /* ==============================
-       RED SPINE
-    ============================== */
+.swirl{
+    left:-5px;
+    top:-5px;
 
-    .book::before {
-        width: 6px;
+    transform:scale(.65);
+    transform-origin:top left;
 
-        left: 0;
-        top: 9px;
-        bottom: 9px;
+    z-index:2;
+}
 
-        border-radius: 6px;
-    }
+.curve-top{
+    right:5px;
+    top:5px;
 
+    transform:scale(.7);
+    transform-origin:top right;
 
-    /* ==============================
-       DECORATIONS
-    ============================== */
+    z-index:2;
+}
 
-    .swirl {
-        left: -8px;
-        top: -8px;
+.calendar-sticker{
+    right:12px;
+    top:35%;
 
-        transform: scale(.42);
-        transform-origin: top left;
+    width:clamp(55px, 8vw, 85px);
 
-        z-index: 2;
-    }
+    transform:rotate(3deg);
 
-    .curve-top {
-        right: -7px;
-        top: 3px;
+    z-index:8;
+}
 
-        transform: scale(.52);
-        transform-origin: top right;
+/* ==============================
+   MAIN TITLE
+============================== */
 
-        z-index: 2;
-    }
+.title{
+    position:relative;
 
-    .calendar-sticker {
-        right: -8px;
-        top: 285px;
+    width:100%;
+    max-width:650px;
+    min-width:0;
 
-        width: 58px;
+    flex:0 0 auto;
 
-        transform: rotate(3deg);
+    margin:5px auto 10px;
 
-        z-index: 8;
-    }
+    padding:7px 35px 7px 12px;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    /* ==============================
-       TITLE
-    ============================== */
+    text-align:center;
 
-    .title {
-        position: relative;
+    font-size:clamp(22px, 3.5vw, 36px);
+    line-height:1.15;
 
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
+    border-radius:10px;
 
-        flex: 0 0 auto;
+    z-index:10;
+}
 
-        margin: 3px auto 7px;
+.title .speaker-icon{
+    right:9px;
+    font-size:11px;
+}
 
-        padding: 6px 28px 6px 10px;
+/* ==============================
+   MONTHS AREA
+============================== */
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.months-wrapper{
+    width:100%;
 
-        text-align: center;
+    flex:0 0 auto;
 
-        font-size: clamp(21px, 6.2vw, 29px);
-        line-height: 1.15;
+    display:flex;
+    gap:clamp(8px, 1.8vw, 18px);
 
-        border-radius: 10px;
+    margin-bottom:10px;
 
-        z-index: 10;
-    }
+    position:relative;
+    z-index:10;
+}
 
+/* ==============================
+   MONTH CARDS
+============================== */
 
-    .title .speaker-icon {
-        right: 7px;
-        font-size: 9px;
-    }
+.card{
+    flex:1;
+    min-width:0;
 
+    padding:clamp(7px, 1.3vw, 13px);
 
-    /* ==============================
-       MONTHS AREA
-    ============================== */
+    gap:clamp(4px, .7vw, 7px);
 
-    .months-wrapper {
-        width: 100%;
+    border-radius:18px;
+}
 
-        flex: 0 0 auto;
+/* ==============================
+   MONTH BUTTONS
+============================== */
 
-        display: flex;
+.month-btn{
+    width:100%;
 
-        gap: clamp(6px, 2vw, 9px);
+    height:clamp(29px, 4.2vw, 43px);
+    min-height:0;
 
-        margin-bottom: 7px;
+    padding:2px 26px 2px 5px;
 
-        position: relative;
+    font-size:clamp(13px, 1.8vw, 20px);
 
-        z-index: 10;
-    }
+    line-height:1.1;
 
+    border-width:1.5px;
+    border-radius:10px;
 
-    /* ==============================
-       MONTH CARDS
-    ============================== */
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    .card {
-        flex: 1;
+    white-space:nowrap;
+}
 
-        min-width: 0;
+.month-btn .speaker-icon{
+    right:5px;
+    font-size:9px;
+}
 
-        padding:
-            6px
-            7px;
+/* ==============================
+   AATHICHUDI HEADER
+============================== */
 
-        gap: 4px;
+.aathichudi-header{
+    width:100%;
 
-        border-radius: 15px;
-    }
+    flex:0 0 auto;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    /* ==============================
-       MONTH BUTTONS
-    ============================== */
+    gap:clamp(7px, 1.5vw, 14px);
 
-    .month-btn {
-        width: 100%;
+    margin:2px 0 8px;
 
-        height: clamp(25px, 6vw, 30px);
+    position:relative;
+    z-index:10;
+}
 
-        padding:
-            1px
-            22px
-            1px
-            4px;
+/* ==============================
+   DECORATIVE LINES
+============================== */
 
-        font-size: clamp(12px, 3.5vw, 16px);
+.line{
+    width:clamp(22px, 4vw, 42px);
+    height:4px;
 
-        line-height: 1;
+    flex:0 0 auto;
+}
 
-        border-width: 1.5px;
-        border-radius: 9px;
+.line::before,
+.line::after{
+    width:75%;
+    height:4px;
+}
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.left::before,
+.right::before{
+    top:-8px;
+}
 
-        white-space: nowrap;
-    }
+.left::after,
+.right::after{
+    top:8px;
+}
 
-    .month-btn .speaker-icon {
-        right: 4px;
-        font-size: 8px;
-    }
+/* ==============================
+   AATHICHUDI TITLE
+============================== */
 
+.heading{
+    flex:0 0 auto;
 
-    /* ==============================
-       AATHICHUDI HEADER
-    ============================== */
+    font-size:clamp(21px, 3vw, 31px);
 
-    .aathichudi-header {
-        width: 100%;
+    line-height:1.15;
 
-        flex: 0 0 auto;
+    padding:6px 22px;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    border-radius:24px;
 
-        gap: 7px;
+    white-space:nowrap;
+}
 
-        margin-bottom: 6px;
+.heading .speaker-icon{
+    right:7px;
+    font-size:9px;
+}
 
-        position: relative;
+/* ==============================
+   GREEN AATHICHUDI CARD
+============================== */
 
-        z-index: 10;
-    }
+.aathichudi-card{
+    width:100%;
 
+    flex:1 1 auto;
+    min-height:0;
 
-    /* ==============================
-       SIDE LINES
-    ============================== */
+    padding:clamp(8px, 1.3vw, 14px);
 
-    .line {
-        width: 23px;
-        height: 3px;
+    gap:clamp(8px, 1.5vw, 16px);
 
-        flex: 0 0 23px;
-    }
+    border-radius:20px;
 
-    .line::before,
-    .line::after {
-        width: 16px;
-        height: 3px;
-    }
+    overflow:hidden;
 
-    .left::before {
-        top: -6px;
-    }
+    position:relative;
+    z-index:7;
 
-    .left::after {
-        top: 6px;
-    }
+    display:flex;
+}
 
-    .right::before {
-        top: -6px;
-    }
+/* ==============================
+   GREEN COLUMNS
+============================== */
 
-    .right::after {
-        top: 6px;
-    }
+.aathichudi-card .column{
+    flex:1 1 0;
 
+    min-width:0;
+    min-height:0;
 
-    /* ==============================
-       AATHICHUDI TITLE
-    ============================== */
+    display:flex;
+    flex-direction:column;
 
-    .heading {
-        flex: 0 0 auto;
+    justify-content:space-between;
 
-        font-size: clamp(19px, 5.8vw, 25px);
+    gap:5px;
+}
 
-        line-height: 1.1;
+/* ==============================
+   GREEN BUTTONS
+============================== */
 
-        padding:
-            5px
-            15px;
+.aathichudi-card .rule-btn{
+    width:100%;
 
-        border-radius: 22px;
+    flex:0 0 auto;
 
-        white-space: nowrap;
-    }
+    height:clamp(32px, 4.5vw, 48px);
+    min-height:30px;
 
-    .heading .speaker-icon {
-        right: 5px;
-        font-size: 8px;
-    }
+    padding:3px 28px 3px 7px;
 
+    font-size:clamp(12px, 1.7vw, 19px);
 
-    /* ==============================
-       GREEN AATHICHUDI CARD
+    line-height:1.1;
 
-       THIS NOW USES THE EMPTY
-       SPACE AT THE BOTTOM
-    ============================== */
+    border-width:1.5px;
+    border-radius:9px;
 
-    .aathichudi-card {
-        width: 100%;
+    white-space:nowrap;
+    overflow:hidden;
 
-        /*
-           IMPORTANT:
-           Allow the green section to expand
-           and fill the remaining book space.
-        */
-        flex: 1 1 auto;
+    display:flex;
+    align-items:center;
 
-        min-height: 0;
+    text-align:left;
+}
 
-        padding:
-            7px
-            8px;
+.aathichudi-card .rule-btn .star{
+    flex:0 0 auto;
 
-        gap: 6px;
+    font-size:clamp(12px, 1.8vw, 20px);
 
-        border-radius: 16px;
+    margin-right:3px;
+}
 
-        overflow: hidden;
+.aathichudi-card .rule-btn .speaker-icon{
+    right:5px;
+    font-size:9px;
+}
 
-        position: relative;
+/* ==============================
+   PAGE NUMBER
+============================== */
 
-        z-index: 7;
+.page-number{
+    width:100%;
 
-        display: flex;
-    }
+    flex:0 0 auto;
 
+    margin:5px 0 0;
+    padding:0;
 
-    /* ==============================
-       GREEN COLUMNS
-    ============================== */
+    text-align:center;
 
-    .aathichudi-card .column {
-        flex: 1 1 0;
+    font-size:clamp(14px, 1.8vw, 19px);
+    line-height:1.1;
 
-        min-width: 0;
-        min-height: 0;
+    z-index:10;
+}
 
-        display: flex;
-        flex-direction: column;
+/* ==============================
+   NAVIGATION
+============================== */
 
-        /*
-           Distribute the buttons vertically
-           throughout the available green area.
-        */
-        justify-content: space-between;
+.navigation{
+    width:100%;
 
-        gap: 5px;
-    }
+    flex:0 0 42px;
 
+    height:42px;
+    min-height:42px;
 
-    /* ==============================
-       GREEN BUTTONS
-    ============================== */
+    margin:0;
+    padding:0 3px;
 
-    .aathichudi-card .rule-btn {
-        width: 100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-        flex: 0 0 auto;
+    overflow:hidden;
+}
 
-        height: clamp(27px, 6.8vw, 33px);
+.nav-btn{
+    width:38px;
+    height:38px;
 
-        min-height: 27px;
+    min-width:38px;
+    min-height:38px;
 
-        padding:
-            1px
-            21px
-            1px
-            4px;
+    font-size:20px;
 
-        font-size: clamp(10.5px, 3.1vw, 14px);
+    flex:0 0 38px;
+}
 
-        line-height: 1;
+.dots{
+    display:flex;
+    gap:6px;
 
-        border-width: 1.5px;
+    align-items:center;
+    justify-content:center;
+}
 
-        border-radius: 8px;
+.dot{
+    width:8px;
+    height:8px;
+}
 
-        white-space: nowrap;
+/* ==============================
+   TOUCH DEVICES
+============================== */
 
-        overflow: hidden;
+.title:hover,
+.month-btn:hover,
+.rule-btn:hover,
+.nav-btn:hover{
+    transform:none;
+}
 
-        display: flex;
-        align-items: center;
 
-        text-align: left;
-    }
+/* =========================================================
+   SMALL PHONES
+========================================================= */
 
-    .aathichudi-card .rule-btn .star {
-        flex: 0 0 auto;
+@media (max-width:480px){
 
-        font-size: clamp(10px, 2.9vw, 13px);
+.app{
+    padding:4px 5px;
+    gap:3px;
+}
 
-        margin-right: 3px;
-    }
+.book{
+    padding:6px 8px 3px 11px;
+    border-radius:17px;
+}
 
-    .aathichudi-card .rule-btn .speaker-icon {
-        right: 4px;
-        font-size: 7px;
-    }
+.book::before{
+    width:6px;
+    top:9px;
+    bottom:9px;
+}
 
+/* DECORATIONS */
 
-    /* ==============================
-       PAGE NUMBER
-       STAYS AT THE BOTTOM
-    ============================== */
+.swirl{
+    left:-8px;
+    top:-8px;
+    transform:scale(.42);
+}
 
-    .page-number {
-        width: 100%;
+.curve-top{
+    right:-7px;
+    top:3px;
+    transform:scale(.52);
+}
 
-        flex: 0 0 auto;
+.calendar-sticker{
+    right:-8px;
+    top:285px;
+    width:58px;
+}
 
-        /*
-           Keeps page number at the
-           bottom of the book.
-        */
-        margin:
-            4px
-            0
-            0;
+/* TITLE */
 
-        padding: 0;
+.title{
+    max-width:100%;
+    margin:3px auto 7px;
+    padding:6px 28px 6px 10px;
+    font-size:clamp(21px, 6.2vw, 29px);
+    border-radius:10px;
+}
 
-        text-align: center;
+.title .speaker-icon{
+    right:7px;
+    font-size:9px;
+}
 
-        font-size: 14px;
-        line-height: 1.1;
+/* MONTHS */
 
-        z-index: 10;
-    }
+.months-wrapper{
+    gap:clamp(6px, 2vw, 9px);
+    margin-bottom:7px;
+}
 
+.card{
+    padding:6px 7px;
+    gap:4px;
+    border-radius:15px;
+}
 
-    /* ==============================
-       NAVIGATION
-    ============================== */
+.month-btn{
+    height:clamp(25px, 6vw, 30px);
+    padding:1px 22px 1px 4px;
+    font-size:clamp(12px, 3.5vw, 16px);
+    line-height:1;
+    border-radius:9px;
+}
 
-    .navigation {
-        width: 100%;
+.month-btn .speaker-icon{
+    right:4px;
+    font-size:8px;
+}
 
-        flex: 0 0 38px;
+/* AATHICHUDI HEADER */
 
-        height: 38px;
-        min-height: 38px;
+.aathichudi-header{
+    gap:7px;
+    margin-bottom:6px;
+}
 
-        margin: 0;
+.line{
+    width:23px;
+    height:3px;
+    flex:0 0 23px;
+}
 
-        padding:
-            0
-            2px
-            1px;
+.line::before,
+.line::after{
+    width:16px;
+    height:3px;
+}
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+.left::before,
+.right::before{
+    top:-6px;
+}
 
-        overflow: hidden;
-    }
+.left::after,
+.right::after{
+    top:6px;
+}
 
+.heading{
+    font-size:clamp(19px, 5.8vw, 25px);
+    padding:5px 15px;
+    border-radius:22px;
+}
 
-    /* ==============================
-       NAV BUTTONS
-    ============================== */
+.heading .speaker-icon{
+    right:5px;
+    font-size:8px;
+}
 
-    .nav-btn {
-        width: 34px;
-        height: 34px;
+/* GREEN CARD */
 
-        min-width: 34px;
-        min-height: 34px;
+.aathichudi-card{
+    padding:7px 8px;
+    gap:6px;
+    border-radius:16px;
+}
 
-        font-size: 18px;
+.aathichudi-card .column{
+    justify-content:space-between;
+    gap:5px;
+}
 
-        flex: 0 0 34px;
-    }
+/* GREEN BUTTONS */
 
+.aathichudi-card .rule-btn{
+    height:clamp(27px, 6.8vw, 33px);
+    min-height:27px;
 
-    /* ==============================
-       DOTS
-    ============================== */
+    padding:1px 21px 1px 4px;
 
-    .dots {
-        display: flex;
+    font-size:clamp(10.5px, 3.1vw, 14px);
+    line-height:1;
 
-        gap: 5px;
+    border-radius:8px;
+    white-space:nowrap;
+    overflow:hidden;
+}
 
-        align-items: center;
-        justify-content: center;
-    }
+.aathichudi-card .rule-btn .star{
+    font-size:clamp(10px, 2.9vw, 13px);
+    margin-right:3px;
+}
 
-    .dot {
-        width: 7px;
-        height: 7px;
-    }
+.aathichudi-card .rule-btn .speaker-icon{
+    right:4px;
+    font-size:7px;
+}
 
+/* PAGE NUMBER */
 
-    /* ==============================
-       TOUCH DEVICES
-    ============================== */
+.page-number{
+    margin:4px 0 0;
+    font-size:14px;
+}
 
-    .title:hover,
-    .month-btn:hover,
-    .rule-btn:hover,
-    .nav-btn:hover {
-        transform: none;
-    }
+/* NAVIGATION */
+
+.navigation{
+    flex:0 0 38px;
+    height:38px;
+    min-height:38px;
+    padding:0 2px 1px;
+}
+
+.nav-btn{
+    width:34px;
+    height:34px;
+    min-width:34px;
+    min-height:34px;
+    flex:0 0 34px;
+    font-size:18px;
+}
+
+.dots{
+    gap:5px;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+}
+
+}
+
 }
 
 
