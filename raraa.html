@@ -534,8 +534,6 @@ box-shadow:0 0 0 rgba(255,196,0,0);
 
 
 
-
-
 /* ===========================================
    MOBILE & TABLET - RARA PAGE
    TWO TAMIL COLUMNS
@@ -545,7 +543,7 @@ box-shadow:0 0 0 rgba(255,196,0,0);
 
 :root{
     --btn-height:clamp(23px, calc((100dvh - 270px) / 14), 44px);
-    --mouth-width:clamp(20px, 3.5vw, 30px);
+    --mouth-width:36px;
     --mouth-gap:3px;
 }
 
@@ -640,10 +638,7 @@ body{
     min-height:0;
     width:100%;
     display:grid;
-
-    /* PINK COLUMN + TWO TAMIL COLUMNS */
     grid-template-columns:32px repeat(2, minmax(0, 1fr));
-
     column-gap:clamp(8px, 2vw, 18px);
     justify-content:center;
     align-items:stretch;
@@ -719,6 +714,8 @@ body{
     min-width:0;
     height:100%;
 }
+
+/* Bigger mouth images */
 
 .ra-mouth{
     width:var(--mouth-width);
@@ -807,7 +804,7 @@ body{
 @media (max-width:480px){
 
 :root{
-    --mouth-width:clamp(18px, 5vw, 25px);
+    --mouth-width:34px;
     --mouth-gap:2px;
 }
 
@@ -843,7 +840,7 @@ body{
     font-size:11px;
 }
 
-/* Mouth images */
+/* Bigger mouth images */
 
 .ra-head{
     gap:var(--mouth-gap);
@@ -854,7 +851,7 @@ body{
     height:var(--mouth-width);
 }
 
-/* All buttons same width */
+/* All buttons same shorter width */
 
 .column .head,
 .column .btn{
@@ -888,6 +885,7 @@ body{
 }
 
 }
+
 
 
 
