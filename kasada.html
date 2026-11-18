@@ -521,7 +521,6 @@ box-shadow:0 0 0 rgba(255,196,0,0);
 
 
 
-
 /* ===========================================
    MOBILE & TABLET - AUTO FIT BOOK LAYOUT
 =========================================== */
@@ -577,15 +576,11 @@ body{
     max-width:720px;
     height:100%;
     max-height:100%;
-
     display:flex;
     flex-direction:column;
-
     padding:10px 12px 6px 18px;
-
     border:5px solid #e9dcb8;
     border-radius:18px;
-
     overflow:hidden;
 }
 
@@ -620,11 +615,10 @@ body{
     flex:1;
     min-height:0;
     width:100%;
-
     display:grid;
     grid-template-columns:32px repeat(3, minmax(0, 1fr));
     column-gap:clamp(4px, 1.5vw, 12px);
-    align-items:start;
+    align-items:stretch;
 }
 
 /* ---------- PINK COLUMN ---------- */
@@ -656,23 +650,29 @@ body{
     object-fit:contain;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ---------- BUTTON COLUMNS ---------- */
 
 .column{
     width:100%;
-    gap:6px;
+    height:100%;
+    min-height:0;
+    display:grid;
+    grid-template-rows:repeat(14, minmax(0, 1fr));
+    row-gap:4px;
 }
 
 .group{
-    width:100%;
-    gap:5px;
+    display:contents;
 }
+
+/* ---------- BUTTONS ---------- */
 
 .head,
 .btn{
     width:100%;
-    height:var(--btn-height);
+    height:100%;
     min-height:0;
+    margin:0;
     padding:0 2px;
     font-size:clamp(13px, 2.6vw, 23px);
     border-radius:7px;
@@ -732,7 +732,9 @@ body{
 
 }
 
-/* ---------- SMALL PHONES ---------- */
+/* ===========================================
+   SMALL PHONES
+=========================================== */
 
 @media (max-width:480px){
 
@@ -753,11 +755,7 @@ body{
 }
 
 .column{
-    gap:4px;
-}
-
-.group{
-    gap:3px;
+    row-gap:3px;
 }
 
 .head,
@@ -787,38 +785,6 @@ body{
     font-size:15px;
     margin-bottom:5px;
 }
-
-}
-
-
-
-
-/* ===========================================
-   FILL THE BOOK - MOBILE & TABLET
-=========================================== */
-
-@media (max-width:900px){
-
-    .column{
-        height:100%;
-        display:grid;
-        grid-template-rows:repeat(14, minmax(0, 1fr));
-        grid-auto-flow:row;
-        row-gap:4px;
-        gap:0;
-    }
-
-    .group{
-        display:contents;
-    }
-
-    .head,
-    .btn{
-        width:100%;
-        height:100%;
-        min-height:0;
-        margin:0;
-    }
 
 }
 
