@@ -649,7 +649,7 @@ body{
 /* ---------- PINK PRONUNCIATION COLUMN ---------- */
 
 .sound-column{
-    margin-top:calc(6 * var(--btn-height) + 100px);
+    margin-top:calc(6 * var(--btn-height) + 95px);
     gap:5px;
 }
 
@@ -887,6 +887,52 @@ body{
 }
 
 
+/* ===========================================
+   TABLET — LOWER PINK COLUMN
+=========================================== */
+
+@media (min-width:481px) and (max-width:1024px){
+
+    .sound-column{
+        margin-top:calc(6 * var(--btn-height) + 115px);
+    }
+
+}
+
+
+
+
+/* ===========================================
+   TABLET ONLY — BIGGER MOUTH IMAGES
+=========================================== */
+
+@media (min-width:481px) and (max-width:900px){
+
+    :root{
+        --mouth-width:40px;
+        --mouth-gap:3px;
+    }
+
+}
+
+
+
+/* ===========================================
+   TABLET ONLY — SHORTER BUTTONS
+=========================================== */
+
+@media (min-width:481px) and (max-width:900px){
+
+    .column .head,
+    .column .btn{
+        width:82%;
+    }
+
+    .ra-head .head{
+        width:calc(82% - var(--mouth-width) - var(--mouth-gap));
+    }
+
+}
 
 
 </style>

@@ -665,7 +665,7 @@ body{
 /* ---------- PINK PRONUNCIATION COLUMN ---------- */
 
 .sound-column{
-    margin-top:calc(6 * var(--btn-height) + 100px);
+    margin-top:calc(6 * var(--btn-height) + 95px);
     gap:5px;
 }
 
@@ -720,8 +720,8 @@ body{
     position:absolute;
     left:calc(100% - clamp(20px, 3.5vw, 30px));
     top:0;
-    width:clamp(20px, 3.5vw, 30px);
-    height:clamp(20px, 3.5vw, 30px);
+    width:clamp(24px, 4.5vw, 38px);
+    height:clamp(24px, 4.5vw, 38px);
     object-fit:contain;
     pointer-events:none;
     z-index:2;
@@ -839,10 +839,10 @@ body{
 /* Mouth images */
 
 .mouth-img{
-    left:calc(100% - clamp(18px, 5vw, 25px));
+    left:calc(100% - clamp(22px, 6vw, 30px));
     top:0;
-    width:clamp(18px, 5vw, 25px);
-    height:clamp(18px, 5vw, 25px);
+    width:clamp(22px, 6vw, 30px);
+    height:clamp(22px, 6vw, 30px);
 }
 
 /* All buttons match first-row width */
@@ -877,6 +877,20 @@ body{
 }
 
 
+
+
+
+/* ===========================================
+   TABLET — LOWER PINK COLUMN
+=========================================== */
+
+@media (min-width:481px) and (max-width:1024px){
+
+    .sound-column{
+        margin-top:calc(6 * var(--btn-height) + 115px);
+    }
+
+}
 
 
 </style>
